@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.wands.IWandRodOnUpdate;
 import thaumcraft.common.items.wands.ItemWandCasting;
-import thaumcraftextras.api.interfaces.IMagicEnergyContainer;
+import thaumcraftextras.api.interfaces.IMagicEnergyContainerItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -41,7 +41,7 @@ public class DarkSilverwoodRodOnUpdate implements IWandRodOnUpdate {
 	{
 		for(int i = 0; i < player.inventory.getSizeInventory(); i++)
 		{
-			if(player.inventory.getStackInSlot(i) != null && player.inventory.getStackInSlot(i).getItem() instanceof IMagicEnergyContainer && player.inventory.getStackInSlot(i).getItemDamage() + 1 <= player.inventory.getStackInSlot(i).getMaxDamage()){
+			if(player.inventory.getStackInSlot(i) != null && player.inventory.getStackInSlot(i).getItem() instanceof IMagicEnergyContainerItem && player.inventory.getStackInSlot(i).getItemDamage() + 1 <= player.inventory.getStackInSlot(i).getMaxDamage()){
 				return player.inventory.getStackInSlot(i);
 			}
 		}
@@ -52,7 +52,7 @@ public class DarkSilverwoodRodOnUpdate implements IWandRodOnUpdate {
 	{
 		for(int i = 0; i < player.inventory.getSizeInventory(); i++)
 		{
-			if(player.inventory.getStackInSlot(i) != null && player.inventory.getStackInSlot(i).getItem() instanceof IMagicEnergyContainer && player.inventory.getStackInSlot(i).getItemDamage() + 1 <= player.inventory.getStackInSlot(i).getMaxDamage()){
+			if(player.inventory.getStackInSlot(i) != null && player.inventory.getStackInSlot(i).getItem() instanceof IMagicEnergyContainerItem && player.inventory.getStackInSlot(i).getItemDamage() + 1 <= player.inventory.getStackInSlot(i).getMaxDamage()){
 				return true;
 			}
 		}

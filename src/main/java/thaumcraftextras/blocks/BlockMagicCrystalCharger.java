@@ -15,7 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import thaumcraftextras.api.interfaces.IMagicEnergyContainer;
+import thaumcraftextras.api.interfaces.IMagicEnergyContainerItem;
 import thaumcraftextras.api.misc.tiles.MagicEnergyTile;
 import thaumcraftextras.blocks.tiles.TileEntityMagicCrystalCharger;
 import thaumcraftextras.items.ItemMagicEnergyReader;
@@ -76,7 +76,7 @@ public class BlockMagicCrystalCharger extends BlockContainer{
 						}else if(player.getCurrentEquippedItem().getItem() instanceof ItemMagicEnergyReader){
 							player.addChatComponentMessage(new ChatComponentText("Energy Stored: " + tile.getEnergy()));
 							world.markBlockForUpdate(x, y, z);
-						}else if(player.getCurrentEquippedItem().getItem() instanceof IMagicEnergyContainer){
+						}else if(player.getCurrentEquippedItem().getItem() instanceof IMagicEnergyContainerItem){
 							TileEntityMagicCrystalCharger charger = (TileEntityMagicCrystalCharger)world.getTileEntity(x, y, z);
 							charger.setInventorySlotContents(0, player.getCurrentEquippedItem().copy());
 							

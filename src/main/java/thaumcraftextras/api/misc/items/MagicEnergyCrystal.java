@@ -12,13 +12,13 @@ import net.minecraft.util.IIcon;
 
 import org.lwjgl.input.Keyboard;
 
-import thaumcraftextras.api.interfaces.IMagicEnergyContainer;
+import thaumcraftextras.api.interfaces.IMagicEnergyContainerItem;
 import thaumcraftextras.main.ThaumcraftExtras;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class MagicEnergyCrystal extends Item implements IMagicEnergyContainer{
+public class MagicEnergyCrystal extends Item implements IMagicEnergyContainerItem{
 
 	public MagicEnergyCrystal(int maxEnergy, int crystalColor, int tier) {
 		super();

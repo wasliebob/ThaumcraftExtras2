@@ -44,6 +44,9 @@ public class TileEntityDarkendCore extends TileEntity{
 		
 				if(distance < 15.0 && entity instanceof EntityItem){
 					EntityItem item = (EntityItem)entity;
+					if((TCEApi.darkInfusion.containsKey(item.getEntityItem().getItem()))){
+						doStuff(item, TCEApi.darkInfusion.get(item.getEntityItem().getItem()));
+					}else{
 					if((item.getEntityItem().getItem() == ConfigItems.itemResource && item.getEntityItem().getItemDamage() == 2))
 						doStuff(item, new ItemStack(TCEItems.darkThaumium));
 					if((item.getEntityItem().getItem() == Items.coal))
@@ -52,8 +55,6 @@ public class TileEntityDarkendCore extends TileEntity{
 						doStuff(item, new ItemStack(TCEItems.essenceDark));
 					if((item.getEntityItem().getItem() == ConfigItems.itemShard))
 						doStuff(item, new ItemStack(TCEItems.darkShard));
-					if((TCEApi.darkInfusion.containsKey(item.getEntityItem().getItem()))){
-						doStuff(item, TCEApi.darkInfusion.get(item.getEntityItem().getItem()));
 					}
 				}
 			}

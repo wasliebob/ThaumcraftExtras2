@@ -1,5 +1,6 @@
 ==Names==
 tc.research_category.TCE=Thaumcraft Extras 2
+tc.research_category.TCE_WANDS=Thaumcraft Extras 2: Wands
 itemGroup.tabThaumcraftExtras2=Thaumcraft Extras 2
 itemGroup.tabThaumcraftExtras2Wands=Thaumcraft Extras 2: Wands
 ==Blocks==
@@ -42,6 +43,8 @@ item.thaumcraftextras.rod.gold.name=Gold Rod
 item.thaumcraftextras.rod.diamond.name=Diamond Rod
 item.thaumcraftextras.rod.emerald.name=Emerald Rod
 item.thaumcraftextras.rod.darksilverwood.name=Dark Silverwood Rod
+item.thaumcraftextras.rod.devil.name=Devil Rod
+item.thaumcraftextras.rod.god.name=God Rod
 ==Caps==
 item.thaumcraftextras.cap.darkthaumium.name=Dark Thaumium Cap
 ==Wands==
@@ -51,6 +54,8 @@ item.Wand.IRON.rod=Iron
 item.Wand.GOLD.rod=Gold
 item.Wand.DIAMOND.rod=Diamond
 item.Wand.EMERALD.rod=Emerald
+item.Wand.DEVIL.rod=Emerald
+item.Wand.GOD.rod=Emerald
 item.Wand.DARKTHAUMIUM.cap=Dark Thaumium
 ==Text==
 ==Entries==

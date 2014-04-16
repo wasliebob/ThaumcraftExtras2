@@ -44,9 +44,9 @@ public class TCEEntries {
 		aspect.add(Aspect.ORDER, 5);
 		aspect.add(Aspect.ENTROPY, 5);
 		aspect.add(Aspect.ENERGY, 5);
-		text = new String[]{"1"};
-		research = new ResearchHelper(magic_battery, TCEEntries.TCE, aspect, 3, -3, 2, new ItemStack(TCEBlocks.battery)).setParents(ingot_darkthaumium).setSecondary().registerResearchItem();
-		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeMagicBattery));
+		text = new String[]{"1", "2", "3" , "4"};
+		research = new ResearchHelper(magic_energy, TCEEntries.TCE, aspect, 3, -3, 2, new ItemStack(TCEBlocks.battery)).setParents(ingot_darkthaumium).setSecondary().registerResearchItem();
+		research.setPages(new ResearchPage(text[0]), new ResearchPage(text[1]), new ResearchPage(text[2]), new ResearchPage(text[3]), new ResearchPage(TCERecipes.recipeMagicBattery),  new ResearchPage(TCERecipes.recipeMagicGenerator),  new ResearchPage(TCERecipes.recipeMagicCrystalCharger), new ResearchPage(TCERecipes.recipeMagicWandCharger), new ResearchPage(TCERecipes.recipeMagicCrystalT1), new ResearchPage(TCERecipes.recipeMagicCrystalT2), new ResearchPage(TCERecipes.recipeMagicCrystalT3), new ResearchPage(TCERecipes.recipeMagicCrystalT4), new ResearchPage(TCERecipes.recipeMagicCrystalT5), new ResearchPage(TCERecipes.recipeMagicCrystalT6));
 		aspect.aspects.clear();
 		
 		aspect.add(Aspect.ORDER, 5);
@@ -65,12 +65,20 @@ public class TCEEntries {
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeFocusClean));
 		aspect.aspects.clear();
 		
+		aspect.add(Aspect.ORDER, 5);
+		aspect.add(Aspect.ENTROPY, 5);
+		aspect.add(Aspect.ELDRITCH, 5);
+		text = new String[]{"1"};
+		research = new ResearchHelper(focus_return, TCEEntries.TCE, aspect, -2, -2, 2, new ItemStack(TCEItems.focusReturn)).setParents(tce).setSecondary().registerResearchItem();
+		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeFocusReturn));
+		aspect.aspects.clear();
 	}
 	public static String tce = "Thaumcraft Extras"; 
 	public static String ingot_darkthaumium = "Dark Thaumium"; 
 	public static String focus_return = "Wand Focus: Return";
 	public static String focus_clean = "Wand Focus: Clean";
-	public static String magic_battery = "Magical Battery";
+
+	public static String magic_energy = "Magic Energy";
 	public static String chestplate_fire = "Chestplate of Flames";
 	
 	public static void initWandEntries()
@@ -123,10 +131,18 @@ public class TCEEntries {
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipe_rod_god));
 		aspect.aspects.clear();
 		
+		aspect.add(Aspect.ORDER, 25);
+		aspect.add(Aspect.ENTROPY, 25);
+		aspect.add(Aspect.AIR, 25);
+		text = new String[]{"1"};
+		research = new ResearchHelper(TCEEntries.rod_darkSilverwood, TCEEntries.TCEWANDS, aspect, 1, 5, 2, new ItemStack(TCEWands.item_rod_darkSilverwood)).setParents(TCEEntries.rod_darkSilverwood).setSecondary().registerResearchItem();
+		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipe_rod_darkSilverwood));
+		aspect.aspects.clear();
+		
 		aspect.add(Aspect.ENTROPY, 5);
 		text = new String[]{"1"};
 		research = new ResearchHelper(TCEEntries.cap_darkThaumium, TCEEntries.TCEWANDS, aspect, -1, -1, 2, new ItemStack(TCEWands.item_cap_darkThaumium)).setParents(TCEEntries.rod_iron).setSecondary().registerResearchItem();
-		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipe_cap_darkthaumium));
+		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipe_cap_darkThaumium));
 		aspect.aspects.clear();
 		
 	}

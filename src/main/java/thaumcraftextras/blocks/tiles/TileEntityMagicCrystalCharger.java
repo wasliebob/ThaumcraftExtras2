@@ -9,7 +9,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraftforge.common.util.Constants;
-import thaumcraftextras.api.interfaces.IMagicEnergyContainer;
+import thaumcraftextras.api.interfaces.IMagicEnergyContainerItem;
 import thaumcraftextras.api.misc.classes.MagicEnergy;
 import thaumcraftextras.api.misc.tiles.MagicEnergyTile;
 
@@ -31,7 +31,7 @@ public class TileEntityMagicCrystalCharger extends MagicEnergyTile implements IS
     {
     	if(!worldObj.isRemote){
     		if(getStackInSlot(0) != null){
-    			if(getStackInSlot(0).getItem() instanceof IMagicEnergyContainer){
+    			if(getStackInSlot(0).getItem() instanceof IMagicEnergyContainerItem){
     				ItemStack con = getStackInSlot(0);
     				if(hasEnoughEnergy()){
     						if(!(con.getItemDamage() + add <= con.getMaxDamage()) && hasEnoughEnergy()){
