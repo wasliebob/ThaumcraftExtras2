@@ -1,0 +1,60 @@
+==Names==
+tc.research_category.TCE=Thaumcraft Extras 2
+itemGroup.tabThaumcraftExtras2=Thaumcraft Extras 2
+itemGroup.tabThaumcraftExtras2Wands=Thaumcraft Extras 2: Wands
+==Blocks==
+tile.thaumcraftextras.block.Ignis Block.name=Ignis Fuel Block
+tile.thaumcraftextras.block.warded block: ghost.name=Warded Block: Ghost
+tile.thaumcraftextras.block.Magical Tesslacoil.name=Magical Tesslacoil
+tile.thaumcraftextras.block.darkend core block.name=Darkend Core Block
+tile.thaumcraftextras.block.darkend altar block.name=Darkend Altar Block
+tile.thaumcraftextras.block.darkend matrix block.name=Darkend Matrix Block
+tile.thaumcraftextras.block.Entity Containment.name=Entity Containment
+tile.thaumcraftextras.block.Magic Battery.name=Magic Battery
+tile.thaumcraftextras.block.Magic Generator.name=Magic Generator
+tile.thaumcraftextras.block.Magic Wand Charger.name=Magic Wand Charger
+tile.thaumcraftextras.block.Magic Crystal Charger.name=Magic Crystal Charger
+==Items==
+item.thaumcraftextras.crystal.1.name=Tiny Magic Energy Crystal
+item.thaumcraftextras.crystal.2.name=Small Magic Energy Crystal
+item.thaumcraftextras.crystal.3.name=Normal Magic Energy Crystal
+item.thaumcraftextras.crystal.4.name=Large Magic Energy Crystal
+item.thaumcraftextras.crystal.5.name=Huge Magic Energy Crystal
+item.thaumcraftextras.crystal.6.name=Extreme Magic Energy Crystal
+item.thaumcraftextras.crystal.100.name=Creative Magic Energy Crystal
+item.thaumcraftextras.item.essence of magic.name=Essence of Magic
+item.thaumcraftextras.item.essence of darkness.name=Essence of Darkness
+item.thaumcraftextras.item.essence of light.name=Essence of Light
+item.thaumcraftextras.item.dark thaumium ingot.name=Dark Thaumium Ingot
+item.thaumcraftextras.item.dark thaumium nugget.name=Dark Thaumium Nugget
+item.thaumcraftextras.item.ignis fuel.name=Ignis Fuel
+item.thaumcraftextras.item.magic energy reader.name=Magic Energy Scanner
+item.thaumcraftextras.shard.dark.name=Darkend Shard
+item.thaumcraftextras.shard.xp.name=Experience Shard
+item.thaumcraftextras.item.experience extractor.name=Experience Extractor
+item.thaumcraftextras.focus.wand focus: clean.name=Wand Focus: Clean
+item.thaumcraftextras.focus.wand focus: return.name=Wand Focus: Return
+item.thaumcraftextras.armor.flaming chestplate.name=Flaming Chestplate
+==Rods==
+item.thaumcraftextras.rod.ultimate.name=Ultimate Rod
+item.thaumcraftextras.rod.iron.name=Iron Rod
+item.thaumcraftextras.rod.gold.name=Gold Rod
+item.thaumcraftextras.rod.diamond.name=Diamond Rod
+item.thaumcraftextras.rod.emerald.name=Emerald Rod
+item.thaumcraftextras.rod.darksilverwood.name=Dark Silverwood Rod
+==Caps==
+item.thaumcraftextras.cap.darkthaumium.name=Dark Thaumium Cap
+==Wands==
+item.Wand.ULTIMATE.rod=Ultimate
+item.Wand.DARKSILVERWOOD.rod=Dark Silverwood
+item.Wand.IRON.rod=Iron
+item.Wand.GOLD.rod=Gold
+item.Wand.DIAMOND.rod=Diamond
+item.Wand.EMERALD.rod=Emerald
+item.Wand.DARKTHAUMIUM.cap=Dark Thaumium
+==Text==
+==Entries==
+==Tooltips==
+thaumcraftextras.tooltip.magic_battery.0=Can be used to save your energy.
+thaumcraftextras.tooltip.wand_darksilverwood.0=Can be charged using an item
+thaumcraftextras.tooltip.wand_darksilverwood.1=containing magic energy

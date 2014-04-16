@@ -1,0 +1,16 @@
+[
+{
+  "modid": "ThaumcraftExtras",
+  "name": "Thaumcraft Extras 2",
+  "description": "Thaumcraft Addon",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authors": ["Wasliebob"],
+  "credits": "Azanor: For making Thaumcraft",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
