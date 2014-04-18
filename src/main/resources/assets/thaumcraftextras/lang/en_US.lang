@@ -15,6 +15,7 @@ tile.thaumcraftextras.block.Magic Battery.name=Magic Battery
 tile.thaumcraftextras.block.Magic Generator.name=Magic Generator
 tile.thaumcraftextras.block.Magic Wand Charger.name=Magic Wand Charger
 tile.thaumcraftextras.block.Magic Crystal Charger.name=Magic Crystal Charger
+tile.thaumcraftextras.block.Magic Energy Void.name=Magic Energy Void
 ==Items==
 item.thaumcraftextras.crystal.1.name=Tiny Magic Energy Crystal
 item.thaumcraftextras.crystal.2.name=Small Magic Energy Crystal

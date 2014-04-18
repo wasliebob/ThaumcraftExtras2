@@ -7,13 +7,13 @@ import thaumcraftextras.blocks.BlockDarkendCore;
 import thaumcraftextras.blocks.BlockMagicBattery;
 import thaumcraftextras.blocks.BlockMagicCrystalCharger;
 import thaumcraftextras.blocks.BlockMagicGenerator;
+import thaumcraftextras.blocks.BlockMagicVoid;
 import thaumcraftextras.blocks.BlockMagicWandCharger;
 import thaumcraftextras.blocks.BlockMatrix;
 import thaumcraftextras.blocks.BlockNoMove;
 import thaumcraftextras.blocks.BlockShocker;
 import thaumcraftextras.blocks.BlockWardedGhost;
 import thaumcraftextras.blocks.TCEBlock;
-import thaumcraftextras.main.init.addons.wands.BlockWand;
 
 public class TCEBlocks {
 
@@ -35,10 +35,9 @@ public class TCEBlocks {
 		generator = new BlockMagicGenerator(Material.iron, "Magic Generator");
 		wandCharger = new BlockMagicWandCharger(Material.iron, "Magic Wand Charger");
 		crystalCharger = new BlockMagicCrystalCharger(Material.iron, "Magic Crystal Charger");
-		wands = new BlockWand("Debug Block");
+		magicVoid = new BlockMagicVoid(Material.iron, "Magic Energy Void");
 	}
 	public static TCEBlock blockIgnis;
-	public static BlockWand wands;
 	public static BlockWardedGhost specialWardedGhost;
 	public static BlockShocker shocker;
 	public static BlockDarkendCore darkendCore;
@@ -49,4 +48,6 @@ public class TCEBlocks {
 	public static BlockMagicGenerator generator;
 	public static BlockMagicWandCharger wandCharger;
 	public static BlockMagicCrystalCharger crystalCharger;
+	public static BlockMagicVoid magicVoid;
+	
 }

@@ -4,6 +4,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import thaumcraft.api.wands.WandRod;
 import thaumcraftextras.helpers.LocalizationHelper;
+import thaumcraftextras.main.init.addons.wands.BlockWand;
 import thaumcraftextras.main.init.addons.wands.DarkSilverwoodRodOnUpdate;
 import thaumcraftextras.main.init.addons.wands.TCEItemCap;
 import thaumcraftextras.main.init.addons.wands.TCEItemRod;
@@ -13,11 +14,18 @@ import thaumcraftextras.main.init.addons.wands.UltimateRodOnUpdate;
 public class TCEWands {
 	public static void init()
 	{
+		initBlock();
 		initItemRod();
 		initWandRod();
 		initItemCap();
 		initWandCap();
 	}
+
+	public static void initBlock()
+	{
+		wands = new BlockWand("Debug Block");
+	}
+	public static BlockWand wands;
 	
 	public static void initItemRod()
 	{
