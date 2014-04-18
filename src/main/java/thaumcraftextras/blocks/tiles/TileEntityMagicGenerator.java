@@ -231,11 +231,14 @@ public class TileEntityMagicGenerator extends MagicEnergyTile implements IAspect
 					decreaseEnergy(to.getMaxEnergy() - to.getEnergy());
 					return to.getMaxTransfer();
 				}else if(to.getEnergy() == to.getMaxEnergy()){
+					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 					return 0;
 				}else{
+					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 					return 0;
 				}
 			}else{
+				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 				return 0;
 			}
 		}
