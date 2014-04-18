@@ -105,8 +105,8 @@ public class BlockMagicCrystalCharger extends BlockContainer{
 	@Override
 	public void breakBlock(World world, int x, int y, int z, Block block, int par6) 
 	{
-		world.removeTileEntity(x, y, z);	
 		dropItems(world, x, y, z);
+		world.removeTileEntity(x, y, z);	
 	}
 	
 	private void dropItems(World world, int x, int y, int z){
