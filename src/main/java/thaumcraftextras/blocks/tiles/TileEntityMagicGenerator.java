@@ -43,18 +43,15 @@ public class TileEntityMagicGenerator extends MagicEnergyTile implements IAspect
     					MagicEnergyTile to = (MagicEnergyTile)tile;
     					if(getEnergy() == 0){
     							increaseEnergy(drawFromTube());
-    							worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
     					}else{
     						if(to.canReceive()){
         						if(Minecraft.getMinecraft().renderViewEntity != null){
         							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, 0);}
         							to.increaseEnergy(calcEnergy(to));
-        							worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
     						}
     					}
     				}else{
         				increaseEnergy(drawFromTube());
-        				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
     				}
     			}
     	}
@@ -231,14 +228,11 @@ public class TileEntityMagicGenerator extends MagicEnergyTile implements IAspect
 					decreaseEnergy(to.getMaxEnergy() - to.getEnergy());
 					return to.getMaxTransfer();
 				}else if(to.getEnergy() == to.getMaxEnergy()){
-					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 					return 0;
 				}else{
-					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 					return 0;
 				}
 			}else{
-				worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 				return 0;
 			}
 		}

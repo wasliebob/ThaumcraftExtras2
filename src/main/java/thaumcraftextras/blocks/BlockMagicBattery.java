@@ -9,7 +9,6 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import thaumcraftextras.api.misc.tiles.MagicEnergyTile;
-import thaumcraftextras.blocks.itemblocks.ItemBlockMagicEnergyBattery;
 import thaumcraftextras.blocks.tiles.TileEntityMagicBattery;
 import thaumcraftextras.items.ItemMagicEnergyReader;
 import thaumcraftextras.items.ItemMagicWrench;
@@ -21,13 +20,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockMagicBattery extends BlockContainer{
 
-	public BlockMagicBattery(Material material, String blockName) {
+	public BlockMagicBattery(Material material, String tier) {
 		super(material);
 		setCreativeTab(TCETabs.tabMain);
 		setHardness(1.0F);
 		
-		setBlockName(ThaumcraftExtras.modName.toLowerCase() + "." + "block" + "." + blockName);
-		GameRegistry.registerBlock(this, ItemBlockMagicEnergyBattery.class, this.getUnlocalizedName());
+		setBlockName(ThaumcraftExtras.modName.toLowerCase() + "." + "block" + "." + tier);
+		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}
 	IIcon side;
 	IIcon top;

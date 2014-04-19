@@ -58,7 +58,7 @@ public class FocusReturn extends TCEItemFocus {
         
         @Override
         public String getSortingHelper(ItemStack itemstack) {
-                return "CLEAN";
+                return "RETURN";
         }
 
         @Override

@@ -45,8 +45,8 @@ public class TCEEntries {
 		aspect.add(Aspect.ENTROPY, 5);
 		aspect.add(Aspect.ENERGY, 5);
 		text = new String[]{"1", "2", "3" , "4"};
-		research = new ResearchHelper(magic_energy, TCEEntries.TCE, aspect, 3, -3, 2, new ItemStack(TCEBlocks.battery)).setParents(ingot_darkthaumium).setSecondary().registerResearchItem();
-		research.setPages(new ResearchPage(text[0]), new ResearchPage(text[1]), new ResearchPage(text[2]), new ResearchPage(text[3]), new ResearchPage(TCERecipes.recipeMagicBattery),  new ResearchPage(TCERecipes.recipeMagicGenerator),  new ResearchPage(TCERecipes.recipeMagicCrystalCharger), new ResearchPage(TCERecipes.recipeMagicWandCharger), new ResearchPage(TCERecipes.recipeMagicCrystalT1), new ResearchPage(TCERecipes.recipeMagicCrystalT2), new ResearchPage(TCERecipes.recipeMagicCrystalT3), new ResearchPage(TCERecipes.recipeMagicCrystalT4), new ResearchPage(TCERecipes.recipeMagicCrystalT5), new ResearchPage(TCERecipes.recipeMagicCrystalT6));
+		research = new ResearchHelper(magic_energy, TCEEntries.TCE, aspect, 1, -4, 2, new ItemStack(TCEBlocks.battery)).setParents(ingot_darkthaumium).registerResearchItem();
+		research.setPages(new ResearchPage(text[0]), new ResearchPage(text[1]), new ResearchPage(text[2]), new ResearchPage(text[3]), new ResearchPage(TCERecipes.recipeMagicBattery),  new ResearchPage(TCERecipes.recipeMagicGenerator),  new ResearchPage(TCERecipes.recipeMagicCrystalCharger), new ResearchPage(TCERecipes.recipeMagicWandCharger), new ResearchPage(TCERecipes.recipeMagicCrystalT1), new ResearchPage(TCERecipes.recipeMagicCrystalT2), new ResearchPage(TCERecipes.recipeMagicCrystalT3), new ResearchPage(TCERecipes.recipeMagicCrystalT4), new ResearchPage(TCERecipes.recipeMagicCrystalT5), new ResearchPage(TCERecipes.recipeMagicCrystalT6), new ResearchPage(TCERecipes.recipeScanner), new ResearchPage(TCERecipes.recipeEnergyHelmet));
 		aspect.aspects.clear();
 		
 		aspect.add(Aspect.ORDER, 5);
@@ -72,14 +72,49 @@ public class TCEEntries {
 		research = new ResearchHelper(focus_return, TCEEntries.TCE, aspect, -2, -2, 2, new ItemStack(TCEItems.focusReturn)).setParents(tce).setSecondary().registerResearchItem();
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeFocusReturn));
 		aspect.aspects.clear();
+		
+		aspect.add(Aspect.ENTROPY, 5);
+		aspect.add(Aspect.AIR, 5);
+		text = new String[]{"1"};
+		research = new ResearchHelper(shocker, TCEEntries.TCE, aspect, 5, -3, 2, new ItemStack(TCEBlocks.shocker)).setParents(TCEEntries.tce).registerResearchItem();
+		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeShocker));
+		aspect.aspects.clear();
+		
+		aspect.add(Aspect.ORDER, 5);
+		aspect.add(Aspect.ENTROPY, 5);
+		aspect.add(Aspect.AIR, 5);
+		text = new String[]{"1"};
+		research = new ResearchHelper(focus_shocker, TCEEntries.TCE, aspect, 6, -4, 2, new ItemStack(TCEItems.focusTessela)).setParents(TCEEntries.shocker).setSecondary().registerResearchItem();
+		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeFocusShocker));
+		aspect.aspects.clear();
+		
+		aspect.add(Aspect.ORDER, 5);
+		aspect.add(Aspect.AIR, 5);
+		text = new String[]{"1"};
+		research = new ResearchHelper(containment, TCEEntries.TCE, aspect, 4, -4, 2, new ItemStack(TCEBlocks.noMove)).setParents(TCEEntries.tce).registerResearchItem();
+		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeContainment));
+		aspect.aspects.clear();
+		
+		aspect.add(Aspect.ORDER, 5);
+		aspect.add(Aspect.AIR, 5);
+		text = new String[]{"1"};
+		research = new ResearchHelper(essentia_barrel, TCEEntries.TCE, aspect, 3, -4, 2, new ItemStack(TCEBlocks.barrel_1)).setParents(TCEEntries.tce).setSecondary().registerResearchItem();
+		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.barrel_1),  new ResearchPage(TCERecipes.barrel_2),  new ResearchPage(TCERecipes.barrel_3),  new ResearchPage(TCERecipes.barrel_4),  new ResearchPage(TCERecipes.barrel_5),  new ResearchPage(TCERecipes.barrel_6));
+		aspect.aspects.clear();
 	}
 	public static String tce = "Thaumcraft Extras"; 
 	public static String ingot_darkthaumium = "Dark Thaumium"; 
 	public static String focus_return = "Wand Focus: Return";
 	public static String focus_clean = "Wand Focus: Clean";
+	public static String focus_shocker = "Wand Focus: Shock";
 
 	public static String magic_energy = "Magic Energy";
 	public static String chestplate_fire = "Chestplate of Flames";
+	
+	public static String dark_infusion = "Dark Infusion";
+	public static String containment = "Containment";
+	public static String shocker = "Shocker";
+	public static String essentia_barrel = "Essentia Barrels";
 	
 	public static void initWandEntries()
 	{
@@ -127,7 +162,7 @@ public class TCEEntries {
 		aspect.add(Aspect.ENTROPY, 15);
 		aspect.add(Aspect.AIR, 15);
 		text = new String[]{"1"};
-		research = new ResearchHelper(TCEEntries.rod_god, TCEEntries.TCEWANDS, aspect, 1, 4, 2, new ItemStack(TCEWands.item_rod_god)).setParents(TCEEntries.rod_god).setSecondary().registerResearchItem();
+		research = new ResearchHelper(TCEEntries.rod_god, TCEEntries.TCEWANDS, aspect, 1, 4, 2, new ItemStack(TCEWands.item_rod_god)).setParents(TCEEntries.rod_devil).setSecondary().registerResearchItem();
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipe_rod_god));
 		aspect.aspects.clear();
 		
@@ -135,7 +170,7 @@ public class TCEEntries {
 		aspect.add(Aspect.ENTROPY, 25);
 		aspect.add(Aspect.AIR, 25);
 		text = new String[]{"1"};
-		research = new ResearchHelper(TCEEntries.rod_darkSilverwood, TCEEntries.TCEWANDS, aspect, 1, 5, 2, new ItemStack(TCEWands.item_rod_darkSilverwood)).setParents(TCEEntries.rod_darkSilverwood).setSecondary().registerResearchItem();
+		research = new ResearchHelper(TCEEntries.rod_darkSilverwood, TCEEntries.TCEWANDS, aspect, 1, 5, 2, new ItemStack(TCEWands.item_rod_darkSilverwood)).setParents(TCEEntries.rod_god).setSecondary().registerResearchItem();
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipe_rod_darkSilverwood));
 		aspect.aspects.clear();
 		

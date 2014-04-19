@@ -15,6 +15,7 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.wands.IWandFocus;
 import thaumcraftextras.main.ThaumcraftExtras;
+import thaumcraftextras.main.init.TCETabs;
 
 public abstract class TCEItemFocus extends Item implements IWandFocus {
 
@@ -22,6 +23,7 @@ public abstract class TCEItemFocus extends Item implements IWandFocus {
 
         public TCEItemFocus() {
                 super();
+                setCreativeTab(TCETabs.tabMain);
                 maxStackSize = 1;
         }
 

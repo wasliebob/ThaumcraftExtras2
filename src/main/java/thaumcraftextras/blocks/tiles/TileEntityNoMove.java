@@ -29,7 +29,7 @@ public class TileEntityNoMove extends TileEntity{
 			
 				float distance = (float) ((xCoord - xPos) * (xCoord - xPos) + (yCoord - yPos) * (yCoord - yPos) + (zCoord - zPos) * (zCoord - zPos));
 		
-				if(distance < 15 && entity instanceof EntityLiving && !(entity instanceof EntityPlayer)){
+				if(Minecraft.getMinecraft().renderViewEntity != null && distance < 15 && entity instanceof EntityLiving && !(entity instanceof EntityPlayer)){
 					EntityLiving living = (EntityLiving)entity;
 					if(Minecraft.getMinecraft().renderViewEntity != null)
 					{

@@ -5,6 +5,7 @@ import thaumcraftextras.main.init.TCEBlocks;
 import thaumcraftextras.main.init.TCEEntries;
 import thaumcraftextras.main.init.TCEEvents;
 import thaumcraftextras.main.init.TCEItems;
+import thaumcraftextras.main.init.TCEMisc;
 import thaumcraftextras.main.init.TCERecipes;
 import thaumcraftextras.main.init.addons.TCEWands;
 import thaumcraftextras.proxies.CommonProxy;
@@ -66,12 +67,14 @@ public class ThaumcraftExtras {
         GameRegistry.registerTileEntity(thaumcraftextras.api.misc.tiles.MagicEnergyTile.class, "Magic_Tile");
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityMagicCrystalCharger.class, "Magic_Crystal_Charger");
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityMagicVoid.class, "Magic_Energy_Void");
+        GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityEssentiaBarrel.class, "Essentia_Barrel");
     }
     
     
     @EventHandler
     public void postInit(FMLPostInitializationEvent evt)
     {
+    	TCEMisc.postInit();
     	TCERecipes.init();
     	TCEEntries.init();
     	GameRegistry.registerFuelHandler(new FuelHandler());

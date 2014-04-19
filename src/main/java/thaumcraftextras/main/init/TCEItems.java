@@ -6,6 +6,7 @@ import net.minecraft.item.ItemArmor.ArmorMaterial;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraftextras.api.misc.items.MagicEnergyCrystal;
+import thaumcraftextras.items.ItemEnergyHelmet;
 import thaumcraftextras.items.ItemFlamingChestplate;
 import thaumcraftextras.items.ItemMagicEnergyReader;
 import thaumcraftextras.items.ItemXPExtractor;
@@ -13,7 +14,9 @@ import thaumcraftextras.items.ItemXPShard;
 import thaumcraftextras.items.TCEItem;
 import thaumcraftextras.items.TCEItemShard;
 import thaumcraftextras.items.foci.beam.FocusClean;
+import thaumcraftextras.items.foci.beam.FocusTessela;
 import thaumcraftextras.items.foci.normal.FocusReturn;
+import thaumcraftextras.items.scepters.TCEItemScepter;
 import wasliecore.helpers.ColorHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -22,6 +25,7 @@ public class TCEItems {
 	{
 		initItems();
 		initFoci();
+		initScepters();
 		initArmor();
 		initCrystals();
 	}
@@ -66,17 +70,28 @@ public class TCEItems {
 		cost.add(Aspect.AIR, 10);
 		focusReturn = new FocusReturn(ColorHelper.getColorCodeFromRGB(50, 50, 0), "Wand Focus: Return");
 		cost.aspects.clear();
+		
+		cost.add(Aspect.AIR, 10);
+		focusTessela = new FocusTessela(ColorHelper.getColorCodeFromRGB(0, 0, 200), "Wand Focus: Shock");
+		cost.aspects.clear();
 	}
 	public static FocusClean focusClean;
 	public static FocusReturn focusReturn;
+	public static FocusTessela focusTessela;
 	
 	public static void initArmor()
 	{
 		fireChestplate = new ItemFlamingChestplate("Flaming Chestplate", "chestplate_flame", ArmorMaterial.DIAMOND, 2, 1, fireChestplateDamage, 20);
 		GameRegistry.registerItem(fireChestplate, fireChestplate.getUnlocalizedName());
+
+		energyHelmet = new ItemEnergyHelmet("Energetic Helmet", "helmet_energy", ArmorMaterial.DIAMOND, 0, 0, energyHelmetDamage, 5);
+		GameRegistry.registerItem(energyHelmet, energyHelmet.getUnlocalizedName());
+
 	}
 	public static ItemFlamingChestplate fireChestplate;
 	public static int fireChestplateDamage = 300;
+	public static ItemEnergyHelmet energyHelmet;
+	public static int energyHelmetDamage = 300;
 	
 	public static void initCrystals()
 	{
@@ -108,4 +123,13 @@ public class TCEItems {
 	public static MagicEnergyCrystal crystal_5;
 	public static MagicEnergyCrystal crystal_6;
 	public static MagicEnergyCrystal crystal_Creative;
+	
+	public static void initScepters()
+	{
+		scepter = new TCEItemScepter(100, ColorHelper.getColorCodeFromRGB(0, 0, 200), "base");		
+
+	}
+	public static TCEItemScepter scepter;
+
+	public static String use = "USE";
 }

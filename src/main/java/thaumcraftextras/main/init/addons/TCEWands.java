@@ -29,7 +29,6 @@ public class TCEWands {
 	
 	public static void initItemRod()
 	{
-		item_rod_ultimate = new TCEItemRod("ultimate", 9999999, null);
 		item_rod_iron = new TCEItemRod("iron", 30, null);
 		item_rod_gold = new TCEItemRod("gold", 40, null);
 		item_rod_diamond = new TCEItemRod("diamond", 65, null);
@@ -38,6 +37,7 @@ public class TCEWands {
 		item_rod_devil = new TCEItemRod("devil", 250, null);
 		item_rod_god = new TCEItemRod("god", 500, null);
 
+		item_rod_ultimate = new TCEItemRod("ultimate", 9999999, getInfo(new String[]{LocalizationHelper.getLocalization("thaumcraftextras.tooltip.wand_ultimate", 0), LocalizationHelper.getLocalization("thaumcraftextras.tooltip.wand_ultimate", 1)}));
 		item_rod_darkSilverwood = new TCEItemRod("darkSilverwood", 1000, getInfo(new String[]{LocalizationHelper.getLocalization("thaumcraftextras.tooltip.wand_darksilverwood", 0), LocalizationHelper.getLocalization("thaumcraftextras.tooltip.wand_darksilverwood", 1)}));
 	}
 	public static TCEItemRod item_rod_ultimate;

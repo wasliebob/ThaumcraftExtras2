@@ -36,7 +36,17 @@ item.thaumcraftextras.shard.xp.name=Experience Shard
 item.thaumcraftextras.item.experience extractor.name=Experience Extractor
 item.thaumcraftextras.focus.wand focus: clean.name=Wand Focus: Clean
 item.thaumcraftextras.focus.wand focus: return.name=Wand Focus: Return
+item.thaumcraftextras.focus.wand focus: shock.name=Wand Focus: Shock
 item.thaumcraftextras.armor.flaming chestplate.name=Flaming Chestplate
+item.thaumcraftextras.armor.energetic helmet.name=Energetic Helmet
+item.thaumcraftextras.scepter.base.name=[NYI]Scepter
+==Barrels==
+tile.thaumcraftextras.barrel.1.name=Tier 1 Essentia Barrel
+tile.thaumcraftextras.barrel.2.name=Tier 2 Essentia Barrel
+tile.thaumcraftextras.barrel.3.name=Tier 3 Essentia Barrel
+tile.thaumcraftextras.barrel.4.name=Tier 4 Essentia Barrel
+tile.thaumcraftextras.barrel.5.name=Tier 5 Essentia Barrel
+tile.thaumcraftextras.barrel.6.name=Tier 6 Essentia Barrel
 ==Rods==
 item.thaumcraftextras.rod.ultimate.name=Ultimate Rod
 item.thaumcraftextras.rod.iron.name=Iron Rod
@@ -60,7 +70,57 @@ item.Wand.GOD.rod=Emerald
 item.Wand.DARKTHAUMIUM.cap=Dark Thaumium
 ==Text==
 ==Entries==
+tce.text.Thaumcraft Extras.1=NYI
+tce.text.Chestplate of Flames.1=NYI
+tce.text.Wand Focus: Clean.1=NYI
+tce.text.Wand Focus: Return.1=NYI
+tce.text.Wand Focus: Shock.1=NYI
+tce.text.Dark Thaumium.1=NYI
+tce.text.Magic Energy.1=NYI
+tce.text.Magic Energy.2=NYI
+tce.text.Magic Energy.3=NYI
+tce.text.Magic Energy.4=NYI
+tce.text.Essentia Barrels.1=NYI
+tce.text.Shocker.1=NYI
+tce.text.Containment.1=NYI
+tce.text.CAP_DARKTHAUMIUM.1=NYI
+tce.text.ROD_IRON.1=NYI
+tce.text.ROD_GOLD.1=NYI
+tce.text.ROD_DIAMOND.1=NYI
+tce.text.ROD_EMERALD.1=NYI
+tce.text.ROD_DEVIL.1=NYI
+tce.text.ROD_GOD.1=NYI
+tce.text.ROD_DARKSILVERWOOD.1=NYI
+==Tags==
+tce.tag.Thaumcraft Extras=NYI
+tce.tag.Chestplate of Flames=NYI
+tce.tag.Wand Focus: Clean=NYI
+tce.tag.Wand Focus: Return=NYI
+tce.tag.Wand Focus: Shock=NYI
+tce.tag.Dark Thaumium=NYI
+tce.tag.Magic Energy=NYI
+tce.tag.Essentia Barrels=NYI
+tce.tag.Shocker=NYI
+tce.tag.Containment=NYI
+tce.tag.CAP_DARKTHAUMIUM=NYI
+tce.tag.ROD_IRON=NYI
+tce.tag.ROD_GOLD=NYI
+tce.tag.ROD_DIAMOND=NYI
+tce.tag.ROD_EMERALD=NYI
+tce.tag.ROD_DEVIL=NYI
+tce.tag.ROD_GOD=NYI
+tce.tag.ROD_DARKSILVERWOOD=NYI
+==Titles==
+CAP_DARKTHAUMIUM=Dark Thaumium Cap
+ROD_IRON=Iron Rod
+ROD_GOLD=Gold Rod
+ROD_DIAMOND=Diamond Rod
+ROD_EMERALD=Emerald Rod
+ROD_DEVIL=Devil Rod
+ROD_GOD=God Rod
+ROD_DARKSILVERWOOD=Dark Silverwood Rod
 ==Tooltips==
-thaumcraftextras.tooltip.magic_battery.0=Can be used to save your energy.
 thaumcraftextras.tooltip.wand_darksilverwood.0=Can be charged using an item
 thaumcraftextras.tooltip.wand_darksilverwood.1=containing magic energy
+thaumcraftextras.tooltip.wand_ultimate.0=Creative Wand:
+thaumcraftextras.tooltip.wand_ultimate.1=Auto Fills.

@@ -1,4 +1,4 @@
-package thaumcraftextras.api.misc.items;
+package thaumcraftextras.items.scepters;
 
 import java.util.List;
 
@@ -13,34 +13,42 @@ import net.minecraft.util.IIcon;
 import org.lwjgl.input.Keyboard;
 
 import thaumcraftextras.api.interfaces.IMagicEnergyContainerItem;
+import thaumcraftextras.main.init.TCETabs;
+import wasliecore.helpers.ColorHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class MagicEnergyCrystal extends Item implements IMagicEnergyContainerItem{
+public class TCEItemScepter extends Item implements IMagicEnergyContainerItem{
 
-	public MagicEnergyCrystal(int maxEnergy, int crystalColor, int tier) {
+	public TCEItemScepter(int maxEnergy, int crystalColor, String name) {
 		super();
 		setMaxStackSize(1);
-		
+
 		maxMCE = maxEnergy;
 		color = crystalColor;
+		itemName = name;
+		
 		setMaxDamage(maxEnergy);
-		setUnlocalizedName("thaumcraftextras" + "." + "crystal" + "." + tier);
+		setCreativeTab(TCETabs.tabMain);
+
+		setUnlocalizedName("thaumcraftextras" + "." + "scepter" + "." + name);
+
 		GameRegistry.registerItem(this, this.getUnlocalizedName());
 	}
 	int maxMCE;
 	int color;
 	IIcon primary;
 	IIcon secondary;
-
+	String itemName;
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamageForRenderPass(int meta, int renderPass) {
 		if(renderPass > 0) {
-			return this.primary;
+			return this.secondary;
 		}
-		return this.secondary;
+		return this.primary;
 	}
 
 	@Override
@@ -60,16 +68,16 @@ public class MagicEnergyCrystal extends Item implements IMagicEnergyContainerIte
 	{		
 		if(pass > 0) 
 		{
-			return color;
+			return ColorHelper.getColorCodeFromRGB(255, 255, 255);
 		}
-			return 0;
+			return color;
 	}
 	
 	@Override
     public void registerIcons(IIconRegister ir) 
 	{
-		this.primary = ir.registerIcon("thaumcraftextras:crystal_magic_1");
-		this.secondary = ir.registerIcon("thaumcraftextras:crystal_magic_2");
+		this.primary = ir.registerIcon("thaumcraftextras:scepter_0");
+		this.secondary = ir.registerIcon("thaumcraftextras:scepter_1");
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -116,5 +124,10 @@ public class MagicEnergyCrystal extends Item implements IMagicEnergyContainerIte
 	@Override
 	public int getMaxEnergy(ItemStack container){
 		return container.getMaxDamage();
+	}
+	
+	public String getLower(String s)
+	{
+		return s.toLowerCase();
 	}
 }

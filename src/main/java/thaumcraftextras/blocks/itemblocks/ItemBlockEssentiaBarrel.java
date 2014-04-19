@@ -10,15 +10,16 @@ import net.minecraft.util.EnumChatFormatting;
 
 import org.lwjgl.input.Keyboard;
 
-import thaumcraftextras.helpers.LocalizationHelper;
+import thaumcraftextras.blocks.BlockEssentiaBarrel;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ItemBlockMagicEnergyBattery extends ItemBlock{
+public class ItemBlockEssentiaBarrel extends ItemBlock{
 
-	public ItemBlockMagicEnergyBattery(Block block) {
+	public ItemBlockEssentiaBarrel(Block block) {
 		super(block);
-		text = new String[]{LocalizationHelper.getLocalization("thaumcraftextras.tooltip.magic_battery" , 0)};
+		BlockEssentiaBarrel barrel = (BlockEssentiaBarrel)block;
+		text = new String[]{"Essentia Storage: " + barrel.size};
 	}
 	String[] text;
 		
