@@ -34,7 +34,7 @@ public class TileEntityMagicCrystalCharger extends MagicEnergyTile implements IS
     			if(getStackInSlot(0).getItem() instanceof IMagicEnergyContainerItem){
     				ItemStack con = getStackInSlot(0);
     				if(hasEnoughEnergy()){
-    						if(!(con.getItemDamage() - add <= con.getMaxDamage()) && hasEnoughEnergy()){
+    						if((con.getItemDamage() - add <= con.getMaxDamage()) && hasEnoughEnergy()){
     							con.setItemDamage(con.getItemDamage() - add);
     							decreaseEnergy(storage.getMaxTransfer());
     							worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
