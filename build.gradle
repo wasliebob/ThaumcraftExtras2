@@ -28,10 +28,10 @@ minecraft {
 
 dependencies{
 	compile files(
-	'build/libs/TC.jar',
-	'build/libs/WaslieCore.jar',
-	'build/libs/CCC.jar',
-	'build/libs/NEI.jar',
+	'build/deps/TC.jar',
+	'build/deps/WaslieCore.jar',
+	'build/deps/CCC.jar',
+	'build/deps/NEI.jar',
 	)
 }
 
