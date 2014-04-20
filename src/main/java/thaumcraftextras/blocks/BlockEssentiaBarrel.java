@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IEssentiaContainerItem;
@@ -73,6 +74,8 @@ public class BlockEssentiaBarrel extends BlockContainer{
 	public void addSpace(TileEntityEssentiaBarrel barrel, World world, EntityPlayer player, ItemStack stack){
 		if(barrel != null){
 			barrel.setMod(barrel.getMod() + 1);
+			if(!world.isRemote)
+				player.addChatMessage(new ChatComponentText("This barrel can now store " + barrel.getMod() * 64 + " Essentia"));
 		}
 	}
 	
@@ -180,6 +183,5 @@ public class BlockEssentiaBarrel extends BlockContainer{
         		item.stackSize = 0;
         	}
         }
-
     }
 }

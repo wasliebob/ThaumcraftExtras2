@@ -36,11 +36,11 @@ public class TileEntityMagicWandCharger extends MagicEnergyReceiver implements I
     			if(getStackInSlot(0).getItem() instanceof ItemWandCasting){
     				ItemWandCasting wand = (ItemWandCasting)getStackInSlot(0).getItem();
     					for(Aspect asp : Aspect.getPrimalAspects()){
-    						if(!(wand.getVis(getStackInSlot(0), asp) + add >= wand.getMaxVis(getStackInSlot(0))) && hasEnoughEnergy()){
+    						if(wand.getVis(getStackInSlot(0), asp) + add <= wand.getMaxVis(getStackInSlot(0)) && hasEnoughEnergy()){
     							wand.addVis(getStackInSlot(0), asp, add, true);
+    							decreaseEnergy(storage.getMaxTransfer());
     						}
     						if(hasEnoughEnergy())
-    							decreaseEnergy(storage.getMaxTransfer());
 							worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
     					}
     			}
@@ -52,6 +52,7 @@ public class TileEntityMagicWandCharger extends MagicEnergyReceiver implements I
     
     @Override
     public boolean hasEnoughEnergy(){
+    	if(shouldReceive()){
     	if(storage.getEnergy() - storage.getMaxTransfer() >= 0)
     		return true;
     	else if(storage.getMaxEnergy() - storage.getEnergy() < 0)
@@ -62,6 +63,8 @@ public class TileEntityMagicWandCharger extends MagicEnergyReceiver implements I
     		return false;
     	else
     		return false;
+    	}
+    	return false;
     }
 
 	@Override

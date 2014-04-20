@@ -298,6 +298,50 @@ public class TCERecipes {
 	{
 		TCEApi.addDarkInfusionRecipe(TCEItems.essenceDark, new ItemStack(TCEItems.essenceLight));
 		TCEApi.addDarkInfusionRecipe(Items.coal, new ItemStack(TCEItems.ignisFuel));
+		
+		if(Config.dark_exchange){
+			TCEApi.addDarkInfusionRecipe(Items.diamond, new ItemStack(Items.gold_ingot, 3, 0));
+			TCEApi.addDarkInfusionRecipe(Items.gold_ingot, new ItemStack(Items.iron_ingot, 5, 0));
+			TCEApi.addDarkInfusionRecipe(Items.emerald, new ItemStack(Items.diamond, 2, 0));
+			
+			/** Tools */
+			
+			TCEApi.addDarkInfusionRecipe(Items.iron_axe, new ItemStack(Items.iron_ingot, 3, 0));
+			TCEApi.addDarkInfusionRecipe(Items.iron_pickaxe, new ItemStack(Items.iron_ingot, 3, 0));
+			TCEApi.addDarkInfusionRecipe(Items.iron_shovel, new ItemStack(Items.iron_ingot, 1, 0));
+			TCEApi.addDarkInfusionRecipe(Items.iron_hoe, new ItemStack(Items.iron_ingot, 2, 0));
+			TCEApi.addDarkInfusionRecipe(Items.iron_sword, new ItemStack(Items.iron_ingot, 2, 0));
+
+			
+			TCEApi.addDarkInfusionRecipe(Items.golden_axe, new ItemStack(Items.gold_ingot, 3, 0));
+			TCEApi.addDarkInfusionRecipe(Items.golden_pickaxe, new ItemStack(Items.gold_ingot, 3, 0));
+			TCEApi.addDarkInfusionRecipe(Items.golden_shovel, new ItemStack(Items.gold_ingot, 1, 0));
+			TCEApi.addDarkInfusionRecipe(Items.golden_hoe, new ItemStack(Items.gold_ingot, 2, 0));
+			TCEApi.addDarkInfusionRecipe(Items.golden_sword, new ItemStack(Items.gold_ingot, 2, 0));
+
+			
+			TCEApi.addDarkInfusionRecipe(Items.diamond_axe, new ItemStack(Items.diamond, 3, 0));
+			TCEApi.addDarkInfusionRecipe(Items.diamond_pickaxe, new ItemStack(Items.diamond, 3, 0));
+			TCEApi.addDarkInfusionRecipe(Items.diamond_shovel, new ItemStack(Items.diamond, 1, 0));
+			TCEApi.addDarkInfusionRecipe(Items.diamond_hoe, new ItemStack(Items.diamond, 2, 0));
+			TCEApi.addDarkInfusionRecipe(Items.diamond_sword, new ItemStack(Items.diamond, 2, 0));
+
+			TCEApi.addDarkInfusionRecipe(Items.iron_helmet, new ItemStack(Items.iron_ingot, 5, 0));
+			TCEApi.addDarkInfusionRecipe(Items.iron_chestplate, new ItemStack(Items.iron_ingot, 8, 0));
+			TCEApi.addDarkInfusionRecipe(Items.iron_leggings, new ItemStack(Items.iron_ingot, 7, 0));
+			TCEApi.addDarkInfusionRecipe(Items.iron_boots, new ItemStack(Items.iron_ingot, 4, 0));
+
+			TCEApi.addDarkInfusionRecipe(Items.golden_helmet, new ItemStack(Items.gold_ingot, 5, 0));
+			TCEApi.addDarkInfusionRecipe(Items.golden_chestplate, new ItemStack(Items.gold_ingot, 8, 0));
+			TCEApi.addDarkInfusionRecipe(Items.golden_leggings, new ItemStack(Items.gold_ingot, 7, 0));
+			TCEApi.addDarkInfusionRecipe(Items.golden_boots, new ItemStack(Items.gold_ingot, 4, 0));
+
+			TCEApi.addDarkInfusionRecipe(Items.diamond_helmet, new ItemStack(Items.diamond, 5, 0));
+			TCEApi.addDarkInfusionRecipe(Items.diamond_chestplate, new ItemStack(Items.diamond, 8, 0));
+			TCEApi.addDarkInfusionRecipe(Items.diamond_leggings, new ItemStack(Items.diamond, 7, 0));
+			TCEApi.addDarkInfusionRecipe(Items.diamond_boots, new ItemStack(Items.diamond, 4, 0));
+
+		}
 	}
 	
 	public static ShapedArcaneRecipe getCrystalRecipe(String entry, ItemStack result, ItemStack core, ItemStack inside, ItemStack outside, int tier)
