@@ -58,43 +58,17 @@ public class TCERecipes {
 
 	public static void initBarrelRecipes()
 	{
-		barrel_1 = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.essentia_barrel, new ItemStack(TCEBlocks.barrel_1), new AspectList().add(Aspect.ORDER, 5), new Object[]{
+		barrel_essentia = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.essentia_barrel, new ItemStack(TCEBlocks.barrel_essentia), new AspectList().add(Aspect.ORDER, 5), new Object[]{
 			"YZY",
 			"ZXZ",
 			"YZY",
-			'Z', Blocks.log,
-			'Y', Blocks.planks,
+			'Z', Items.iron_ingot,
+			'Y', Blocks.log,
 			'X', new ItemStack(ConfigBlocks.blockJar)});
-		
-		barrel_2 = GameRegistry.addShapedRecipe(new ItemStack(TCEBlocks.barrel_2), new Object[]{
-			"XX",
-			'X', new ItemStack(TCEBlocks.barrel_1)});
-		
-		barrel_3 = GameRegistry.addShapedRecipe(new ItemStack(TCEBlocks.barrel_3), new Object[]{
-			"XX",
-			'X', new ItemStack(TCEBlocks.barrel_2)});
-		
-		barrel_4 = GameRegistry.addShapedRecipe(new ItemStack(TCEBlocks.barrel_4), new Object[]{
-			"XX",
-			'X', new ItemStack(TCEBlocks.barrel_3)});
-		
-		barrel_5 = GameRegistry.addShapedRecipe(new ItemStack(TCEBlocks.barrel_5), new Object[]{
-			"XX",
-			'X', new ItemStack(TCEBlocks.barrel_4)});
-		
-		barrel_6 = GameRegistry.addShapedRecipe(new ItemStack(TCEBlocks.barrel_6), new Object[]{
-			"XX",
-			'X', new ItemStack(TCEBlocks.barrel_5)});
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(TCEItems.darkThaumiumNugget, 1, 9), new ItemStack(TCEItems.darkThaumium));
 	}
-	public static ShapedArcaneRecipe barrel_1;
-	public static IRecipe barrel_2;
-	public static IRecipe barrel_3;
-	public static IRecipe barrel_4;
-	public static IRecipe barrel_5;
-	public static IRecipe barrel_6;
-
+	public static ShapedArcaneRecipe barrel_essentia;
 	
 	public static void initThaumcraftRecipes()
 	{		

@@ -71,8 +71,8 @@ public class ThaumcraftExtras {
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityMagicCrystalCharger.class, "Magic_Crystal_Charger");
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityMagicVoid.class, "Magic_Energy_Void");
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityEssentiaBarrel.class, "Essentia_Barrel");
-    }
-    
+        GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityLavaGen.class, "Magic_Lava_Gen");
+    }  
     
     @EventHandler
     public void postInit(FMLPostInitializationEvent evt)

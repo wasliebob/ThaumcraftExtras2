@@ -84,12 +84,13 @@ public class BlockMagicCrystalCharger extends BlockContainer{
 		}else{
 			if(player.isSneaking()){
 				if(player.getCurrentEquippedItem() == null){
-					TileEntity tile = world.getTileEntity(x, y, z);
-					TileEntityMagicCrystalCharger charger = (TileEntityMagicCrystalCharger)tile;
+//					TileEntity tile = world.getTileEntity(x, y, z);
+//					TileEntityMagicCrystalCharger charger = (TileEntityMagicCrystalCharger)tile;
 
 //					TileEntityMagicWandCharger tile = (TileEntityMagicWandCharger)world.getTileEntity(x, y, z);
+					world.markBlockForUpdate(x, y, z);
 					dropItems(world, x, y, z);
-					world.markBlockForUpdate(charger.xCoord, charger.yCoord, charger.zCoord);
+					world.markBlockForUpdate(x, y, z);
 				}
 			}
 		}
@@ -136,5 +137,6 @@ public class BlockMagicCrystalCharger extends BlockContainer{
                         item.stackSize = 0;
                 }
         }
+        world.markBlockForUpdate(x, y, z);
     }
 }

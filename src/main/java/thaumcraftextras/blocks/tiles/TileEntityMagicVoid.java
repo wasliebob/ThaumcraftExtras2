@@ -42,6 +42,7 @@ public class TileEntityMagicVoid extends MagicEnergyReceiver{
 	@Override
 	public void setEnergy(int energy) {
 		storage.setEnergy(energy);
+		if(worldObj != null)
 		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
@@ -66,15 +67,16 @@ public class TileEntityMagicVoid extends MagicEnergyReceiver{
 	public void writeToNBT(NBTTagCompound nbt)
 	{
 		super.writeToNBT(nbt);
-		nbt.setInteger(ENERGY, getEnergy());
+		
+		if(this.getEnergy() > 0)
+			nbt.setInteger(ENERGY, this.getEnergy());
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound nbt)
 	{
 		super.readFromNBT(nbt);
-		if(nbt.getInteger(ENERGY) != 0)
-			setEnergy(nbt.getInteger(ENERGY));
+		setEnergy(nbt.getInteger(ENERGY));
 	}
 	
 	@Override

@@ -16,6 +16,8 @@ tile.thaumcraftextras.block.Magic Generator.name=Magic Generator
 tile.thaumcraftextras.block.Magic Wand Charger.name=Magic Wand Charger
 tile.thaumcraftextras.block.Magic Crystal Charger.name=Magic Crystal Charger
 tile.thaumcraftextras.block.Magic Energy Void.name=Magic Energy Void
+tile.thaumcraftextras.block.Magical Lava Generator.name=Magical Lava Generator
+tile.thaumcraftextras.block.Essentia Barrel.name=Essentia Barrel
 ==Items==
 item.thaumcraftextras.crystal.1.name=Tiny Magic Energy Crystal
 item.thaumcraftextras.crystal.2.name=Small Magic Energy Crystal
@@ -41,13 +43,6 @@ item.thaumcraftextras.focus.wand focus: trampoline.name=Wand Focus: Trampoline
 item.thaumcraftextras.armor.flaming chestplate.name=Flaming Chestplate
 item.thaumcraftextras.armor.energetic helmet.name=Energetic Helmet
 item.thaumcraftextras.scepter.base.name=[NYI]Scepter
-==Barrels==
-tile.thaumcraftextras.barrel.1.name=Tier 1 Essentia Barrel
-tile.thaumcraftextras.barrel.2.name=Tier 2 Essentia Barrel
-tile.thaumcraftextras.barrel.3.name=Tier 3 Essentia Barrel
-tile.thaumcraftextras.barrel.4.name=Tier 4 Essentia Barrel
-tile.thaumcraftextras.barrel.5.name=Tier 5 Essentia Barrel
-tile.thaumcraftextras.barrel.6.name=Tier 6 Essentia Barrel
 ==Rods==
 item.thaumcraftextras.rod.ultimate.name=Ultimate Rod
 item.thaumcraftextras.rod.iron.name=Iron Rod

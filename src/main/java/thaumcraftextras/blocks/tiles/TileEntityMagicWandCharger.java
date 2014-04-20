@@ -93,6 +93,8 @@ public class TileEntityMagicWandCharger extends MagicEnergyReceiver implements I
 	@Override
 	public void setEnergy(int energy) {
 		storage.setEnergy(energy);
+		
+		if(worldObj != null)
 		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
@@ -117,7 +119,8 @@ public class TileEntityMagicWandCharger extends MagicEnergyReceiver implements I
 	public void writeToNBT(NBTTagCompound nbt)
 	{
 		super.writeToNBT(nbt);
-		nbt.setInteger(ENERGY, getEnergy());
+		if(this.getEnergy() > 0)
+			nbt.setInteger(ENERGY, this.getEnergy());
 		
         NBTTagList itemList = new NBTTagList();
         for (int i = 0; i < stacks.length; i++) {
@@ -136,8 +139,8 @@ public class TileEntityMagicWandCharger extends MagicEnergyReceiver implements I
 	public void readFromNBT(NBTTagCompound nbt)
 	{
 		super.readFromNBT(nbt);
-		if(nbt.getInteger(ENERGY) != 0)
-			setEnergy(nbt.getInteger(ENERGY));
+		setEnergy(nbt.getInteger(ENERGY));
+
 		
 		  NBTTagList tagList = nbt.getTagList("Inventory", Constants.NBT.TAG_LIST);
           for (int i = 0; i < tagList.tagCount(); i++) {
@@ -161,7 +164,7 @@ public class TileEntityMagicWandCharger extends MagicEnergyReceiver implements I
 	public void onDataPacket(NetworkManager networkManager, S35PacketUpdateTileEntity packet) {
 		this.readFromNBT(packet.func_148857_g());
 	}
-
+	
 	@Override
 	public int getSizeInventory() {
 		return stacks.length;

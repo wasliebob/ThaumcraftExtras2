@@ -22,7 +22,7 @@ public class TileEntityMagicCrystalCharger extends MagicEnergyReceiver implement
 	}
 	public MagicEnergy storage;
     int add = 2;
-    public ItemStack[] stacks;
+    ItemStack[] stacks;
     int energy;
     public static final String ENERGY = "ENERGY_MAGIC";
     
@@ -78,6 +78,8 @@ public class TileEntityMagicCrystalCharger extends MagicEnergyReceiver implement
 	@Override
 	public void setEnergy(int energy) {
 		storage.setEnergy(energy);
+		
+		if(worldObj != null)
 		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
@@ -118,7 +120,8 @@ public class TileEntityMagicCrystalCharger extends MagicEnergyReceiver implement
 	public void writeToNBT(NBTTagCompound nbt)
 	{
 		super.writeToNBT(nbt);
-		nbt.setInteger(ENERGY, getEnergy());
+		if(this.getEnergy() > 0)
+			nbt.setInteger(ENERGY, this.getEnergy());
 		
         NBTTagList itemList = new NBTTagList();
         for (int i = 0; i < stacks.length; i++) {
@@ -137,8 +140,8 @@ public class TileEntityMagicCrystalCharger extends MagicEnergyReceiver implement
 	public void readFromNBT(NBTTagCompound nbt)
 	{
 		super.readFromNBT(nbt);
-		if(nbt.getInteger(ENERGY) != 0)
-			setEnergy(nbt.getInteger(ENERGY));
+		setEnergy(nbt.getInteger(ENERGY));
+
 		
 		  NBTTagList tagList = nbt.getTagList("Inventory", Constants.NBT.TAG_LIST);
           for (int i = 0; i < tagList.tagCount(); i++) {

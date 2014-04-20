@@ -15,7 +15,6 @@ import net.minecraft.world.World;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraftextras.blocks.itemblocks.ItemBlockDarkendCore;
 import thaumcraftextras.blocks.tiles.TileEntityDarkendCore;
-import thaumcraftextras.helpers.WardedBlockHelper;
 import thaumcraftextras.main.ThaumcraftExtras;
 import thaumcraftextras.main.init.TCEBlocks;
 import thaumcraftextras.main.init.TCETabs;
@@ -32,7 +31,6 @@ public class BlockDarkendCore extends BlockContainer {
 		setHardness(1.0F);
 
 		setBlockName(ThaumcraftExtras.modName.toLowerCase() + "." + "block" + "." + name.toLowerCase());
-		WardedBlockHelper.init();
 		
 		GameRegistry.registerBlock(this, ItemBlockDarkendCore.class, name);
 	}

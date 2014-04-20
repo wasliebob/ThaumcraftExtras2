@@ -106,8 +106,8 @@ public class TCEEntries {
 		aspect.add(Aspect.ORDER, 5);
 		aspect.add(Aspect.AIR, 5);
 		text = new String[]{"1"};
-		research = new ResearchHelper(essentia_barrel, TCEEntries.TCE, aspect, 3, -4, 2, new ItemStack(TCEBlocks.barrel_1)).setParents(TCEEntries.tce).setSecondary().registerResearchItem();
-		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.barrel_1),  new ResearchPage(TCERecipes.barrel_2),  new ResearchPage(TCERecipes.barrel_3),  new ResearchPage(TCERecipes.barrel_4),  new ResearchPage(TCERecipes.barrel_5),  new ResearchPage(TCERecipes.barrel_6));
+		research = new ResearchHelper(essentia_barrel, TCEEntries.TCE, aspect, 3, -4, 2, new ItemStack(TCEBlocks.barrel_essentia)).setParents(TCEEntries.tce).setSecondary().registerResearchItem();
+		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.barrel_essentia));
 		aspect.aspects.clear();
 	}
 	public static String tce = "Thaumcraft Extras"; 

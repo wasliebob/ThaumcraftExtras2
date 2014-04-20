@@ -8,6 +8,7 @@ import thaumcraftextras.blocks.BlockEssentiaBarrel;
 import thaumcraftextras.blocks.BlockMagicBattery;
 import thaumcraftextras.blocks.BlockMagicCrystalCharger;
 import thaumcraftextras.blocks.BlockMagicGenerator;
+import thaumcraftextras.blocks.BlockMagicLavaGenerator;
 import thaumcraftextras.blocks.BlockMagicVoid;
 import thaumcraftextras.blocks.BlockMagicWandCharger;
 import thaumcraftextras.blocks.BlockMatrix;
@@ -38,6 +39,7 @@ public class TCEBlocks {
 		wandCharger = new BlockMagicWandCharger(Material.iron, "Magic Wand Charger");
 		crystalCharger = new BlockMagicCrystalCharger(Material.iron, "Magic Crystal Charger");
 		magicVoid = new BlockMagicVoid(Material.iron, "Magic Energy Void");
+		lavaGen = new BlockMagicLavaGenerator(Material.iron, "Magical Lava Generator");
 	}
 	public static TCEBlock blockIgnis;
 	public static BlockWardedGhost specialWardedGhost;
@@ -51,22 +53,11 @@ public class TCEBlocks {
 	public static BlockMagicWandCharger wandCharger;
 	public static BlockMagicCrystalCharger crystalCharger;
 	public static BlockMagicVoid magicVoid;
-	
+	public static BlockMagicLavaGenerator lavaGen;
+
 	public static void initBarrels()
 	{
-		barrel_1 = new BlockEssentiaBarrel(Material.iron, 1);
-		barrel_2 = new BlockEssentiaBarrel(Material.iron, 2);
-		barrel_3 = new BlockEssentiaBarrel(Material.iron, 3);
-		barrel_4 = new BlockEssentiaBarrel(Material.iron, 4);
-		barrel_5 = new BlockEssentiaBarrel(Material.iron, 5);
-		barrel_6 = new BlockEssentiaBarrel(Material.iron, 6);
+		barrel_essentia = new BlockEssentiaBarrel(Material.iron, "Essentia Barrel");
 	}
-	public static BlockEssentiaBarrel barrel_1;
-	public static BlockEssentiaBarrel barrel_2;
-	public static BlockEssentiaBarrel barrel_3;
-	public static BlockEssentiaBarrel barrel_4;
-	public static BlockEssentiaBarrel barrel_5;
-	public static BlockEssentiaBarrel barrel_6;
-
-
+	public static BlockEssentiaBarrel barrel_essentia;
 }

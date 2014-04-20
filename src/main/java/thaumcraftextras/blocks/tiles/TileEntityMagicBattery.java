@@ -64,7 +64,9 @@ public class TileEntityMagicBattery extends MagicEnergyUniversal{
 	@Override
 	public void setEnergy(int energy) {
 		storage.setEnergy(energy);
-		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+		
+		if(worldObj != null)
+			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
 	@Override
@@ -86,6 +88,8 @@ public class TileEntityMagicBattery extends MagicEnergyUniversal{
 
 	public int calcEnergy(MagicEnergyReceiver to)
 	{
+		worldObj.markBlockForUpdate(to.xCoord, to.yCoord, to.zCoord);
+		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 		if(to.shouldReceive()){
 		if(getEnergy() >= to.getMaxTransfer()){
 			if(to.getMaxEnergy() - to.getEnergy() > to.getMaxTransfer()){
@@ -112,6 +116,8 @@ public class TileEntityMagicBattery extends MagicEnergyUniversal{
 	
 	public int calcEnergy(MagicEnergyUniversal to)
 	{
+		worldObj.markBlockForUpdate(to.xCoord, to.yCoord, to.zCoord);
+		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 		if(getEnergy() >= to.getMaxTransfer()){
 			if(to.getMaxEnergy() - to.getEnergy() > to.getMaxTransfer()){
 				decreaseEnergy(to.getMaxTransfer());
@@ -136,16 +142,16 @@ public class TileEntityMagicBattery extends MagicEnergyUniversal{
 	public void writeToNBT(NBTTagCompound nbt)
 	{
 		super.writeToNBT(nbt);
-		nbt.setInteger(ENERGY, getEnergy());
+		
+		if(this.getEnergy() > 0)
+			nbt.setInteger(ENERGY, this.getEnergy());
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound nbt)
 	{
 		super.readFromNBT(nbt);
-		
-		if(nbt.getInteger(ENERGY) != 0)
-			setEnergy(nbt.getInteger(ENERGY));
+		setEnergy(nbt.getInteger(ENERGY));
 	}
 	
 	@Override
@@ -161,6 +167,7 @@ public class TileEntityMagicBattery extends MagicEnergyUniversal{
 		this.readFromNBT(packet.func_148857_g());
 	}
 	
+	@Override
 	public TileEntity checkForBlock(World world, int x, int y, int z)
 	{
 		for(int i = 1; i < 16; i++){				

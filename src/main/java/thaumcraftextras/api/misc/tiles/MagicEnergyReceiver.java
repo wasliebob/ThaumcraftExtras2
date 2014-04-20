@@ -32,10 +32,12 @@ public class MagicEnergyReceiver extends MagicEnergyBase implements IMagicEnergy
 	public void decreaseEnergy(int energy) {		
 	}
 	
+	@Override
     public boolean hasEnoughEnergy(){
     	return false;
     }
-	
+    
+	@Override
 	public boolean shouldReceive(){
 		return false;
 	}
