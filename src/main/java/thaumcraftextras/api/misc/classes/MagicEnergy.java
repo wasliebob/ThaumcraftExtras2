@@ -2,16 +2,14 @@ package thaumcraftextras.api.misc.classes;
 
 public class MagicEnergy {
 	
-	public MagicEnergy(int maxEnergy, int maxTransfer, boolean canReceive){
+	public MagicEnergy(int maxEnergy, int maxTransfer){
 		maxE = maxEnergy;
 		maxT = maxTransfer;
 		energyStored = 0;
-		receive = canReceive;
 	}
 	int maxE;
 	int maxT;
 	int energyStored;
-	boolean receive;
 	
 	public void setEnergy(int energy)
 	{
@@ -40,9 +38,5 @@ public class MagicEnergy {
 	
 	public void removeEnergy(int energy) {
 		energyStored = energyStored - energy;
-	}
-	
-	public boolean canReceive(){
-		return receive;
 	}
 }

@@ -8,6 +8,7 @@ public class CommonProxy {
 	{
         registerRenderInformation();
         registerParticles();
+		registerKeyBindings();
 	}
 		
     public void registerRenderInformation(){}
@@ -18,4 +19,6 @@ public class CommonProxy {
     }
     
     public void registerParticles(){}
+    
+    public void registerKeyBindings(){}
 }

@@ -11,18 +11,18 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraftforge.common.util.Constants;
 import thaumcraftextras.api.interfaces.IMagicEnergyContainerItem;
 import thaumcraftextras.api.misc.classes.MagicEnergy;
-import thaumcraftextras.api.misc.tiles.MagicEnergyTile;
+import thaumcraftextras.api.misc.tiles.MagicEnergyReceiver;
 
-public class TileEntityMagicCrystalCharger extends MagicEnergyTile implements ISidedInventory{
+public class TileEntityMagicCrystalCharger extends MagicEnergyReceiver implements ISidedInventory{
 	
 	public TileEntityMagicCrystalCharger()
 	{
 		stacks = new ItemStack[1];
-		storage = new MagicEnergy(1000, 5, true);
+		storage = new MagicEnergy(1000, 5);
 	}
 	public MagicEnergy storage;
     int add = 2;
-    ItemStack[] stacks;
+    public ItemStack[] stacks;
     int energy;
     public static final String ENERGY = "ENERGY_MAGIC";
     
@@ -33,25 +33,36 @@ public class TileEntityMagicCrystalCharger extends MagicEnergyTile implements IS
     		if(getStackInSlot(0) != null){
     			if(getStackInSlot(0).getItem() instanceof IMagicEnergyContainerItem){
     				ItemStack con = getStackInSlot(0);
-    				if(hasEnoughEnergy()){
-    						if((con.getItemDamage() - add <= con.getMaxDamage()) && hasEnoughEnergy()){
-    							con.setItemDamage(con.getItemDamage() - add);
-    							decreaseEnergy(storage.getMaxTransfer());
-    							worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+//    				if(hasEnoughEnergy()){
+    						if((con.getItemDamage() - add >= 0)){
+    							if(hasEnoughEnergy()){
+    								con.setItemDamage(con.getItemDamage() - add);
+    								decreaseEnergy(storage.getMaxTransfer());
+    							}
     						}
-    				}
+//    				}else{
+//    				}
     			}
+    		}else{
     		}
     	}
     }
     
+    @Override
     public boolean hasEnoughEnergy(){
+    	if(shouldReceive()){
     	if(storage.getEnergy() - storage.getMaxTransfer() >= 0)
     		return true;
-    	else if(storage.getEnergy() - storage.getMaxEnergy() <= 0)
+    	else if(storage.getMaxEnergy() - storage.getEnergy() < 0)
+    		return false;
+    	else if(storage.getMaxEnergy() - storage.getEnergy() == 0)
+    		return false;
+    	else if(storage.getEnergy() == 0)
     		return false;
     	else
     		return false;
+    	}
+    	return false;
     }
 
 	@Override
@@ -88,10 +99,21 @@ public class TileEntityMagicCrystalCharger extends MagicEnergyTile implements IS
 	}
 	
 	@Override
-	public boolean canReceive(){
-		return storage.canReceive();
+	public boolean shouldReceive()
+	{
+		if(getStackInSlot(0) != null){
+			if(getStackInSlot(0).getItem() instanceof IMagicEnergyContainerItem){
+				ItemStack con = getStackInSlot(0);
+//				if(hasEnoughEnergy()){
+						if((con.getItemDamage() - add >= 0)){
+							return true;
+						}
+//				}
+			}
+		}
+		return false;
 	}
-	
+
 	@Override
 	public void writeToNBT(NBTTagCompound nbt)
 	{

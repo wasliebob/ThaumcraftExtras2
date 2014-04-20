@@ -9,8 +9,8 @@ public class TCEEvents {
 
 	public static void init()
 	{
-		MinecraftForge.EVENT_BUS.register(new PlayerDamageEntity()); 
-        MinecraftForge.EVENT_BUS.register(new PlayerItemDropped()); 
-        MinecraftForge.EVENT_BUS.register(new PlayerRenderTick()); 
+		MinecraftForge.EVENT_BUS.register(new PlayerDamageEntity());
+        MinecraftForge.EVENT_BUS.register(new PlayerItemDropped());
+        MinecraftForge.EVENT_BUS.register(new PlayerRenderTick());
 	}
 }

@@ -11,19 +11,20 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraftforge.common.util.Constants;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.items.wands.ItemWandCasting;
+import thaumcraftextras.api.interfaces.IMagicEnergyContainerItem;
 import thaumcraftextras.api.misc.classes.MagicEnergy;
-import thaumcraftextras.api.misc.tiles.MagicEnergyTile;
+import thaumcraftextras.api.misc.tiles.MagicEnergyReceiver;
 
-public class TileEntityMagicWandCharger extends MagicEnergyTile implements ISidedInventory{
+public class TileEntityMagicWandCharger extends MagicEnergyReceiver implements ISidedInventory{
 	
 	public TileEntityMagicWandCharger()
 	{
 		stacks = new ItemStack[1];
-		storage = new MagicEnergy(1000, 5, true);
+		storage = new MagicEnergy(1000, 5);
 	}
 	public MagicEnergy storage;
     int add = 2;
-    ItemStack[] stacks;
+    public ItemStack[] stacks;
     int energy;
     public static final String ENERGY = "ENERGY_MAGIC";
     
@@ -34,29 +35,51 @@ public class TileEntityMagicWandCharger extends MagicEnergyTile implements ISide
     		if(getStackInSlot(0) != null){
     			if(getStackInSlot(0).getItem() instanceof ItemWandCasting){
     				ItemWandCasting wand = (ItemWandCasting)getStackInSlot(0).getItem();
-    				if(hasEnoughEnergy()){
     					for(Aspect asp : Aspect.getPrimalAspects()){
     						if(!(wand.getVis(getStackInSlot(0), asp) + add >= wand.getMaxVis(getStackInSlot(0))) && hasEnoughEnergy()){
     							wand.addVis(getStackInSlot(0), asp, add, true);
     						}
-							decreaseEnergy(storage.getMaxTransfer());
+    						if(hasEnoughEnergy())
+    							decreaseEnergy(storage.getMaxTransfer());
 							worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
     					}
-    				}
     			}
+    		}else{
+    			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
     		}
     	}
     }
     
+    @Override
     public boolean hasEnoughEnergy(){
     	if(storage.getEnergy() - storage.getMaxTransfer() >= 0)
     		return true;
-    	else if(storage.getEnergy() - storage.getMaxEnergy() <= 0)
+    	else if(storage.getMaxEnergy() - storage.getEnergy() < 0)
+    		return false;
+    	else if(storage.getMaxEnergy() - storage.getEnergy() == 0)
+    		return false;
+    	else if(storage.getEnergy() == 0)
     		return false;
     	else
     		return false;
     }
 
+	@Override
+	public boolean shouldReceive()
+	{
+		if(getStackInSlot(0) != null){
+			if(getStackInSlot(0).getItem() instanceof IMagicEnergyContainerItem){
+				ItemStack con = getStackInSlot(0);
+//				if(hasEnoughEnergy()){
+						if((con.getItemDamage() - add >= 0)){
+							return true;
+						}
+//				}
+			}
+		}
+		return false;
+	}
+	
 	@Override
 	public int getEnergy() {
 		return storage.getEnergy();
@@ -88,11 +111,6 @@ public class TileEntityMagicWandCharger extends MagicEnergyTile implements ISide
 	@Override
 	public int getMaxTransfer(){
 		return storage.getMaxTransfer();
-	}
-	
-	@Override
-	public boolean canReceive(){
-		return storage.canReceive();
 	}
 	
 	@Override

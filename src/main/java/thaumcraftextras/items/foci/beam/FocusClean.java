@@ -41,6 +41,9 @@ public class FocusClean extends TCEItemFocus {
         	canBeCleaned.add(Blocks.sand);
         	canBeCleaned.add(Blocks.gravel);
         	canBeCleaned.add(Blocks.log);
+        	canBeCleaned.add(Blocks.snow);
+        	canBeCleaned.add(Blocks.snow_layer);
+        	canBeCleaned.add(Blocks.ice);
         }
         
         @Override
@@ -51,14 +54,13 @@ public class FocusClean extends TCEItemFocus {
             
             	if(mop != null)
             	{
-            		if (wand.consumeAllVis(itemstack, player, getVisCost(), !player.worldObj.isRemote, false))
-            		{
-            			int x,y,z;
-            			x = mop.blockX;
-            			y = mop.blockY;
-            			z = mop.blockZ;
-            
-            			if(canBeCleaned.contains(player.worldObj.getBlock(x, y, z))){
+        			int x,y,z;
+        			x = mop.blockX;
+        			y = mop.blockY;
+        			z = mop.blockZ;
+        			if(canBeCleaned.contains(player.worldObj.getBlock(x, y, z))){
+        				if (wand.consumeAllVis(itemstack, player, getVisCost(), !player.worldObj.isRemote, false))
+        				{
             				if(!player.worldObj.isRemote)
             				{
                 	            player.worldObj.setBlock(x, y, z, Blocks.air);

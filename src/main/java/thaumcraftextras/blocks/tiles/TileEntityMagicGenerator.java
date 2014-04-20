@@ -17,14 +17,17 @@ import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
 import thaumcraft.common.Thaumcraft;
+import thaumcraftextras.api.interfaces.IMagicEnergyReceiver;
 import thaumcraftextras.api.misc.classes.MagicEnergy;
-import thaumcraftextras.api.misc.tiles.MagicEnergyTile;
+import thaumcraftextras.api.misc.tiles.MagicEnergyReceiver;
+import thaumcraftextras.api.misc.tiles.MagicEnergySender;
+import thaumcraftextras.api.misc.tiles.MagicEnergyUniversal;
 
-public class TileEntityMagicGenerator extends MagicEnergyTile implements IAspectContainer, IEssentiaTransport{
+public class TileEntityMagicGenerator extends MagicEnergySender implements IAspectContainer, IEssentiaTransport{
 	
 	public TileEntityMagicGenerator()
 	{
-		storage = new MagicEnergy(1000, 10, false);
+		storage = new MagicEnergy(1000, 10);
 		map.put(Aspect.MAGIC, 10);
 	}
 	public MagicEnergy storage;
@@ -39,21 +42,29 @@ public class TileEntityMagicGenerator extends MagicEnergyTile implements IAspect
     	if(!worldObj.isRemote){
     		TileEntity tile = checkForBlock(worldObj, xCoord, yCoord, zCoord);
     			if(tile != null){
-    				if(tile instanceof MagicEnergyTile){
-    					MagicEnergyTile to = (MagicEnergyTile)tile;
+    				if(tile instanceof MagicEnergyUniversal){
+    					MagicEnergyUniversal to = (MagicEnergyUniversal)tile;
     					if(getEnergy() == 0){
     							increaseEnergy(drawFromTube());
     					}else{
-    						if(to.canReceive()){
         						if(Minecraft.getMinecraft().renderViewEntity != null){
         							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, 0);}
         							to.increaseEnergy(calcEnergy(to));
-    						}
     					}
+    				}else if(tile instanceof MagicEnergyReceiver){
+    					MagicEnergyReceiver to = (MagicEnergyReceiver)tile;
+    					if(getEnergy() == 0){
+    							increaseEnergy(drawFromTube());
+    					}else{
+        						if(Minecraft.getMinecraft().renderViewEntity != null){
+        							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, 0);}
+        							to.increaseEnergy(calcEnergy(to));
+    					}
+    				}
+
     				}else{
         				increaseEnergy(drawFromTube());
     				}
-    			}
     	}
     }
 
@@ -78,12 +89,7 @@ public class TileEntityMagicGenerator extends MagicEnergyTile implements IAspect
 		storage.addEnergy(energy);
 		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
-	
-	@Override
-	public boolean canReceive(){
-		return storage.canReceive();
-	}
-	
+
 	 public int drawFromTube()
 	    {
 	    	 ForgeDirection orientation = getOrientation();
@@ -215,7 +221,7 @@ public class TileEntityMagicGenerator extends MagicEnergyTile implements IAspect
 			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 		}
 		
-		public int calcEnergy(MagicEnergyTile to)
+		public int calcEnergy(MagicEnergyUniversal to)
 		{
 			if(getEnergy() >= to.getMaxTransfer()){
 				if(to.getMaxEnergy() - to.getEnergy() > to.getMaxTransfer()){
@@ -232,6 +238,32 @@ public class TileEntityMagicGenerator extends MagicEnergyTile implements IAspect
 				}else{
 					return 0;
 				}
+			}else{
+				return 0;
+			}
+		}
+		
+		public int calcEnergy(MagicEnergyReceiver to)
+		{
+			if(to.shouldReceive()){
+			if(getEnergy() >= to.getMaxTransfer()){
+				if(to.getMaxEnergy() - to.getEnergy() > to.getMaxTransfer()){
+					decreaseEnergy(to.getMaxTransfer());
+					return to.getMaxTransfer();
+				}else if(to.getMaxEnergy() - to.getEnergy() < to.getMaxTransfer()){
+					decreaseEnergy(to.getMaxEnergy() - to.getEnergy());
+					return to.getMaxEnergy() - to.getEnergy();
+				}else if(to.getMaxEnergy() - to.getEnergy() == to.getMaxTransfer()){
+					decreaseEnergy(to.getMaxEnergy() - to.getEnergy());
+					return to.getMaxTransfer();
+				}else if(to.getEnergy() == to.getMaxEnergy()){
+					return 0;
+				}else{
+					return 0;
+				}
+			}else{
+				return 0;
+			}
 			}else{
 				return 0;
 			}
@@ -268,19 +300,19 @@ public class TileEntityMagicGenerator extends MagicEnergyTile implements IAspect
 		public TileEntity checkForBlock(World world, int x, int y, int z)
 		{
 			for(int i = 1; i < 16; i++){				
-				if(world.getTileEntity(x + i, y, z) != null && world.getTileEntity(x + i, y, z) instanceof MagicEnergyTile && ((MagicEnergyTile)world.getTileEntity(x + i, y, z)).canReceive()){
+				if(world.getTileEntity(x + i, y, z) != null && world.getTileEntity(x + i, y, z) instanceof MagicEnergyUniversal || world.getTileEntity(x + i, y, z) instanceof IMagicEnergyReceiver && !(world.getTileEntity(x + i, y, z) instanceof TileEntityMagicBattery))
 					return world.getTileEntity(x + i, y, z);
 				
-				}else if(world.getTileEntity(x - i, y, z) != null && world.getTileEntity(x - i, y, z) instanceof MagicEnergyTile && ((MagicEnergyTile)world.getTileEntity(x - i, y, z)).canReceive()){
+				else if(world.getTileEntity(x - i, y, z) != null && world.getTileEntity(x - i, y, z) instanceof MagicEnergyUniversal || world.getTileEntity(x - i, y, z) instanceof IMagicEnergyReceiver && !(world.getTileEntity(x - i, y, z) instanceof TileEntityMagicBattery))
 					return world.getTileEntity(x - i, y, z);
 				
-				}else if(world.getTileEntity(x, y, z - i) != null && world.getTileEntity(x, y, z -i) instanceof MagicEnergyTile && ((MagicEnergyTile)world.getTileEntity(x, y, z - i)).canReceive()){
+				else if(world.getTileEntity(x, y, z - i) != null && world.getTileEntity(x, y, z -i) instanceof MagicEnergyUniversal || world.getTileEntity(x, y, z -i) instanceof IMagicEnergyReceiver && !(world.getTileEntity(x, y, z - i) instanceof TileEntityMagicBattery))
 					return world.getTileEntity(x, y, z - i);
 				
-				}else if(world.getTileEntity(x, y, z + i) != null && world.getTileEntity(x, y, z +i) instanceof MagicEnergyTile && ((MagicEnergyTile)world.getTileEntity(x, y, z + i)).canReceive()){
+				else if(world.getTileEntity(x, y, z + i) != null && world.getTileEntity(x, y, z +i) instanceof MagicEnergyUniversal || world.getTileEntity(x, y, z +i) instanceof IMagicEnergyReceiver&& !(world.getTileEntity(x, y, z + i) instanceof TileEntityMagicBattery))
 					return world.getTileEntity(x, y, z + i);
-				}
 			}
+			
 			return null;
 		}
 

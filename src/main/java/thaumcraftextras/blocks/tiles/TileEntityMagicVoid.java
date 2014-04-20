@@ -5,13 +5,13 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import thaumcraftextras.api.misc.classes.MagicEnergy;
-import thaumcraftextras.api.misc.tiles.MagicEnergyTile;
+import thaumcraftextras.api.misc.tiles.MagicEnergyReceiver;
 
-public class TileEntityMagicVoid extends MagicEnergyTile{
+public class TileEntityMagicVoid extends MagicEnergyReceiver{
 	
 	public TileEntityMagicVoid()
 	{
-		storage = new MagicEnergy(10000, 20, true);
+		storage = new MagicEnergy(10000, 20);
 	}
 	public MagicEnergy storage;
     int energy;
@@ -60,11 +60,6 @@ public class TileEntityMagicVoid extends MagicEnergyTile{
 	@Override
 	public int getMaxTransfer(){
 		return storage.getMaxTransfer();
-	}
-	
-	@Override
-	public boolean canReceive(){
-		return storage.canReceive();
 	}
 	
 	@Override

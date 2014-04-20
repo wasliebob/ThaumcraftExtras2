@@ -1,6 +1,6 @@
 package thaumcraftextras.api.interfaces;
 
-public interface IMagicEnergy{
+public interface IMagicEnergySender {
 	public int getEnergy();
 	public int getMaxEnergy();
 	public void setEnergy(int energy);

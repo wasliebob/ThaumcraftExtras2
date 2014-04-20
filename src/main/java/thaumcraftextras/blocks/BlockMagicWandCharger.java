@@ -12,14 +12,10 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import thaumcraft.common.items.wands.ItemWandCasting;
-import thaumcraftextras.api.misc.tiles.MagicEnergyTile;
 import thaumcraftextras.blocks.tiles.TileEntityMagicWandCharger;
-import thaumcraftextras.items.ItemMagicEnergyReader;
-import thaumcraftextras.items.ItemMagicWrench;
 import thaumcraftextras.main.ThaumcraftExtras;
 import thaumcraftextras.main.init.TCETabs;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -69,14 +65,9 @@ public class BlockMagicWandCharger extends BlockContainer{
 		if(!player.isSneaking()){
 			if(!world.isRemote){
 				if(player.getCurrentEquippedItem() != null){
-					MagicEnergyTile tile = (MagicEnergyTile)world.getTileEntity(x, y, z);
+					TileEntity tile = world.getTileEntity(x, y, z);
 					if(tile != null){
-						if(player.getCurrentEquippedItem().getItem() instanceof ItemMagicWrench){
-						
-						}else if(player.getCurrentEquippedItem().getItem() instanceof ItemMagicEnergyReader){
-							player.addChatComponentMessage(new ChatComponentText("Energy Stored: " + tile.getEnergy()));
-							world.markBlockForUpdate(x, y, z);
-						}else if(player.getCurrentEquippedItem().getItem() instanceof ItemWandCasting){
+						if(player.getCurrentEquippedItem().getItem() instanceof ItemWandCasting){
 							TileEntityMagicWandCharger wand = (TileEntityMagicWandCharger)world.getTileEntity(x, y, z);
 							wand.setInventorySlotContents(0, player.getCurrentEquippedItem().copy());
 							
@@ -94,8 +85,8 @@ public class BlockMagicWandCharger extends BlockContainer{
 		}else{
 			if(player.isSneaking()){
 				if(player.getCurrentEquippedItem() == null){
-//					TileEntityMagicWandCharger tile = (TileEntityMagicWandCharger)world.getTileEntity(x, y, z);
 					dropItems(world, x, y, z);
+					world.markBlockForUpdate(x, y, z);
 				}
 			}
 		}

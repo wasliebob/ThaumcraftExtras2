@@ -39,7 +39,7 @@ public class TileEntityShocker extends TileEntity{
 			}
 		}
 	public int mode = 0;
-	public int maxMode = 3;
+	public int maxMode = 2;
 	public void performAction(EntityLiving living, double xPos, double yPos, double zPos)
 	{
 		if(mode == 0){

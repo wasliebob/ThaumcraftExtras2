@@ -12,14 +12,10 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import thaumcraftextras.api.interfaces.IMagicEnergyContainerItem;
-import thaumcraftextras.api.misc.tiles.MagicEnergyTile;
 import thaumcraftextras.blocks.tiles.TileEntityMagicCrystalCharger;
-import thaumcraftextras.items.ItemMagicEnergyReader;
-import thaumcraftextras.items.ItemMagicWrench;
 import thaumcraftextras.main.ThaumcraftExtras;
 import thaumcraftextras.main.init.TCETabs;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -69,15 +65,9 @@ public class BlockMagicCrystalCharger extends BlockContainer{
 		if(!player.isSneaking()){
 			if(!world.isRemote){
 				if(player.getCurrentEquippedItem() != null){
-					MagicEnergyTile tile = (MagicEnergyTile)world.getTileEntity(x, y, z);
-					if(tile != null){
-						if(player.getCurrentEquippedItem().getItem() instanceof ItemMagicWrench){
-						
-						}else if(player.getCurrentEquippedItem().getItem() instanceof ItemMagicEnergyReader){
-							player.addChatComponentMessage(new ChatComponentText("Energy Stored: " + tile.getEnergy()));
-							world.markBlockForUpdate(x, y, z);
-						}else if(player.getCurrentEquippedItem().getItem() instanceof IMagicEnergyContainerItem){
-							TileEntityMagicCrystalCharger charger = (TileEntityMagicCrystalCharger)world.getTileEntity(x, y, z);
+					TileEntity tile = world.getTileEntity(x, y, z);
+						if(player.getCurrentEquippedItem().getItem() instanceof IMagicEnergyContainerItem){
+							TileEntityMagicCrystalCharger charger = (TileEntityMagicCrystalCharger)tile;
 							charger.setInventorySlotContents(0, player.getCurrentEquippedItem().copy());
 							
 							if(player.getCurrentEquippedItem().stackSize > 1)
@@ -86,16 +76,20 @@ public class BlockMagicCrystalCharger extends BlockContainer{
 								player.setCurrentItemOrArmor(0, null);
 							
 							world.markBlockForUpdate(charger.xCoord, charger.yCoord, charger.zCoord);
-						}else{
 						}
-					}
-				}
-			}
+						}else{
+							
+						}
+		}
 		}else{
 			if(player.isSneaking()){
 				if(player.getCurrentEquippedItem() == null){
+					TileEntity tile = world.getTileEntity(x, y, z);
+					TileEntityMagicCrystalCharger charger = (TileEntityMagicCrystalCharger)tile;
+
 //					TileEntityMagicWandCharger tile = (TileEntityMagicWandCharger)world.getTileEntity(x, y, z);
 					dropItems(world, x, y, z);
+					world.markBlockForUpdate(charger.xCoord, charger.yCoord, charger.zCoord);
 				}
 			}
 		}

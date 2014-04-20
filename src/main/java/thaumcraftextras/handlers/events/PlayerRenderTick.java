@@ -13,7 +13,7 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 
 import org.lwjgl.opengl.GL11;
 
-import thaumcraftextras.api.misc.tiles.MagicEnergyTile;
+import thaumcraftextras.api.misc.tiles.MagicEnergyBase;
 import thaumcraftextras.blocks.tiles.TileEntityMagicWandCharger;
 import thaumcraftextras.items.ItemEnergyHelmet;
 import thaumcraftextras.items.ItemMagicEnergyReader;
@@ -49,8 +49,8 @@ public class PlayerRenderTick extends Gui{
 			int blockZ = ray.blockZ;
 			TileEntity tile = player.worldObj.getTileEntity(blockX, blockY, blockZ);
 			if(tile != null){
-				if(tile instanceof MagicEnergyTile){
-					MagicEnergyTile magic = (MagicEnergyTile)tile;
+				if(tile instanceof MagicEnergyBase){
+					MagicEnergyBase magic = (MagicEnergyBase)tile;
 					ScaledResolution res = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
 					int width = res.getScaledWidth();
 					int height = res.getScaledHeight();

@@ -72,7 +72,12 @@ public class TileEntityDarkendCore extends TileEntity{
 		}
 		if(time == 0){
 			dropItem(worldObj, xCoord, yCoord, zCoord, output);
-			item.setDead();
+			
+			if(item.getEntityItem().stackSize > 1)
+				item.getEntityItem().stackSize--;
+			else if(item.getEntityItem().stackSize == 1)
+				item.setDead();
+			
 			time = MathHelper.secondToTick(10);
 		}
 	}

@@ -45,13 +45,13 @@ public class BlockWand extends Block{
             list.add(getWand(1000, TCEWands.rod_darkSilverwood, TCEWands.cap_darkThaumium));
             list.add(getWand(9999999, TCEWands.rod_ultimate, TCEWands.cap_darkThaumium));
 
-            list.add(getWand(0, ConfigItems.STAFF_ROD_BLAZE, TCEWands.cap_darkThaumium));
-            list.add(getWand(0, ConfigItems.STAFF_ROD_BONE, TCEWands.cap_darkThaumium));
-            list.add(getWand(0, ConfigItems.STAFF_ROD_GREATWOOD, TCEWands.cap_darkThaumium));
-            list.add(getWand(0, ConfigItems.STAFF_ROD_ICE, TCEWands.cap_darkThaumium));
-            list.add(getWand(0, ConfigItems.STAFF_ROD_OBSIDIAN, TCEWands.cap_darkThaumium));
-            list.add(getWand(0, ConfigItems.STAFF_ROD_PRIMAL, TCEWands.cap_darkThaumium));
-            list.add(getWand(0, ConfigItems.STAFF_ROD_QUARTZ, TCEWands.cap_darkThaumium));
+            list.add(getWand(ConfigItems.STAFF_ROD_BLAZE.getCapacity(), ConfigItems.STAFF_ROD_BLAZE, TCEWands.cap_darkThaumium));
+            list.add(getWand(ConfigItems.STAFF_ROD_BONE.getCapacity(), ConfigItems.STAFF_ROD_BONE, TCEWands.cap_darkThaumium));
+            list.add(getWand(ConfigItems.STAFF_ROD_GREATWOOD.getCapacity(), ConfigItems.STAFF_ROD_GREATWOOD, TCEWands.cap_darkThaumium));
+            list.add(getWand(ConfigItems.STAFF_ROD_ICE.getCapacity(), ConfigItems.STAFF_ROD_ICE, TCEWands.cap_darkThaumium));
+            list.add(getWand(ConfigItems.STAFF_ROD_OBSIDIAN.getCapacity(), ConfigItems.STAFF_ROD_OBSIDIAN, TCEWands.cap_darkThaumium));
+            list.add(getWand(ConfigItems.STAFF_ROD_PRIMAL.getCapacity(), ConfigItems.STAFF_ROD_PRIMAL, TCEWands.cap_darkThaumium));
+            list.add(getWand(ConfigItems.STAFF_ROD_QUARTZ.getCapacity(), ConfigItems.STAFF_ROD_QUARTZ, TCEWands.cap_darkThaumium));
             list.add(getWand(ConfigItems.STAFF_ROD_REED.getCapacity(), ConfigItems.STAFF_ROD_REED, TCEWands.cap_darkThaumium));
             list.add(getWand(ConfigItems.STAFF_ROD_SILVERWOOD.getCapacity(), ConfigItems.STAFF_ROD_SILVERWOOD, TCEWands.cap_darkThaumium));
 

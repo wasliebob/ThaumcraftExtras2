@@ -2,9 +2,11 @@ package thaumcraftextras.proxies;
 
 import net.minecraft.world.World;
 import thaumcraftextras.blocks.tiles.TileEntityMagicWandCharger;
+import thaumcraftextras.handlers.events.TCEKeyHandler;
 import thaumcraftextras.proxies.client.renders.TileEntityWandChargerRenderer;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.common.FMLCommonHandler;
 
 public class ClientProxy extends CommonProxy {
 
@@ -13,6 +15,7 @@ public class ClientProxy extends CommonProxy {
 	{
 		render();
 		registerParticles();
+		registerKeyBindings();
 	}
 	
 	public void render()
@@ -31,4 +34,10 @@ public class ClientProxy extends CommonProxy {
 	{
 		
     }
+	
+	@Override
+	public void registerKeyBindings()
+	{
+		FMLCommonHandler.instance().bus().register(new TCEKeyHandler());
+	}
 }

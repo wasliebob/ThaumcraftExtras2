@@ -59,7 +59,7 @@ public class TCEEntries {
 		
 		aspect.add(Aspect.ORDER, 5);
 		aspect.add(Aspect.ENTROPY, 5);
-		aspect.add(Aspect.ELDRITCH, 5);
+		aspect.add(Aspect.TOOL, 5);
 		text = new String[]{"1"};
 		research = new ResearchHelper(focus_clean, TCEEntries.TCE, aspect, -1, -2, 2, new ItemStack(TCEItems.focusClean)).setParents(tce).setSecondary().registerResearchItem();
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeFocusClean));
@@ -71,6 +71,14 @@ public class TCEEntries {
 		text = new String[]{"1"};
 		research = new ResearchHelper(focus_return, TCEEntries.TCE, aspect, -2, -2, 2, new ItemStack(TCEItems.focusReturn)).setParents(tce).setSecondary().registerResearchItem();
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeFocusReturn));
+		aspect.aspects.clear();
+		
+		aspect.add(Aspect.ORDER, 5);
+		aspect.add(Aspect.ENTROPY, 5);
+		aspect.add(Aspect.AIR, 5);
+		text = new String[]{"1"};
+		research = new ResearchHelper(focus_trampoline, TCEEntries.TCE, aspect, -3, -2, 2, new ItemStack(TCEItems.focusTrampoline)).setParents(tce).setSecondary().registerResearchItem();
+		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeFocusTrampoline));
 		aspect.aspects.clear();
 		
 		aspect.add(Aspect.ENTROPY, 5);
@@ -107,6 +115,7 @@ public class TCEEntries {
 	public static String focus_return = "Wand Focus: Return";
 	public static String focus_clean = "Wand Focus: Clean";
 	public static String focus_shocker = "Wand Focus: Shock";
+	public static String focus_trampoline = "Wand Focus: Trampoline";
 
 	public static String magic_energy = "Magic Energy";
 	public static String chestplate_fire = "Chestplate of Flames";
@@ -196,10 +205,10 @@ public class TCEEntries {
 	public static void initBookTab()
 	{
 		 ResourceLocation background = new ResourceLocation("thaumcraft", "textures/gui/gui_researchback.png");
-         ResearchCategories.registerCategory("TCE", new ResourceLocation(ThaumcraftExtras.modName.toLowerCase() + ":" + "/textures/items/essence_magic.png"), background);
+         ResearchCategories.registerCategory("TCE", new ResourceLocation(ThaumcraftExtras.modName.toLowerCase() + ":" + "textures/items/essence_magic.png"), background);
        
          if(Config.addon_wands)
-        	 ResearchCategories.registerCategory("TCE_WANDS", new ResourceLocation(ThaumcraftExtras.modName.toLowerCase() + ":" + "/textures/items/rod_darksilverwood.png"), background);
+        	 ResearchCategories.registerCategory("TCE_WANDS", new ResourceLocation(ThaumcraftExtras.modName.toLowerCase() + ":" + "textures/items/rod_darksilverwood.png"), background);
 	}
 	public static String TCE = "TCE";
 	public static String TCEWANDS = "TCE_WANDS";

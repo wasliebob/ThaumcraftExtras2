@@ -12,14 +12,16 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.Thaumcraft;
+import thaumcraftextras.api.interfaces.IMagicEnergyReceiver;
 import thaumcraftextras.api.misc.classes.MagicEnergy;
-import thaumcraftextras.api.misc.tiles.MagicEnergyTile;
+import thaumcraftextras.api.misc.tiles.MagicEnergyReceiver;
+import thaumcraftextras.api.misc.tiles.MagicEnergyUniversal;
 
-public class TileEntityMagicBattery extends MagicEnergyTile{
+public class TileEntityMagicBattery extends MagicEnergyUniversal{
 	
 	public TileEntityMagicBattery()
 	{
-		storage = new MagicEnergy(1000, 10, true);
+		storage = new MagicEnergy(1000, 10);
 	}
 	public MagicEnergy storage;
     public static Map<Aspect, Integer> map = new HashMap<Aspect, Integer>();
@@ -32,14 +34,18 @@ public class TileEntityMagicBattery extends MagicEnergyTile{
     	if(!worldObj.isRemote){
         		TileEntity tile = checkForBlock(worldObj, xCoord, yCoord, zCoord);
     			if(tile != null){
-    				if(tile instanceof MagicEnergyTile){
-    					MagicEnergyTile to = (MagicEnergyTile)tile;
-    					if(to.canReceive()){
+    				if(tile instanceof MagicEnergyReceiver){
+    					MagicEnergyReceiver to = (MagicEnergyReceiver)tile;
     						to.increaseEnergy(calcEnergy(to));
     						worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
     						if(Minecraft.getMinecraft().renderViewEntity != null){
     							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, 0);}
-    					}
+    				}else if(tile instanceof MagicEnergyUniversal){
+    					MagicEnergyUniversal to = (MagicEnergyUniversal)tile;
+						to.increaseEnergy(calcEnergy(to));
+						worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+						if(Minecraft.getMinecraft().renderViewEntity != null){
+							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, 0);}
     				}
     			}
     	}
@@ -77,13 +83,34 @@ public class TileEntityMagicBattery extends MagicEnergyTile{
 	public int getMaxTransfer(){
 		return storage.getMaxTransfer();
 	}
-	
-	@Override
-	public boolean canReceive(){
-		return storage.canReceive();
-	}
 
-	public int calcEnergy(MagicEnergyTile to)
+	public int calcEnergy(MagicEnergyReceiver to)
+	{
+		if(to.shouldReceive()){
+		if(getEnergy() >= to.getMaxTransfer()){
+			if(to.getMaxEnergy() - to.getEnergy() > to.getMaxTransfer()){
+				decreaseEnergy(to.getMaxTransfer());
+				return to.getMaxTransfer();
+			}else if(to.getMaxEnergy() - to.getEnergy() < to.getMaxTransfer()){
+				decreaseEnergy(to.getMaxEnergy() - to.getEnergy());
+				return to.getMaxEnergy() - to.getEnergy();
+			}else if(to.getMaxEnergy() - to.getEnergy() == to.getMaxTransfer()){
+				decreaseEnergy(to.getMaxEnergy() - to.getEnergy());
+				return to.getMaxTransfer();
+			}else if(to.getEnergy() == to.getMaxEnergy()){
+				return 0;
+			}else{
+				return 0;
+			}
+		}else{
+			return 0;
+		}
+		}else{
+			return 0;
+		}
+	}
+	
+	public int calcEnergy(MagicEnergyUniversal to)
 	{
 		if(getEnergy() >= to.getMaxTransfer()){
 			if(to.getMaxEnergy() - to.getEnergy() > to.getMaxTransfer()){
@@ -137,16 +164,16 @@ public class TileEntityMagicBattery extends MagicEnergyTile{
 	public TileEntity checkForBlock(World world, int x, int y, int z)
 	{
 		for(int i = 1; i < 16; i++){				
-			if(world.getTileEntity(x + i, y, z) != null && world.getTileEntity(x + i, y, z) instanceof MagicEnergyTile && ((MagicEnergyTile)world.getTileEntity(x + i, y, z)).canReceive() && !(world.getTileEntity(x + i, y, z) instanceof TileEntityMagicBattery))
+			if(world.getTileEntity(x + i, y, z) != null && world.getTileEntity(x + i, y, z) instanceof MagicEnergyUniversal || world.getTileEntity(x + i, y, z) instanceof IMagicEnergyReceiver && !(world.getTileEntity(x + i, y, z) instanceof TileEntityMagicBattery))
 				return world.getTileEntity(x + i, y, z);
 			
-			else if(world.getTileEntity(x - i, y, z) != null && world.getTileEntity(x - i, y, z) instanceof MagicEnergyTile && ((MagicEnergyTile)world.getTileEntity(x - i, y, z)).canReceive() && !(world.getTileEntity(x - i, y, z) instanceof TileEntityMagicBattery))
+			else if(world.getTileEntity(x - i, y, z) != null && world.getTileEntity(x - i, y, z) instanceof MagicEnergyUniversal || world.getTileEntity(x - i, y, z) instanceof IMagicEnergyReceiver && !(world.getTileEntity(x - i, y, z) instanceof TileEntityMagicBattery))
 				return world.getTileEntity(x - i, y, z);
 			
-			else if(world.getTileEntity(x, y, z - i) != null && world.getTileEntity(x, y, z -i) instanceof MagicEnergyTile && ((MagicEnergyTile)world.getTileEntity(x, y, z - i)).canReceive() && !(world.getTileEntity(x, y, z - i) instanceof TileEntityMagicBattery))
+			else if(world.getTileEntity(x, y, z - i) != null && world.getTileEntity(x, y, z -i) instanceof MagicEnergyUniversal || world.getTileEntity(x, y, z -i) instanceof IMagicEnergyReceiver && !(world.getTileEntity(x, y, z - i) instanceof TileEntityMagicBattery))
 				return world.getTileEntity(x, y, z - i);
 			
-			else if(world.getTileEntity(x, y, z + i) != null && world.getTileEntity(x, y, z +i) instanceof MagicEnergyTile && ((MagicEnergyTile)world.getTileEntity(x, y, z + i)).canReceive() && !(world.getTileEntity(x, y, z + i) instanceof TileEntityMagicBattery))
+			else if(world.getTileEntity(x, y, z + i) != null && world.getTileEntity(x, y, z +i) instanceof MagicEnergyUniversal || world.getTileEntity(x, y, z +i) instanceof IMagicEnergyReceiver&& !(world.getTileEntity(x, y, z + i) instanceof TileEntityMagicBattery))
 				return world.getTileEntity(x, y, z + i);
 		}
 		
