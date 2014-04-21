@@ -6,8 +6,7 @@ import thaumcraftextras.api.interfaces.IMagicEnergyReceiver;
 import thaumcraftextras.api.interfaces.IMagicEnergySender;
 import thaumcraftextras.blocks.tiles.TileEntityMagicBattery;
 
-public class MagicEnergySender extends MagicEnergyBase implements IMagicEnergySender{
-
+public class MagicEnergySender extends MagicEnergyBase implements IMagicEnergySender{	
 	@Override
 	public int getEnergy() {
 		return 0;

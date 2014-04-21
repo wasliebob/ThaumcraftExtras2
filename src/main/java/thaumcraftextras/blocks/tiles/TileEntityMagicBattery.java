@@ -22,12 +22,16 @@ public class TileEntityMagicBattery extends MagicEnergyUniversal{
 	public TileEntityMagicBattery()
 	{
 		storage = new MagicEnergy(1000, 10);
+		
+//		if(this.getColor() == 0)
+//			this.setColor(ColorHelper.getColorCodeFromColor(Color.red));
 	}
 	public MagicEnergy storage;
     public static Map<Aspect, Integer> map = new HashMap<Aspect, Integer>();
     int energy;
     public static final String ENERGY = "ENERGY_MAGIC";
-    
+    public static final String COLOR = "COLOR_MAGIC";
+
     @Override
     public void updateEntity() 
     {
@@ -37,22 +41,25 @@ public class TileEntityMagicBattery extends MagicEnergyUniversal{
     				if(tile instanceof MagicEnergyReceiver){
     					MagicEnergyReceiver to = (MagicEnergyReceiver)tile;
     						to.increaseEnergy(calcEnergy(to));
-    						worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+//    						worldObj.markBlockForUpdate(to.xCoord, to.yCoord, to.zCoord);	
+//       						worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
     						if(Minecraft.getMinecraft().renderViewEntity != null){
-    							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, 0);}
+    							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, this.getColor());}
     				}else if(tile instanceof MagicEnergyUniversal){
     					MagicEnergyUniversal to = (MagicEnergyUniversal)tile;
 						to.increaseEnergy(calcEnergy(to));
-						worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+//						worldObj.markBlockForUpdate(to.xCoord, to.yCoord, to.zCoord);	
+//   						worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 						if(Minecraft.getMinecraft().renderViewEntity != null){
-							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, 0);}
+							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, this.getColor());}
     				}
     			}
     	}
     }
-
+    
 	@Override
 	public int getEnergy() {
+//		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 		return storage.getEnergy();
 	}
 
@@ -72,13 +79,13 @@ public class TileEntityMagicBattery extends MagicEnergyUniversal{
 	@Override
 	public void increaseEnergy(int energy) {
 		storage.addEnergy(energy);
-		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+//		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 	
 	@Override
 	public void decreaseEnergy(int energy) {
 		storage.removeEnergy(energy);
-		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+//		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 	
 	@Override
@@ -88,8 +95,8 @@ public class TileEntityMagicBattery extends MagicEnergyUniversal{
 
 	public int calcEnergy(MagicEnergyReceiver to)
 	{
-		worldObj.markBlockForUpdate(to.xCoord, to.yCoord, to.zCoord);
-		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+//		worldObj.markBlockForUpdate(to.xCoord, to.yCoord, to.zCoord);
+//		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 		if(to.shouldReceive()){
 		if(getEnergy() >= to.getMaxTransfer()){
 			if(to.getMaxEnergy() - to.getEnergy() > to.getMaxTransfer()){
@@ -116,8 +123,8 @@ public class TileEntityMagicBattery extends MagicEnergyUniversal{
 	
 	public int calcEnergy(MagicEnergyUniversal to)
 	{
-		worldObj.markBlockForUpdate(to.xCoord, to.yCoord, to.zCoord);
-		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+//		worldObj.markBlockForUpdate(to.xCoord, to.yCoord, to.zCoord);
+//		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 		if(getEnergy() >= to.getMaxTransfer()){
 			if(to.getMaxEnergy() - to.getEnergy() > to.getMaxTransfer()){
 				decreaseEnergy(to.getMaxTransfer());
@@ -145,6 +152,8 @@ public class TileEntityMagicBattery extends MagicEnergyUniversal{
 		
 		if(this.getEnergy() > 0)
 			nbt.setInteger(ENERGY, this.getEnergy());
+//		if(this.getColor() != 0)
+			nbt.setInteger(COLOR, this.getColor());
 	}
 	
 	@Override
@@ -152,6 +161,7 @@ public class TileEntityMagicBattery extends MagicEnergyUniversal{
 	{
 		super.readFromNBT(nbt);
 		setEnergy(nbt.getInteger(ENERGY));
+		setColor(nbt.getInteger(COLOR));
 	}
 	
 	@Override

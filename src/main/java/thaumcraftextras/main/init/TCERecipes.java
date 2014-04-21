@@ -89,7 +89,7 @@ public class TCERecipes {
 			"YXY",
 			"XIX",
 			"YXY",
-			'X', new ItemStack(TCEItems.essenceMagic) ,
+ 			'X', new ItemStack(TCEItems.essenceMagic) ,
 			'I', new ItemStack(Items.diamond),
 			'Y', new ItemStack(ConfigItems.itemResource, 1, 2)});
 		aspect.aspects.clear();

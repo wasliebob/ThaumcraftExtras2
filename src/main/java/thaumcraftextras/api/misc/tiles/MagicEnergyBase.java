@@ -7,7 +7,8 @@ import thaumcraftextras.api.interfaces.IMagicEnergyReceiver;
 import thaumcraftextras.blocks.tiles.TileEntityMagicBattery;
 
 public class MagicEnergyBase extends TileEntity implements IMagicEnergy{
-
+	public int streamColor;
+	
 	@Override
 	public int getEnergy() {
 		return 0;
@@ -54,5 +55,15 @@ public class MagicEnergyBase extends TileEntity implements IMagicEnergy{
 		}
 		
 		return null;
+	}
+
+	@Override
+	public void setColor(int color) {
+		streamColor = color;
+	}
+
+	@Override
+	public int getColor() {
+		return streamColor;
 	}
 }

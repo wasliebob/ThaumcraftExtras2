@@ -9,9 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-
-import org.lwjgl.input.Keyboard;
-
 import thaumcraftextras.blocks.tiles.TileEntityMagicBattery;
 import thaumcraftextras.main.init.TCEBlocks;
 
@@ -46,11 +43,7 @@ public class ItemBlockMagicBattery extends ItemBlock
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean id)
 	{		
-		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)){
-			if(stack.hasTagCompound())
-				list.add(EnumChatFormatting.RED + "Energy Stored: " + EnumChatFormatting.GRAY + (stack.stackTagCompound.getInteger("BATTERY_MCE")));	
-		}else{
-			list.add(EnumChatFormatting.GREEN + "Press " + "Shift " + "for more info.");
-		}
+		if(stack.hasTagCompound())
+			list.add(EnumChatFormatting.RED + "Energy Stored: " + EnumChatFormatting.GRAY + (stack.stackTagCompound.getInteger("BATTERY_MCE")));	
 	}
 }

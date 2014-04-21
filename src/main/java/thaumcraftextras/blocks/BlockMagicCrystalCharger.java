@@ -88,7 +88,6 @@ public class BlockMagicCrystalCharger extends BlockContainer{
 //					TileEntityMagicCrystalCharger charger = (TileEntityMagicCrystalCharger)tile;
 
 //					TileEntityMagicWandCharger tile = (TileEntityMagicWandCharger)world.getTileEntity(x, y, z);
-					world.markBlockForUpdate(x, y, z);
 					dropItems(world, x, y, z);
 					world.markBlockForUpdate(x, y, z);
 				}

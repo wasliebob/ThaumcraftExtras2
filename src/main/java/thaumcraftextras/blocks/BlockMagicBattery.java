@@ -6,13 +6,17 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import thaumcraftextras.blocks.itemblocks.ItemBlockMagicBattery;
 import thaumcraftextras.blocks.tiles.TileEntityMagicBattery;
+import thaumcraftextras.helpers.DyeHelper;
 import thaumcraftextras.main.ThaumcraftExtras;
 import thaumcraftextras.main.init.TCETabs;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -39,6 +43,24 @@ public class BlockMagicBattery extends BlockContainer{
 		top = ir.registerIcon("thaumcraft:arcaneearbottom");
 		side = ir.registerIcon(ThaumcraftExtras.modName.toLowerCase() + ":" + "block_charger");
 	}	
+	
+	@Override
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX,
+	        float hitY, float hitZ){
+    	TileEntity tile = world.getTileEntity(x, y, z);
+        
+        if(!world.isRemote && tile != null){
+        	if(tile instanceof TileEntityMagicBattery){
+        		TileEntityMagicBattery magic = (TileEntityMagicBattery)tile;
+        		if(player.getHeldItem() != null && player.getHeldItem().getItem() == Items.dye){
+        			magic.setColor(DyeHelper.getColorCode(player.getHeldItem().getItemDamage()));
+        		}else{
+        			player.addChatMessage(new ChatComponentText("Color: " + magic.getColor()));
+        		}
+        	}
+        }
+        return true;
+	}
 	
 	@Override
 	@SideOnly(Side.CLIENT)

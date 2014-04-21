@@ -9,6 +9,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class ItemMagicEnergyReader extends Item{
 
 	public ItemMagicEnergyReader(String itemName, String iconName) {
+		
+		setMaxStackSize(1);
 		setUnlocalizedName(ThaumcraftExtras.modName.toLowerCase() + "." + "item" + "." + itemName.toLowerCase());
 		setCreativeTab(TCETabs.tabMain);
 		name = itemName;

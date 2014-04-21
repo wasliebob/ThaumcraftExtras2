@@ -104,13 +104,13 @@ public class TileEntityMagicWandCharger extends MagicEnergyReceiver implements I
 	@Override
 	public void increaseEnergy(int energy) {
 		storage.addEnergy(energy);
-		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+//		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 	
 	@Override
 	public void decreaseEnergy(int energy) {
 		storage.removeEnergy(energy);
-		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+//		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 	
 	@Override

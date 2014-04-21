@@ -11,4 +11,6 @@ public interface IMagicEnergy{
 	public void decreaseEnergy(int energy);
 	public int getMaxTransfer();
 	public TileEntity checkForBlock(World world, int x, int y, int z);
+	public void setColor(int color);
+	public int getColor();
 }

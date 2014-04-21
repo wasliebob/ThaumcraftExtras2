@@ -35,6 +35,7 @@ public class TileEntityMagicGenerator extends MagicEnergySender implements IAspe
     public static Aspect asp = Aspect.MAGIC;
     int energy;
     public static final String ENERGY = "ENERGY_MAGIC";
+    public static final String COLOR = "COLOR_MAGIC";
     
     @Override
     public void updateEntity() 
@@ -48,7 +49,7 @@ public class TileEntityMagicGenerator extends MagicEnergySender implements IAspe
     							increaseEnergy(drawFromTube());
     					}else{
         						if(Minecraft.getMinecraft().renderViewEntity != null){
-        							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, 0);}
+        							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, this.getColor());}
         							to.increaseEnergy(calcEnergy(to));
     					}
     				}else if(tile instanceof MagicEnergyReceiver){
@@ -57,7 +58,7 @@ public class TileEntityMagicGenerator extends MagicEnergySender implements IAspe
     							increaseEnergy(drawFromTube());
     					}else{
         						if(Minecraft.getMinecraft().renderViewEntity != null){
-        							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, 0);}
+        							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, this.getColor());}
         							to.increaseEnergy(calcEnergy(to));
     					}
     				}
@@ -89,7 +90,7 @@ public class TileEntityMagicGenerator extends MagicEnergySender implements IAspe
 	@Override
 	public void increaseEnergy(int energy) {		
 		storage.addEnergy(energy);
-		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+//		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
 	 public int drawFromTube()
@@ -225,6 +226,8 @@ public class TileEntityMagicGenerator extends MagicEnergySender implements IAspe
 		
 		public int calcEnergy(MagicEnergyUniversal to)
 		{
+			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+			worldObj.markBlockForUpdate(to.xCoord, to.yCoord, to.zCoord);
 			if(getEnergy() >= to.getMaxTransfer()){
 				if(to.getMaxEnergy() - to.getEnergy() > to.getMaxTransfer()){
 					decreaseEnergy(to.getMaxTransfer());
@@ -247,6 +250,8 @@ public class TileEntityMagicGenerator extends MagicEnergySender implements IAspe
 		
 		public int calcEnergy(MagicEnergyReceiver to)
 		{
+			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+			worldObj.markBlockForUpdate(to.xCoord, to.yCoord, to.zCoord);
 			if(to.shouldReceive()){
 			if(getEnergy() >= to.getMaxTransfer()){
 				if(to.getMaxEnergy() - to.getEnergy() > to.getMaxTransfer()){
@@ -278,6 +283,8 @@ public class TileEntityMagicGenerator extends MagicEnergySender implements IAspe
 			
 			if(this.getEnergy() > 0)
 				nbt.setInteger(ENERGY, this.getEnergy());
+//			if(this.getColor() != 0)
+				nbt.setInteger(COLOR, this.getColor());
 		}
 		
 		@Override
@@ -285,6 +292,7 @@ public class TileEntityMagicGenerator extends MagicEnergySender implements IAspe
 		{
 			super.readFromNBT(nbt);
 			setEnergy(nbt.getInteger(ENERGY));
+			setColor(nbt.getInteger(COLOR));
 		}
 		
 		@Override

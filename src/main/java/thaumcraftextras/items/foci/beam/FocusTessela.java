@@ -42,10 +42,10 @@ public class FocusTessela extends TCEItemFocus {
         {
         	Minecraft mc = Minecraft.getMinecraft();
             ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
-            	if (wand.consumeAllVis(itemstack, player, getVisCost(), !player.worldObj.isRemote, false))
+            	if (!player.worldObj.isRemote && wand.consumeAllVis(itemstack, player, getVisCost(), !player.worldObj.isRemote, false))
             	{
             		if(mc.renderViewEntity != null){
-            		double range = 8.0D * calcDistanceMod(wand, itemstack);
+            		double range = 10.0D * calcDistanceMod(wand, itemstack);
 
             			AxisAlignedBB bb = AxisAlignedBB.getBoundingBox(player.posX - range, player.posY - range, player.posZ - range, player.posX + range, player.posY + range, player.posZ + range);
             			List<Entity> entities = player.worldObj.selectEntitiesWithinAABB(Entity.class, bb, getSelector());
@@ -57,7 +57,7 @@ public class FocusTessela extends TCEItemFocus {
             			
             				float distance = (float) ((player.posX - xPos) * (player.posX - xPos) + (player.posY - yPos) * (player.posY - yPos) + (player.posZ - zPos) * (player.posZ - zPos));
             		
-                			if(distance < 8 * calcDistanceMod(wand, itemstack) && entity instanceof EntityLiving && !(entity instanceof EntityPlayer)){
+                			if(distance < 10 * calcDistanceMod(wand, itemstack) && entity instanceof EntityLiving && !(entity instanceof EntityPlayer)){
             					EntityLiving living = (EntityLiving)entity;
             					living.setHealth(living.getHealth() - 1.0F);
             					living.performHurtAnimation();
@@ -65,7 +65,7 @@ public class FocusTessela extends TCEItemFocus {
             					if(living.getHealth() - 1.0F == 0)
             						living.onDeath(DamageSource.generic);
             					
-            					FXLightningBolt light = new FXLightningBolt(player.worldObj, player.posX, player.posY + 1.5F, player.posZ, xPos, yPos + 0.5F, zPos, player.worldObj.getSeed(), 1);
+            					FXLightningBolt light = new FXLightningBolt(player.worldObj, player.posX, player.posY + 1.5F, player.posZ, xPos, yPos + 0.5F, zPos, player.worldObj.getSeed(), 2);
             					light.defaultFractal();
             					light.setType(2);
             					light.setWidth(0.125F);
@@ -89,6 +89,7 @@ public class FocusTessela extends TCEItemFocus {
         	case 2: return 3;
         	case 3: return 4;
         	case 4: return 5;
+        	case 5: return 6;
         	default: return 1;
         	}
         }

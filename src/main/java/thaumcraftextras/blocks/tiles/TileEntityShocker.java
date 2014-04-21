@@ -43,10 +43,10 @@ public class TileEntityShocker extends TileEntity{
 	public void performAction(EntityLiving living, double xPos, double yPos, double zPos)
 	{
 		if(mode == 0){
-			living.setHealth(living.getHealth() - 1.0F);
+			living.setHealth(living.getHealth() - 0.2F);
 			living.performHurtAnimation();
 
-			if(living.getHealth() - 1.0F == 0)
+			if(living.getHealth() - 0.2F == 0)
 				living.onDeath(DamageSource.generic);
 			
 			FXLightningBolt light = new FXLightningBolt(worldObj, xCoord + 0.5, yCoord + 0.5, zCoord + 0.5, xPos, yPos + 0.5, zPos, worldObj.getSeed(), 1);
@@ -55,8 +55,8 @@ public class TileEntityShocker extends TileEntity{
 			light.setWidth(0.125F);
 			light.finalizeBolt();
 		}else if(mode == 1){
-			living.setHealth(living.getHealth() - 0.5F);
-			if(living.getHealth() - 1.0F == 0)
+			living.setHealth(living.getHealth() - 0.2F);
+			if(living.getHealth() - 0.2F == 0)
 				living.onDeath(DamageSource.inFire);
 			
 				living.setFire(2);

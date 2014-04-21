@@ -67,6 +67,7 @@ public class TileEntityMagicCrystalCharger extends MagicEnergyReceiver implement
 
 	@Override
 	public int getEnergy() {
+//		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 		return storage.getEnergy();
 	}
 
@@ -86,13 +87,13 @@ public class TileEntityMagicCrystalCharger extends MagicEnergyReceiver implement
 	@Override
 	public void increaseEnergy(int energy) {
 		storage.addEnergy(energy);
-		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+//		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 	
 	@Override
 	public void decreaseEnergy(int energy) {
 		storage.removeEnergy(energy);
-		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+//		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 	
 	@Override

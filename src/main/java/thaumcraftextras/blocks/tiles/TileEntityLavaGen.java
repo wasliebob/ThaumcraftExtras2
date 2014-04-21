@@ -1,8 +1,13 @@
 package thaumcraftextras.blocks.tiles;
 
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
@@ -22,8 +27,8 @@ public class TileEntityLavaGen extends TileEntity implements IAspectContainer, I
 	}
 	AspectList list = new AspectList();
 	Aspect fire = Aspect.FIRE;
-	int am = 10;
-	public FluidTank tank = new FluidTank(FluidRegistry.LAVA, 0, 10000);
+	int am = 5;
+	public FluidTank tank = new FluidTank(FluidRegistry.LAVA, 0, FluidContainerRegistry.BUCKET_VOLUME*16);
 	
 	@Override
 	public void updateEntity()
@@ -36,7 +41,7 @@ public class TileEntityLavaGen extends TileEntity implements IAspectContainer, I
 	public void generateLava()
 	{
 //		takeEssentia(fire, am, ForgeDirection.UNKNOWN);
-		this.fill(ForgeDirection.UNKNOWN, new FluidStack(FluidRegistry.LAVA, drawFromTube()), canDrain(null, FluidRegistry.LAVA));
+		this.fill(ForgeDirection.UP, new FluidStack(FluidRegistry.LAVA, drawFromTube()), canDrain(ForgeDirection.UP, FluidRegistry.LAVA));
 	}
 	
 	public int drawFromTube()
@@ -310,5 +315,35 @@ public class TileEntityLavaGen extends TileEntity implements IAspectContainer, I
 	@Override
 	public int takeEssentia(Aspect arg0, int arg1, ForgeDirection arg2) {
 		return 0;
+	}
+	
+	@Override
+	public void writeToNBT(NBTTagCompound nbt)
+	{
+		super.writeToNBT(nbt);
+		
+		if(this.tank.getCapacity() > 0)
+			nbt.setInteger("LAVA", this.tank.getFluidAmount());
+			
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound nbt)
+	{
+		super.readFromNBT(nbt);
+		this.tank.setFluid(new FluidStack(FluidRegistry.LAVA, nbt.getInteger("LAVA")));
+	}
+	
+	@Override
+	public Packet getDescriptionPacket() {
+	    NBTTagCompound tagCompound = new NBTTagCompound();
+	    writeToNBT(tagCompound);
+	    
+	    return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, -999, tagCompound);
+	}
+	
+	@Override
+	public void onDataPacket(NetworkManager networkManager, S35PacketUpdateTileEntity packet) {
+		this.readFromNBT(packet.func_148857_g());
 	}
 }
