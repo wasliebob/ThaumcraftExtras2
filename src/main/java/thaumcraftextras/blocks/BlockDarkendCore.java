@@ -126,7 +126,18 @@ public class BlockDarkendCore extends BlockContainer {
     @Override
     public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
     {
-    	world.setBlock(x, y, z, this, 0, 2);
+		Block brick = ConfigBlocks.blockCosmeticSolid;
+		Block altar = TCEBlocks.darkendAltar;
+		if(world.getBlockMetadata(x, y, z) != 0){
+			if(world.getBlock(x, y, z +1) != brick || world.getBlock(x, y, z -1) != brick || world.getBlock(x +1, y, z) != brick || world.getBlock(x -1, y, z) != brick ||
+				world.getBlock(x +1, y, z +1) != altar || world.getBlock(x +1, y, z -1) != altar || world.getBlock(x -1, y, z +1) != altar || world.getBlock(x -1, y, z -1) != altar || world.getBlock(x, y +3, z) != TCEBlocks.darkendMatrix){
+				world.setBlock(x +1, y, z +1, TCEBlocks.darkendAltar, 0, 2);
+				world.setBlock(x +1, y, z -1, TCEBlocks.darkendAltar, 0, 2);
+				world.setBlock(x -1, y, z +1, TCEBlocks.darkendAltar, 0, 2);
+				world.setBlock(x -1, y, z -1, TCEBlocks.darkendAltar, 0, 2);
+				world.setBlock(x, y + 3, z, TCEBlocks.darkendMatrix, 0, 2);
+				world.setBlock(x, y, z, this, 0, 2);
+			}
+		}
     }
-
 }

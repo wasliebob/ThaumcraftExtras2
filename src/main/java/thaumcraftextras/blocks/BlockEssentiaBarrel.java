@@ -120,7 +120,7 @@ public class BlockEssentiaBarrel extends BlockContainer{
 						if(stack.stackSize > 1)
 							stack.stackSize--;
 						else if(stack.stackSize == 1)
-							stack = null;
+		        			player.setCurrentItemOrArmor(0, null);
 						player.inventory.addItemStackToInventory(new ItemStack(ConfigItems.itemEssence, 1, 0));
 					}
 				}
@@ -132,7 +132,7 @@ public class BlockEssentiaBarrel extends BlockContainer{
 						if(stack.stackSize > 1)
 							stack.stackSize--;
 						else if(stack.stackSize == 1)
-							stack = null;	
+		        			player.setCurrentItemOrArmor(0, null);
 						player.inventory.addItemStackToInventory(new ItemStack(ConfigItems.itemEssence, 1, 0));
 					}
 				}else if(barrel.aspectFilter != null && barrel.aspectFilter == aspects.getAspects()[0]){

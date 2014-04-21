@@ -50,7 +50,7 @@ public class ThaumcraftExtras {
     {
 //		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GUIHandler());
     	initTiles();
-    	TCEEvents.init();
+    	TCEEvents.init(event);
     }
     
     public void initTiles()

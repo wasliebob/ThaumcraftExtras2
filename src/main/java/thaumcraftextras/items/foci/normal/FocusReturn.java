@@ -31,6 +31,7 @@ public class FocusReturn extends TCEItemFocus {
         Map<String, Double> xPos = new HashMap<String, Double>();
         Map<String, Double> yPos = new HashMap<String, Double>();
         Map<String, Double> zPos = new HashMap<String, Double>();
+        Map<String, Integer> dim = new HashMap<String, Integer>();
         
         String name;
         int color;
@@ -43,12 +44,15 @@ public class FocusReturn extends TCEItemFocus {
         		xPos.put(player.getDisplayName(), player.posX);
         		yPos.put(player.getDisplayName(), player.posY);
         		zPos.put(player.getDisplayName(), player.posZ);
+        		dim.put(player.getDisplayName(), player.dimension);
+        		
         		if(!world.isRemote)
         			player.addChatComponentMessage(new ChatComponentText("Bound return focus to a new location"));
         	}else{
         		if (wand.consumeAllVis(itemstack, player, getVisCost(), true, true)) {
         			String name = player.getDisplayName();
         			if(xPos.containsKey(name) && yPos.containsKey(name) && zPos.containsKey(name)){
+        				player.travelToDimension(dim.get(name));
         				player.setPosition(xPos.get(name), yPos.get(name), zPos.get(name));
         			}
         		}

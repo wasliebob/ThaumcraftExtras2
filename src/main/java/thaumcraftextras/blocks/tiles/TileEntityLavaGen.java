@@ -23,7 +23,7 @@ public class TileEntityLavaGen extends TileEntity implements IAspectContainer, I
 	AspectList list = new AspectList();
 	Aspect fire = Aspect.FIRE;
 	int am = 10;
-	FluidTank tank = new FluidTank(FluidRegistry.LAVA, 0, 10000);
+	public FluidTank tank = new FluidTank(FluidRegistry.LAVA, 0, 10000);
 	
 	@Override
 	public void updateEntity()
@@ -304,13 +304,11 @@ public class TileEntityLavaGen extends TileEntity implements IAspectContainer, I
 
 	@Override
 	public int addEssentia(Aspect arg0, int arg1, ForgeDirection arg2) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int takeEssentia(Aspect arg0, int arg1, ForgeDirection arg2) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 }
