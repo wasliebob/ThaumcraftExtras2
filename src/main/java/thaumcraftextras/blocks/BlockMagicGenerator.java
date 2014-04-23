@@ -33,8 +33,8 @@ public class BlockMagicGenerator extends BlockContainer{
 	@Override
     public void registerBlockIcons(IIconRegister ir) 
 	{
-		top = ir.registerIcon("thaumcraft:arcaneearbottom");
-		side = ir.registerIcon(ThaumcraftExtras.modName.toLowerCase() + ":" + "block_charger");
+		top = ir.registerIcon(ThaumcraftExtras.modName.toLowerCase() + ":" + "block_charger");
+		side = ir.registerIcon("thaumcraft:arcaneearbottom");
 	}	
 	
 	@Override

@@ -89,7 +89,7 @@ public class TCEItems {
 	{
 		fireChestplate = new ItemFlamingChestplate("Flaming Chestplate", "chestplate_flame", ArmorMaterial.DIAMOND, 2, 1, fireChestplateDamage, 7);
 		GameRegistry.registerItem(fireChestplate, fireChestplate.getUnlocalizedName());
-
+		
 		energyHelmet = new ItemEnergyHelmet("Energetic Helmet", "helmet_energy", ArmorMaterial.DIAMOND, 0, 0, energyHelmetDamage, 5);
 		GameRegistry.registerItem(energyHelmet, energyHelmet.getUnlocalizedName());
 

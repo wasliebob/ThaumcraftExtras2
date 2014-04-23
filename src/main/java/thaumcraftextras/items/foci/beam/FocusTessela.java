@@ -71,9 +71,9 @@ public class FocusTessela extends TCEItemFocus {
             					light.setWidth(0.125F);
             					light.finalizeBolt();
             					
-            			          for (int a = 0; a < 5; a++) {
-            			            Thaumcraft.proxy.sparkle((float)xPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, (float)yPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, (float)zPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, 2.0F + player.worldObj.rand.nextFloat(), 2, 0.05F + player.worldObj.rand.nextFloat() * 0.05F);
-            			          }
+            					for (int a = 0; a < 5; a++) {
+            						Thaumcraft.proxy.sparkle((float)xPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, (float)yPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, (float)zPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, 2.0F + player.worldObj.rand.nextFloat(), 2, 0.05F + player.worldObj.rand.nextFloat() * 0.05F);
+            					}
             				}
             			}
             		}

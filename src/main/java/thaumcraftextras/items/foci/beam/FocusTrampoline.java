@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.IEntitySelector;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,6 +12,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.common.Thaumcraft;
+import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumcraftextras.items.foci.TCEItemFocus;
 import thaumcraftextras.main.ThaumcraftExtras;
@@ -40,7 +43,7 @@ public class FocusTrampoline extends TCEItemFocus {
             	if (wand.consumeAllVis(itemstack, player, getVisCost(), !player.worldObj.isRemote, false))
             	{
             		if(mc.renderViewEntity != null){
-            		double range = 8.0D;
+            		double range = 8.0D*calcDistanceMod(wand, itemstack);
 
             			AxisAlignedBB bb = AxisAlignedBB.getBoundingBox(player.posX - range, player.posY - range, player.posZ - range, player.posX + range, player.posY + range, player.posZ + range);
             			List<Entity> entities = player.worldObj.selectEntitiesWithinAABB(Entity.class, bb, getSelector());
@@ -52,17 +55,43 @@ public class FocusTrampoline extends TCEItemFocus {
             			
             				float distance = (float) ((player.posX - xPos) * (player.posX - xPos) + (player.posY - yPos) * (player.posY - yPos) + (player.posZ - zPos) * (player.posZ - zPos));
             		
-                			if(distance < 8 && entity instanceof EntityLiving && !(entity instanceof EntityPlayer)){
+                			if(distance < 8*calcDistanceMod(wand, itemstack) && entity instanceof EntityLiving && !(entity instanceof EntityPlayer)){
             					EntityLiving living = (EntityLiving)entity;
             					
                 				living.performHurtAnimation();
             					
-        						living.motionY = 2.0F;
+        						living.motionY = 2.0F*calcDistanceMod(wand, itemstack);
         						living.hurtResistantTime = MathHelper.secondToTick(10);
+        						
+        						for (int a = 0; a < 5; a++) {
+        							Thaumcraft.proxy.sparkle((float)xPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, (float)yPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, (float)zPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, 2.0F + player.worldObj.rand.nextFloat(), 2, 0.05F + player.worldObj.rand.nextFloat() * 0.05F);
+        						}
             				}
             			}
             		}
             	}
+        }
+        
+        public int calcDistanceMod(ItemWandCasting wand, ItemStack stack)
+        {
+        	switch(EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack)))
+        	{
+        	case 0: return 1;
+        	case 1: return 2;
+        	case 2: return 3;
+        	case 3: return 4;
+        	case 4: return 5;
+        	case 5: return 6;
+        	default: return 1;
+        	}
+        }
+        
+        @Override
+        public boolean acceptsEnchant(int id) {
+        	if(id == Config.enchPotency.effectId)
+        		return true;
+        	
+        	return false;
         }
         
         public IEntitySelector getSelector(){
@@ -86,11 +115,6 @@ public class FocusTrampoline extends TCEItemFocus {
         @Override
         public AspectList getVisCost() {
                 return aspectNeed;
-        }
-        
-        @Override
-        public boolean acceptsEnchant(int id) {
-        	return false;
         }
         
         @Override
