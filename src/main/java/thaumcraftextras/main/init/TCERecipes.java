@@ -51,6 +51,13 @@ public class TCERecipes {
 			'X', Items.diamond,
 			'Y', new ItemStack(ConfigBlocks.blockCosmeticSolid)});
 		
+		GameRegistry.addShapedRecipe(new ItemStack(TCEBlocks.window_barrel_essentia), new Object[]{
+			"XXX",
+			"XYX",
+			"XXX",
+			'X', Blocks.glass,
+			'Y', TCEItems.essenceMagic});
+		
 	}
 	public static IRecipe recipeAltar;
 	public static IRecipe recipeCore;

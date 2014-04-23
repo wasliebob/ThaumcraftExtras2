@@ -43,7 +43,6 @@ public class BlockDarkendCore extends BlockContainer {
 		return false;
 	}
 
-
 	@Override
     public boolean isOpaqueCube()
     {

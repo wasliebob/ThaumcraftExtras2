@@ -4,7 +4,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 import thaumcraftextras.blocks.BlockDarkendAltar;
 import thaumcraftextras.blocks.BlockDarkendCore;
+import thaumcraftextras.blocks.BlockDummy;
 import thaumcraftextras.blocks.BlockEssentiaBarrel;
+import thaumcraftextras.blocks.BlockEssentiaBarrelWindow;
 import thaumcraftextras.blocks.BlockMagicBattery;
 import thaumcraftextras.blocks.BlockMagicCrystalCharger;
 import thaumcraftextras.blocks.BlockMagicGenerator;
@@ -27,6 +29,7 @@ public class TCEBlocks {
 	
 	public static void initBlocks()
 	{
+		dummy2 = new BlockDummy();
 		blockIgnis = new TCEBlock(Material.rock, "Ignis Block", "block_ignisFuel", true, new ItemStack(TCEItems.ignisFuel));
 		specialWardedGhost = new BlockWardedGhost("Warded Block: Ghost");
 		shocker = new BlockShocker(Material.iron, "Magical Tesslacoil");
@@ -41,6 +44,7 @@ public class TCEBlocks {
 		magicVoid = new BlockMagicVoid(Material.iron, "Magic Energy Void");
 		lavaGen = new BlockMagicLavaGenerator(Material.iron, "Magical Lava Generator");
 	}
+	public static BlockDummy dummy2;
 	public static TCEBlock blockIgnis;
 	public static BlockWardedGhost specialWardedGhost;
 	public static BlockShocker shocker;
@@ -58,6 +62,8 @@ public class TCEBlocks {
 	public static void initBarrels()
 	{
 		barrel_essentia = new BlockEssentiaBarrel(Material.iron, "Essentia Barrel");
+		window_barrel_essentia = new BlockEssentiaBarrelWindow(Material.iron, "Essentia Barrel Window");
 	}
 	public static BlockEssentiaBarrel barrel_essentia;
+	public static BlockEssentiaBarrelWindow window_barrel_essentia;
 }

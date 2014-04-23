@@ -85,6 +85,11 @@ public class TileEntityEssentiaBarrel extends TileJarFillable{
 	    tag.setByte("facing", (byte)this.facing);
 	}
 	
+	public Aspect getAspect()
+	{
+		return this.aspect;
+	}
+	
 	@Override
 	public int getMinimumSuction()
 	{

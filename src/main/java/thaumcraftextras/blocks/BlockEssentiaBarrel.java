@@ -12,6 +12,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IEssentiaContainerItem;
@@ -32,11 +33,13 @@ public class BlockEssentiaBarrel extends BlockContainer{
 		setBlockName(ThaumcraftExtras.modName.toLowerCase() + "." + "block" + "." + name);
 		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}
+	public IIcon glow;
 	
 	@Override
     public void registerBlockIcons(IIconRegister ir) 
 	{
 		blockIcon = ir.registerIcon("thaumcraft:arcaneearbottom");
+		glow = ir.registerIcon("thaumcraft:animatedglow");
 	}	
 	
 	@Override
@@ -65,12 +68,12 @@ public class BlockEssentiaBarrel extends BlockContainer{
                 		else if(stack.stackSize == 1)
                 			player.setCurrentItemOrArmor(0, null);
                 	}
-                }
+            	}
         	}
         }
         return true;
 	}
-	
+
 	public void addSpace(TileEntityEssentiaBarrel barrel, World world, EntityPlayer player, ItemStack stack){
 		if(barrel != null){
 			barrel.setMod(barrel.getMod() + 1);
