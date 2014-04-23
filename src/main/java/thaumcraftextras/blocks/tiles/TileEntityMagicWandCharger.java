@@ -19,12 +19,10 @@ public class TileEntityMagicWandCharger extends MagicEnergyReceiver implements I
 	
 	public TileEntityMagicWandCharger()
 	{
-		stacks = new ItemStack[1];
-		storage = new MagicEnergy(1000, 5);
 	}
-	public MagicEnergy storage;
+	public MagicEnergy storage = new MagicEnergy(1000, 5);
     int add = 2;
-    public ItemStack[] stacks;
+    public ItemStack[] stacks = new ItemStack[1];
     int energy;
     public static final String ENERGY = "ENERGY_MAGIC";
     

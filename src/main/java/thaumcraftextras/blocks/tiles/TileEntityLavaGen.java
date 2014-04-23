@@ -41,7 +41,7 @@ public class TileEntityLavaGen extends TileEntity implements IAspectContainer, I
 	public void generateLava()
 	{
 //		takeEssentia(fire, am, ForgeDirection.UNKNOWN);
-		this.fill(ForgeDirection.UP, new FluidStack(FluidRegistry.LAVA, drawFromTube()), canDrain(ForgeDirection.UP, FluidRegistry.LAVA));
+		this.fill(ForgeDirection.UNKNOWN, new FluidStack(FluidRegistry.LAVA, drawFromTube()), canDrain(ForgeDirection.UP, FluidRegistry.LAVA));
 	}
 	
 	public int drawFromTube()
@@ -65,7 +65,7 @@ public class TileEntityLavaGen extends TileEntity implements IAspectContainer, I
     
     ForgeDirection getOrientation() 
     {
-        return ForgeDirection.UP;
+        return ForgeDirection.DOWN;
     }
 	
     @Override

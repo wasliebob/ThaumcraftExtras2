@@ -5,12 +5,15 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import thaumcraftextras.blocks.tiles.TileEntityEssentiaBarrelWindow;
 import thaumcraftextras.main.ThaumcraftExtras;
 import thaumcraftextras.main.init.TCEBlocks;
 import thaumcraftextras.main.init.TCETabs;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockEssentiaBarrelWindow extends BlockContainer{
 
@@ -61,4 +64,22 @@ public class BlockEssentiaBarrelWindow extends BlockContainer{
 	{
 		world.removeTileEntity(x, y, z);	
 	}
+	
+    @SideOnly(Side.CLIENT)
+    public int getBlockColor()
+    {
+        return 16777215;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public int getRenderColor(int p_149741_1_)
+    {
+        return 16777215;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public int colorMultiplier(IBlockAccess acces, int x, int y, int z)
+    {    	
+        return 0;
+    }
 }

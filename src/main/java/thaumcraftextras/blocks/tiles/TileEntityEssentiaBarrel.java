@@ -105,18 +105,18 @@ public class TileEntityEssentiaBarrel extends TileJarFillable{
 	@Override
 	public boolean isConnectable(ForgeDirection face)
 	{
-		return face == ForgeDirection.UP || face == ForgeDirection.DOWN;
+		return face == ForgeDirection.UP || face == ForgeDirection.DOWN || face == ForgeDirection.EAST || face == ForgeDirection.NORTH || face == ForgeDirection.SOUTH || face == ForgeDirection.WEST;
 	}
 	  
 	@Override
 	public boolean canInputFrom(ForgeDirection face)
 	{
-		return face == ForgeDirection.UP || face == ForgeDirection.DOWN;
+		return face == ForgeDirection.UP || face == ForgeDirection.DOWN || face == ForgeDirection.EAST || face == ForgeDirection.NORTH || face == ForgeDirection.SOUTH || face == ForgeDirection.WEST;
 	}
 	  
 	@Override
 	public boolean canOutputTo(ForgeDirection face)
 	{
-		return face == ForgeDirection.UP || face == ForgeDirection.DOWN;
+		return face == ForgeDirection.UP || face == ForgeDirection.DOWN || face == ForgeDirection.EAST || face == ForgeDirection.NORTH || face == ForgeDirection.SOUTH || face == ForgeDirection.WEST;
 	}
 }

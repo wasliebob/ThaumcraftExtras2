@@ -2,6 +2,7 @@ package thaumcraftextras.main.init;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import thaumcraft.api.ThaumcraftApi;
@@ -305,6 +306,8 @@ public class TCERecipes {
 	{
 		TCEApi.addDarkInfusionRecipe(TCEItems.essenceDark, new ItemStack(TCEItems.essenceLight));
 		TCEApi.addDarkInfusionRecipe(Items.coal, new ItemStack(TCEItems.ignisFuel));
+		TCEApi.addDarkInfusionRecipe(TCEItems.essenceMagic, new ItemStack(TCEItems.essenceDark));
+		TCEApi.addDarkInfusionRecipe(ConfigItems.itemShard, new ItemStack(TCEItems.darkShard));
 		
 		if(Config.dark_exchange){
 			TCEApi.addDarkInfusionRecipe(Items.diamond, new ItemStack(Items.gold_ingot, 3, 0));
@@ -348,6 +351,7 @@ public class TCERecipes {
 			TCEApi.addDarkInfusionRecipe(Items.diamond_leggings, new ItemStack(Items.diamond, 7, 0));
 			TCEApi.addDarkInfusionRecipe(Items.diamond_boots, new ItemStack(Items.diamond, 4, 0));
 
+			TCEApi.addDarkInfusionRecipe(Item.getItemFromBlock(Blocks.coal_block), new ItemStack(TCEBlocks.blockIgnis));
 		}
 	}
 	

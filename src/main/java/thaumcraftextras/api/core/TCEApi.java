@@ -16,5 +16,10 @@ public class TCEApi {
 		darkInfusion.remove(input);
 	}
 	
+	public static HashMap<Item, ItemStack> darkInfuserList()
+	{
+		return darkInfusion;
+	}
+	
 	public static HashMap<Item, ItemStack> darkInfusion = new HashMap<Item, ItemStack>();
 }

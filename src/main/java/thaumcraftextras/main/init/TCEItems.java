@@ -46,6 +46,7 @@ public class TCEItems {
 		
 		xpShard = new ItemXPShard("xp", ColorHelper.getColorCodeFromColor(Color.green));
 		xpExtractor = new ItemXPExtractor("Experience Extractor");
+		
 	}
 	public static TCEItem essenceMagic;
 	public static TCEItem essenceLight;
@@ -54,7 +55,7 @@ public class TCEItems {
 	public static TCEItem darkThaumiumNugget;
 	public static TCEItem ignisFuel;
 	public static ItemMagicEnergyReader reader;
-	
+
 	public static TCEItemShard darkShard;	
 	public static ItemXPShard xpShard;
 	public static ItemXPExtractor xpExtractor;

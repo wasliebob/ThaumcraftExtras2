@@ -8,6 +8,7 @@ import thaumcraftextras.main.init.TCEItems;
 import thaumcraftextras.main.init.TCEMisc;
 import thaumcraftextras.main.init.TCERecipes;
 import thaumcraftextras.main.init.addons.TCEWands;
+import thaumcraftextras.main.init.intergration.IntergrationLoader;
 import thaumcraftextras.proxies.CommonProxy;
 import wasliecore.helpers.FileHelper;
 import cpw.mods.fml.common.Mod;
@@ -43,6 +44,8 @@ public class ThaumcraftExtras {
     	TCEBlocks.init();
     	
     	if(Config.addon_wands){TCEWands.init();};
+    	
+    	IntergrationLoader.init();
     }
     
     @EventHandler

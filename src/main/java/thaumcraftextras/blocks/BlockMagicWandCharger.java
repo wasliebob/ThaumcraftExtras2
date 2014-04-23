@@ -76,7 +76,7 @@ public class BlockMagicWandCharger extends BlockContainer{
 							else
 								player.setCurrentItemOrArmor(0, null);
 							
-							world.markBlockForUpdate(wand.xCoord, wand.yCoord, wand.zCoord);
+//							world.markBlockForUpdate(wand.xCoord, wand.yCoord, wand.zCoord);
 						}else{
 						}
 					}

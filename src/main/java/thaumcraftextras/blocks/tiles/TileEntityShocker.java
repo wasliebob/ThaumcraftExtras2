@@ -14,7 +14,7 @@ import thaumcraft.common.Thaumcraft;
 import wasliecore.helpers.MathHelper;
 
 public class TileEntityShocker extends TileEntity{
-
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public void updateEntity()
