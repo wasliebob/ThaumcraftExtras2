@@ -1,7 +1,5 @@
 package thaumcraftextras.proxies.client.renders;
 
-import java.awt.Color;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -36,43 +34,68 @@ public class TileEntityEssentiaBarrelRenderer extends TileEntitySpecialRenderer{
                 GL11.glEnable(GL11.GL_TEXTURE_2D);
 
 				Minecraft.getMinecraft().getTextureManager().bindTexture(getAspectIcon(barrel.getAspect()));
-				Tessellator tessellator = Tessellator.instance;
-				
+				Tessellator t = Tessellator.instance;
+				double d1 = 0.0001D;
+
 				GL11.glPushMatrix();
 				GL11.glTranslated(x, y, z);
 
-				//				GL11.glRotated(90D, 1D, 0D, 0D);
-				
-				tessellator.startDrawingQuads();
-				double d1 = 0.0001D;
-				Color color = new Color(barrel.getAspect().getColor());
-				tessellator.setColorRGBA(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
-	              
-				/** South */
-//				tessellator.addVertexWithUV((double)x, (double)y + 1.0D, (double)z - d1, 0.0D, 0.0D);
-//				tessellator.addVertexWithUV((double)x + 1.0D, (double)y + 1.0D, (double)z - d1, 1.0D, 0.0D);
-//				tessellator.addVertexWithUV((double)x + 1.0D, (double)y + 0.0D, (double)z - d1, 1.0D, 1.0D);
-//				tessellator.addVertexWithUV((double)x, (double)y + 0.05D, (double)z - d1, 0.0D, 1.0D);
-
-
-//				tessellator.addVertexWithUV(0, 0 + 1.0D, 0 - d1, 0.0D, 0.0D);
-//				tessellator.addVertexWithUV(0 + 1.0D, 0 + 1.0D, 0 - d1, 1.0D, 0.0D);
-//				tessellator.addVertexWithUV(0 + 1.0D, 0 + 0.0D, 0 - d1, 1.0D, 1.0D);
-//				tessellator.addVertexWithUV(0, 0 + 0.05D, 0 - d1, 0.0D, 1.0D);
-
-				tessellator.addVertexWithUV(0, 0 + 1.0D, 0 - d1, 1.0D, 0.0D);
-				tessellator.addVertexWithUV(0 + 1.0D, 0 + 1.0D, 0 - d1, 0.0D, 0.0D);
-				tessellator.addVertexWithUV(0 + 1.0D, 0 + 0.0D, 0 - d1, 0.0D, 1.0D);
-				tessellator.addVertexWithUV(0, 0 + 0.05D, 0 - d1, 1.0D, 1.0D);
-				
-				tessellator.draw();
-				
+				t.startDrawingQuads();	              
+				vertex(barrel, t, d1);
+				t.draw();
 				GL11.glPopMatrix();
+				
+				GL11.glPushMatrix();
+				GL11.glTranslated(x, y, z + 1.0D);
+				GL11.glRotated(90D, 0D, 1D, 0D);
+				
+				t.startDrawingQuads();
+				vertex(barrel, t, d1);
+				t.draw();
+				GL11.glPopMatrix();
+				
+				GL11.glPushMatrix();
+				GL11.glTranslated(x + 1.0D, y, z + 1.0D);
+				GL11.glRotated(180D, 0D, 1D, 0D);
+				
+				t.startDrawingQuads();
+				vertex(barrel, t, d1);
+				t.draw();
+				GL11.glPopMatrix();
+				
+				GL11.glPushMatrix();
+				GL11.glTranslated(x + 1.0D, y, z);
+				GL11.glRotated(270D, 0D, 1D, 0D);
 
+				t.startDrawingQuads();
+				vertex(barrel, t, d1);
+				t.draw();
+				GL11.glPopMatrix();
 			}
 		}
 	}
-		
+	
+	public void vertex(TileEntityEssentiaBarrel barrel, Tessellator t, double d1)
+	{
+//		Color color = new Color(barrel.getAspect().getColor());
+		t.setColorOpaque_I(barrel.getAspect().getColor());
+//		tessellator.setColorRGBA(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+		t.addVertexWithUV(0, 0 + 1.0D, 0 - d1, 1.0D, 0.0D);
+		t.addVertexWithUV(0 + 1.0D, 0 + 1.0D, 0 - d1, 0.0D, 0.0D);
+		t.addVertexWithUV(0 + 1.0D, 0 + 0.0D, 0 - d1, 0.0D, 1.0D);
+		t.addVertexWithUV(0, 0 + 0.05D, 0 - d1, 1.0D, 1.0D);
+	}
+	
+	public void vertex2(TileEntityEssentiaBarrel barrel, Tessellator t, double d1)
+	{
+//		Color color = new Color(barrel.getAspect().getColor());
+		t.setColorOpaque_I(barrel.getAspect().getColor());
+//		tessellator.setColorRGBA(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha());
+		t.addVertexWithUV(0, 0 + 1.0D, 0 - d1, 1.0D, 0.0D);
+		t.addVertexWithUV(0 + 1.0D, 0 + 1.0D, 0 - d1, 0.0D, 0.0D);
+		t.addVertexWithUV(0 + 1.0D, 0 + 0.0D, 0 - d1, 0.0D, 1.0D);
+		t.addVertexWithUV(0, 0 + 0.05D, 0 - d1, 1.0D, 1.0D);
+	}		
 	public ResourceLocation getAspectIcon(Aspect asp)
 	{
 		return asp.getImage();
