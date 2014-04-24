@@ -9,6 +9,7 @@ import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import thaumcraftextras.blocks.tiles.TileEntityShocker;
+import thaumcraftextras.helpers.RenderingHelper;
 import thaumcraftextras.main.ThaumcraftExtras;
 import thaumcraftextras.main.init.TCETabs;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -29,6 +30,24 @@ public class BlockShocker extends BlockContainer{
 	IIcon top;
 	IIcon bottom;
 	
+	@Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
+    
+	@Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
+	
+    @SideOnly(Side.CLIENT)
+	@Override
+	public int getRenderType() {
+    	return RenderingHelper.render_tesseract;
+    }
+    
 	@Override
     public void registerBlockIcons(IIconRegister ir) 
 	{

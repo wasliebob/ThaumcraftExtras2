@@ -66,27 +66,30 @@ public class BlockMagicWandCharger extends BlockContainer{
 			if(!world.isRemote){
 				if(player.getCurrentEquippedItem() != null){
 					TileEntity tile = world.getTileEntity(x, y, z);
-					if(tile != null){
 						if(player.getCurrentEquippedItem().getItem() instanceof ItemWandCasting){
-							TileEntityMagicWandCharger wand = (TileEntityMagicWandCharger)world.getTileEntity(x, y, z);
-							wand.setInventorySlotContents(0, player.getCurrentEquippedItem().copy());
+							TileEntityMagicWandCharger charger = (TileEntityMagicWandCharger)tile;
+							charger.setInventorySlotContents(0, player.getCurrentEquippedItem().copy());
 							
 							if(player.getCurrentEquippedItem().stackSize > 1)
 								player.getCurrentEquippedItem().stackSize--;
 							else
 								player.setCurrentItemOrArmor(0, null);
 							
-//							world.markBlockForUpdate(wand.xCoord, wand.yCoord, wand.zCoord);
-						}else{
+							charger.isDone = false;
+//							world.markBlockForUpdate(charger.xCoord, charger.yCoord, charger.zCoord);
 						}
-					}
-				}
-			}
+						}else{
+							
+						}
+		}
 		}else{
 			if(player.isSneaking()){
 				if(player.getCurrentEquippedItem() == null){
+					TileEntity tile = world.getTileEntity(x, y, z);
+					TileEntityMagicWandCharger charger = (TileEntityMagicWandCharger)tile;
 					dropItems(world, x, y, z);
-					world.markBlockForUpdate(x, y, z);
+					charger.isDone = true;
+//					world.markBlockForUpdate(x, y, z);
 				}
 			}
 		}

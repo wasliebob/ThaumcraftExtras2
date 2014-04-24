@@ -3,6 +3,7 @@ package thaumcraftextras.api.misc.tiles;
 import thaumcraftextras.api.interfaces.IMagicEnergyReceiver;
 
 public class MagicEnergyReceiver extends MagicEnergyBase implements IMagicEnergyReceiver{
+    public boolean isDone = false;
 
 	@Override
 	public int getEnergy() {

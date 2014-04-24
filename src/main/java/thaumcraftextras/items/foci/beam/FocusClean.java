@@ -62,7 +62,7 @@ public class FocusClean extends TCEItemFocus {
         				if (wand.consumeAllVis(itemstack, player, getVisCost(), !player.worldObj.isRemote, false))
         				{
             				if(!player.worldObj.isRemote)
-            				{
+            				{            					
                 	            player.worldObj.setBlock(x, y, z, Blocks.air);
             				}
             	            if(player.worldObj.isRemote)

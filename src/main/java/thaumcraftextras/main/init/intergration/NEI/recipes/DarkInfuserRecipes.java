@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import thaumcraftextras.api.core.TCEApi;
+import thaumcraftextras.api.core.recipes.DarkInfuserRecipeManager;
 import codechicken.nei.NEIClientUtils;
 import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
@@ -84,7 +84,7 @@ public class DarkInfuserRecipes extends TemplateRecipeHandler{
 	    {
 	        if(outputId.equals("infuse") && getClass() == DarkInfuserRecipes.class)
 	        {
-	            HashMap<Item, ItemStack> recipes = (HashMap<Item, ItemStack>) TCEApi.darkInfuserList();
+	            HashMap<Item, ItemStack> recipes = (HashMap<Item, ItemStack>) DarkInfuserRecipeManager.darkInfuserList();
 	            
 	            for(Entry<Item, ItemStack> recipe : recipes.entrySet())
 	            {
@@ -101,7 +101,7 @@ public class DarkInfuserRecipes extends TemplateRecipeHandler{
 	    @Override
 	    public void loadCraftingRecipes(ItemStack result)
 	    {
-            HashMap<Item, ItemStack> recipes = (HashMap<Item, ItemStack>) TCEApi.darkInfuserList();
+            HashMap<Item, ItemStack> recipes = (HashMap<Item, ItemStack>) DarkInfuserRecipeManager.darkInfuserList();
 	        
 	        for(Entry<Item, ItemStack> recipe : recipes.entrySet())
 	        {
@@ -117,7 +117,7 @@ public class DarkInfuserRecipes extends TemplateRecipeHandler{
 	    @Override
 	    public void loadUsageRecipes(String inputId, Object... ingredients)
 	    {
-	        if(inputId.equals("fuel") && getClass() == DarkInfuserRecipes.class)//don't want subclasses getting a hold of this
+	        if(inputId.equals("fuel") && getClass() == DarkInfuserRecipes.class)
 	        {
 	            loadCraftingRecipes("infuse");
 	        }
@@ -130,7 +130,7 @@ public class DarkInfuserRecipes extends TemplateRecipeHandler{
 	    @Override
 	    public void loadUsageRecipes(ItemStack stacks)
 	    {
-            HashMap<Item, ItemStack> recipes = (HashMap<Item, ItemStack>) TCEApi.darkInfuserList();
+            HashMap<Item, ItemStack> recipes = (HashMap<Item, ItemStack>) DarkInfuserRecipeManager.darkInfuserList();
 	        Item ingredients = stacks.getItem();
 	        
 	        for(Entry<Item, ItemStack> recipe : recipes.entrySet())

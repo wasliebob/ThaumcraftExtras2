@@ -11,7 +11,6 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraftforge.common.util.Constants;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.items.wands.ItemWandCasting;
-import thaumcraftextras.api.interfaces.IMagicEnergyContainerItem;
 import thaumcraftextras.api.misc.classes.MagicEnergy;
 import thaumcraftextras.api.misc.tiles.MagicEnergyReceiver;
 
@@ -31,26 +30,39 @@ public class TileEntityMagicWandCharger extends MagicEnergyReceiver implements I
     {
     	if(!worldObj.isRemote){
     		if(getStackInSlot(0) != null){
-    			if(getStackInSlot(0).getItem() instanceof ItemWandCasting){
-    				ItemWandCasting wand = (ItemWandCasting)getStackInSlot(0).getItem();
-    					for(Aspect asp : Aspect.getPrimalAspects()){
-    						if(wand.getVis(getStackInSlot(0), asp) + add <= wand.getMaxVis(getStackInSlot(0)) && hasEnoughEnergy()){
-    							wand.addVis(getStackInSlot(0), asp, add, true);
+    			if(getStackInSlot(0).getItem() instanceof ItemWandCasting){ 
+    				ItemStack con = getStackInSlot(0);
+    				ItemWandCasting wand = (ItemWandCasting)con.getItem();
+    				for(Aspect asp : Aspect.getPrimalAspects()){
+    					if(!(wand.getVis(getStackInSlot(0), asp) + add <= wand.getMaxVis(getStackInSlot(0)) && hasEnoughEnergy())){
+    						isDone = true;
+    					}else if(wand.getVis(getStackInSlot(0), asp) + add <= wand.getMaxVis(getStackInSlot(0)) && hasEnoughEnergy()){
+    						if(hasEnoughEnergy()){
+    							chargeItem(con, add);
     							decreaseEnergy(storage.getMaxTransfer());
     						}
-    						if(hasEnoughEnergy())
-							worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+    					}else{
+    						isDone = true;
     					}
+    				}
     			}
     		}else{
-    			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
     		}
     	}
     }
     
+    public void chargeItem(ItemStack con, int add){
+    	ItemWandCasting wand = (ItemWandCasting)getStackInSlot(0).getItem();
+		for(Aspect asp : Aspect.getPrimalAspects()){
+			if(wand.getVis(getStackInSlot(0), asp) + add <= wand.getMaxVis(getStackInSlot(0)) && hasEnoughEnergy()){
+				wand.addVis(getStackInSlot(0), asp, add, true);
+				decreaseEnergy(storage.getMaxTransfer());
+			}
+		}
+    }
+    
     @Override
     public boolean hasEnoughEnergy(){
-    	if(shouldReceive()){
     	if(storage.getEnergy() - storage.getMaxTransfer() >= 0)
     		return true;
     	else if(storage.getMaxEnergy() - storage.getEnergy() < 0)
@@ -61,25 +73,7 @@ public class TileEntityMagicWandCharger extends MagicEnergyReceiver implements I
     		return false;
     	else
     		return false;
-    	}
-    	return false;
     }
-
-	@Override
-	public boolean shouldReceive()
-	{
-		if(getStackInSlot(0) != null){
-			if(getStackInSlot(0).getItem() instanceof IMagicEnergyContainerItem){
-				ItemStack con = getStackInSlot(0);
-//				if(hasEnoughEnergy()){
-						if((con.getItemDamage() - add >= 0)){
-							return true;
-						}
-//				}
-			}
-		}
-		return false;
-	}
 	
 	@Override
 	public int getEnergy() {
@@ -94,21 +88,16 @@ public class TileEntityMagicWandCharger extends MagicEnergyReceiver implements I
 	@Override
 	public void setEnergy(int energy) {
 		storage.setEnergy(energy);
-		
-		if(worldObj != null)
-		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
 	@Override
 	public void increaseEnergy(int energy) {
 		storage.addEnergy(energy);
-//		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 	
 	@Override
 	public void decreaseEnergy(int energy) {
 		storage.removeEnergy(energy);
-//		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 	
 	@Override

@@ -1,25 +1,13 @@
 package thaumcraftextras.api.core;
 
-import java.util.HashMap;
-
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
+import thaumcraftextras.api.core.recipes.DarkInfuserRecipeManager;
 public class TCEApi {
+	public static DarkInfuserRecipeManager darkInfuser;
+
 	public static void addDarkInfusionRecipe(Item input, ItemStack output)
 	{
-		darkInfusion.put(input, output);
+		DarkInfuserRecipeManager.darkInfusion.put(input, output);
 	}
-	
-	public static void removeDarkInfusionRecipe(Item input)
-	{
-		darkInfusion.remove(input);
-	}
-	
-	public static HashMap<Item, ItemStack> darkInfuserList()
-	{
-		return darkInfusion;
-	}
-	
-	public static HashMap<Item, ItemStack> darkInfusion = new HashMap<Item, ItemStack>();
 }

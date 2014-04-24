@@ -13,7 +13,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.config.ConfigItems;
-import thaumcraftextras.api.core.TCEApi;
+import thaumcraftextras.api.core.recipes.DarkInfuserRecipeManager;
 import thaumcraftextras.main.init.TCEItems;
 import wasliecore.helpers.MathHelper;
 
@@ -44,8 +44,8 @@ public class TileEntityDarkendCore extends TileEntity{
 		
 				if(distance < 15.0 && entity instanceof EntityItem){
 					EntityItem item = (EntityItem)entity;
-					if((TCEApi.darkInfusion.containsKey(item.getEntityItem().getItem()))){
-						doStuff(item, TCEApi.darkInfusion.get(item.getEntityItem().getItem()));
+					if((DarkInfuserRecipeManager.darkInfusion.containsKey(item.getEntityItem().getItem()))){
+						doStuff(item, DarkInfuserRecipeManager.darkInfusion.get(item.getEntityItem().getItem()));
 					}else{
 					if((item.getEntityItem().getItem() == ConfigItems.itemResource && item.getEntityItem().getItemDamage() == 2))
 						doStuff(item, new ItemStack(TCEItems.darkThaumium));

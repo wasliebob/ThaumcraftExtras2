@@ -26,7 +26,6 @@ public class BlockEssentiaBarrelWindow extends BlockContainer{
 		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}
 
-	
 	@Override
 	public boolean isOpaqueCube()
 	{

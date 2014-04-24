@@ -7,7 +7,12 @@ import thaumcraftextras.api.interfaces.IMagicEnergyReceiver;
 import thaumcraftextras.blocks.tiles.TileEntityMagicBattery;
 
 public class MagicEnergyUniversal extends MagicEnergyBase implements IMagicEnergy{
-
+	public boolean isSending = false;
+	
+	public void setSending(boolean value){
+		isSending = value;
+	}
+	
 	@Override
 	public int getEnergy() {
 		return 0;

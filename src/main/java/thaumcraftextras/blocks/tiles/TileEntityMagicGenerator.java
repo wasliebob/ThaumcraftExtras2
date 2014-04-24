@@ -29,6 +29,8 @@ public class TileEntityMagicGenerator extends MagicEnergySender implements IAspe
 	{
 		storage = new MagicEnergy(1000, 10);
 		map.put(Aspect.MAGIC, 10);
+		baseTime = 40;
+		chargeTime = baseTime;
 	}
 	public MagicEnergy storage;
     public static Map<Aspect, Integer> map = new HashMap<Aspect, Integer>();
@@ -36,37 +38,74 @@ public class TileEntityMagicGenerator extends MagicEnergySender implements IAspe
     int energy;
     public static final String ENERGY = "ENERGY_MAGIC";
     public static final String COLOR = "COLOR_MAGIC";
+    int baseTime;
+    int chargeTime;
     
     @Override
     public void updateEntity() 
     {
     	if(!worldObj.isRemote){
     		TileEntity tile = checkForBlock(worldObj, xCoord, yCoord, zCoord);
-    			if(tile != null){
-    				if(tile instanceof MagicEnergyUniversal){
-    					MagicEnergyUniversal to = (MagicEnergyUniversal)tile;
-    					if(getEnergy() == 0){
-    							increaseEnergy(drawFromTube());
-    					}else{
-        						if(Minecraft.getMinecraft().renderViewEntity != null){
-        							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, this.getColor());}
-        							to.increaseEnergy(calcEnergy(to));
-    					}
-    				}else if(tile instanceof MagicEnergyReceiver){
-    					MagicEnergyReceiver to = (MagicEnergyReceiver)tile;
-    					if(getEnergy() == 0){
-    							increaseEnergy(drawFromTube());
-    					}else{
-        						if(Minecraft.getMinecraft().renderViewEntity != null){
-        							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, this.getColor());}
-        							to.increaseEnergy(calcEnergy(to));
-    					}
-    				}
-
-    				}else{
-        				increaseEnergy(drawFromTube());
-    				}
+    		if(tile != null){
+    			if(tile instanceof MagicEnergyUniversal){
+					MagicEnergyUniversal to = (MagicEnergyUniversal)tile;
+					if(getEnergy() == 0 && to.getEnergy() + calcEnergy(to) <= to.getMaxEnergy()){
+						if(!to.isSending){
+						to.increaseEnergy(calcEnergy(to));
+						if(Minecraft.getMinecraft().renderViewEntity != null){
+    						Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, this.getColor());
+						}
+						
+						updateBlocks(to);
+						}
+					}else if(to.getEnergy() + calcEnergy(to) <= to.getMaxEnergy()){
+						if(!to.isSending){
+						to.increaseEnergy(drawFromTube());
+						updateBlocks(to);
+						}
+					}else if(getEnergy() + calcEnergyA() <= to.getMaxEnergy()){
+						if(!to.isSending){
+						to.increaseEnergy(drawFromTube());
+						
+						updateBlocks(to);
+					}
+					}
+    			}else if(tile instanceof MagicEnergyReceiver){
+    				MagicEnergyReceiver to = (MagicEnergyReceiver)tile;
+					if(getEnergy() == 0 && to.getEnergy() + calcEnergy(to) <= to.getMaxEnergy()){
+						to.increaseEnergy(calcEnergy(to));
+						if(Minecraft.getMinecraft().renderViewEntity != null){
+    						Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, this.getColor());
+						}
+						updateBlocks(to);
+					}else if(to.getEnergy() + calcEnergy(to) <= to.getMaxEnergy()){
+						to.increaseEnergy(drawFromTube());
+						updateBlocks(to);
+					}else if(getEnergy() + calcEnergyA() <= to.getMaxEnergy()){
+						to.increaseEnergy(drawFromTube());
+						updateBlocks(to);
+					}
+    			}else{
+    				
+    			}
+    		}else if(getEnergy() + drawFromTube() <= getMaxEnergy()){
+    			increaseEnergy(drawFromTube());
+//    			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+    		}
     	}
+    }
+
+    
+    public void updateBlocks(MagicEnergyReceiver to){
+    	worldObj.markBlockForUpdate(to.xCoord, to.yCoord, to.zCoord);
+    	worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+    }
+    
+    public void updateBlocks(MagicEnergyUniversal to){
+		if(!to.isSending){
+    	worldObj.markBlockForUpdate(to.xCoord, to.yCoord, to.zCoord);
+    	worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+		}
     }
 
 	@Override
@@ -99,6 +138,7 @@ public class TileEntityMagicGenerator extends MagicEnergySender implements IAspe
 	         TileEntity tile = ThaumcraftApiHelper.getConnectableTile(worldObj, xCoord, yCoord, zCoord, orientation);
 
 	         if (tile != null) {
+	        	 worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	                 IEssentiaTransport ic = (IEssentiaTransport) tile;
 
 	                 if (!ic.canOutputTo(orientation.getOpposite()))
@@ -221,13 +261,31 @@ public class TileEntityMagicGenerator extends MagicEnergySender implements IAspe
 		@Override
 		public void decreaseEnergy(int energy) {
 			storage.removeEnergy(energy);
-			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+		}
+		
+		public int calcEnergyA()
+		{
+			if(getEnergy() >= getMaxTransfer()){
+				if(getMaxEnergy() - getEnergy() > getMaxTransfer()){
+					return this.getMaxTransfer();
+				}else if(this.getMaxEnergy() - this.getEnergy() < this.getMaxTransfer()){
+					return this.getMaxEnergy() - this.getEnergy();
+				}else if(this.getMaxEnergy() - this.getEnergy() == this.getMaxTransfer()){
+					return this.getMaxTransfer();
+				}else if(this.getEnergy() == this.getMaxEnergy()){
+					return 0;
+				}else{
+					return 0;
+				}
+			}else if(this.getEnergy() + this.getMaxTransfer() <= this.getMaxEnergy()){
+				return this.getMaxTransfer();
+			}else{
+				return 0;
+			}
 		}
 		
 		public int calcEnergy(MagicEnergyUniversal to)
 		{
-			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-			worldObj.markBlockForUpdate(to.xCoord, to.yCoord, to.zCoord);
 			if(getEnergy() >= to.getMaxTransfer()){
 				if(to.getMaxEnergy() - to.getEnergy() > to.getMaxTransfer()){
 					decreaseEnergy(to.getMaxTransfer());
@@ -243,6 +301,8 @@ public class TileEntityMagicGenerator extends MagicEnergySender implements IAspe
 				}else{
 					return 0;
 				}
+			}else if(to.getEnergy() + to.getMaxTransfer() <= to.getMaxEnergy()){
+				return to.getMaxTransfer();
 			}else{
 				return 0;
 			}
@@ -250,8 +310,6 @@ public class TileEntityMagicGenerator extends MagicEnergySender implements IAspe
 		
 		public int calcEnergy(MagicEnergyReceiver to)
 		{
-			worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-			worldObj.markBlockForUpdate(to.xCoord, to.yCoord, to.zCoord);
 			if(to.shouldReceive()){
 			if(getEnergy() >= to.getMaxTransfer()){
 				if(to.getMaxEnergy() - to.getEnergy() > to.getMaxTransfer()){
@@ -269,7 +327,7 @@ public class TileEntityMagicGenerator extends MagicEnergySender implements IAspe
 					return 0;
 				}
 			}else{
-				return 0;
+				return to.getMaxTransfer();
 			}
 			}else{
 				return 0;

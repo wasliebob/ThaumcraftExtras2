@@ -75,7 +75,8 @@ public class BlockMagicCrystalCharger extends BlockContainer{
 							else
 								player.setCurrentItemOrArmor(0, null);
 							
-							world.markBlockForUpdate(charger.xCoord, charger.yCoord, charger.zCoord);
+							charger.isDone = false;
+//							world.markBlockForUpdate(charger.xCoord, charger.yCoord, charger.zCoord);
 						}
 						}else{
 							
@@ -84,12 +85,11 @@ public class BlockMagicCrystalCharger extends BlockContainer{
 		}else{
 			if(player.isSneaking()){
 				if(player.getCurrentEquippedItem() == null){
-//					TileEntity tile = world.getTileEntity(x, y, z);
-//					TileEntityMagicCrystalCharger charger = (TileEntityMagicCrystalCharger)tile;
-
-//					TileEntityMagicWandCharger tile = (TileEntityMagicWandCharger)world.getTileEntity(x, y, z);
+					TileEntity tile = world.getTileEntity(x, y, z);
+					TileEntityMagicCrystalCharger charger = (TileEntityMagicCrystalCharger)tile;
 					dropItems(world, x, y, z);
-					world.markBlockForUpdate(x, y, z);
+					charger.isDone = true;
+//					world.markBlockForUpdate(x, y, z);
 				}
 			}
 		}

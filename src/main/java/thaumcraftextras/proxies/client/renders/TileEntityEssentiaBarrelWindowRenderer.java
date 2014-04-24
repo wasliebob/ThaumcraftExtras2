@@ -105,7 +105,7 @@ public class TileEntityEssentiaBarrelWindowRenderer extends TileEntitySpecialRen
 					if(te.tank.getFluidAmount() > 0 && maxYY / (te.tank.getCapacity()/te.tank.getFluidAmount()) <= maxYY)
 						maxY = maxYY/(te.tank.getCapacity() / te.tank.getFluidAmount());
 					else
-						maxY = maxYY;
+						maxY = 0;
 
 					renderBlocks.setRenderBounds(0.025D, 0.025D, 0.025D, 0.975D, maxY, 0.975D);
 					tessellator.startDrawingQuads();

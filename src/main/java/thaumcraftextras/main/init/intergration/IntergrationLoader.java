@@ -8,8 +8,7 @@ public class IntergrationLoader {
 	{
 		if(Loader.isModLoaded("NotEnoughItems")){
 			NotEnoughItems.init();
-				printMessage("Not Enough Items");
-		}
+				printMessage("Not Enough Items");}
 	}
 	
 	public static void printMessage(String mod){

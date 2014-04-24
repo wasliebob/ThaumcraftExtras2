@@ -31,26 +31,30 @@ public class TileEntityMagicCrystalCharger extends MagicEnergyReceiver implement
     {
     	if(!worldObj.isRemote){
     		if(getStackInSlot(0) != null){
-    			if(getStackInSlot(0).getItem() instanceof IMagicEnergyContainerItem){
+    			if(getStackInSlot(0).getItem() instanceof IMagicEnergyContainerItem){ 
     				ItemStack con = getStackInSlot(0);
-//    				if(hasEnoughEnergy()){
-    						if((con.getItemDamage() - add >= 0)){
-    							if(hasEnoughEnergy()){
-    								con.setItemDamage(con.getItemDamage() - add);
-    								decreaseEnergy(storage.getMaxTransfer());
-    							}
+    					if(!(con.getItemDamage() - add >= 0)){
+    						isDone = true;
+    					}else if((con.getItemDamage() - add >= 0)){
+    						if(hasEnoughEnergy()){
+    							chargeItem(con, add);
+    							decreaseEnergy(storage.getMaxTransfer());
     						}
-//    				}else{
-//    				}
-    			}
+    					}else{
+    						isDone = true;
+    					}
+    				}
     		}else{
     		}
     	}
     }
     
+    public void chargeItem(ItemStack con, int add){
+		con.setItemDamage(con.getItemDamage() - add);
+    }
+    
     @Override
     public boolean hasEnoughEnergy(){
-    	if(shouldReceive()){
     	if(storage.getEnergy() - storage.getMaxTransfer() >= 0)
     		return true;
     	else if(storage.getMaxEnergy() - storage.getEnergy() < 0)
@@ -61,13 +65,24 @@ public class TileEntityMagicCrystalCharger extends MagicEnergyReceiver implement
     		return false;
     	else
     		return false;
-    	}
-    	return false;
     }
+    
+	@Override
+	public boolean shouldReceive()
+	{
+		if(getStackInSlot(0) != null){
+			if(getStackInSlot(0).getItem() instanceof IMagicEnergyContainerItem){
+				ItemStack con = getStackInSlot(0);
+						if((con.getItemDamage() - add >= 0)){
+							return true;
+						}
+			}
+		}
+		return false;
+	}
 
 	@Override
 	public int getEnergy() {
-//		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 		return storage.getEnergy();
 	}
 
@@ -79,42 +94,21 @@ public class TileEntityMagicCrystalCharger extends MagicEnergyReceiver implement
 	@Override
 	public void setEnergy(int energy) {
 		storage.setEnergy(energy);
-		
-		if(worldObj != null)
-		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 
 	@Override
 	public void increaseEnergy(int energy) {
 		storage.addEnergy(energy);
-//		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 	
 	@Override
 	public void decreaseEnergy(int energy) {
 		storage.removeEnergy(energy);
-//		worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	}
 	
 	@Override
 	public int getMaxTransfer(){
 		return storage.getMaxTransfer();
-	}
-	
-	@Override
-	public boolean shouldReceive()
-	{
-		if(getStackInSlot(0) != null){
-			if(getStackInSlot(0).getItem() instanceof IMagicEnergyContainerItem){
-				ItemStack con = getStackInSlot(0);
-//				if(hasEnoughEnergy()){
-						if((con.getItemDamage() - add >= 0)){
-							return true;
-						}
-//				}
-			}
-		}
-		return false;
 	}
 
 	@Override

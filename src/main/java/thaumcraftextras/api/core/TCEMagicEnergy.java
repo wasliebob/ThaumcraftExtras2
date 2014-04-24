@@ -5,7 +5,7 @@ public class TCEMagicEnergy {
 	{
 		return (amountEssentia*essentia);
 	}
-	public static int essentia = 1;
+	public static int essentia = 10;
 	
 	public static int convertXPShardToMCE(int amountShards)
 	{
