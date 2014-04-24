@@ -34,7 +34,7 @@ public class BlockEssentiaBarrel extends BlockContainer{
 		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}
 	public IIcon glow;
-	
+    
 	@Override
     public void registerBlockIcons(IIconRegister ir) 
 	{

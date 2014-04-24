@@ -9,9 +9,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IIcon;
-
-import org.lwjgl.input.Keyboard;
-
 import thaumcraftextras.api.interfaces.IMagicEnergyContainerItem;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -76,11 +73,7 @@ public class MagicEnergyCrystal extends Item implements IMagicEnergyContainerIte
 	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean id)
 	{		
-		if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT)){
-				list.add(EnumChatFormatting.RED + "Energy Stored: " + EnumChatFormatting.GRAY + (stack.getMaxDamage() - stack.getItemDamage()) + "/" + stack.getMaxDamage());
-			}else{
-				list.add(EnumChatFormatting.GREEN + "Press " + "Shift " + "for more info.");
-			}
+		list.add(EnumChatFormatting.RED + "Energy Stored: " + EnumChatFormatting.GRAY + (stack.getMaxDamage() - stack.getItemDamage()) + "/" + stack.getMaxDamage());
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })

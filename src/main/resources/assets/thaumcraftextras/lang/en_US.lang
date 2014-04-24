@@ -17,7 +17,7 @@ tile.thaumcraftextras.block.Magic Wand Charger.name=Magic Wand Charger
 tile.thaumcraftextras.block.Magic Crystal Charger.name=Magic Crystal Charger
 tile.thaumcraftextras.block.Magic Energy Void.name=Magic Energy Void
 tile.thaumcraftextras.block.Magical Lava Generator.name=Magical Lava Generator
-tile.thaumcraftextras.block.Essentia Barrel.name=Essentia Crate
+tile.thaumcraftextras.block.Essentia Barrel.name=Essentia Barrel
 tile.thaumcraftextras.block.Essentia Barrel Window.name=Essentia Barrel Window
 ==Items==
 item.thaumcraftextras.crystal.1.name=Tiny Magic Energy Crystal
@@ -125,7 +125,7 @@ Wand_Focus:_Return=Wand Focus: Return
 Wand_Focus:_Clean=Wand Focus: Clean
 Dark_Thaumium=Dark Thaumium
 Magic_Energy=Magic Energy
-Essentia_Barrels=Essentia Crate
+Essentia_Barrels=Essentia Barrel
 Containment=Entity Containment
 Shocker=Thaumaturge Tesseract
 Wand_Focus_Shock=Wand Focus: Multi Shock

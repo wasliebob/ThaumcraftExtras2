@@ -9,6 +9,10 @@ public class IntergrationLoader {
 		if(Loader.isModLoaded("NotEnoughItems")){
 			NotEnoughItems.init();
 				printMessage("Not Enough Items");}
+		
+		if(Loader.isModLoaded("ComputerCraft")){
+			ComputerCraft.init();
+			printMessage("ComputerCraft");}
 	}
 	
 	public static void printMessage(String mod){
