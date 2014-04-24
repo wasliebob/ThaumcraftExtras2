@@ -6,7 +6,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
@@ -49,12 +48,6 @@ public class TileEntityDarkendCore extends TileEntity{
 					}else{
 					if((item.getEntityItem().getItem() == ConfigItems.itemResource && item.getEntityItem().getItemDamage() == 2))
 						doStuff(item, new ItemStack(TCEItems.darkThaumium));
-					if((item.getEntityItem().getItem() == Items.coal))
-						doStuff(item, new ItemStack(TCEItems.ignisFuel));
-					if((item.getEntityItem().getItem() == TCEItems.essenceMagic))
-						doStuff(item, new ItemStack(TCEItems.essenceDark));
-					if((item.getEntityItem().getItem() == ConfigItems.itemShard))
-						doStuff(item, new ItemStack(TCEItems.darkShard));
 					}
 				}
 			}

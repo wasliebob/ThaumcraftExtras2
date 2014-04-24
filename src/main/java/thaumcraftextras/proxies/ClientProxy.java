@@ -3,12 +3,10 @@ package thaumcraftextras.proxies;
 import net.minecraft.world.World;
 import thaumcraftextras.blocks.tiles.TileEntityEssentiaBarrel;
 import thaumcraftextras.blocks.tiles.TileEntityEssentiaBarrelWindow;
-import thaumcraftextras.handlers.events.TCEKeyHandler;
 import thaumcraftextras.proxies.client.renders.TileEntityEssentiaBarrelRenderer;
 import thaumcraftextras.proxies.client.renders.TileEntityEssentiaBarrelWindowRenderer;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.common.FMLCommonHandler;
 
 public class ClientProxy extends CommonProxy {
 
@@ -41,6 +39,5 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void registerKeyBindings()
 	{
-		FMLCommonHandler.instance().bus().register(new TCEKeyHandler());
 	}
 }

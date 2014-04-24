@@ -43,7 +43,7 @@ item.thaumcraftextras.focus.wand focus: shock.name=Wand Focus: Multi Shock
 item.thaumcraftextras.focus.wand focus: trampoline.name=Wand Focus: Air Shot
 item.thaumcraftextras.armor.flaming chestplate.name=Chestplate of Vulcan
 item.thaumcraftextras.armor.energetic helmet.name=Energetic Helmet
-item.thaumcraftextras.scepter.base.name=[NYI]Scepter
+item.thaumcraftextras.scepter.base.name=Creative Scepter
 ==Rods==
 item.thaumcraftextras.rod.ultimate.name=Ultimate Rod
 item.thaumcraftextras.rod.iron.name=Iron Rod

@@ -2,13 +2,14 @@ package thaumcraftextras.blocks;
 
 import java.util.Random;
 
+import org.lwjgl.input.Keyboard;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
@@ -20,6 +21,7 @@ import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.ItemResource;
 import thaumcraftextras.blocks.tiles.TileEntityEssentiaBarrel;
 import thaumcraftextras.main.ThaumcraftExtras;
+import thaumcraftextras.main.init.TCEItems;
 import thaumcraftextras.main.init.TCETabs;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -60,7 +62,7 @@ public class BlockEssentiaBarrel extends BlockContainer{
                 	placeLabel(barrel, world, player, stack);
                 }else if(stack != null && stack.getItem() instanceof IEssentiaContainerItem){
                 	addEssentia(barrel, world, player, stack);
-                }else if(stack != null && stack.getItem() == Items.emerald){
+                }else if(stack != null && stack.getItem() == TCEItems.essenceMagic){
                 	addSpace(barrel, world, player, stack);
                 	if(!player.capabilities.isCreativeMode){
                 		if(stack.stackSize > 1)
@@ -68,6 +70,11 @@ public class BlockEssentiaBarrel extends BlockContainer{
                 		else if(stack.stackSize == 1)
                 			player.setCurrentItemOrArmor(0, null);
                 	}
+            	}else if(stack != null && stack.getItem() == TCEItems.scepter && barrel.getAspect() != null){
+            		if(Keyboard.isKeyDown(Keyboard.KEY_LCONTROL)){
+            			barrel.setMod(barrel.getMod()*100);
+            		}
+            		barrel.amount = 64*barrel.getMod();
             	}
         	}
         }
@@ -169,7 +176,7 @@ public class BlockEssentiaBarrel extends BlockContainer{
         	TileEntityEssentiaBarrel barrel = (TileEntityEssentiaBarrel)tile;
         	
         	if(barrel.getMod() > 1){
-        		ItemStack item = new ItemStack(Items.emerald, barrel.getMod() -1, 0);
+        		ItemStack item = new ItemStack(TCEItems.essenceMagic, barrel.getMod() -1, 0);
         		float rx = rand.nextFloat() * 0.8F + 0.1F;
         		float ry = rand.nextFloat() * 0.8F + 0.1F;
         		float rz = rand.nextFloat() * 0.8F + 0.1F;
