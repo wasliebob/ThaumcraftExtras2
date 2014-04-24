@@ -6,7 +6,7 @@ itemGroup.tabThaumcraftExtras2Wands=Thaumcraft Extras 2: Wands
 ==Blocks==
 tile.thaumcraftextras.block.Ignis Block.name=Ignis Fuel Block
 tile.thaumcraftextras.block.warded block: ghost.name=Warded Block: Ghost
-tile.thaumcraftextras.block.Magical Tesslacoil.name=Thaumaturge Tesseract
+tile.thaumcraftextras.block.Magical Tesslacoil.name=Thaumaturgic Tesseract
 tile.thaumcraftextras.block.darkend core block.name=Darkend Core Block
 tile.thaumcraftextras.block.darkend altar block.name=Darkend Altar Block
 tile.thaumcraftextras.block.darkend matrix block.name=Darkend Matrix Block
