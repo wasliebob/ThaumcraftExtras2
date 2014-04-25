@@ -45,7 +45,7 @@ public class ThaumcraftExtras {
     	
     	if(Config.addon_wands){TCEWands.init();};
     	
-    	IntergrationLoader.init();
+    	IntergrationLoader.init(event);
     }
     
     @EventHandler

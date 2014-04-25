@@ -10,6 +10,7 @@ import net.minecraft.util.MovingObjectPosition;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.Thaumcraft;
+import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumcraft.common.lib.Utils;
 import thaumcraftextras.items.foci.TCEItemFocus;
@@ -44,6 +45,8 @@ public class FocusClean extends TCEItemFocus {
         	canBeCleaned.add(Blocks.snow);
         	canBeCleaned.add(Blocks.snow_layer);
         	canBeCleaned.add(Blocks.ice);
+        	canBeCleaned.add(ConfigBlocks.blockFluxGas);
+        	canBeCleaned.add(ConfigBlocks.blockFluxGoo);
         }
         
         @Override

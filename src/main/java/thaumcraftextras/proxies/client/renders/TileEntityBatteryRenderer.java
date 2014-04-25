@@ -38,6 +38,7 @@ public class TileEntityBatteryRenderer extends TileEntitySpecialRenderer{
 				GL11.glPushMatrix();
 				
 				GL11.glTranslated(x, y, z);
+				GL11.glScaled(x, y, z -1);
 //				GL11.glRotated(90, 1, 0, 0);
 				
 				t.startDrawingQuads();	       
