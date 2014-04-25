@@ -67,7 +67,7 @@ item.Wand.GOD.rod=Emerald
 item.Wand.DARKTHAUMIUM.cap=Dark Thaumium
 ==Text==
 ==Entries==
-tce.text.Thaumcraft Extras.1=NYI
+tce.text.Thaumcraft Extras.1=After hours of researching and messing around with Thaumcraft you found out that there is a whole other dimension of magical tools that you didn't know of it before, the dimension of Thaumcraft Extras 2.
 tce.text.Chestplate_of_Flames.1=NYI
 tce.text.Wand_Focus:_Clean.1=NYI
 tce.text.Wand_Focus:_Return.1=NYI
@@ -90,7 +90,7 @@ tce.text.ROD_DEVIL.1=NYI
 tce.text.ROD_GOD.1=NYI
 tce.text.ROD_DARKSILVERWOOD.1=NYI
 ==Tags==
-tce.tag.Thaumcraft_Extras=NYI
+tce.tag.Thaumcraft_Extras=A new world
 tce.tag.Chestplate_of_Flames=NYI
 tce.tag.Wand_Focus:_Clean=NYI
 tce.tag.Wand_Focus:_Return=NYI

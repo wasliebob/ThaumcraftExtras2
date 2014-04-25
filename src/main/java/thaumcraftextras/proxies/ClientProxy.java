@@ -3,6 +3,8 @@ package thaumcraftextras.proxies;
 import net.minecraft.world.World;
 import thaumcraftextras.blocks.tiles.TileEntityEssentiaBarrel;
 import thaumcraftextras.blocks.tiles.TileEntityEssentiaBarrelWindow;
+import thaumcraftextras.blocks.tiles.TileEntityMagicBattery;
+import thaumcraftextras.proxies.client.renders.TileEntityBatteryRenderer;
 import thaumcraftextras.proxies.client.renders.TileEntityEssentiaBarrelRenderer;
 import thaumcraftextras.proxies.client.renders.TileEntityEssentiaBarrelWindowRenderer;
 import cpw.mods.fml.client.FMLClientHandler;
@@ -22,6 +24,7 @@ public class ClientProxy extends CommonProxy {
     {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEssentiaBarrel.class, new TileEntityEssentiaBarrelRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEssentiaBarrelWindow.class, new TileEntityEssentiaBarrelWindowRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMagicBattery.class, new TileEntityBatteryRenderer());
     }
 	
 	@Override

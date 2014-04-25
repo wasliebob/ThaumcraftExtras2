@@ -51,38 +51,42 @@ public class TileEntityMagicGenerator extends MagicEnergySender implements IAspe
 					MagicEnergyUniversal to = (MagicEnergyUniversal)tile;
 					if(getEnergy() == 0 && to.getEnergy() + calcEnergy(to) <= to.getMaxEnergy()){
 						if(!to.isSending){
-						to.increaseEnergy(calcEnergy(to));
+						to.increaseEnergy(drawFromTubeWithCheck(to));
 						if(Minecraft.getMinecraft().renderViewEntity != null){
-    						Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, this.getColor());
-						}
-						
+    						Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 1.0D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord, (float)to.zCoord + 0.5F, this.getColor());}
 						updateBlocks(to);
 						}
 					}else if(to.getEnergy() + calcEnergy(to) <= to.getMaxEnergy()){
 						if(!to.isSending){
-						to.increaseEnergy(drawFromTube());
+						to.increaseEnergy(drawFromTubeWithCheck(to));
+						if(Minecraft.getMinecraft().renderViewEntity != null){
+    						Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 1.0D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord, (float)to.zCoord + 0.5F, this.getColor());}
 						updateBlocks(to);
 						}
 					}else if(getEnergy() + calcEnergyA() <= to.getMaxEnergy()){
 						if(!to.isSending){
-						to.increaseEnergy(drawFromTube());
-						
+						to.increaseEnergy(drawFromTubeWithCheck(to));
+						if(Minecraft.getMinecraft().renderViewEntity != null){
+    						Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 1.0D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord, (float)to.zCoord + 0.5F, this.getColor());}
 						updateBlocks(to);
 					}
 					}
     			}else if(tile instanceof MagicEnergyReceiver){
     				MagicEnergyReceiver to = (MagicEnergyReceiver)tile;
 					if(getEnergy() == 0 && to.getEnergy() + calcEnergy(to) <= to.getMaxEnergy()){
-						to.increaseEnergy(calcEnergy(to));
+						to.increaseEnergy(drawFromTubeWithCheck(to));
 						if(Minecraft.getMinecraft().renderViewEntity != null){
-    						Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, this.getColor());
-						}
+    						Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 1.0D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord, (float)to.zCoord + 0.5F, this.getColor());}
 						updateBlocks(to);
 					}else if(to.getEnergy() + calcEnergy(to) <= to.getMaxEnergy()){
-						to.increaseEnergy(drawFromTube());
+						to.increaseEnergy(drawFromTubeWithCheck(to));
+						if(Minecraft.getMinecraft().renderViewEntity != null){
+    						Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 1.0D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord, (float)to.zCoord + 0.5F, this.getColor());}
 						updateBlocks(to);
 					}else if(getEnergy() + calcEnergyA() <= to.getMaxEnergy()){
-						to.increaseEnergy(drawFromTube());
+						to.increaseEnergy(drawFromTubeWithCheck(to));
+						if(Minecraft.getMinecraft().renderViewEntity != null){
+    						Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 1.0D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord, (float)to.zCoord + 0.5F, this.getColor());}
 						updateBlocks(to);
 					}
     			}else{
@@ -151,7 +155,53 @@ public class TileEntityMagicGenerator extends MagicEnergySender implements IAspe
 	         }
 	         return 0;
 	    }
-	    
+	 
+	 public int drawFromTubeWithCheck(MagicEnergyUniversal to)
+	 {
+//			if(getEnergy() >= to.getMaxTransfer() && to.getEnergy() + drawFromTube() <= to.getMaxEnergy()){
+			if(to.getEnergy() + to.getMaxTransfer() <= to.getMaxEnergy()){
+		 		if(to.getMaxEnergy() - to.getEnergy() > to.getMaxTransfer()){
+					decreaseEnergy(to.getMaxTransfer());
+					return drawFromTube();
+				}else if(to.getMaxEnergy() - to.getEnergy() < to.getMaxTransfer()){
+					decreaseEnergy(to.getMaxEnergy() - to.getEnergy());
+					return drawFromTube();
+				}else if(to.getMaxEnergy() - to.getEnergy() == to.getMaxTransfer()){
+					decreaseEnergy(to.getMaxEnergy() - to.getEnergy());
+					return drawFromTube();
+				}else if(to.getEnergy() == to.getMaxEnergy()){
+					return 0;
+				}else{
+					return 0;
+				}
+			}
+			return 0;
+	 }
+	 
+	 public int drawFromTubeWithCheck(MagicEnergyReceiver to)
+	 {
+			if(getEnergy() >= to.getMaxTransfer()){
+				if(to.getMaxEnergy() - to.getEnergy() > to.getMaxTransfer()){
+					decreaseEnergy(to.getMaxTransfer());
+					return drawFromTube();
+				}else if(to.getMaxEnergy() - to.getEnergy() < to.getMaxTransfer()){
+					decreaseEnergy(to.getMaxEnergy() - to.getEnergy());
+					return drawFromTube();
+				}else if(to.getMaxEnergy() - to.getEnergy() == to.getMaxTransfer()){
+					decreaseEnergy(to.getMaxEnergy() - to.getEnergy());
+					return drawFromTube();
+				}else if(to.getEnergy() == to.getMaxEnergy()){
+					return 0;
+				}else{
+					return 0;
+				}
+			}else if(to.getEnergy() + to.getMaxTransfer() <= to.getMaxEnergy()){
+				return drawFromTube();
+			}else{
+				return drawFromTube();
+			}
+	 }
+		
 	    ForgeDirection getOrientation() 
 	    {
 	        return ForgeDirection.UP;

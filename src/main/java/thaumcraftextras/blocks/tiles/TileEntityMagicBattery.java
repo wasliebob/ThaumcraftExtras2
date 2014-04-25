@@ -28,12 +28,6 @@ public class TileEntityMagicBattery extends MagicEnergyUniversal{
     int energy;
     public static final String ENERGY = "ENERGY_MAGIC";
     public static final String COLOR = "COLOR_MAGIC";
-    public String south;
-    public String east;
-    public String north;
-    public String west;
-    public String up;
-    public String down;
 
     @Override
     public void updateEntity() 
@@ -48,7 +42,7 @@ public class TileEntityMagicBattery extends MagicEnergyUniversal{
     							to.increaseEnergy(calcEnergy(to));
     							updateBlocks(to);
     						if(Minecraft.getMinecraft().renderViewEntity != null){
-    							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, this.getColor());}
+    							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 1.0F, (float)to.zCoord + 0.5F, this.getColor());}
     						}else{
     							this.setSending(false);
     							updateBlocks(to);
@@ -60,7 +54,7 @@ public class TileEntityMagicBattery extends MagicEnergyUniversal{
 						to.increaseEnergy(calcEnergy(to));
 						updateBlocks(to);
 						if(Minecraft.getMinecraft().renderViewEntity != null){
-							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 0.5F, (float)to.zCoord + 0.5F, this.getColor());}
+							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 1.0F, (float)to.zCoord + 0.5F, this.getColor());}
     				}
     			}else{
     			}
