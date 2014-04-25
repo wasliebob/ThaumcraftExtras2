@@ -2,6 +2,7 @@ package thaumcraftextras.main.init.intergration.computercraft;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import thaumcraft.common.tiles.TileThaumatorium;
 import thaumcraftextras.blocks.tiles.TileEntityEssentiaBarrel;
 import thaumcraftextras.blocks.tiles.TileEntityMagicBattery;
 import thaumcraftextras.blocks.tiles.TileEntityMagicCrystalCharger;
@@ -21,6 +22,9 @@ public class PeripheralHandler implements IPeripheralProvider {
 		
 		if(tile instanceof TileEntityEssentiaBarrel)
 			return new EssentiaBarrelPeripheral((TileEntityEssentiaBarrel) tile);
+		
+		if(tile instanceof TileThaumatorium)
+			return new AlchemicPeripheral((TileThaumatorium) tile);
 		return null;
 	}
 

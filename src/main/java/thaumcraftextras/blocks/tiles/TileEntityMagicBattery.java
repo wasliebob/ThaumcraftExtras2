@@ -21,14 +21,14 @@ public class TileEntityMagicBattery extends MagicEnergyUniversal{
 	
 	public TileEntityMagicBattery()
 	{
-		storage = new MagicEnergy(1000, 10);	
+		storage = new MagicEnergy(1000, 10);
 	}
 	public MagicEnergy storage;
     public static Map<Aspect, Integer> map = new HashMap<Aspect, Integer>();
     int energy;
     public static final String ENERGY = "ENERGY_MAGIC";
     public static final String COLOR = "COLOR_MAGIC";
-
+    
     @Override
     public void updateEntity() 
     {

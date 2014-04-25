@@ -11,7 +11,6 @@ public class ComputerCraft {
 		if(Loader.isModLoaded("ComputerCraft")){
 			IPeripheralProvider handler = new PeripheralHandler();
 			ComputerCraftAPI.registerPeripheralProvider(handler);
-
 		}
 	}
 }

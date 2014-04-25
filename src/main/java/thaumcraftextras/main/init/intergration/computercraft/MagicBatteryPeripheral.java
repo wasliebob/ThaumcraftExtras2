@@ -22,7 +22,7 @@ public class MagicBatteryPeripheral implements IPeripheral {
 
 	@Override
 	public String[] getMethodNames() {
-		return new String[]{"getEnergy", "getColor", "getTransfer", "setColor",  "help"};
+		return new String[]{"getEnergy", "getColor", "getTransfer", "setColor", "help"};
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class MagicBatteryPeripheral implements IPeripheral {
 		}
 		return null;
 	}
-	
+
 	public int getColor(Object[] arg){
 		return new Color(parse(arg[0].toString()), parse(arg[1].toString()), parse(arg[2].toString())).getRGB();
 	}

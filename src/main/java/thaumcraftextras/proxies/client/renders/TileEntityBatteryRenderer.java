@@ -31,22 +31,50 @@ public class TileEntityBatteryRenderer extends TileEntitySpecialRenderer{
                 OpenGlHelper.setActiveTexture(OpenGlHelper.defaultTexUnit);
                 GL11.glEnable(GL11.GL_TEXTURE_2D);
 
-				Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("thaumcraftextras:textures/gui/ring.png"));
 				Tessellator t = Tessellator.instance;
-				double d1 = 0.0001D;
-
-				GL11.glPushMatrix();
-				
-				GL11.glTranslated(x, y, z);
-				GL11.glScaled(x, y, z -1);
-//				GL11.glRotated(90, 1, 0, 0);
-				
-				t.startDrawingQuads();	       
-				vertex(te, t, d1);
-				t.draw();
-				GL11.glPopMatrix();
+					addSides(te, t, x, y, z);
 			}
 		}
+	}
+	
+	public void addSides(TileEntityMagicBattery bat, Tessellator t, double x, double y, double z)
+	{
+		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("thaumcraftextras:textures/gui/ring.png"));
+		double d1 = 0.0001D;
+		GL11.glPushMatrix();
+		GL11.glTranslated(x, y, z);
+		
+		t.startDrawingQuads();	              
+		vertex(bat, t, d1);
+		t.draw();
+		GL11.glPopMatrix();
+		
+		GL11.glPushMatrix();
+		GL11.glTranslated(x, y, z + 1.0D);
+		GL11.glRotated(90D, 0D, 1D, 0D);
+
+		t.startDrawingQuads();
+		vertex(bat, t, d1);
+		t.draw();
+		GL11.glPopMatrix();
+		
+		GL11.glPushMatrix();
+		GL11.glTranslated(x + 1.0D, y, z + 1.0D);
+		GL11.glRotated(180D, 0D, 1D, 0D);
+
+		t.startDrawingQuads();
+		vertex(bat, t, d1);
+		t.draw();
+		GL11.glPopMatrix();
+		
+		GL11.glPushMatrix();
+		GL11.glTranslated(x + 1.0D, y, z);
+		GL11.glRotated(270D, 0D, 1D, 0D);
+
+		t.startDrawingQuads();
+		vertex(bat, t, d1);
+		t.draw();
+		GL11.glPopMatrix();
 	}
 	
 	public void vertex(TileEntityMagicBattery te, Tessellator t, double d1)
