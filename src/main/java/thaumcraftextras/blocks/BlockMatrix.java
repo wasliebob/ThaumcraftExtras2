@@ -3,7 +3,6 @@ package thaumcraftextras.blocks;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import thaumcraftextras.blocks.tiles.TileEntityDarkendAltarSpecial;
@@ -27,25 +26,11 @@ public class BlockMatrix extends BlockContainer {
 	}
 	String name;
 	
-//	@Override
-//	public boolean renderAsNormalBlock()
-//	{
-//		return false;
-//	}
-//
-//
-//	@Override
-//    public boolean isOpaqueCube()
-//    {
-//        return false;
-//    }
-//    
-
     @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister ir)
     {
-    	blockIcon = Blocks.beacon.getBlockTextureFromSide(0);
+    	blockIcon = ir.registerIcon("thaumcraft:paving_stone_warding");
     }
     
 //    @Override
@@ -55,13 +40,8 @@ public class BlockMatrix extends BlockContainer {
 //        return this.getIcon(side, acces.getBlockMetadata(x, y, z));
 //    }
     
-	
-
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		if(meta == 1)
 			return new TileEntityDarkendAltarSpecial();
-		else
-			return null;
 	}
 }

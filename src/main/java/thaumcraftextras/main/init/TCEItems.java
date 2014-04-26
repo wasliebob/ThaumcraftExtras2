@@ -9,6 +9,7 @@ import thaumcraftextras.api.misc.items.MagicEnergyCrystal;
 import thaumcraftextras.items.ItemEnergyHelmet;
 import thaumcraftextras.items.ItemFlamingChestplate;
 import thaumcraftextras.items.ItemMagicEnergyReader;
+import thaumcraftextras.items.ItemPouchColored;
 import thaumcraftextras.items.ItemXPExtractor;
 import thaumcraftextras.items.ItemXPShard;
 import thaumcraftextras.items.TCEItem;
@@ -16,6 +17,7 @@ import thaumcraftextras.items.TCEItemShard;
 import thaumcraftextras.items.foci.beam.FocusClean;
 import thaumcraftextras.items.foci.beam.FocusTessela;
 import thaumcraftextras.items.foci.beam.FocusTrampoline;
+import thaumcraftextras.items.foci.normal.FocusPechTrade;
 import thaumcraftextras.items.foci.normal.FocusReturn;
 import thaumcraftextras.items.scepters.TCEItemScepter;
 import wasliecore.helpers.ColorHelper;
@@ -47,6 +49,7 @@ public class TCEItems {
 		xpShard = new ItemXPShard("xp", ColorHelper.getColorCodeFromColor(Color.green));
 		xpExtractor = new ItemXPExtractor("Experience Extractor");
 		
+		pouch_color = new ItemPouchColored();
 	}
 	public static TCEItem essenceMagic;
 	public static TCEItem essenceLight;
@@ -54,7 +57,9 @@ public class TCEItems {
 	public static TCEItem darkThaumium;
 	public static TCEItem darkThaumiumNugget;
 	public static TCEItem ignisFuel;
+	
 	public static ItemMagicEnergyReader reader;
+	public static ItemPouchColored pouch_color;
 
 	public static TCEItemShard darkShard;	
 	public static ItemXPShard xpShard;
@@ -80,11 +85,16 @@ public class TCEItems {
 		cost.add(Aspect.AIR, 10);
 		focusTrampoline = new FocusTrampoline(ColorHelper.getColorCodeFromRGB(100, 0, 100), "Wand Focus: Trampoline");
 		cost.aspects.clear();
+		
+		cost.add(Aspect.ORDER, 10);
+		focusPechTrade = new FocusPechTrade(ColorHelper.getColorCodeFromRGB(50, 0, 100), "Wand Focus: Pech Trade");
+		cost.aspects.clear();
 	}
 	public static FocusClean focusClean;
 	public static FocusReturn focusReturn;
 	public static FocusTessela focusTessela;
 	public static FocusTrampoline focusTrampoline;
+	public static FocusPechTrade focusPechTrade;
 
 	public static void initArmor()
 	{
@@ -93,7 +103,6 @@ public class TCEItems {
 		
 		energyHelmet = new ItemEnergyHelmet("Energetic Helmet", "helmet_energy", ArmorMaterial.DIAMOND, 0, 0, energyHelmetDamage, 5);
 		GameRegistry.registerItem(energyHelmet, energyHelmet.getUnlocalizedName());
-
 	}
 	public static ItemFlamingChestplate fireChestplate;
 	public static int fireChestplateDamage = 300;

@@ -9,7 +9,6 @@ import thaumcraftextras.main.init.TCEBlocks;
 
 public class TileEntityDarkendAltar extends TileEntity{
 
-	int waitTime;
 	@Override
 	public void updateEntity()
 	{		

@@ -31,7 +31,6 @@ public class BlockEssentiaBarrel extends BlockContainer{
 		super(material);
 		setCreativeTab(TCETabs.tabMain);
 		setHardness(1.0F);
-		
 		setBlockName(ThaumcraftExtras.modName.toLowerCase() + "." + "block" + "." + name);
 		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}

@@ -59,6 +59,11 @@ public class TCERecipes {
 			'X', Blocks.glass,
 			'Y', TCEItems.essenceMagic});
 		
+		for(int i = 0; i < 15; i++)
+			GameRegistry.addShapedRecipe(new ItemStack(TCEItems.pouch_color, 1, i), new Object[]{
+			"XY",
+			'X', new ItemStack(ConfigItems.itemFocusPouch),
+			'Y', new ItemStack(Items.dye, 1, i)});
 	}
 	public static IRecipe recipeAltar;
 	public static IRecipe recipeCore;
@@ -209,6 +214,16 @@ public class TCERecipes {
 			'Y', new ItemStack(TCEItems.ignisFuel)});
 		aspect.aspects.clear();
 		
+		aspect.add(Aspect.AIR, 35);
+		recipeFocusPechTrade = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.focus_pechTrade, new ItemStack(TCEItems.focusPechTrade, 1, 0), aspect, new Object[]{
+			"XIX",
+			"IYI",
+			"XIX",
+			'X', new ItemStack(TCEItems.essenceLight),
+			'I', new ItemStack(ConfigItems.itemResource, 1, 2),
+			'Y', new ItemStack(TCEItems.darkShard)});
+		aspect.aspects.clear();
+		
 		aspect.add(Aspect.ENTROPY, 25);
 		aspect.add(Aspect.AIR, 25);
 		recipeShocker = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.shocker, new ItemStack(TCEBlocks.shocker, 1, 0), aspect, new Object[]{
@@ -238,6 +253,7 @@ public class TCERecipes {
 	public static ShapedArcaneRecipe recipeFocusReturn;
 	public static ShapedArcaneRecipe recipeFocusShocker;
 	public static ShapedArcaneRecipe recipeFocusTrampoline;
+	public static ShapedArcaneRecipe recipeFocusPechTrade;
 
 	public static ShapedArcaneRecipe recipeMagicBattery;
 	public static ShapedArcaneRecipe recipeMagicGenerator;

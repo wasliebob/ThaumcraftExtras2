@@ -1,5 +1,5 @@
 package thaumcraftextras.helpers;
 
 public class RenderingHelper {
-	public static int render_tesseract = 1001;
+	public static int render_matrix = 1001;
 }
