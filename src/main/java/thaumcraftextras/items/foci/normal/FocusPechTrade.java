@@ -34,6 +34,8 @@ public class FocusPechTrade extends TCEItemFocus {
         		if (mop != null && mop.entityHit != null && mop.entityHit instanceof EntityPech && wand.consumeAllVis(itemstack, player, getVisCost(), true, true)) {
         			EntityPech pech = (EntityPech)mop.entityHit;
         			pech.setTamed(true);
+        			pech.setAnger(0);
+        			pech.trading = true;
         		}
         		return itemstack;
         }
