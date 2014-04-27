@@ -19,6 +19,7 @@ tile.thaumcraftextras.block.Magic Energy Void.name=Magic Energy Void
 tile.thaumcraftextras.block.Magical Lava Generator.name=Magical Lava Generator
 tile.thaumcraftextras.block.Essentia Barrel.name=Essentia Barrel
 tile.thaumcraftextras.block.Essentia Barrel Window.name=Essentia Barrel Window
+tile.thaumcraftextras.block.light block.name=Lightning Block
 ==Items==
 item.thaumcraftextras.crystal.1.name=Tiny Magic Energy Crystal
 item.thaumcraftextras.crystal.2.name=Small Magic Energy Crystal

@@ -43,14 +43,15 @@ public class TileEntityShocker extends TileEntity{
 	public int maxMode = 2;
 	public void performAction(EntityLiving living, double xPos, double yPos, double zPos)
 	{
-		if(mode == 0){
+		if(!worldObj.isRemote && mode == 0){
 			living.setHealth(living.getHealth() - 0.2F);
-			living.performHurtAnimation();
-
+			living.attackEntityFrom(DamageSource.generic, 0.2F);
+//			living.performHurtAnimation();
+//
 			if(living.getHealth() - 0.2F == 0)
 				living.onDeath(DamageSource.generic);
 			
-			FXLightningBolt light = new FXLightningBolt(worldObj, xCoord + 0.5, yCoord + 0.5, zCoord + 0.5, xPos, yPos + 0.5, zPos, worldObj.getSeed(), 1);
+			FXLightningBolt light = new FXLightningBolt(worldObj, xCoord + 0.5, yCoord + 1.6, zCoord + 0.5, xPos, yPos + 0.5, zPos, worldObj.getSeed(), 1);
 			light.defaultFractal();
 			light.setType(2);
 			light.setWidth(0.125F);
@@ -58,13 +59,14 @@ public class TileEntityShocker extends TileEntity{
 	        for (int a = 0; a < 5; a++) {
 	        	Thaumcraft.proxy.sparkle((float)xPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, (float)yPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, (float)zPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, 2.0F + this.worldObj.rand.nextFloat(), 2, 0.05F + this.worldObj.rand.nextFloat() * 0.05F);
 	        }
-		}else if(mode == 1){
-			living.setHealth(living.getHealth() - 0.2F);
+		}else if(!worldObj.isRemote && mode == 1){
+			living.attackEntityFrom(DamageSource.inFire, 0.2F);
 			if(living.getHealth() - 0.2F == 0)
 				living.onDeath(DamageSource.inFire);
 			
 				living.setFire(2);
-				FXLightningBolt light = new FXLightningBolt(worldObj, xCoord + 0.5, yCoord + 0.5, zCoord + 0.5, xPos, yPos + 0.5, zPos, worldObj.getSeed(), 1);
+				
+				FXLightningBolt light = new FXLightningBolt(worldObj, xCoord + 0.5, yCoord + 1.6, zCoord + 0.5, xPos, yPos + 0.5, zPos, worldObj.getSeed(), 2);
 				light.defaultFractal();
 				light.setType(3);
 				light.setWidth(0.125F);
@@ -73,7 +75,7 @@ public class TileEntityShocker extends TileEntity{
 		        for (int a = 0; a < 5; a++) {
 		        	Thaumcraft.proxy.sparkle((float)xPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, (float)yPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, (float)zPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, 2.0F + this.worldObj.rand.nextFloat(), 2, 0.05F + this.worldObj.rand.nextFloat() * 0.05F);
 		        }
-		}else if(mode == 2){
+		}else if(!worldObj.isRemote && mode == 2){
 			living.motionY = 2.0F;
 			living.hurtResistantTime = MathHelper.secondToTick(10);
 	        for (int a = 0; a < 5; a++) {

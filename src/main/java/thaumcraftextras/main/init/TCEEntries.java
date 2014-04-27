@@ -32,7 +32,7 @@ public class TCEEntries {
 		
 		text = new String[]{"1"};
 		research = new ResearchHelper(tce, TCEEntries.TCE, aspect, 0, 0, 2, new ItemStack(TCEItems.essenceMagic)).setRound().setAutoUnlock().registerResearchItem();
-		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeMagicEssence));
+		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeMagicEssence), new ResearchPage(TCERecipes.recipeBlockLight));
 		aspect = new AspectList();
 		
 		aspect.add(Aspect.ENTROPY, 2);

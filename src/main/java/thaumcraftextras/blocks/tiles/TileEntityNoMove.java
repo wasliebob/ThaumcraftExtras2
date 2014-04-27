@@ -29,14 +29,14 @@ public class TileEntityNoMove extends TileEntity{
 			
 				float distance = (float) ((xCoord - xPos) * (xCoord - xPos) + (yCoord - yPos) * (yCoord - yPos) + (zCoord - zPos) * (zCoord - zPos));
 		
-				if(Minecraft.getMinecraft().renderViewEntity != null && distance < 15 && entity instanceof EntityLiving && !(entity instanceof EntityPlayer)){
+				if(!worldObj.isRemote && Minecraft.getMinecraft().renderViewEntity != null && distance < 15 && entity instanceof EntityLiving && !(entity instanceof EntityPlayer)){
 					EntityLiving living = (EntityLiving)entity;
 					if(Minecraft.getMinecraft().renderViewEntity != null)
 					{
 						living.motionX = 0.0f;
 						living.motionY = 0.0f;
 						living.motionZ = 0.0f;
-						Thaumcraft.proxy.sourceStreamFX(worldObj, (float)xPos, (float)yPos, (float)zPos, (float)xCoord, (float)yCoord, (float)zCoord, 0);
+						Thaumcraft.proxy.sourceStreamFX(worldObj, xPos, yPos, zPos, (float)xCoord + 0.5F, (float)yCoord + 1.4F, (float)zCoord + 0.5F, 0);
 					}
 				}
 			}

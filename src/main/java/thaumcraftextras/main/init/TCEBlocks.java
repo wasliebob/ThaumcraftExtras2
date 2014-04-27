@@ -6,6 +6,7 @@ import thaumcraftextras.blocks.BlockDarkendAltar;
 import thaumcraftextras.blocks.BlockDarkendCore;
 import thaumcraftextras.blocks.BlockEssentiaBarrel;
 import thaumcraftextras.blocks.BlockEssentiaBarrelWindow;
+import thaumcraftextras.blocks.BlockLight;
 import thaumcraftextras.blocks.BlockMagicBattery;
 import thaumcraftextras.blocks.BlockMagicCrystalCharger;
 import thaumcraftextras.blocks.BlockMagicGenerator;
@@ -41,6 +42,7 @@ public class TCEBlocks {
 		crystalCharger = new BlockMagicCrystalCharger(Material.iron, "Magic Crystal Charger");
 		magicVoid = new BlockMagicVoid(Material.iron, "Magic Energy Void");
 		lavaGen = new BlockMagicLavaGenerator(Material.iron, "Magical Lava Generator");
+		blockLight = new BlockLight("Light Block");
 	}
 	public static TCEBlock blockIgnis;
 	public static BlockWardedGhost specialWardedGhost;
@@ -55,6 +57,7 @@ public class TCEBlocks {
 	public static BlockMagicCrystalCharger crystalCharger;
 	public static BlockMagicVoid magicVoid;
 	public static BlockMagicLavaGenerator lavaGen;
+	public static BlockLight blockLight;
 
 	public static void initBarrels()
 	{

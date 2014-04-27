@@ -64,6 +64,12 @@ public class TCERecipes {
 			"XY",
 			'X', new ItemStack(ConfigItems.itemFocusPouch),
 			'Y', new ItemStack(Items.dye, 1, i)});
+		
+		for(int i = 0; i < 15; i++)
+			GameRegistry.addShapedRecipe(new ItemStack(TCEBlocks.blockLight, 1, i), new Object[]{
+			"XY",
+			'X', new ItemStack(TCEBlocks.blockLight),
+			'Y', new ItemStack(Items.dye, 1, i)});
 	}
 	public static IRecipe recipeAltar;
 	public static IRecipe recipeCore;
@@ -256,6 +262,14 @@ public class TCERecipes {
 			'I', new ItemStack(ConfigItems.itemResource, 1, 2),
 			'Y', new ItemStack(ConfigBlocks.blockCosmeticOpaque)});
 		aspect.aspects.clear();
+		
+		aspect.add(Aspect.AIR, 2);
+		aspect.add(Aspect.FIRE, 2);
+		recipeBlockLight = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.tce, new ItemStack(TCEBlocks.blockLight, 1, 0), aspect, new Object[]{
+			"XI",
+			'X', new ItemStack(Blocks.glowstone),
+			'I', new ItemStack(Blocks.glass)});
+		aspect.aspects.clear();
 	}
 	public static ShapedArcaneRecipe recipeMagicEssence;
 	public static ShapedArcaneRecipe recipeDarkThaumium;
@@ -271,6 +285,7 @@ public class TCERecipes {
 	public static ShapedArcaneRecipe recipeMagicGenerator;
 	public static ShapedArcaneRecipe recipeMagicCrystalCharger;
 	public static ShapedArcaneRecipe recipeMagicWandCharger;
+	public static ShapedArcaneRecipe recipeBlockLight;
 
 	public static ShapedArcaneRecipe recipeShocker;
 	public static ShapedArcaneRecipe recipeContainment;

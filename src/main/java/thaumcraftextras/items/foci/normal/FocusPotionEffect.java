@@ -1,5 +1,6 @@
 package thaumcraftextras.items.foci.normal;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -72,9 +73,8 @@ public class FocusPotionEffect extends TCEItemFocus {
         	for(int i = 0; i < player.inventory.getSizeInventory(); i++){
         		if(player.inventory.getStackInSlot(i) != null && player.inventory.getStackInSlot(i).getItem() instanceof ItemPotion){
         			ItemPotion potion = (ItemPotion)player.inventory.getStackInSlot(i).getItem();
-        			for(Object p : genEffect(player, potion, i)){
-        				PotionEffect e = (PotionEffect)p;
-            			player.addPotionEffect(e);
+        			for(PotionEffect p : genEffect(player, potion, i)){
+            			player.addPotionEffect(new PotionEffect(p.getPotionID(), p.getDuration()));
         			}
         			return true;
         		}
@@ -82,8 +82,14 @@ public class FocusPotionEffect extends TCEItemFocus {
         	return false;
         }
         
-        public List<?> genEffect(EntityPlayer player, ItemPotion potion, int slot){
+        public List<PotionEffect> genEffect(EntityPlayer player, ItemPotion potion, int slot){
         	List<?> s = potion.getEffects(player.inventory.getStackInSlot(slot));
-        	return s;
+        	List<PotionEffect> b = new ArrayList<PotionEffect>();
+        	
+        	for(Object o : s){
+        		PotionEffect e = (PotionEffect)o;
+        		b.add(e);
+        	}
+        	return b;
         }
 }

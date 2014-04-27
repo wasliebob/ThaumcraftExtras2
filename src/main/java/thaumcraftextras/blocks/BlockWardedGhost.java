@@ -50,7 +50,6 @@ public class BlockWardedGhost extends BlockContainer {
 		return false;
 	}
 
-
 	@Override
     public boolean isOpaqueCube()
     {

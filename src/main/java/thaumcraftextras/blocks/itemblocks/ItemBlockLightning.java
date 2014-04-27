@@ -3,15 +3,16 @@ package thaumcraftextras.blocks.itemblocks;
 import java.util.List;
 
 import thaumcraftextras.helpers.DyeHelper;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 
-public class ItemBlockWardedGhost extends ItemBlock
+public class ItemBlockLightning extends ItemBlock
 {
-	public ItemBlockWardedGhost(Block block)
+	public ItemBlockLightning(Block block)
 	{
 		super(block);
 		setHasSubtypes(true);

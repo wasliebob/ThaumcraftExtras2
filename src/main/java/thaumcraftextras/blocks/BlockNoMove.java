@@ -7,6 +7,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import thaumcraftextras.blocks.tiles.TileEntityNoMove;
+import thaumcraftextras.helpers.RenderingHelper;
 import thaumcraftextras.main.ThaumcraftExtras;
 import thaumcraftextras.main.init.TCETabs;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -26,6 +27,24 @@ public class BlockNoMove extends BlockContainer{
 	IIcon side;
 	IIcon top;
 	IIcon bottom;
+	
+	@Override
+    public int getRenderType()
+    {
+        return RenderingHelper.render_noMove;
+    }
+	
+	@Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
+	
+	@Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 	
 	@Override
     public void registerBlockIcons(IIconRegister ir) 
