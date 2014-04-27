@@ -6,8 +6,19 @@ import thaumcraftextras.api.core.recipes.DarkInfuserRecipeManager;
 public class TCEApi {
 	public static DarkInfuserRecipeManager darkInfuser;
 
-	public static void addDarkInfusionRecipe(Item input, ItemStack output)
+	/**
+	 * Entries using null will not be registered!
+	 * @param input
+	 * Input Item
+	 * @param output
+	 * Output ItemStack
+	 */
+	public static void addDarkInfusionRecipe(Item input, ItemStack output) 
 	{
-		DarkInfuserRecipeManager.darkInfusion.put(input, output);
+		if(input == null || output == null){
+			System.out.println("[TCE2] " +  " A mod is trying to register an invalid recipe, ignoring");
+		}else{
+			DarkInfuserRecipeManager.darkInfusion.put(input, output);
+		}
 	}
 }

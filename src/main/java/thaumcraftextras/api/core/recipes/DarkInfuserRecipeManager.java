@@ -6,14 +6,32 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class DarkInfuserRecipeManager {
+	/**
+	 * Entries using null will not be registered!
+	 * @param input
+	 * Input Item
+	 * @param output
+	 * Output ItemStack
+	 */
 	public static void addDarkInfusionRecipe(Item input, ItemStack output)
 	{
-		darkInfusion.put(input, output);
+		if(input == null || output == null)
+			System.out.println("[TCE2] " +  " A mod is trying to register an invalid recipe, ignoring");
+		else
+			DarkInfuserRecipeManager.darkInfusion.put(input, output);
 	}
 	
+	/**
+	 * Entries using null with not be removed!
+	 * @param input
+	 * Input item (registered key)
+	 */
 	public static void removeDarkInfusionRecipe(Item input)
 	{
-		darkInfusion.remove(input);
+		if(input == null)
+			System.out.println("[TCE2] " +  " A mod is trying to remove an invalid recipe, ignoring");
+		else
+			darkInfusion.remove(input);
 	}
 	
 	public static HashMap<Item, ItemStack> darkInfuserList()

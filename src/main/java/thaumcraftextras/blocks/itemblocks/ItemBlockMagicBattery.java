@@ -9,7 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.world.World;
-import thaumcraftextras.blocks.tiles.TileEntityMagicBattery;
+import thaumcraftextras.api.misc.classes.TileEntityMagicBattery;
 import thaumcraftextras.main.init.TCEBlocks;
 
 public class ItemBlockMagicBattery extends ItemBlock

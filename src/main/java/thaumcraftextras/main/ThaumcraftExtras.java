@@ -64,7 +64,7 @@ public class ThaumcraftExtras {
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityDarkendCore.class, "Darkend_Core");
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityDarkendAltarSpecial.class, "Darkend_Altar_Special");
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityNoMove.class, "No_Move");
-        GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityMagicBattery.class, "Magic_Battery");
+        GameRegistry.registerTileEntity(thaumcraftextras.api.misc.classes.TileEntityMagicBattery.class, "Magic_Battery");
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityMagicGenerator.class, "Magic_Generator");
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityMagicWandCharger.class, "Magic_Wand_Charger");
         GameRegistry.registerTileEntity(thaumcraftextras.api.misc.tiles.MagicEnergyBase.class, "Magic_Tile");

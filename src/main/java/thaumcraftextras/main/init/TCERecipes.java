@@ -395,6 +395,7 @@ public class TCERecipes {
 			TCEApi.addDarkInfusionRecipe(Items.diamond_boots, new ItemStack(Items.diamond, 4, 0));
 
 			TCEApi.addDarkInfusionRecipe(Item.getItemFromBlock(Blocks.coal_block), new ItemStack(TCEBlocks.blockIgnis));
+			TCEApi.addDarkInfusionRecipe(null, null);
 		}
 	}
 	

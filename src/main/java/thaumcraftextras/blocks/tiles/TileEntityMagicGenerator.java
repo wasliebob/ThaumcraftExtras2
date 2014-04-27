@@ -19,6 +19,7 @@ import thaumcraft.api.aspects.IEssentiaTransport;
 import thaumcraft.common.Thaumcraft;
 import thaumcraftextras.api.interfaces.IMagicEnergyReceiver;
 import thaumcraftextras.api.misc.classes.MagicEnergy;
+import thaumcraftextras.api.misc.classes.TileEntityMagicBattery;
 import thaumcraftextras.api.misc.tiles.MagicEnergyReceiver;
 import thaumcraftextras.api.misc.tiles.MagicEnergySender;
 import thaumcraftextras.api.misc.tiles.MagicEnergyUniversal;

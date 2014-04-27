@@ -1,4 +1,4 @@
-package thaumcraftextras.blocks.tiles;
+package thaumcraftextras.api.misc.classes;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,7 +13,6 @@ import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.common.Thaumcraft;
 import thaumcraftextras.api.interfaces.IMagicEnergyReceiver;
-import thaumcraftextras.api.misc.classes.MagicEnergy;
 import thaumcraftextras.api.misc.tiles.MagicEnergyReceiver;
 import thaumcraftextras.api.misc.tiles.MagicEnergyUniversal;
 

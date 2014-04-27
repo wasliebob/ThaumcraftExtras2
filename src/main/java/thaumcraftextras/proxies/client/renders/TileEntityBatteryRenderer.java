@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
-import thaumcraftextras.blocks.tiles.TileEntityMagicBattery;
+import thaumcraftextras.api.misc.classes.TileEntityMagicBattery;
 
 public class TileEntityBatteryRenderer extends TileEntitySpecialRenderer{
 

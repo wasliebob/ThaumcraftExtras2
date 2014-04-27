@@ -4,7 +4,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import thaumcraftextras.api.interfaces.IMagicEnergyReceiver;
 import thaumcraftextras.api.interfaces.IMagicEnergySender;
-import thaumcraftextras.blocks.tiles.TileEntityMagicBattery;
+import thaumcraftextras.api.misc.classes.TileEntityMagicBattery;
 
 public class MagicEnergySender extends MagicEnergyBase implements IMagicEnergySender{	
 	@Override

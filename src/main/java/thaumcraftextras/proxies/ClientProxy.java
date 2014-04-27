@@ -1,8 +1,8 @@
 package thaumcraftextras.proxies;
 
+import thaumcraftextras.api.misc.classes.TileEntityMagicBattery;
 import thaumcraftextras.blocks.tiles.TileEntityEssentiaBarrel;
 import thaumcraftextras.blocks.tiles.TileEntityEssentiaBarrelWindow;
-import thaumcraftextras.blocks.tiles.TileEntityMagicBattery;
 import thaumcraftextras.blocks.tiles.TileEntityNoMove;
 import thaumcraftextras.blocks.tiles.TileEntityShocker;
 import thaumcraftextras.proxies.client.renders.RenderNoMove;

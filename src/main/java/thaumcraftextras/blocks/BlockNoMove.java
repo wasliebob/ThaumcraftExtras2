@@ -19,6 +19,7 @@ public class BlockNoMove extends BlockContainer{
 	public BlockNoMove(Material material, String blockName) {
 		super(material);
 		setCreativeTab(TCETabs.tabMain);
+		setBlockBounds(0F, 0F, 0F, 1.0F, 1.8F, 1.0F);
 		setHardness(1.0F);
 		
 		setBlockName(ThaumcraftExtras.modName.toLowerCase() + "." + "block" + "." + blockName);

@@ -2,7 +2,7 @@ package thaumcraftextras.main.init.intergration.computercraft;
 
 import java.awt.Color;
 
-import thaumcraftextras.blocks.tiles.TileEntityMagicBattery;
+import thaumcraftextras.api.misc.classes.TileEntityMagicBattery;
 import dan200.computercraft.api.lua.ILuaContext;
 import dan200.computercraft.api.peripheral.IComputerAccess;
 import dan200.computercraft.api.peripheral.IPeripheral;
