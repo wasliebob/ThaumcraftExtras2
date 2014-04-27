@@ -89,6 +89,13 @@ public class TCEEntries {
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeFocusPechTrade));
 		aspect = new AspectList();
 		
+		aspect.add(Aspect.ORDER, 30);
+		aspect.add(Aspect.ENTROPY, 10);
+		text = new String[]{"1"};
+		research = new ResearchHelper(focus_potion, TCEEntries.TCE, aspect, -5, -2, 2, new ItemStack(TCEItems.focusPotion)).setParents(tce).setSecondary().registerResearchItem();
+		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeFocusPotion));
+		aspect = new AspectList();
+		
 		aspect.add(Aspect.ENTROPY, 5);
 		aspect.add(Aspect.AIR, 5);
 		text = new String[]{"1"};
@@ -125,6 +132,7 @@ public class TCEEntries {
 	public static String focus_shocker = "Wand_Focus:_Shock";
 	public static String focus_trampoline = "Wand_Focus:_Trampoline";
 	public static String focus_pechTrade = "Wand_Focus:_Pech_Trade";
+	public static String focus_potion = "Wand_Focus:_Potion";
 
 	public static String magic_energy = "Magic_Energy";
 	public static String chestplate_fire = "Chestplate_of_Flames";

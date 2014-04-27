@@ -140,6 +140,17 @@ public class TCERecipes {
 			'I', new ItemStack(Items.slime_ball)});
 		aspect.aspects.clear();
 		
+		aspect.add(Aspect.ENTROPY, 10);
+		aspect.add(Aspect.ORDER, 10);
+		recipeFocusPotion = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.focus_potion, new ItemStack(TCEItems.focusPotion), aspect, new Object[]{
+			"YXY",
+			"XIX",
+			"YXY",
+			'X', new ItemStack(Items.quartz) ,
+			'Y', new ItemStack(ConfigItems.itemShard, 1, 3),
+			'I', new ItemStack(Items.golden_apple)});
+		aspect.aspects.clear();
+		
 		aspect.add(Aspect.FIRE, 20);
 		aspect.add(Aspect.ORDER, 10);
 		recipeFireChestplate = ThaumcraftApi.addInfusionCraftingRecipe(TCEEntries.chestplate_fire, new ItemStack(TCEItems.fireChestplate), 2, aspect, new ItemStack(ConfigItems.itemChestThaumium), new ItemStack[]{
@@ -254,6 +265,7 @@ public class TCERecipes {
 	public static ShapedArcaneRecipe recipeFocusShocker;
 	public static ShapedArcaneRecipe recipeFocusTrampoline;
 	public static ShapedArcaneRecipe recipeFocusPechTrade;
+	public static ShapedArcaneRecipe recipeFocusPotion;
 
 	public static ShapedArcaneRecipe recipeMagicBattery;
 	public static ShapedArcaneRecipe recipeMagicGenerator;

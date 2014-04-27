@@ -42,6 +42,7 @@ item.thaumcraftextras.focus.wand focus: return.name=Wand Focus: Return
 item.thaumcraftextras.focus.wand focus: shock.name=Wand Focus: Multi Shock
 item.thaumcraftextras.focus.wand focus: trampoline.name=Wand Focus: Air Shot
 item.thaumcraftextras.focus.wand focus: pech trade.name=Wand Focus: Pech Trade
+item.thaumcraftextras.focus.wand focus: potion.name=Wand Focus: Potion
 item.thaumcraftextras.armor.flaming chestplate.name=Chestplate of Vulcan
 item.thaumcraftextras.armor.energetic helmet.name=Energetic Helmet
 item.thaumcraftextras.scepter.base.name=Creative Scepter
@@ -92,6 +93,7 @@ tce.text.ROD_DEVIL.1=NYI
 tce.text.ROD_GOD.1=NYI
 tce.text.ROD_DARKSILVERWOOD.1=NYI
 tce.text.Wand_Focus:_Pech_Trade.1=NYI
+tce.text.Wand_Focus:_Potion.1=NYI
 ==Tags==
 tce.tag.Thaumcraft_Extras=A new world
 tce.tag.Chestplate_of_Flames=May fire be at your side
@@ -113,6 +115,7 @@ tce.tag.ROD_DEVIL=Hotter then lava
 tce.tag.ROD_GOD=May god be forever with you
 tce.tag.ROD_DARKSILVERWOOD=Like a boss
 tce.tag.Wand_Focus:_Pech_Trade=Less rage more trade
+tce.tag.Wand_Focus:_Potion=All in one
 ==Titles==
 CAP_DARKTHAUMIUM=Dark Thaumium Cap
 ROD_IRON=Iron Rod
@@ -132,8 +135,9 @@ Magic_Energy=Magic Energy
 Essentia_Barrels=Essentia Barrel
 Containment=Entity Containment
 Shocker=Thaumaturge Tesseract
-Wand_Focus_Shock=Wand Focus: Multi Shock
-Wand_Focus_Pech_Trade=Wand Focus: Pech Trade
+Wand_Focus:_Shock=Wand Focus: Multi Shock
+Wand_Focus:_Pech_Trade=Wand Focus: Pech Trade
+Wand_Focus:_Potion=Wand Focus: Potion
 ==Tooltips==
 thaumcraftextras.tooltip.wand_darksilverwood.0=Can be charged using an item
 thaumcraftextras.tooltip.wand_darksilverwood.1=containing magic energy

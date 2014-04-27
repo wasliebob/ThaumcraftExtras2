@@ -3,8 +3,6 @@ package thaumcraftextras.main.init;
 import java.awt.Color;
 
 import net.minecraft.item.ItemArmor.ArmorMaterial;
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectList;
 import thaumcraftextras.api.misc.items.MagicEnergyCrystal;
 import thaumcraftextras.items.ItemEnergyHelmet;
 import thaumcraftextras.items.ItemFlamingChestplate;
@@ -18,6 +16,7 @@ import thaumcraftextras.items.foci.beam.FocusClean;
 import thaumcraftextras.items.foci.beam.FocusTessela;
 import thaumcraftextras.items.foci.beam.FocusTrampoline;
 import thaumcraftextras.items.foci.normal.FocusPechTrade;
+import thaumcraftextras.items.foci.normal.FocusPotionEffect;
 import thaumcraftextras.items.foci.normal.FocusReturn;
 import thaumcraftextras.items.scepters.TCEItemScepter;
 import wasliecore.helpers.ColorHelper;
@@ -44,7 +43,7 @@ public class TCEItems {
 		ignisFuel = new TCEItem("Ignis Fuel", "fuel_ignis", "fuelIgnis");
 		reader = new ItemMagicEnergyReader("Magic Energy Reader", "magic_reader");
 
-		darkShard = new TCEItemShard("dark", ColorHelper.getColorCodeFromRGB(10, 10, 10));
+		darkShard = new TCEItemShard("dark", ColorHelper.getColorCodeFromRGB(50, 50, 50));
 		
 		xpShard = new ItemXPShard("xp", ColorHelper.getColorCodeFromColor(Color.green));
 		xpExtractor = new ItemXPExtractor("Experience Extractor");
@@ -67,34 +66,19 @@ public class TCEItems {
 
 	public static void initFoci()
 	{
-		AspectList cost = new AspectList();
-		cost.aspects.clear();
-		
-		cost.add(Aspect.ORDER, 2);
 		focusClean = new FocusClean(ColorHelper.getColorCodeFromRGB(0, 0, 100), "Wand Focus: Clean");
-		cost.aspects.clear();
-		
-		cost.add(Aspect.AIR, 10);
 		focusReturn = new FocusReturn(ColorHelper.getColorCodeFromRGB(50, 50, 0), "Wand Focus: Return");
-		cost.aspects.clear();
-		
-		cost.add(Aspect.AIR, 10);
 		focusTessela = new FocusTessela(ColorHelper.getColorCodeFromRGB(0, 0, 200), "Wand Focus: Shock");
-		cost.aspects.clear();
-		
-		cost.add(Aspect.AIR, 10);
 		focusTrampoline = new FocusTrampoline(ColorHelper.getColorCodeFromRGB(100, 0, 100), "Wand Focus: Trampoline");
-		cost.aspects.clear();
-		
-		cost.add(Aspect.ORDER, 10);
 		focusPechTrade = new FocusPechTrade(ColorHelper.getColorCodeFromRGB(50, 0, 100), "Wand Focus: Pech Trade");
-		cost.aspects.clear();
+		focusPotion = new FocusPotionEffect(ColorHelper.getColorCodeFromRGB(0, 100, 100), "Wand Focus: Potion");
 	}
 	public static FocusClean focusClean;
 	public static FocusReturn focusReturn;
 	public static FocusTessela focusTessela;
 	public static FocusTrampoline focusTrampoline;
 	public static FocusPechTrade focusPechTrade;
+	public static FocusPotionEffect focusPotion;
 
 	public static void initArmor()
 	{
