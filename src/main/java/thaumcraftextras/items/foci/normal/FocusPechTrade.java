@@ -1,6 +1,7 @@
 package thaumcraftextras.items.foci.normal;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
@@ -33,9 +34,10 @@ public class FocusPechTrade extends TCEItemFocus {
         	ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
         		if (mop != null && mop.entityHit != null && mop.entityHit instanceof EntityPech && wand.consumeAllVis(itemstack, player, getVisCost(), true, true)) {
         			EntityPech pech = (EntityPech)mop.entityHit;
-        			pech.setTamed(true);
         			pech.setAnger(0);
-        			pech.trading = true;
+        			pech.setTamed(true);
+        			pech.isValued(new ItemStack(Items.emerald));
+//        			pech.trading = true;
         		}
         		return itemstack;
         }
