@@ -1,9 +1,11 @@
 package thaumcraftextras.main;
 
 import thaumcraftextras.handlers.FuelHandler;
+import thaumcraftextras.handlers.GuiHandler;
 import thaumcraftextras.main.init.TCEBlocks;
 import thaumcraftextras.main.init.TCEEntries;
 import thaumcraftextras.main.init.TCEEvents;
+import thaumcraftextras.main.init.TCEGuideEntries;
 import thaumcraftextras.main.init.TCEItems;
 import thaumcraftextras.main.init.TCEMisc;
 import thaumcraftextras.main.init.TCERecipes;
@@ -18,6 +20,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 @Mod(modid = "ThaumcraftExtras", name = "ThaumcraftExtras", version = "1.0" ,dependencies = "required-after:Thaumcraft;required-after:WaslieCore")
@@ -42,7 +45,7 @@ public class ThaumcraftExtras {
 		
     	TCEItems.init();
     	TCEBlocks.init();
-    	
+    	TCEGuideEntries.init();
     	if(Config.addon_wands){TCEWands.init();};
     	
     	IntergrationLoader.init(event);
@@ -51,7 +54,7 @@ public class ThaumcraftExtras {
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-//		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GUIHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     	initTiles();
     	TCEEvents.init(event);
     }

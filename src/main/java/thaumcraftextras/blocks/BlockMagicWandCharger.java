@@ -68,15 +68,17 @@ public class BlockMagicWandCharger extends BlockContainer{
 					TileEntity tile = world.getTileEntity(x, y, z);
 						if(player.getCurrentEquippedItem().getItem() instanceof ItemWandCasting){
 							TileEntityMagicWandCharger charger = (TileEntityMagicWandCharger)tile;
-							charger.setInventorySlotContents(0, player.getCurrentEquippedItem().copy());
+							if(charger.getStackInSlotOnClosing(0) == null){
+								charger.setInventorySlotContents(0, player.getCurrentEquippedItem().copy());
 							
-							if(player.getCurrentEquippedItem().stackSize > 1)
-								player.getCurrentEquippedItem().stackSize--;
-							else
-								player.setCurrentItemOrArmor(0, null);
+								if(player.getCurrentEquippedItem().stackSize > 1)
+									player.getCurrentEquippedItem().stackSize--;
+								else
+									player.setCurrentItemOrArmor(0, null);
 							
-							charger.isDone = false;
+								charger.isDone = false;
 //							world.markBlockForUpdate(charger.xCoord, charger.yCoord, charger.zCoord);
+							}
 						}
 						}else{
 							

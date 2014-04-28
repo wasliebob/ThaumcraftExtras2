@@ -103,7 +103,7 @@ public class TileEntityMagicBattery extends MagicEnergyUniversal{
 	public int calcEnergy(MagicEnergyReceiver to)
 	{
 		if(to.shouldReceive()){
-		if(getEnergy() >= to.getMaxTransfer()){
+		if(storage.getEnergy() > 0 && storage.getEnergy() >= to.getMaxTransfer()){
 			if(to.getMaxEnergy() - to.getEnergy() > to.getMaxTransfer()){
 				decreaseEnergy(to.getMaxTransfer());
 				return to.getMaxTransfer();
@@ -128,7 +128,7 @@ public class TileEntityMagicBattery extends MagicEnergyUniversal{
 	
 	public int calcEnergy(MagicEnergyUniversal to)
 	{
-		if(getEnergy() >= to.getMaxTransfer()){
+		if(storage.getEnergy() > 0 && storage.getEnergy() >= to.getMaxTransfer()){
 			if(to.getMaxEnergy() - to.getEnergy() > to.getMaxTransfer()){
 				decreaseEnergy(to.getMaxTransfer());
 				return to.getMaxTransfer();

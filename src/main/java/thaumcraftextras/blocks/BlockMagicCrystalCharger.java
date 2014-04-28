@@ -16,6 +16,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import thaumcraftextras.api.interfaces.IMagicEnergyContainerItem;
 import thaumcraftextras.blocks.tiles.TileEntityMagicCrystalCharger;
+import thaumcraftextras.helpers.RenderingHelper;
 import thaumcraftextras.main.ThaumcraftExtras;
 import thaumcraftextras.main.init.TCETabs;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -28,13 +29,31 @@ public class BlockMagicCrystalCharger extends BlockContainer{
 		super(material);
 		setCreativeTab(TCETabs.tabMain);
 		setHardness(1.0F);
-		
+		setBlockBounds(0.098f, 0, 0.098f, 0.902f, 0.92f, 0.93f);
 		setBlockName(ThaumcraftExtras.modName.toLowerCase() + "." + "block" + "." + blockName);
 		GameRegistry.registerBlock(this, blockName);
 	}
 	IIcon side;
 	IIcon top;
 	IIcon bottom;
+	
+	@Override
+    public int getRenderType()
+    {
+        return RenderingHelper.render_magicBatteryCharger;
+    }
+	
+	@Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
+	
+	@Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 	
 	@Override
     public void registerBlockIcons(IIconRegister ir) 
@@ -66,17 +85,18 @@ public class BlockMagicCrystalCharger extends BlockContainer{
 			if(!world.isRemote){
 				if(player.getCurrentEquippedItem() != null){
 					TileEntity tile = world.getTileEntity(x, y, z);
-						if(player.getCurrentEquippedItem().getItem() instanceof IMagicEnergyContainerItem){
-							TileEntityMagicCrystalCharger charger = (TileEntityMagicCrystalCharger)tile;
-							charger.setInventorySlotContents(0, player.getCurrentEquippedItem().copy());
+							if(player.getCurrentEquippedItem().getItem() instanceof IMagicEnergyContainerItem){
+								TileEntityMagicCrystalCharger charger = (TileEntityMagicCrystalCharger)tile;
+								if(charger.getStackInSlot(0) == null){
+									charger.setInventorySlotContents(0, player.getCurrentEquippedItem().copy());
 							
-							if(player.getCurrentEquippedItem().stackSize > 1)
-								player.getCurrentEquippedItem().stackSize--;
-							else
-								player.setCurrentItemOrArmor(0, null);
-							
-							charger.isDone = false;
-//							world.markBlockForUpdate(charger.xCoord, charger.yCoord, charger.zCoord);
+									if(player.getCurrentEquippedItem().stackSize > 1)
+										player.getCurrentEquippedItem().stackSize--;
+									else
+										player.setCurrentItemOrArmor(0, null);
+								charger.isDone = false;
+//								world.markBlockForUpdate(charger.xCoord, charger.yCoord, charger.zCoord);
+							}
 						}
 						}else{
 							
@@ -88,8 +108,10 @@ public class BlockMagicCrystalCharger extends BlockContainer{
 					TileEntity tile = world.getTileEntity(x, y, z);
 					TileEntityMagicCrystalCharger charger = (TileEntityMagicCrystalCharger)tile;
 					dropItems(world, x, y, z);
-					charger.isDone = true;
-//					world.markBlockForUpdate(x, y, z);
+					
+//					if(charger.isDone == false)
+						charger.isDone = true;
+					world.markBlockForUpdate(x, y, z);
 				}
 			}
 		}

@@ -17,12 +17,11 @@ public class TileEntityMagicCrystalCharger extends MagicEnergyReceiver implement
 	
 	public TileEntityMagicCrystalCharger()
 	{
-		stacks = new ItemStack[1];
 		storage = new MagicEnergy(1000, 5);
 	}
 	public MagicEnergy storage;
     int add = 2;
-    ItemStack[] stacks;
+    public ItemStack[] stacks = new ItemStack[1];
     int energy;
     public static final String ENERGY = "ENERGY_MAGIC";
     
@@ -55,30 +54,37 @@ public class TileEntityMagicCrystalCharger extends MagicEnergyReceiver implement
     
     @Override
     public boolean hasEnoughEnergy(){
-    	if(storage.getEnergy() - storage.getMaxTransfer() >= 0)
-    		return true;
-    	else if(storage.getMaxEnergy() - storage.getEnergy() < 0)
-    		return false;
-    	else if(storage.getMaxEnergy() - storage.getEnergy() == 0)
-    		return false;
-    	else if(storage.getEnergy() == 0)
-    		return false;
-    	else
-    		return false;
+    	if(storage.getEnergy() > 0)
+    		return (storage.getEnergy() - storage.getMaxTransfer() >= 0);
+    	
+    	return false;
+//    	if(storage.getEnergy() - storage.getMaxTransfer() >= 0)
+//    		return true;
+//    	else if(storage.getMaxEnergy() - storage.getEnergy() < 0)
+//    		return false;
+//    	else if(storage.getMaxEnergy() - storage.getEnergy() == 0)
+//    		return false;
+//    	else if(storage.getEnergy() == 0)
+//    		return false;
+//    	else
+//    		return false;
     }
     
 	@Override
 	public boolean shouldReceive()
 	{
-		if(getStackInSlot(0) != null){
-			if(getStackInSlot(0).getItem() instanceof IMagicEnergyContainerItem){
-				ItemStack con = getStackInSlot(0);
-						if((con.getItemDamage() - add >= 0)){
-							return true;
-						}
-			}
-		}
-		return false;
+//		if(storage.getEnergy() + storage.getMaxTransfer() <= storage.getMaxEnergy()){
+			return (storage.getEnergy() + storage.getMaxTransfer() <= storage.getMaxEnergy());
+//		}
+////		if(getStackInSlot(0) != null){
+////			if(getStackInSlot(0).getItem() instanceof IMagicEnergyContainerItem){
+////				ItemStack con = getStackInSlot(0);
+////						if((con.getItemDamage() - add >= 0)){
+////							return true;
+////						}
+////			}
+////		}
+//		return false;
 	}
 
 	@Override

@@ -18,6 +18,7 @@ import thaumcraftextras.items.foci.beam.FocusTrampoline;
 import thaumcraftextras.items.foci.normal.FocusPechTrade;
 import thaumcraftextras.items.foci.normal.FocusPotionEffect;
 import thaumcraftextras.items.foci.normal.FocusReturn;
+import thaumcraftextras.items.guide.ItemGuide;
 import thaumcraftextras.items.scepters.TCEItemScepter;
 import wasliecore.helpers.ColorHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -49,6 +50,7 @@ public class TCEItems {
 		xpExtractor = new ItemXPExtractor("Experience Extractor");
 		
 		pouch_color = new ItemPouchColored();
+		guide = new ItemGuide("Thaumic Energy Guide", "guide");
 	}
 	public static TCEItem essenceMagic;
 	public static TCEItem essenceLight;
@@ -63,6 +65,7 @@ public class TCEItems {
 	public static TCEItemShard darkShard;	
 	public static ItemXPShard xpShard;
 	public static ItemXPExtractor xpExtractor;
+	public static ItemGuide guide;
 
 	public static void initFoci()
 	{

@@ -3,11 +3,14 @@ package thaumcraftextras.proxies;
 import thaumcraftextras.api.misc.classes.TileEntityMagicBattery;
 import thaumcraftextras.blocks.tiles.TileEntityEssentiaBarrel;
 import thaumcraftextras.blocks.tiles.TileEntityEssentiaBarrelWindow;
+import thaumcraftextras.blocks.tiles.TileEntityMagicCrystalCharger;
 import thaumcraftextras.blocks.tiles.TileEntityNoMove;
 import thaumcraftextras.blocks.tiles.TileEntityShocker;
+import thaumcraftextras.proxies.client.renders.RenderCrystalCharger;
 import thaumcraftextras.proxies.client.renders.RenderNoMove;
 import thaumcraftextras.proxies.client.renders.RenderTesserract;
 import thaumcraftextras.proxies.client.renders.TileEntityBatteryRenderer;
+import thaumcraftextras.proxies.client.renders.TileEntityCrystalChargerRenderer;
 import thaumcraftextras.proxies.client.renders.TileEntityEssentiaBarrelRenderer;
 import thaumcraftextras.proxies.client.renders.TileEntityEssentiaBarrelWindowRenderer;
 import thaumcraftextras.proxies.client.renders.TileEntityNoMoveRenderer;
@@ -21,15 +24,15 @@ public class ClientProxy extends CommonProxy {
     {
 		RenderingRegistry.registerBlockHandler(new RenderTesserract());
 		RenderingRegistry.registerBlockHandler(new RenderNoMove());
+		RenderingRegistry.registerBlockHandler(new RenderCrystalCharger());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityShocker.class, new TileEntityTesserractRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEssentiaBarrel.class, new TileEntityEssentiaBarrelRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEssentiaBarrelWindow.class, new TileEntityEssentiaBarrelWindowRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMagicBattery.class, new TileEntityBatteryRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNoMove.class, new TileEntityNoMoveRenderer());
-    }
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMagicCrystalCharger.class, new TileEntityCrystalChargerRenderer());
+   }
 	
 	@Override
-    public void registerParticles()
-	{	
-    }
+    public void registerParticles(){}
 }
