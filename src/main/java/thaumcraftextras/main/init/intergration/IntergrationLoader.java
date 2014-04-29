@@ -14,6 +14,10 @@ public class IntergrationLoader {
 		if(Loader.isModLoaded("ComputerCraft")){
 			ComputerCraft.init();
 			printMessage("ComputerCraft");}
+		
+		if(Loader.isModLoaded("ForgeMultipart")){
+			ForgeMultipart.init();
+			printMessage("Forge Multipart");}
 	}
 	
 	public static void printMessage(String mod){

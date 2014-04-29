@@ -18,8 +18,9 @@ public class TileEntityMagicWandCharger extends MagicEnergyReceiver implements I
 	
 	public TileEntityMagicWandCharger()
 	{
+		storage = new MagicEnergy(1000, 5);
 	}
-	public MagicEnergy storage = new MagicEnergy(1000, 5);
+	public MagicEnergy storage;
     int add = 2;
     public ItemStack[] stacks = new ItemStack[1];
     int energy;
@@ -34,15 +35,13 @@ public class TileEntityMagicWandCharger extends MagicEnergyReceiver implements I
     				ItemStack con = getStackInSlot(0);
     				ItemWandCasting wand = (ItemWandCasting)con.getItem();
     				for(Aspect asp : Aspect.getPrimalAspects()){
-    					if(!(wand.getVis(getStackInSlot(0), asp) + add <= wand.getMaxVis(getStackInSlot(0)) && hasEnoughEnergy())){
+    					if(wand.getVis(con, asp) + add > wand.getMaxVis(con)){
     						isDone = true;
-    					}else if(wand.getVis(getStackInSlot(0), asp) + add <= wand.getMaxVis(getStackInSlot(0)) && hasEnoughEnergy()){
+    						worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+    					}else if(wand.getVis(con, asp) + add <= wand.getMaxVis(con)){
     						if(hasEnoughEnergy()){
-    							chargeItem(con, add);
-    							decreaseEnergy(storage.getMaxTransfer());
-    						}
-    					}else{
-    						isDone = true;
+    							wand.addVis(con, asp, add, true);
+    							decreaseEnergy(storage.getMaxTransfer());    						}
     					}
     				}
     			}
@@ -51,30 +50,41 @@ public class TileEntityMagicWandCharger extends MagicEnergyReceiver implements I
     	}
     }
     
-    public void chargeItem(ItemStack con, int add){
-    	ItemWandCasting wand = (ItemWandCasting)getStackInSlot(0).getItem();
-		for(Aspect asp : Aspect.getPrimalAspects()){
-			if(wand.getVis(getStackInSlot(0), asp) + add <= wand.getMaxVis(getStackInSlot(0)) && hasEnoughEnergy()){
-				wand.addVis(getStackInSlot(0), asp, add, true);
-				decreaseEnergy(storage.getMaxTransfer());
-			}
-		}
-    }
-    
     @Override
     public boolean hasEnoughEnergy(){
-    	if(storage.getEnergy() - storage.getMaxTransfer() >= 0)
-    		return true;
-    	else if(storage.getMaxEnergy() - storage.getEnergy() < 0)
-    		return false;
-    	else if(storage.getMaxEnergy() - storage.getEnergy() == 0)
-    		return false;
-    	else if(storage.getEnergy() == 0)
-    		return false;
-    	else
-    		return false;
+    	if(storage.getEnergy() > 0)
+    		return (storage.getEnergy() - storage.getMaxTransfer() >= 0);
+    	
+    	return false;
+//    	if(storage.getEnergy() - storage.getMaxTransfer() >= 0)
+//    		return true;
+//    	else if(storage.getMaxEnergy() - storage.getEnergy() < 0)
+//    		return false;
+//    	else if(storage.getMaxEnergy() - storage.getEnergy() == 0)
+//    		return false;
+//    	else if(storage.getEnergy() == 0)
+//    		return false;
+//    	else
+//    		return false;
     }
-	
+    
+	@Override
+	public boolean shouldReceive()
+	{
+//		if(storage.getEnergy() + storage.getMaxTransfer() <= storage.getMaxEnergy()){
+			return (storage.getEnergy() + storage.getMaxTransfer() <= storage.getMaxEnergy());
+//		}
+////		if(getStackInSlot(0) != null){
+////			if(getStackInSlot(0).getItem() instanceof IMagicEnergyContainerItem){
+////				ItemStack con = getStackInSlot(0);
+////						if((con.getItemDamage() - add >= 0)){
+////							return true;
+////						}
+////			}
+////		}
+//		return false;
+	}
+
 	@Override
 	public int getEnergy() {
 		return storage.getEnergy();
@@ -104,7 +114,7 @@ public class TileEntityMagicWandCharger extends MagicEnergyReceiver implements I
 	public int getMaxTransfer(){
 		return storage.getMaxTransfer();
 	}
-	
+
 	@Override
 	public void writeToNBT(NBTTagCompound nbt)
 	{
@@ -154,7 +164,7 @@ public class TileEntityMagicWandCharger extends MagicEnergyReceiver implements I
 	public void onDataPacket(NetworkManager networkManager, S35PacketUpdateTileEntity packet) {
 		this.readFromNBT(packet.func_148857_g());
 	}
-	
+
 	@Override
 	public int getSizeInventory() {
 		return stacks.length;

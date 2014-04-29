@@ -31,17 +31,20 @@ public class GuiGuide extends GuiScreen{
 	public void drawScreen(int i0, int i1, float f1){
 		this.mc.renderEngine.bindTexture(background);
 		drawTexturedModalRect(left, top, 0, 0, gwidth, gheight);
-		
+
 		/** Title */
 		String str = TCEGuide.page.get(curPage).title;
-		this.drawCenteredString(fontRendererObj, str, this.left + gwidth / 2, top - 15, 0x00FF00);
+		this.drawCenteredString(fontRendererObj, str, this.left + gwidth / 2, top - 15, 0x336666);
 		String[] sa = TCEGuide.page.get(curPage).text;
-		
+
+		/** Page View */
+		this.drawCenteredString(fontRendererObj, curPage + "/" + TCEGuide.page.size(), this.left + gwidth / 2, top + 160, TCEGuide.page.get(curPage).color);
+
 		/** Text */ 
 		if(sa != null && sa.length > 0)
 		for(int j = 0; j < sa.length; j++){
 			String s = sa[j];
-			this.drawString(fontRendererObj, s, this.left + gwidth / 2 - 50, (top + 10) + (9*j), 0x00FF33);
+			this.drawString(fontRendererObj, s, this.left + gwidth / 2 - 50, (top + 15) + (9*j), 0x00FF33);
 		}
 		super.drawScreen(i0, i1, f1);
 	}

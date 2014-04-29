@@ -36,7 +36,7 @@ public class TileEntityMagicBattery extends MagicEnergyUniversal{
     			if(tile != null){
     				if(tile instanceof MagicEnergyReceiver && !(tile instanceof TileEntityMagicBattery)){
     						MagicEnergyReceiver to = (MagicEnergyReceiver)tile;
-    						if(!to.isDone){
+    						if(!to.isDone && this.getEnergy() > to.getMaxTransfer()){
     							this.setSending(true);
     							to.increaseEnergy(calcEnergy(to));
     							updateBlocks(to);
@@ -48,12 +48,14 @@ public class TileEntityMagicBattery extends MagicEnergyUniversal{
     					}
     				}else if(tile instanceof MagicEnergyUniversal && !(tile instanceof TileEntityMagicBattery)){
     					MagicEnergyUniversal to = (MagicEnergyUniversal)tile;
-    					this.setSending(true);
-    					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
-						to.increaseEnergy(calcEnergy(to));
-						updateBlocks(to);
-						if(Minecraft.getMinecraft().renderViewEntity != null){
-							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 1.0F, (float)to.zCoord + 0.5F, this.getColor());}
+    					if(this.getEnergy() >= to.getMaxTransfer()){
+    						this.setSending(true);
+    						worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+    						to.increaseEnergy(calcEnergy(to));
+    						updateBlocks(to);
+    						if(Minecraft.getMinecraft().renderViewEntity != null){
+    							Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord + 1.0F, (float)to.zCoord + 0.5F, this.getColor());}
+    					}
     				}
     			}else{
     			}

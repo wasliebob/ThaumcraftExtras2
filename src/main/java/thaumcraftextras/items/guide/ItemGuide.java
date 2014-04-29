@@ -14,7 +14,9 @@ public class ItemGuide extends Item{
 
 	public ItemGuide(String itemName, String iconName) {
 		setUnlocalizedName(ThaumcraftExtras.modName.toLowerCase() + "." + "item" + "." + itemName.toLowerCase());
+		setMaxStackSize(1);
 		setCreativeTab(TCETabs.tabMain);
+		
 		name = itemName;
 		icon = iconName;
 		GameRegistry.registerItem(this, this.getUnlocalizedName());

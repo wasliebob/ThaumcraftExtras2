@@ -20,7 +20,7 @@ public class TCEGuideEntries {
 				"features, ", 
 				"But also returns ",
 				"previous once."},
-				0x00FF33);
+				0x0033FF);
 		TCEGuide.addPage(n, page);
 		n++;
 		
@@ -28,7 +28,7 @@ public class TCEGuideEntries {
 				"TCE2 adds a whole ",
 				"new energy system",
 				"called Thaumic Energy."},
-				0x00FF33);
+				0x0033FF);
 		TCEGuide.addPage(n, page);
 		n++;
 		
@@ -40,7 +40,7 @@ public class TCEGuideEntries {
 				"The battery allows you ",
 				"to store energy and ",
 				"take it with you."},
-				0x00FF33);
+				0x0033FF);
 		TCEGuide.addPage(n, page);
 		n++;
 	}

@@ -33,9 +33,9 @@ public class TileEntityNoMove extends TileEntity{
 					EntityLiving living = (EntityLiving)entity;
 					if(Minecraft.getMinecraft().renderViewEntity != null)
 					{
-						living.motionX = 0.0f;
-						living.motionY = 0.0f;
-						living.motionZ = 0.0f;
+						living.motionX = 0.0D;
+						living.motionY = 0.0D;
+						living.motionZ = 0.0D;
 						Thaumcraft.proxy.sourceStreamFX(worldObj, xPos, yPos, zPos, (float)xCoord + 0.5F, (float)yCoord + 1.4F, (float)zCoord + 0.5F, 0);
 					}
 				}

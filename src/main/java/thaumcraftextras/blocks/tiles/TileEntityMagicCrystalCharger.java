@@ -34,6 +34,7 @@ public class TileEntityMagicCrystalCharger extends MagicEnergyReceiver implement
     				ItemStack con = getStackInSlot(0);
     					if(!(con.getItemDamage() - add >= 0)){
     						isDone = true;
+    						worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
     					}else if((con.getItemDamage() - add >= 0)){
     						if(hasEnoughEnergy()){
     							chargeItem(con, add);
@@ -41,6 +42,7 @@ public class TileEntityMagicCrystalCharger extends MagicEnergyReceiver implement
     						}
     					}else{
     						isDone = true;
+    						worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
     					}
     				}
     		}else{
