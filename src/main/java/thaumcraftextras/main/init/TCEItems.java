@@ -48,7 +48,7 @@ public class TCEItems {
 		
 		xpShard = new ItemXPShard("xp", ColorHelper.getColorCodeFromColor(Color.green));
 		xpExtractor = new ItemXPExtractor("Experience Extractor");
-		
+				
 		pouch_color = new ItemPouchColored();
 		guide = new ItemGuide("Thaumic Energy Guide", "guide");
 	}

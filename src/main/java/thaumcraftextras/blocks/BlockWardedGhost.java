@@ -39,7 +39,7 @@ public class BlockWardedGhost extends BlockContainer {
 		setBlockName(ThaumcraftExtras.modName.toLowerCase() + "." + "block" + "." + name.toLowerCase());
 		WardedBlockHelper.init();
 		
-		GameRegistry.registerBlock(this, ItemBlockWardedGhost.class, "name");
+		GameRegistry.registerBlock(this, ItemBlockWardedGhost.class, this.getUnlocalizedName());
 	}
 	String name;
 	int metaId;
@@ -106,7 +106,7 @@ public class BlockWardedGhost extends BlockContainer {
 			}
 		}
 	}
-	
+
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par1, float par2, float par3, float par4) 
     {

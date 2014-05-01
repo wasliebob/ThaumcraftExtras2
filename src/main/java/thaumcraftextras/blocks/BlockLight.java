@@ -27,7 +27,7 @@ public class BlockLight extends Block {
 		setBlockName(ThaumcraftExtras.modName.toLowerCase() + "." + "block" + "." + blockName.toLowerCase());
 		
 		
-		GameRegistry.registerBlock(this, ItemBlockLightning.class, "name");
+		GameRegistry.registerBlock(this, ItemBlockLightning.class, this.getUnlocalizedName());
 	}
 	int metaId;
     

@@ -32,7 +32,7 @@ public class FocusPechTrade extends TCEItemFocus {
         @Override
         public ItemStack onFocusRightClick(ItemStack itemstack, World world, EntityPlayer player, MovingObjectPosition mop) {
         	ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
-        		if (mop != null && mop.entityHit != null && mop.entityHit instanceof EntityPech && wand.consumeAllVis(itemstack, player, getVisCost(), true, true)) {
+        		if (mop != null && mop.typeOfHit == MovingObjectPosition.MovingObjectType.ENTITY && mop.entityHit instanceof EntityPech && wand.consumeAllVis(itemstack, player, getVisCost(), true, true)) {
         			EntityPech pech = (EntityPech)mop.entityHit;
         			pech.setAnger(0);
         			pech.setTamed(true);

@@ -24,9 +24,11 @@ public class TileEntityCrystalChargerRenderer extends TileEntitySpecialRenderer{
 			if(te.getStackInSlot(0) != null && te.getStackInSlot(0).getItem() instanceof IMagicEnergyContainerItem){
 				GL11.glPushMatrix();
 				GL11.glTranslated(x + 2.0D, y + 2.0D, z + 2.0D);
+
 				EntityItem ei = new EntityItem(te.getWorldObj(), x, y, z, te.getStackInSlot(0));
 				RenderManager.instance.renderEntityWithPosYaw(ei, 0, 0, 0, 0, 0);
 				GL11.glPopMatrix();
+
 			}
 		}
 	}
