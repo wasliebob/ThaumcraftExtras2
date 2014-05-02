@@ -20,6 +20,7 @@ tile.thaumcraftextras.block.Magical Lava Generator.name=Magical Lava Generator
 tile.thaumcraftextras.block.Essentia Barrel.name=Essentia Barrel
 tile.thaumcraftextras.block.Essentia Barrel Window.name=Essentia Barrel Window
 tile.thaumcraftextras.block.light block.name=Lightning Block
+tile.thaumcraftextras.block.advanced altar.name=Advanced Altar
 ==Items==
 item.thaumcraftextras.crystal.1.name=Tiny Thaumic Energy Crystal
 item.thaumcraftextras.crystal.2.name=Small Thaumic Energy Crystal
@@ -96,6 +97,7 @@ tce.text.ROD_GOD.1=NYI
 tce.text.ROD_DARKSILVERWOOD.1=NYI
 tce.text.Wand_Focus:_Pech_Trade.1=NYI
 tce.text.Wand_Focus:_Potion.1=NYI
+tce.text.Altar_Advanced.1=NYI
 ==Tags==
 tce.tag.Thaumcraft_Extras=A new world
 tce.tag.Chestplate_of_Flames=May fire be at your side
@@ -118,6 +120,7 @@ tce.tag.ROD_GOD=May god be forever with you
 tce.tag.ROD_DARKSILVERWOOD=Like a boss
 tce.tag.Wand_Focus:_Pech_Trade=Less rage more trade
 tce.tag.Wand_Focus:_Potion=All in one
+tce.tag.Altar_Advanced=Just one block left
 ==Titles==
 CAP_DARKTHAUMIUM=Dark Thaumium Cap
 ROD_IRON=Iron Rod
@@ -140,6 +143,7 @@ Shocker=Thaumaturgic Tesla Coil
 Wand_Focus:_Shock=Wand Focus: Multi Shock
 Wand_Focus:_Pech_Trade=Wand Focus: Pech Trade
 Wand_Focus:_Potion=Wand Focus: Potion
+Altar_Advanced=Advanced Altar
 ==Tooltips==
 thaumcraftextras.tooltip.wand_darksilverwood.0=Can be charged using an item
 thaumcraftextras.tooltip.wand_darksilverwood.1=containing thaumic energy

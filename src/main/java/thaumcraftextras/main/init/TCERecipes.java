@@ -13,6 +13,7 @@ import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraftextras.api.core.TCEApi;
+import thaumcraftextras.api.core.recipes.AdvancedAltarRecipe;
 import thaumcraftextras.main.Config;
 import thaumcraftextras.main.init.addons.TCEWands;
 import thaumcraftextras.main.init.addons.wands.helpers.WandCreationHelper;
@@ -27,7 +28,7 @@ public class TCERecipes {
 		initBarrelRecipes();
 		initCrystalRecipes();
 		initDarkInfusionRecipes();
-		
+		initAdvancedAltarRecipes();
 		if(Config.addon_wands)
 			initWandRecipes();
 	}
@@ -58,6 +59,14 @@ public class TCERecipes {
 			"XXX",
 			'X', Blocks.glass,
 			'Y', TCEItems.essenceMagic});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(TCEBlocks.altar_advanced), new Object[]{
+			"XYX",
+			"YZY",
+			"XYX",
+			'Y', Blocks.glass,
+			'Z', TCEItems.essenceMagic,
+			'X', ConfigBlocks.blockCosmeticSolid});
 		
 		for(int i = 0; i < 15; i++)
 			GameRegistry.addShapedRecipe(new ItemStack(TCEItems.pouch_color, 1, i), new Object[]{
@@ -270,6 +279,17 @@ public class TCERecipes {
 			'X', new ItemStack(Blocks.glowstone),
 			'I', new ItemStack(Blocks.glass)});
 		aspect.aspects.clear();
+		
+		aspect.add(Aspect.ORDER, 10);
+		aspect.add(Aspect.ENTROPY, 10);
+		recipeAdvancedAltar = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.altar_advanced, new ItemStack(TCEBlocks.altar_advanced), aspect, new Object[]{
+			"XYX",
+			"YZY",
+			"XYX",
+			'Y', Blocks.glass_pane,
+			'Z', TCEItems.essenceMagic,
+			'X', Blocks.obsidian});
+		aspect.aspects.clear();
 	}
 	public static ShapedArcaneRecipe recipeMagicEssence;
 	public static ShapedArcaneRecipe recipeDarkThaumium;
@@ -289,6 +309,7 @@ public class TCERecipes {
 
 	public static ShapedArcaneRecipe recipeShocker;
 	public static ShapedArcaneRecipe recipeContainment;
+	public static ShapedArcaneRecipe recipeAdvancedAltar;
 	
 	public static ShapedArcaneRecipe recipeScanner;	
 	public static InfusionRecipe recipeFireChestplate;
@@ -396,6 +417,13 @@ public class TCERecipes {
 
 			TCEApi.addDarkInfusionRecipe(Item.getItemFromBlock(Blocks.coal_block), new ItemStack(TCEBlocks.blockIgnis));
 		}
+	}
+	
+	public static void initAdvancedAltarRecipes()
+	{
+		AdvancedAltarRecipe recipe;
+		recipe = new AdvancedAltarRecipe(new ItemStack(Blocks.obsidian), Aspect.ENTROPY, 5);
+		TCEApi.addAdvancedAltarRecipe(Item.getItemFromBlock(Blocks.cobblestone), recipe); 
 	}
 	
 	public static ShapedArcaneRecipe getCrystalRecipe(String entry, ItemStack result, ItemStack core, ItemStack inside, ItemStack outside, int tier)

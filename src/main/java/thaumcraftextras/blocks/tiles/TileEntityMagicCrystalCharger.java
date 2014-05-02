@@ -264,7 +264,7 @@ public class TileEntityMagicCrystalCharger extends MagicEnergyReceiver implement
 
 	@Override
 	public boolean canExtractItem(int i, ItemStack itemstack, int j) {
-		return false;
+		return false; 
 	}
 
 	@Override

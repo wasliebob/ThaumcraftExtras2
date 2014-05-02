@@ -124,6 +124,14 @@ public class TCEEntries {
 		research = new ResearchHelper(essentia_barrel, TCEEntries.TCE, aspect, 3, -4, 2, new ItemStack(TCEBlocks.barrel_essentia)).setParents(TCEEntries.tce).setSecondary().registerResearchItem();
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.barrel_essentia));
 		aspect = new AspectList();
+		
+		aspect.add(Aspect.ORDER, 20);
+		aspect.add(Aspect.AIR, 20);
+		aspect.add(Aspect.ENTROPY, 20);
+		text = new String[]{"1"};
+		research = new ResearchHelper(altar_advanced, TCEEntries.TCE, aspect, 5, -2, 2, new ItemStack(TCEBlocks.altar_advanced)).setParents(TCEEntries.tce).setSecondary().registerResearchItem();
+		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeAdvancedAltar));
+		aspect = new AspectList();
 	}
 	public static String tce = "Thaumcraft_Extras"; 
 	public static String ingot_darkthaumium = "Dark_Thaumium"; 
@@ -141,6 +149,7 @@ public class TCEEntries {
 	public static String containment = "Containment";
 	public static String shocker = "Shocker";
 	public static String essentia_barrel = "Essentia_Barrels";
+	public static String altar_advanced = "Altar_Advanced";
 	
 	public static void initWandEntries()
 	{

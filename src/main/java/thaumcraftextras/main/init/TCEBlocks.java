@@ -2,6 +2,7 @@ package thaumcraftextras.main.init;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
+import thaumcraftextras.blocks.BlockAdvancedAltar;
 import thaumcraftextras.blocks.BlockDarkendAltar;
 import thaumcraftextras.blocks.BlockDarkendCore;
 import thaumcraftextras.blocks.BlockEssentiaBarrel;
@@ -43,6 +44,7 @@ public class TCEBlocks {
 		magicVoid = new BlockMagicVoid(Material.iron, "Magic Energy Void");
 		lavaGen = new BlockMagicLavaGenerator(Material.iron, "Magical Lava Generator");
 		blockLight = new BlockLight("Light Block");
+		altar_advanced = new BlockAdvancedAltar();
 	}
 	public static TCEBlock blockIgnis;
 	public static BlockWardedGhost specialWardedGhost;
@@ -58,6 +60,7 @@ public class TCEBlocks {
 	public static BlockMagicVoid magicVoid;
 	public static BlockMagicLavaGenerator lavaGen;
 	public static BlockLight blockLight;
+	public static BlockAdvancedAltar altar_advanced;
 
 	public static void initBarrels()
 	{
