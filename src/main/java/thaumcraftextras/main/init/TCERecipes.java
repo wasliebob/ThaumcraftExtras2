@@ -368,8 +368,6 @@ public class TCERecipes {
 	
 	public static void initDarkInfusionRecipes()
 	{
-		TCEApi.addDarkInfusionRecipe(TCEItems.essenceDark, new ItemStack(TCEItems.essenceLight));
-		TCEApi.addDarkInfusionRecipe(Items.coal, new ItemStack(TCEItems.ignisFuel));
 		TCEApi.addDarkInfusionRecipe(TCEItems.essenceMagic, new ItemStack(TCEItems.essenceDark));
 		TCEApi.addDarkInfusionRecipe(ConfigItems.itemShard, new ItemStack(TCEItems.darkShard));
 		
@@ -379,7 +377,6 @@ public class TCERecipes {
 			TCEApi.addDarkInfusionRecipe(Items.emerald, new ItemStack(Items.diamond, 2, 0));
 			
 			/** Tools */
-			
 			TCEApi.addDarkInfusionRecipe(Items.iron_axe, new ItemStack(Items.iron_ingot, 3, 0));
 			TCEApi.addDarkInfusionRecipe(Items.iron_pickaxe, new ItemStack(Items.iron_ingot, 3, 0));
 			TCEApi.addDarkInfusionRecipe(Items.iron_shovel, new ItemStack(Items.iron_ingot, 1, 0));
@@ -424,6 +421,13 @@ public class TCERecipes {
 		AdvancedAltarRecipe recipe;
 		recipe = new AdvancedAltarRecipe(new ItemStack(Blocks.obsidian), Aspect.ENTROPY, 5);
 		TCEApi.addAdvancedAltarRecipe(Item.getItemFromBlock(Blocks.cobblestone), recipe); 
+				
+		recipe = new AdvancedAltarRecipe(new ItemStack(TCEItems.essenceLight), Aspect.LIGHT, 5);
+		TCEApi.addAdvancedAltarRecipe(TCEItems.essenceMagic, recipe); 
+		
+		recipe = new AdvancedAltarRecipe(new ItemStack(TCEItems.ignisFuel), Aspect.FIRE, 2);
+		TCEApi.addAdvancedAltarRecipe(Items.coal, recipe); 
+
 	}
 	
 	public static ShapedArcaneRecipe getCrystalRecipe(String entry, ItemStack result, ItemStack core, ItemStack inside, ItemStack outside, int tier)

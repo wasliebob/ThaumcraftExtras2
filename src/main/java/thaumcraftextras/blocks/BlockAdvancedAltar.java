@@ -72,7 +72,8 @@ public class BlockAdvancedAltar extends BlockContainer{
 					TileEntityAdvancedAltar altar = (TileEntityAdvancedAltar)tile;
 					if(altar.getStackInSlot(0) == null){
 						altar.setInventorySlotContents(0, player.getCurrentEquippedItem().copy());
-							
+						world.markBlockForUpdate(x, y, z);
+
 						if(player.getCurrentEquippedItem().stackSize > 1)
 							player.getCurrentEquippedItem().stackSize--;
 						else
@@ -81,12 +82,13 @@ public class BlockAdvancedAltar extends BlockContainer{
 				}
 			}
 		}else{
-			if(player.isSneaking()){
+			if(!world.isRemote && player.isSneaking()){
 				if(player.getCurrentEquippedItem() == null){
 					TileEntity tile = world.getTileEntity(x, y, z);
 					TileEntityAdvancedAltar altar = (TileEntityAdvancedAltar)tile;
 					dropItems(world, x, y, z);
 					altar.setInventorySlotContents(0, null);
+					world.markBlockForUpdate(x, y, z);
 				}
 			}
 		}

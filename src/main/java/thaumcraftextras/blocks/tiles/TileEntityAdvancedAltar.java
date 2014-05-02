@@ -20,11 +20,7 @@ import thaumcraft.common.Thaumcraft;
 import thaumcraftextras.api.core.recipes.AdvancedAltarRecipeManager;
 
 public class TileEntityAdvancedAltar extends TileEntity implements ISidedInventory, IAspectContainer, IEssentiaTransport{
-	public TileEntityAdvancedAltar()
-	{
-		stacks = new ItemStack[1];
-	}
-    ItemStack[] stacks;
+    ItemStack[] stacks = new ItemStack[1];
     
     @Override
     public void updateEntity()
@@ -35,6 +31,7 @@ public class TileEntityAdvancedAltar extends TileEntity implements ISidedInvento
     				if(drawFromTube() == AdvancedAltarRecipeManager.advancedAltar.get(getStackInSlot(0).getItem()).amount){
     					stacks[0] = AdvancedAltarRecipeManager.advancedAltar.get(getStackInSlot(0).getItem()).output;
     					Thaumcraft.proxy.burst(worldObj, (double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D, 2);
+						worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
     				}
     			}
     		}
@@ -65,7 +62,7 @@ public class TileEntityAdvancedAltar extends TileEntity implements ISidedInvento
 		super.readFromNBT(nbt);
 
 		
-		  NBTTagList tagList = nbt.getTagList("Inventory", Constants.NBT.TAG_LIST);
+		  NBTTagList tagList = nbt.getTagList("Inventory", Constants.NBT.TAG_COMPOUND);
           for (int i = 0; i < tagList.tagCount(); i++) {
                   NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
                   byte slot = tag.getByte("Slot");
@@ -212,7 +209,6 @@ public class TileEntityAdvancedAltar extends TileEntity implements ISidedInvento
 	         TileEntity tile = ThaumcraftApiHelper.getConnectableTile(worldObj, xCoord, yCoord, zCoord, orientation);
 
 	         if (tile != null) {
-//	        	 worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
 	                 IEssentiaTransport ic = (IEssentiaTransport) tile;
 
 	                 if (!ic.canOutputTo(orientation.getOpposite()))
@@ -235,7 +231,7 @@ public class TileEntityAdvancedAltar extends TileEntity implements ISidedInvento
 
 		@Override
 	    public AspectList getAspects() {
-			if(getStackInSlot(0) != null)
+			if(getStackInSlot(0) != null && AdvancedAltarRecipeManager.advancedAltar.containsKey(getStackInSlot(0).getItem()))
 				return new AspectList().add(AdvancedAltarRecipeManager.advancedAltar.get(getStackInSlot(0).getItem()).aspect, AdvancedAltarRecipeManager.advancedAltar.get(getStackInSlot(0).getItem()).amount);
 			return null;
 		}
@@ -301,7 +297,7 @@ public class TileEntityAdvancedAltar extends TileEntity implements ISidedInvento
 
 	    @Override
 	    public boolean renderExtendedTube() {
-	            return true;
+	            return false;
 	    }
 
 		@Override
