@@ -146,7 +146,7 @@ public class TileEntityMagicCrystalCharger extends MagicEnergyReceiver implement
 		setEnergy(nbt.getInteger(ENERGY));
 
 		
-		  NBTTagList tagList = nbt.getTagList("Inventory", Constants.NBT.TAG_LIST);
+		  NBTTagList tagList = nbt.getTagList("Inventory", Constants.NBT.TAG_COMPOUND);
           for (int i = 0; i < tagList.tagCount(); i++) {
                   NBTTagCompound tag = (NBTTagCompound) tagList.getCompoundTagAt(i);
                   byte slot = tag.getByte("Slot");

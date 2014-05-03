@@ -11,8 +11,7 @@ public class TCEMagicEnergy {
 		if(amountEssentia > 0)
 			return (amountEssentia*essentia);
 		else
-			System.out.println("[TCE2] " +  " A mod is trying to calculate multiply with zero, returning 1");
-		
+			System.out.println("[TCE2] " +  " A mod is trying to multiply with zero, returning 1");
 		return 1;
 	}
 	public static int essentia = 10;
@@ -28,7 +27,7 @@ public class TCEMagicEnergy {
 		if(amountShards > 0)
 			return (amountShards*xpShard);
 		else
-			System.out.println("[TCE2] " +  " A mod is trying to calculate multiply with zero, returning 1");
+			System.out.println("[TCE2] " +  " A mod is trying to multiply with zero, returning 1");
 		return 1;
 	}
 	public static int xpShard = 10; /** Not yet implemented */

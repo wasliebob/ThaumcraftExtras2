@@ -5,6 +5,7 @@ import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.particle.EffectRenderer;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -17,7 +18,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.ForgeDirection;
+import thaumcraft.common.Thaumcraft;
 import thaumcraftextras.blocks.itemblocks.ItemBlockWardedGhost;
 import thaumcraftextras.blocks.tiles.TileEntityWardedSpecial;
 import thaumcraftextras.helpers.WardedBlockHelper;
@@ -74,6 +78,17 @@ public class BlockWardedGhost extends BlockContainer {
         
         for(int i = 0; i < icons.length; i++)
         	icons[i] = ir.registerIcon(WardedBlockHelper.warded.get(i));
+    }
+    
+    @Override
+    public boolean addHitEffects(World worldObj, MovingObjectPosition target, EffectRenderer effectRenderer)
+    {
+      float f = (float)target.hitVec.xCoord - target.blockX;
+      float f1 = (float)target.hitVec.yCoord - target.blockY;
+      float f2 = (float)target.hitVec.zCoord - target.blockZ;
+      Thaumcraft.proxy.blockWard(worldObj, target.blockX, target.blockY, target.blockZ, ForgeDirection.getOrientation(target.sideHit), f, f1, f2);
+      
+      return true;
     }
     
 //    @Override

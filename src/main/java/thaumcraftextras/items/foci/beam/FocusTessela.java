@@ -64,8 +64,8 @@ public class FocusTessela extends TCEItemFocus {
 
             					if(living.getHealth() - 1.0F == 0)
             						living.onDeath(DamageSource.generic);
-            					
-            					FXLightningBolt light = new FXLightningBolt(player.worldObj, player.posX, player.posY + 1.5F, player.posZ, xPos, yPos + 0.5F, zPos, player.worldObj.getSeed(), 2);
+
+            					FXLightningBolt light = new FXLightningBolt(player.worldObj, player.posX, player.posY + 1.5F, player.posZ, xPos, yPos + 0.5F, zPos, player.worldObj.rand.nextLong(), 6, 0.5F, 5);
             					light.defaultFractal();
             					light.setType(2);
             					light.setWidth(0.125F);
@@ -73,6 +73,7 @@ public class FocusTessela extends TCEItemFocus {
             					
             					for (int a = 0; a < 5; a++) {
             						Thaumcraft.proxy.sparkle((float)xPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, (float)yPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, (float)zPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, 2.0F + player.worldObj.rand.nextFloat(), 2, 0.05F + player.worldObj.rand.nextFloat() * 0.05F);
+            	    		        player.worldObj.playSoundEffect(xPos + 0.5D, yPos + 0.5D, zPos + 0.5D, "thaumcraft:jacobs", 0.25F, 1.0F);
             					}
             				}
             			}

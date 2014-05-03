@@ -38,22 +38,22 @@ public class FocusReturn extends TCEItemFocus {
 
         
         @Override
-        public ItemStack onFocusRightClick(ItemStack itemstack, World world, EntityPlayer player, MovingObjectPosition movingobjectposition) {
+        public ItemStack onFocusRightClick(ItemStack itemstack, World world, EntityPlayer player, MovingObjectPosition mop) {
         	ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
-        	if(player.isSneaking()){
+        	if(!world.isRemote && player.isSneaking()){
         		xPos.put(player.getDisplayName(), player.posX);
         		yPos.put(player.getDisplayName(), player.posY);
         		zPos.put(player.getDisplayName(), player.posZ);
-        		dim.put(player.getDisplayName(), player.dimension);
-        		
+
         		if(!world.isRemote)
         			player.addChatComponentMessage(new ChatComponentText("Bound return focus to a new location"));
+		        world.playSoundEffect(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, "thaumcraft:wand", 0.25F, 1.0F);
         	}else{
-        		if (wand.consumeAllVis(itemstack, player, getVisCost(), true, true)) {
+        		if (!world.isRemote && wand.consumeAllVis(itemstack, player, getVisCost(), true, true)) {
         			String name = player.getDisplayName();
         			if(xPos.containsKey(name) && yPos.containsKey(name) && zPos.containsKey(name)){
-        				player.travelToDimension(dim.get(name));
         				player.setPosition(xPos.get(name), yPos.get(name), zPos.get(name));
+        		        world.playSoundEffect(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, "thaumcraft:wand", 0.25F, 1.0F);
         			}
         		}
         	}

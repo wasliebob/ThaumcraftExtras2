@@ -31,7 +31,9 @@ public class TileEntityAdvancedAltar extends TileEntity implements ISidedInvento
     				if(drawFromTube() == AdvancedAltarRecipeManager.advancedAltar.get(getStackInSlot(0).getItem()).amount){
     					stacks[0] = AdvancedAltarRecipeManager.advancedAltar.get(getStackInSlot(0).getItem()).output;
     					Thaumcraft.proxy.burst(worldObj, (double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D, 2);
-						worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+        		        worldObj.playSoundEffect(xCoord + 0.5D,yCoord + 0.5D, zCoord + 0.5D, "thaumcraft:craftstart", 0.25F, 1.0F);
+
+    					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
     				}
     			}
     		}

@@ -7,9 +7,11 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 
 import org.lwjgl.opengl.GL11;
 
@@ -26,21 +28,20 @@ public class PlayerRenderTick extends Gui{
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	  public void playerRender(RenderGameOverlayEvent event){
-		if(Minecraft.getMinecraft().thePlayer != null){
+		if(Minecraft.getMinecraft().thePlayer != null && event.type == ElementType.HOTBAR && Minecraft.getMinecraft().currentScreen == null){
 			Minecraft mc = Minecraft.getMinecraft();
 			EntityPlayer player = Minecraft.getMinecraft().thePlayer ;
-			if(player.getHeldItem() != null && player.getHeldItem().getItem() instanceof ItemMagicEnergyReader){
+			ItemStack held = player.getHeldItem();
+			if(held != null && held.getItem() instanceof ItemMagicEnergyReader){
 				renderIt(event, player, mc);
 			}else if (player.getCurrentArmor(3) != null && player.getCurrentArmor(3).getItem() instanceof ItemEnergyHelmet){
 				renderIt(event, player, mc);
 			}
 		}
 	}
-	
 	public void renderIt(RenderGameOverlayEvent event, EntityPlayer player, Minecraft mc)
 	{
 		if(mc.renderViewEntity != null){
-//			MovingObjectPosition ray = mc.renderViewEntity.rayTrace(200, 1.0F);
 			MovingObjectPosition ray = mc.objectMouseOver;
 			if(ray != null){
 			int blockX = ray.blockX;

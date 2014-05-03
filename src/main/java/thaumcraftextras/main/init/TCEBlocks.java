@@ -1,7 +1,10 @@
 package thaumcraftextras.main.init;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import thaumcraft.common.config.ConfigBlocks;
+import thaumcraftextras.api.core.TCEApi;
 import thaumcraftextras.blocks.BlockAdvancedAltar;
 import thaumcraftextras.blocks.BlockDarkendAltar;
 import thaumcraftextras.blocks.BlockDarkendCore;
@@ -26,6 +29,7 @@ public class TCEBlocks {
 	{
 		initBlocks();
 		initBarrels();
+		initExchange();
 	}
 	
 	public static void initBlocks()
@@ -69,4 +73,29 @@ public class TCEBlocks {
 	}
 	public static BlockEssentiaBarrel barrel_essentia;
 	public static BlockEssentiaBarrelWindow window_barrel_essentia;
+	
+	public static void initExchange()
+	{
+		/** Exchange Normal Blocks */
+		TCEApi.addExchange(Blocks.cobblestone, Blocks.dirt);
+		TCEApi.addExchange(Blocks.red_mushroom, Blocks.brown_mushroom);
+		TCEApi.addExchange(Blocks.red_mushroom_block, Blocks.brown_mushroom_block);
+		TCEApi.addExchange(Blocks.grass, Blocks.stone);
+
+		/** Exchange Block using meta */
+		TCEApi.addExchangeMeta(Blocks.wool, 15);
+		TCEApi.addExchangeMeta(Blocks.stained_hardened_clay, 15);
+		TCEApi.addExchangeMeta(Blocks.stained_glass, 15);
+		TCEApi.addExchangeMeta(Blocks.stained_glass_pane, 15);
+		TCEApi.addExchangeMeta(ConfigBlocks.blockCandle, 15);
+		TCEApi.addExchangeMeta(Blocks.planks, 5);
+		TCEApi.addExchangeMeta(Blocks.log, 3);
+		TCEApi.addExchangeMeta(Blocks.log2, 1);
+		TCEApi.addExchangeMeta(Blocks.sand, 1);
+		TCEApi.addExchangeMeta(Blocks.sapling, 5);
+		TCEApi.addExchangeMeta(Blocks.carpet, 15);
+		TCEApi.addExchangeMeta(Blocks.red_flower, 8);
+		TCEApi.addExchangeMeta(TCEBlocks.blockLight, 15);
+		TCEApi.addExchangeMeta(TCEBlocks.specialWardedGhost, 15);
+	}
 }

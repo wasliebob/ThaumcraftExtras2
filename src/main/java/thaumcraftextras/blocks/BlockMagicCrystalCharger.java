@@ -105,7 +105,7 @@ public class BlockMagicCrystalCharger extends BlockContainer{
 		}
 		}else{
 			if(player.isSneaking()){
-				if(player.getCurrentEquippedItem() == null){
+				if(!world.isRemote && player.getCurrentEquippedItem() == null){
 					TileEntity tile = world.getTileEntity(x, y, z);
 					TileEntityMagicCrystalCharger charger = (TileEntityMagicCrystalCharger)tile;
 					charger.isDone = true;

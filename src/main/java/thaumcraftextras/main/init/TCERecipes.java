@@ -250,6 +250,17 @@ public class TCERecipes {
 			'Y', new ItemStack(TCEItems.darkShard)});
 		aspect.aspects.clear();
 		
+		aspect.add(Aspect.ORDER, 50);
+		recipeFocusExchange = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.focus_exchange, new ItemStack(TCEItems.focusExchange, 1, 0), aspect, new Object[]{
+			"XIX",
+			"IYI",
+			"ZIZ",
+			'X', new ItemStack(TCEItems.essenceLight),
+			'Z', new ItemStack(TCEItems.essenceDark),
+			'I', new ItemStack(ConfigItems.itemShard, 1, 4),
+			'Y', new ItemStack(ConfigItems.itemFocusTrade)});
+		aspect.aspects.clear();
+		
 		aspect.add(Aspect.ENTROPY, 25);
 		aspect.add(Aspect.AIR, 25);
 		recipeShocker = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.shocker, new ItemStack(TCEBlocks.shocker, 1, 0), aspect, new Object[]{
@@ -300,6 +311,7 @@ public class TCERecipes {
 	public static ShapedArcaneRecipe recipeFocusTrampoline;
 	public static ShapedArcaneRecipe recipeFocusPechTrade;
 	public static ShapedArcaneRecipe recipeFocusPotion;
+	public static ShapedArcaneRecipe recipeFocusExchange;
 
 	public static ShapedArcaneRecipe recipeMagicBattery;
 	public static ShapedArcaneRecipe recipeMagicGenerator;
@@ -411,8 +423,6 @@ public class TCERecipes {
 			TCEApi.addDarkInfusionRecipe(Items.diamond_chestplate, new ItemStack(Items.diamond, 8, 0));
 			TCEApi.addDarkInfusionRecipe(Items.diamond_leggings, new ItemStack(Items.diamond, 7, 0));
 			TCEApi.addDarkInfusionRecipe(Items.diamond_boots, new ItemStack(Items.diamond, 4, 0));
-
-			TCEApi.addDarkInfusionRecipe(Item.getItemFromBlock(Blocks.coal_block), new ItemStack(TCEBlocks.blockIgnis));
 		}
 	}
 	
@@ -428,6 +438,8 @@ public class TCERecipes {
 		recipe = new AdvancedAltarRecipe(new ItemStack(TCEItems.ignisFuel), Aspect.FIRE, 2);
 		TCEApi.addAdvancedAltarRecipe(Items.coal, recipe); 
 
+		recipe = new AdvancedAltarRecipe(new ItemStack(TCEBlocks.blockIgnis), Aspect.FIRE, 5);
+		TCEApi.addAdvancedAltarRecipe(Item.getItemFromBlock(Blocks.coal_block), recipe);
 	}
 	
 	public static ShapedArcaneRecipe getCrystalRecipe(String entry, ItemStack result, ItemStack core, ItemStack inside, ItemStack outside, int tier)

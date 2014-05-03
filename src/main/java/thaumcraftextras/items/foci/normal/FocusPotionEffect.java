@@ -36,7 +36,7 @@ public class FocusPotionEffect extends TCEItemFocus {
         public ItemStack onFocusRightClick(ItemStack itemstack, World world, EntityPlayer player, MovingObjectPosition mop) {
         	ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
         		if (wand.consumeAllVis(itemstack, player, getVisCost(), true, true)) {
-        			getEffect(player);
+        			getEffect(player, world);
         		}
         		return itemstack;
         }
@@ -68,13 +68,14 @@ public class FocusPotionEffect extends TCEItemFocus {
     		return color;
     	}
         
-        public boolean getEffect(EntityPlayer player)
+        public boolean getEffect(EntityPlayer player, World world)
         {
         	for(int i = 0; i < player.inventory.getSizeInventory(); i++){
         		if(player.inventory.getStackInSlot(i) != null && player.inventory.getStackInSlot(i).getItem() instanceof ItemPotion){
         			ItemPotion potion = (ItemPotion)player.inventory.getStackInSlot(i).getItem();
         			for(PotionEffect p : genEffect(player, potion, i)){
             			player.addPotionEffect(new PotionEffect(p.getPotionID(), p.getDuration()));
+            	        world.playSoundEffect(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, "thaumcraft:bubble", 0.25F, 1.0F);
         			}
         			return true;
         		}

@@ -15,6 +15,7 @@ import thaumcraftextras.items.TCEItemShard;
 import thaumcraftextras.items.foci.beam.FocusClean;
 import thaumcraftextras.items.foci.beam.FocusTessela;
 import thaumcraftextras.items.foci.beam.FocusTrampoline;
+import thaumcraftextras.items.foci.normal.FocusExchange;
 import thaumcraftextras.items.foci.normal.FocusPechTrade;
 import thaumcraftextras.items.foci.normal.FocusPotionEffect;
 import thaumcraftextras.items.foci.normal.FocusReturn;
@@ -75,6 +76,7 @@ public class TCEItems {
 		focusTrampoline = new FocusTrampoline(ColorHelper.getColorCodeFromRGB(100, 0, 100), "Wand Focus: Trampoline");
 		focusPechTrade = new FocusPechTrade(ColorHelper.getColorCodeFromRGB(50, 0, 100), "Wand Focus: Pech Trade");
 		focusPotion = new FocusPotionEffect(ColorHelper.getColorCodeFromRGB(0, 100, 100), "Wand Focus: Potion");
+		focusExchange = new FocusExchange(ColorHelper.getColorCodeFromRGB(0, 50, 0), "Wand Focus: Exchange");
 	}
 	public static FocusClean focusClean;
 	public static FocusReturn focusReturn;
@@ -82,6 +84,7 @@ public class TCEItems {
 	public static FocusTrampoline focusTrampoline;
 	public static FocusPechTrade focusPechTrade;
 	public static FocusPotionEffect focusPotion;
+	public static FocusExchange focusExchange;
 
 	public static void initArmor()
 	{
@@ -130,7 +133,6 @@ public class TCEItems {
 	public static void initScepters()
 	{
 		scepter = new TCEItemScepter(100, ColorHelper.getColorCodeFromRGB(0, 0, 200), "base");		
-
 	}
 	public static TCEItemScepter scepter;
 

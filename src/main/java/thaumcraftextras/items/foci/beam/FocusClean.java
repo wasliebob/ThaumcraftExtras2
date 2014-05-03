@@ -32,6 +32,7 @@ public class FocusClean extends TCEItemFocus {
         ArrayList<Block> canBeCleaned = new ArrayList<Block>();
         String name;
         int color;
+        int time;
         
         public void initCleaning()
         {
@@ -61,11 +62,11 @@ public class FocusClean extends TCEItemFocus {
         			x = mop.blockX;
         			y = mop.blockY;
         			z = mop.blockZ;
+        			
         			if(canBeCleaned.contains(player.worldObj.getBlock(x, y, z))){
-        				if (wand.consumeAllVis(itemstack, player, getVisCost(), !player.worldObj.isRemote, false))
-        				{
-            				if(!player.worldObj.isRemote)
-            				{            					
+        				if (wand.consumeAllVis(itemstack, player, getVisCost(), !player.worldObj.isRemote, false)){
+            				if(!player.worldObj.isRemote){            
+            		            player.worldObj.playAuxSFX(2001, mop.blockX, mop.blockY, mop.blockZ, Block.getIdFromBlock(player.worldObj.getBlock(x, y, z)) + (player.worldObj.getBlockMetadata(x, y, z) << 12));
                 	            player.worldObj.setBlock(x, y, z, Blocks.air);
             				}
             	            if(player.worldObj.isRemote)

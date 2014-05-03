@@ -1,5 +1,8 @@
 package thaumcraftextras.api.core;
 
+import java.util.HashMap;
+
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import thaumcraftextras.api.core.recipes.AdvancedAltarRecipe;
@@ -28,7 +31,27 @@ public class TCEApi {
 			System.out.println("[TCE2] " +  " A mod is trying to register an invalid recipe, ignoring");
 		else
 			AdvancedAltarRecipeManager.advancedAltar.put(input, recipe);
-
 	}
 	public static AdvancedAltarRecipeManager advancedAltar;
+	
+	public static void addExchange(Block input, Block output)
+	{
+		if(input == null || output == null){
+			System.out.println("[TCE2] " +  " A mod is trying to register an invalid block, ignoring");
+		}else{
+			exchange.put(input, output);
+			exchange.put(output, input);
+		}
+	}
+	public static HashMap<Block, Block> exchange = new HashMap<Block, Block>();
+	
+	public static void addExchangeMeta(Block input, int meta)
+	{
+		if(input == null)
+			System.out.println("[TCE2] " +  " A mod is trying to register an invalid block, ignoring");
+		else
+			exchangeMeta.put(input, meta);
+	}
+	public static HashMap<Block, Integer> exchangeMeta = new HashMap<Block, Integer>();
+	
 }

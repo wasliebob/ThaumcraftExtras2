@@ -1,6 +1,7 @@
 package thaumcraftextras.main.init;
 
 import net.minecraftforge.common.MinecraftForge;
+import thaumcraftextras.handlers.events.ExchangeFocusHUD;
 import thaumcraftextras.handlers.events.PlayerDamageEntity;
 import thaumcraftextras.handlers.events.PlayerItemDropped;
 import thaumcraftextras.handlers.events.PlayerRenderTick;
@@ -15,6 +16,8 @@ public class TCEEvents {
         MinecraftForge.EVENT_BUS.register(new PlayerItemDropped());
         
         if(event.getSide() == Side.CLIENT){
-        	MinecraftForge.EVENT_BUS.register(new PlayerRenderTick());}
+        	MinecraftForge.EVENT_BUS.register(new PlayerRenderTick());
+        	MinecraftForge.EVENT_BUS.register(new ExchangeFocusHUD());
+        	}
 	}
 }

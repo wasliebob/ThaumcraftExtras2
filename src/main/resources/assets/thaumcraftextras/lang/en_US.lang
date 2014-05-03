@@ -45,6 +45,7 @@ item.thaumcraftextras.focus.wand focus: shock.name=Wand Focus: Multi Shock
 item.thaumcraftextras.focus.wand focus: trampoline.name=Wand Focus: Air Shot
 item.thaumcraftextras.focus.wand focus: pech trade.name=Wand Focus: Pech Trade
 item.thaumcraftextras.focus.wand focus: potion.name=Wand Focus: Potion
+item.thaumcraftextras.focus.wand focus: exchange.name=Wand Focus: Exchange
 item.thaumcraftextras.armor.flaming chestplate.name=Chestplate of Vulcan
 item.thaumcraftextras.armor.energetic helmet.name=Energetic Helmet
 item.thaumcraftextras.scepter.base.name=Creative Scepter
@@ -97,6 +98,7 @@ tce.text.ROD_GOD.1=NYI
 tce.text.ROD_DARKSILVERWOOD.1=NYI
 tce.text.Wand_Focus:_Pech_Trade.1=NYI
 tce.text.Wand_Focus:_Potion.1=NYI
+tce.text.Wand_Focus:_Exchange.1=NYI
 tce.text.Altar_Advanced.1=NYI
 ==Tags==
 tce.tag.Thaumcraft_Extras=A new world
@@ -120,6 +122,7 @@ tce.tag.ROD_GOD=May god be forever with you
 tce.tag.ROD_DARKSILVERWOOD=Like a boss
 tce.tag.Wand_Focus:_Pech_Trade=Less rage more trade
 tce.tag.Wand_Focus:_Potion=All in one
+tce.tag.Wand_Focus:_Exchange=Fair Trade
 tce.tag.Altar_Advanced=Just one block left
 ==Titles==
 CAP_DARKTHAUMIUM=Dark Thaumium Cap
@@ -143,6 +146,7 @@ Shocker=Thaumaturgic Tesla Coil
 Wand_Focus:_Shock=Wand Focus: Multi Shock
 Wand_Focus:_Pech_Trade=Wand Focus: Pech Trade
 Wand_Focus:_Potion=Wand Focus: Potion
+Wand_Focus:_Exchange=Wand Focus: Exchange
 Altar_Advanced=Advanced Altar
 ==Tooltips==
 thaumcraftextras.tooltip.wand_darksilverwood.0=Can be charged using an item

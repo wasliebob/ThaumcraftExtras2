@@ -61,7 +61,7 @@ public class BlockLight extends Block {
     @Override
     public void getSubBlocks(Item item, CreativeTabs tabs, List list)
     {
-    	for(int i = 0; i < 15; i++)
+    	for(int i = 0; i < 16; i++)
     		list.add(new ItemStack(item, 1, i));
     }
 
