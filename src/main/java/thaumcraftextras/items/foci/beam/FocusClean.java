@@ -48,6 +48,8 @@ public class FocusClean extends TCEItemFocus {
         	canBeCleaned.add(Blocks.ice);
         	canBeCleaned.add(ConfigBlocks.blockFluxGas);
         	canBeCleaned.add(ConfigBlocks.blockFluxGoo);
+        	canBeCleaned.add(Blocks.leaves);
+        	canBeCleaned.add(Blocks.leaves2);
         }
         
         @Override

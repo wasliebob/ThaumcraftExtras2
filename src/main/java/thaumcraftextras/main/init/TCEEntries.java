@@ -82,21 +82,21 @@ public class TCEEntries {
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeFocusTrampoline));
 		aspect = new AspectList();
 		
-		aspect.add(Aspect.ORDER, 20);
+		aspect.add(Aspect.ORDER, 10);
 		aspect.add(Aspect.AIR, 10);
 		text = new String[]{"1"};
 		research = new ResearchHelper(focus_pechTrade, TCEEntries.TCE, aspect, -4, -2, 2, new ItemStack(TCEItems.focusPechTrade)).setParents(tce).setSecondary().registerResearchItem();
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeFocusPechTrade));
 		aspect = new AspectList();
 		
-		aspect.add(Aspect.ORDER, 20);
+		aspect.add(Aspect.ORDER, 10);
 		aspect.add(Aspect.ENTROPY, 10);
 		text = new String[]{"1"};
 		research = new ResearchHelper(focus_potion, TCEEntries.TCE, aspect, -5, -2, 2, new ItemStack(TCEItems.focusPotion)).setParents(tce).setSecondary().registerResearchItem();
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeFocusPotion));
 		aspect = new AspectList();
 		
-		aspect.add(Aspect.ORDER, 20);
+		aspect.add(Aspect.ORDER, 10);
 		text = new String[]{"1"};
 		research = new ResearchHelper(focus_exchange, TCEEntries.TCE, aspect, -6, -2, 2, new ItemStack(TCEItems.focusExchange)).setParents(tce).setSecondary().registerResearchItem();
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeFocusExchange));
@@ -131,9 +131,9 @@ public class TCEEntries {
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.barrel_essentia));
 		aspect = new AspectList();
 		
-		aspect.add(Aspect.ORDER, 20);
-		aspect.add(Aspect.AIR, 20);
-		aspect.add(Aspect.ENTROPY, 20);
+		aspect.add(Aspect.ORDER, 10);
+		aspect.add(Aspect.AIR, 10);
+		aspect.add(Aspect.ENTROPY, 10);
 		text = new String[]{"1"};
 		research = new ResearchHelper(altar_advanced, TCEEntries.TCE, aspect, 5, -2, 2, new ItemStack(TCEBlocks.altar_advanced)).setParents(TCEEntries.tce).setSecondary().registerResearchItem();
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeAdvancedAltar));
