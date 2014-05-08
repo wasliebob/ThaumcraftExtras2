@@ -39,19 +39,19 @@ public class TCERecipes {
 			"XY",
 			"YX",
 			'X', Items.iron_ingot,
-			'Y', new ItemStack(ConfigBlocks.blockCosmeticSolid)});
+			'Y', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 1)});
 		
 		recipeCore = GameRegistry.addShapedRecipe(new ItemStack(TCEBlocks.darkendCore), new Object[]{
 			"XY",
 			"YX",
 			'X', Blocks.iron_block,
-			'Y', new ItemStack(ConfigBlocks.blockCosmeticSolid)});
+			'Y', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 1)});
 		
 		recipeMatrix = GameRegistry.addShapedRecipe(new ItemStack(TCEBlocks.darkendMatrix), new Object[]{
 			"XY",
 			"YX",
 			'X', Items.diamond,
-			'Y', new ItemStack(ConfigBlocks.blockCosmeticSolid)});
+			'Y', new ItemStack(ConfigBlocks.blockCosmeticSolid, 1, 1)});
 		
 		GameRegistry.addShapedRecipe(new ItemStack(TCEBlocks.window_barrel_essentia), new Object[]{
 			"XXX",
@@ -100,8 +100,8 @@ public class TCERecipes {
 	
 	public static void initThaumcraftRecipes()
 	{		
-		AspectList aspect = new AspectList();
-		aspect.aspects.clear();
+		AspectList aspect;
+		aspect = new AspectList();
 		
 		aspect.add(Aspect.ORDER, 2);
 		recipeMagicEssence = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.tce, new ItemStack(TCEItems.essenceMagic), aspect, new Object[]{
@@ -110,7 +110,7 @@ public class TCERecipes {
 			" X ",
 			'X', new ItemStack(Items.gold_nugget) ,
 			'I', new ItemStack(ConfigItems.itemShard, 1, 4)});
-		aspect.aspects.clear();
+		aspect = new AspectList();
 		
 		aspect.add(Aspect.ENTROPY, 2);
 		recipeDarkThaumium = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.ingot_darkthaumium, new ItemStack(TCEItems.darkThaumium), aspect, new Object[]{
@@ -120,7 +120,7 @@ public class TCERecipes {
  			'X', new ItemStack(TCEItems.essenceMagic) ,
 			'I', new ItemStack(Items.diamond),
 			'Y', new ItemStack(ConfigItems.itemResource, 1, 2)});
-		aspect.aspects.clear();
+		aspect = new AspectList();
 		
 		aspect.add(Aspect.AIR, 10);
 		aspect.add(Aspect.ORDER, 10);
@@ -131,7 +131,7 @@ public class TCERecipes {
 			'X', new ItemStack(Items.quartz) ,
 			'Y', new ItemStack(ConfigItems.itemShard),
 			'I', new ItemStack(Items.bone)});
-		aspect.aspects.clear();
+		aspect = new AspectList();
 		
 		aspect.add(Aspect.ENTROPY, 10);
 		aspect.add(Aspect.ORDER, 10);
@@ -142,7 +142,7 @@ public class TCERecipes {
 			'X', new ItemStack(Items.quartz) ,
 			'Y', new ItemStack(ConfigItems.itemShard, 1, 1),
 			'I', new ItemStack(Items.ender_pearl)});
-		aspect.aspects.clear();
+		aspect = new AspectList();
 		
 		aspect.add(Aspect.AIR, 10);
 		aspect.add(Aspect.ORDER, 10);
@@ -153,7 +153,7 @@ public class TCERecipes {
 			'X', new ItemStack(Items.quartz) ,
 			'Y', new ItemStack(ConfigItems.itemShard, 1, 4),
 			'I', new ItemStack(Items.slime_ball)});
-		aspect.aspects.clear();
+		aspect = new AspectList();
 		
 		aspect.add(Aspect.ENTROPY, 10);
 		aspect.add(Aspect.ORDER, 10);
@@ -164,18 +164,18 @@ public class TCERecipes {
 			'X', new ItemStack(Items.quartz) ,
 			'Y', new ItemStack(ConfigItems.itemShard, 1, 3),
 			'I', new ItemStack(Items.golden_apple)});
-		aspect.aspects.clear();
+		aspect = new AspectList();
 		
 		aspect.add(Aspect.FIRE, 20);
 		aspect.add(Aspect.ORDER, 10);
 		recipeFireChestplate = ThaumcraftApi.addInfusionCraftingRecipe(TCEEntries.chestplate_fire, new ItemStack(TCEItems.fireChestplate), 2, aspect, new ItemStack(ConfigItems.itemChestThaumium), new ItemStack[]{
 			new ItemStack(ConfigItems.itemSwordThaumium), new ItemStack(ConfigItems.itemShard, 2), new ItemStack(Items.flint_and_steel)});
-		aspect.aspects.clear();
+		aspect = new AspectList();
 		
 		aspect.add(Aspect.ORDER, 10);
 		recipeEnergyHelmet = ThaumcraftApi.addInfusionCraftingRecipe(TCEEntries.magic_energy, new ItemStack(TCEItems.energyHelmet), 2, aspect, new ItemStack(ConfigItems.itemGoggles), new ItemStack[]{
 			new ItemStack(TCEItems.crystal_1), new ItemStack(ConfigItems.itemShard, 2), new ItemStack(TCEItems.reader)});
-		aspect.aspects.clear();
+		aspect = new AspectList();
 		
 		aspect.add(Aspect.ORDER, 10);
 		recipeScanner = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.magic_energy, new ItemStack(TCEItems.reader, 1, 0), aspect, new Object[]{
@@ -185,8 +185,8 @@ public class TCERecipes {
 			'X', new ItemStack(ConfigItems.itemResource, 1, 2),
 			'I', new ItemStack(Items.iron_ingot),
 			'Y', new ItemStack(Blocks.glass_pane)});
-		aspect.aspects.clear();
-
+		aspect = new AspectList();
+		
 		
 		aspect.add(Aspect.ORDER, 10);
 		recipeMagicBattery = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.magic_energy, new ItemStack(TCEBlocks.battery, 1, 0), aspect, new Object[]{
@@ -196,7 +196,7 @@ public class TCERecipes {
 			'X', new ItemStack(TCEItems.essenceMagic),
 			'I', new ItemStack(ConfigItems.itemResource, 1, 2),
 			'Y', new ItemStack(Blocks.iron_block)});
-		aspect.aspects.clear();
+		aspect = new AspectList();
 
 		aspect.add(Aspect.ORDER, 10);
 		recipeMagicGenerator = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.magic_energy, new ItemStack(TCEBlocks.generator, 1, 0), aspect, new Object[]{
@@ -206,7 +206,7 @@ public class TCERecipes {
 			'X', new ItemStack(TCEItems.essenceMagic),
 			'I', new ItemStack(ConfigItems.itemResource, 1, 2),
 			'Y', new ItemStack(TCEBlocks.battery)});
-		aspect.aspects.clear();
+		aspect = new AspectList();
 		
 		aspect.add(Aspect.ORDER, 10);
 		recipeMagicCrystalCharger = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.magic_energy, new ItemStack(TCEBlocks.crystalCharger, 1, 0), aspect, new Object[]{
@@ -216,7 +216,7 @@ public class TCERecipes {
 			'X', new ItemStack(TCEItems.essenceDark),
 			'I', new ItemStack(ConfigItems.itemResource, 1, 2),
 			'Y', new ItemStack(TCEItems.crystal_1, 1, TCEItems.crystal_1.getMaxDamage())});
-		aspect.aspects.clear();
+		aspect = new AspectList();
 		
 		aspect.add(Aspect.ORDER, 100);
 		aspect.add(Aspect.ENTROPY, 100);
@@ -227,7 +227,7 @@ public class TCERecipes {
 			'X', new ItemStack(TCEItems.essenceDark),
 			'I', new ItemStack(ConfigItems.itemResource, 1, 2),
 			'Y', new ItemStack(TCEItems.crystal_6)});
-		aspect.aspects.clear();
+		aspect = new AspectList();
 		
 		aspect.add(Aspect.ENTROPY, 25);
 		aspect.add(Aspect.AIR, 25);
@@ -238,7 +238,7 @@ public class TCERecipes {
 			'X', new ItemStack(TCEItems.essenceMagic),
 			'I', new ItemStack(ConfigItems.itemResource, 1, 2),
 			'Y', new ItemStack(TCEItems.ignisFuel)});
-		aspect.aspects.clear();
+		aspect = new AspectList();
 		
 		aspect.add(Aspect.AIR, 35);
 		recipeFocusPechTrade = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.focus_pechTrade, new ItemStack(TCEItems.focusPechTrade, 1, 0), aspect, new Object[]{
@@ -248,7 +248,7 @@ public class TCERecipes {
 			'X', new ItemStack(TCEItems.essenceLight),
 			'I', new ItemStack(ConfigItems.itemResource, 1, 2),
 			'Y', new ItemStack(TCEItems.darkShard)});
-		aspect.aspects.clear();
+		aspect = new AspectList();
 		
 		aspect.add(Aspect.ORDER, 50);
 		recipeFocusExchange = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.focus_exchange, new ItemStack(TCEItems.focusExchange, 1, 0), aspect, new Object[]{
@@ -259,7 +259,7 @@ public class TCERecipes {
 			'Z', new ItemStack(TCEItems.essenceDark),
 			'I', new ItemStack(ConfigItems.itemShard, 1, 4),
 			'Y', new ItemStack(ConfigItems.itemFocusTrade)});
-		aspect.aspects.clear();
+		aspect = new AspectList();
 		
 		aspect.add(Aspect.ENTROPY, 25);
 		aspect.add(Aspect.AIR, 25);
@@ -270,7 +270,7 @@ public class TCERecipes {
 			'X', new ItemStack(TCEItems.essenceMagic),
 			'I', new ItemStack(ConfigItems.itemResource, 1, 2),
 			'Y', new ItemStack(TCEBlocks.blockIgnis)});
-		aspect.aspects.clear();
+		aspect = new AspectList();
 		
 		aspect.add(Aspect.ENTROPY, 25);
 		aspect.add(Aspect.AIR, 25);
@@ -281,7 +281,7 @@ public class TCERecipes {
 			'X', new ItemStack(TCEItems.essenceMagic),
 			'I', new ItemStack(ConfigItems.itemResource, 1, 2),
 			'Y', new ItemStack(ConfigBlocks.blockCosmeticOpaque)});
-		aspect.aspects.clear();
+		aspect = new AspectList();
 		
 		aspect.add(Aspect.AIR, 2);
 		aspect.add(Aspect.FIRE, 2);
@@ -289,7 +289,7 @@ public class TCERecipes {
 			"XI",
 			'X', new ItemStack(Blocks.glowstone),
 			'I', new ItemStack(Blocks.glass)});
-		aspect.aspects.clear();
+		aspect = new AspectList();		
 		
 		aspect.add(Aspect.ORDER, 10);
 		aspect.add(Aspect.ENTROPY, 10);
@@ -300,8 +300,8 @@ public class TCERecipes {
 			'Y', Blocks.glass_pane,
 			'Z', TCEItems.essenceMagic,
 			'X', Blocks.obsidian});
-		aspect.aspects.clear();
-	}
+		aspect = new AspectList();	
+		}
 	public static ShapedArcaneRecipe recipeMagicEssence;
 	public static ShapedArcaneRecipe recipeDarkThaumium;
 	
