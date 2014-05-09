@@ -16,8 +16,8 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
-import thaumcraft.common.Thaumcraft;
 import thaumcraftextras.api.core.recipes.AdvancedAltarRecipeManager;
+import thaumcraftextras.main.ThaumcraftExtras;
 
 public class TileEntityAdvancedAltar extends TileEntity implements ISidedInventory, IAspectContainer, IEssentiaTransport{
     ItemStack[] stacks = new ItemStack[1];
@@ -30,9 +30,10 @@ public class TileEntityAdvancedAltar extends TileEntity implements ISidedInvento
     			if(AdvancedAltarRecipeManager.advancedAltar.containsKey(getStackInSlot(0).getItem())){
     				if(drawFromTube() == AdvancedAltarRecipeManager.advancedAltar.get(getStackInSlot(0).getItem()).amount){
     					stacks[0] = AdvancedAltarRecipeManager.advancedAltar.get(getStackInSlot(0).getItem()).output;
-    					Thaumcraft.proxy.burst(worldObj, (double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D, 2);
-        		        worldObj.playSoundEffect(xCoord + 0.5D,yCoord + 0.5D, zCoord + 0.5D, "thaumcraft:craftstart", 0.25F, 1.0F);
-
+    					
+    					ThaumcraftExtras.proxy.spawnBurst(worldObj, (double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D);
+    					ThaumcraftExtras.proxy.spawnSound(worldObj, xCoord, yCoord, zCoord, "thaumcraft:craftstart");
+    					
     					worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
     				}
     			}

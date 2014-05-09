@@ -1,5 +1,8 @@
 package thaumcraftextras.proxies;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.world.World;
+import thaumcraft.common.Thaumcraft;
 import thaumcraftextras.api.misc.classes.TileEntityMagicBattery;
 import thaumcraftextras.blocks.tiles.TileEntityAdvancedAltar;
 import thaumcraftextras.blocks.tiles.TileEntityEssentiaBarrel;
@@ -40,4 +43,27 @@ public class ClientProxy extends CommonProxy {
 	
 	@Override
     public void registerParticles(){}
+	
+	@Override
+	public void spawnBurst(World worldObj, double xCoord, double yCoord, double zCoord){
+		if(Minecraft.getMinecraft().renderViewEntity != null)
+			Thaumcraft.proxy.burst(worldObj, xCoord, yCoord, zCoord, 2);
+	}
+	
+	@Override
+	public void spawnTrail(World worldObj, double xCoord, double yCoord, double zCoord, float mX, float mY, float mZ, int color){
+		if(Minecraft.getMinecraft().renderViewEntity != null)
+			Thaumcraft.proxy.sourceStreamFX(worldObj, (double)xCoord + 0.5D, (double)yCoord, (double)zCoord + 0.5D, mX, mY, mZ, color);
+	}
+	
+	@Override
+	public void spawnSprinkle(double x, double y, double z){
+		if(Minecraft.getMinecraft().renderViewEntity != null)
+			Thaumcraft.proxy.sparkle((float) x, (float) y, (float) z, 1.0F, 0, 1.0F);
+	}
+	
+	@Override
+	public void spawnSound(World worldObj, int xCoord, int yCoord, int zCoord, String id){
+		worldObj.playSoundEffect(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D, "thaumcraft:craftstart", 0.25F, 1.0F);
+	}
 }

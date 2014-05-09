@@ -3,7 +3,6 @@ package thaumcraftextras.blocks.tiles;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
@@ -16,13 +15,13 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IAspectContainer;
 import thaumcraft.api.aspects.IEssentiaTransport;
-import thaumcraft.common.Thaumcraft;
 import thaumcraftextras.api.interfaces.IMagicEnergyReceiver;
 import thaumcraftextras.api.misc.classes.MagicEnergy;
 import thaumcraftextras.api.misc.classes.TileEntityMagicBattery;
 import thaumcraftextras.api.misc.tiles.MagicEnergyReceiver;
 import thaumcraftextras.api.misc.tiles.MagicEnergySender;
 import thaumcraftextras.api.misc.tiles.MagicEnergyUniversal;
+import thaumcraftextras.main.ThaumcraftExtras;
 
 public class TileEntityMagicGenerator extends MagicEnergySender implements IAspectContainer, IEssentiaTransport{
 	
@@ -53,22 +52,19 @@ public class TileEntityMagicGenerator extends MagicEnergySender implements IAspe
 					if(getEnergy() == 0 && to.getEnergy() + calcEnergy(to) <= to.getMaxEnergy()){
 						if(!to.isSending){
 						to.increaseEnergy(drawFromTubeWithCheck(to));
-						if(Minecraft.getMinecraft().renderViewEntity != null){
-    						Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 1.0D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord, (float)to.zCoord + 0.5F, this.getColor());}
+    					ThaumcraftExtras.proxy.spawnTrail(worldObj, xCoord, yCoord, zCoord ,(float)to.xCoord + 0.5F, (float)to.yCoord, (float)to.zCoord + 0.5F, this.getColor());
 						updateBlocks(to);
 						}
 					}else if(to.getEnergy() + calcEnergy(to) <= to.getMaxEnergy()){
 						if(!to.isSending){
 						to.increaseEnergy(drawFromTubeWithCheck(to));
-						if(Minecraft.getMinecraft().renderViewEntity != null){
-    						Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 1.0D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord, (float)to.zCoord + 0.5F, this.getColor());}
+	    				ThaumcraftExtras.proxy.spawnTrail(worldObj, xCoord, yCoord, zCoord ,(float)to.xCoord + 0.5F, (float)to.yCoord, (float)to.zCoord + 0.5F, this.getColor());
 						updateBlocks(to);
 						}
 					}else if(getEnergy() + calcEnergyA() <= to.getMaxEnergy()){
 						if(!to.isSending){
 						to.increaseEnergy(drawFromTubeWithCheck(to));
-						if(Minecraft.getMinecraft().renderViewEntity != null){
-    						Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 1.0D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord, (float)to.zCoord + 0.5F, this.getColor());}
+	    				ThaumcraftExtras.proxy.spawnTrail(worldObj, xCoord, yCoord, zCoord ,(float)to.xCoord + 0.5F, (float)to.yCoord, (float)to.zCoord + 0.5F, this.getColor());
 						updateBlocks(to);
 					}
 					}
@@ -76,18 +72,15 @@ public class TileEntityMagicGenerator extends MagicEnergySender implements IAspe
     				MagicEnergyReceiver to = (MagicEnergyReceiver)tile;
 					if(getEnergy() == 0 && to.getEnergy() + calcEnergy(to) <= to.getMaxEnergy()){
 						to.increaseEnergy(drawFromTubeWithCheck(to));
-						if(Minecraft.getMinecraft().renderViewEntity != null){
-    						Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 1.0D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord, (float)to.zCoord + 0.5F, this.getColor());}
+    					ThaumcraftExtras.proxy.spawnTrail(worldObj, xCoord, yCoord, zCoord ,(float)to.xCoord + 0.5F, (float)to.yCoord, (float)to.zCoord + 0.5F, this.getColor());
 						updateBlocks(to);
 					}else if(to.getEnergy() + calcEnergy(to) <= to.getMaxEnergy()){
 						to.increaseEnergy(drawFromTubeWithCheck(to));
-						if(Minecraft.getMinecraft().renderViewEntity != null){
-    						Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 1.0D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord, (float)to.zCoord + 0.5F, this.getColor());}
+	    				ThaumcraftExtras.proxy.spawnTrail(worldObj, xCoord, yCoord, zCoord ,(float)to.xCoord + 0.5F, (float)to.yCoord, (float)to.zCoord + 0.5F, this.getColor());
 						updateBlocks(to);
 					}else if(getEnergy() + calcEnergyA() <= to.getMaxEnergy()){
 						to.increaseEnergy(drawFromTubeWithCheck(to));
-						if(Minecraft.getMinecraft().renderViewEntity != null){
-    						Thaumcraft.proxy.sourceStreamFX(worldObj,(double)xCoord + 0.5D, (double)yCoord + 1.0D, (double)zCoord + 0.5D ,(float)to.xCoord + 0.5F, (float)to.yCoord, (float)to.zCoord + 0.5F, this.getColor());}
+    					ThaumcraftExtras.proxy.spawnTrail(worldObj, xCoord, yCoord, zCoord ,(float)to.xCoord + 0.5F, (float)to.yCoord, (float)to.zCoord + 0.5F, this.getColor());
 						updateBlocks(to);
 					}
     			}else{

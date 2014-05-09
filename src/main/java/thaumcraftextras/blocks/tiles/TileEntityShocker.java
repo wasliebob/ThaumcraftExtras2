@@ -10,7 +10,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import thaumcraft.client.fx.FXLightningBolt;
-import thaumcraft.common.Thaumcraft;
 import wasliecore.helpers.MathHelper;
 
 public class TileEntityShocker extends TileEntity{
@@ -56,9 +55,9 @@ public class TileEntityShocker extends TileEntity{
 			light.setType(2);
 			light.setWidth(0.125F);
 			light.finalizeBolt();
-	        for (int a = 0; a < 5; a++) {
-	        	Thaumcraft.proxy.sparkle((float)xPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, (float)yPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, (float)zPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, 2.0F + this.worldObj.rand.nextFloat(), 2, 0.05F + this.worldObj.rand.nextFloat() * 0.05F);
-	        }
+//	        for (int a = 0; a < 5; a++) {
+//	        	ThaumcraftExtras.proxy.spawnSprinkle((float)xPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, (float)yPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, (float)zPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, 2.0F + this.worldObj.rand.nextFloat(), 2, 0.05F + this.worldObj.rand.nextFloat() * 0.05F);
+//	        }
 		}else if(!worldObj.isRemote && mode == 1){
 			living.attackEntityFrom(DamageSource.inFire, 0.2F);
 			if(living.getHealth() - 0.2F == 0)
@@ -72,15 +71,15 @@ public class TileEntityShocker extends TileEntity{
 				light.setWidth(0.125F);
 				light.finalizeBolt();
 //				living.onDeath(DamageSource.inFire)
-		        for (int a = 0; a < 5; a++) {
-		        	Thaumcraft.proxy.sparkle((float)xPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, (float)yPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, (float)zPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, 2.0F + this.worldObj.rand.nextFloat(), 2, 0.05F + this.worldObj.rand.nextFloat() * 0.05F);
-		        }
+//		        for (int a = 0; a < 5; a++) {
+//		        	Thaumcraft.proxy.sparkle((float)xPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, (float)yPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, (float)zPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, 2.0F + this.worldObj.rand.nextFloat(), 2, 0.05F + this.worldObj.rand.nextFloat() * 0.05F);
+//		        }
 		}else if(!worldObj.isRemote && mode == 2){
 			living.motionY = 2.0F;
 			living.hurtResistantTime = MathHelper.secondToTick(10);
-	        for (int a = 0; a < 5; a++) {
-	        	Thaumcraft.proxy.sparkle((float)xPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, (float)yPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, (float)zPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, 2.0F + this.worldObj.rand.nextFloat(), 2, 0.05F + this.worldObj.rand.nextFloat() * 0.05F);
-	        }
+//	        for (int a = 0; a < 5; a++) {
+//	        	Thaumcraft.proxy.sparkle((float)xPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, (float)yPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, (float)zPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, 2.0F + this.worldObj.rand.nextFloat(), 2, 0.05F + this.worldObj.rand.nextFloat() * 0.05F);
+//	        }
 		}
 	}
 	

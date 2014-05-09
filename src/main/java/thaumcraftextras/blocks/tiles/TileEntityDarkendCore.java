@@ -2,7 +2,6 @@ package thaumcraftextras.blocks.tiles;
 
 import java.util.List;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -10,9 +9,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
-import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraftextras.api.core.recipes.DarkInfuserRecipeManager;
+import thaumcraftextras.main.ThaumcraftExtras;
 import thaumcraftextras.main.init.TCEItems;
 import wasliecore.helpers.MathHelper;
 
@@ -60,9 +59,10 @@ public class TileEntityDarkendCore extends TileEntity{
 		if(time != 0)
 			time--;
 		
-		if(item != null && Minecraft.getMinecraft().renderViewEntity != null){
-			Thaumcraft.proxy.sparkle((float) item.posX, (float) item.posY, (float) item.posZ, 1.0F, 0, 1.0F);
+		if(item != null){
+			ThaumcraftExtras.proxy.spawnSprinkle(item.posX, item.posY, item.posZ);
 		}
+		
 		if(time == 0){
 			dropItem(worldObj, xCoord, yCoord, zCoord, output);
 			
