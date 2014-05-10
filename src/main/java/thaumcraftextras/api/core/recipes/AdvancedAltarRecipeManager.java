@@ -34,7 +34,7 @@ public class AdvancedAltarRecipeManager {
 			advancedAltar.remove(input);
 	}
 	
-	public static HashMap<Item, AdvancedAltarRecipe> darkInfuserList()
+	public static HashMap<Item, AdvancedAltarRecipe> advancedAltarList()
 	{
 		return advancedAltar;
 	}

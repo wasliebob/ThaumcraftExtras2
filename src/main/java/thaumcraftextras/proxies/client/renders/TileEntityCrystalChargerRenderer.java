@@ -23,6 +23,7 @@ public class TileEntityCrystalChargerRenderer extends TileEntitySpecialRenderer{
 	public void renderTileEntityAt(TileEntity tile, double x, double y,
 			double z, float var8) {
 		renderBlockModel(x, y, z);
+		
 		if(tile != null && tile instanceof TileEntityMagicCrystalCharger){
 			TileEntityMagicCrystalCharger te = (TileEntityMagicCrystalCharger)tile;
 			if(te.getStackInSlot(0) != null && te.getStackInSlot(0).getItem() instanceof IMagicEnergyContainerItem){

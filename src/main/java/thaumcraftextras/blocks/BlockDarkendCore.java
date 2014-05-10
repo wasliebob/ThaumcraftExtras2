@@ -8,11 +8,11 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import thaumcraft.common.config.ConfigBlocks;
 import thaumcraftextras.blocks.itemblocks.ItemBlockDarkendCore;
 import thaumcraftextras.blocks.tiles.TileEntityDarkendCore;
 import thaumcraftextras.main.ThaumcraftExtras;
@@ -82,7 +82,7 @@ public class BlockDarkendCore extends BlockContainer {
 	
 	public boolean hasMultiblock(World world, int x, int y, int z)
 	{
-		Block brick = ConfigBlocks.blockCosmeticSolid;
+		Block brick = Blocks.obsidian;
 		Block altar = TCEBlocks.darkendAltar;
 		if(world.getBlock(x +1, y, z) == brick && world.getBlock(x -1, y, z) == brick &&
 				world.getBlock(x, y, z +1) == brick && world.getBlock(x, y, z -1) == brick &&
@@ -125,7 +125,7 @@ public class BlockDarkendCore extends BlockContainer {
     @Override
     public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
     {
-		Block brick = ConfigBlocks.blockCosmeticSolid;
+		Block brick = Blocks.obsidian;
 		Block altar = TCEBlocks.darkendAltar;
 		if(world.getBlockMetadata(x, y, z) != 0){
 			if(world.getBlock(x, y, z +1) != brick || world.getBlock(x, y, z -1) != brick || world.getBlock(x +1, y, z) != brick || world.getBlock(x -1, y, z) != brick ||

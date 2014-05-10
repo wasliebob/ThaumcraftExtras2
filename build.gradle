@@ -22,7 +22,7 @@ group= "ThaumcraftExtras" // http://maven.apache.org/guides/mini/guide-naming-co
 archivesBaseName = "ThaumcraftExtras"
 
 minecraft {
-    version = "1.7.2-10.12.1.1065"
+    version = "1.7.2-10.12.1.1067"
     assetDir = "eclipse/assets"
 }
 

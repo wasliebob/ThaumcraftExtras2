@@ -1,5 +1,6 @@
 package thaumcraftextras.main.init.intergration;
 
+import thaumcraftextras.main.init.intergration.NEI.recipes.AltarRecipes;
 import thaumcraftextras.main.init.intergration.NEI.recipes.DarkInfuserRecipes;
 import codechicken.nei.api.API;
 import cpw.mods.fml.common.Loader;
@@ -12,6 +13,9 @@ public class NotEnoughItems{
 		if(event.getSide() == Side.CLIENT && Loader.isModLoaded("NotEnoughItems")){
 			API.registerRecipeHandler(new DarkInfuserRecipes());
 			API.registerUsageHandler(new DarkInfuserRecipes());
+			
+			API.registerRecipeHandler(new AltarRecipes());
+			API.registerUsageHandler(new AltarRecipes());
 		}
 	}
 }
