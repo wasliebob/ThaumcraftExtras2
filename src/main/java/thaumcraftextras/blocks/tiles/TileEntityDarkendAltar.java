@@ -30,9 +30,9 @@ public class TileEntityDarkendAltar extends TileEntity{
 				bZ = des.zCoord + 0.5F;
 					if(des != null && worldObj != null && bX != 0 && bY != 0 && bZ != 0 && xCoord != 0 && yCoord != 0 && zCoord != 0 && canUpdate() == true){
 						if(worldObj.isDaytime())
-							ThaumcraftExtras.proxy.spawnTrail(worldObj,(double)xCoord, (double)yCoord, (double)zCoord, bX, bY, bZ, Color.red.getRGB());
+							ThaumcraftExtras.proxy.spawnTrail(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D, bX, bY, bZ, Color.red.getRGB());
 						else
-							ThaumcraftExtras.proxy.spawnTrail(worldObj,(double)xCoord, (double)yCoord, (double)zCoord, bX, bY, bZ, Color.green.getRGB());
+							ThaumcraftExtras.proxy.spawnTrail(worldObj,(double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D, bX, bY, bZ, Color.green.getRGB());
 				}
 			}
 		}

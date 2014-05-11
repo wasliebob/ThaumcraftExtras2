@@ -162,6 +162,5 @@ public class AltarRecipes extends TemplateRecipeHandler{
 	        FontRenderer f = Minecraft.getMinecraft().fontRenderer;
 	        f.drawString(asp.getName(), 71, 10, asp.getColor());
 	        f.drawString(Integer.toString(amount), 85, 20, asp.getColor());
-	        
 	    }
 }

@@ -53,7 +53,7 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void spawnTrail(World worldObj, double xCoord, double yCoord, double zCoord, float mX, float mY, float mZ, int color){
 		if(Minecraft.getMinecraft().renderViewEntity != null)
-			Thaumcraft.proxy.sourceStreamFX(worldObj, (double)xCoord + 0.5D, (double)yCoord, (double)zCoord + 0.5D, mX, mY, mZ, color);
+			Thaumcraft.proxy.sourceStreamFX(worldObj, xCoord, yCoord, zCoord, mX, mY, mZ, color);
 	}
 	
 	@Override

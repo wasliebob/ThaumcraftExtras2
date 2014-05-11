@@ -60,13 +60,13 @@ public class TCERecipes {
 			'X', Blocks.glass,
 			'Y', TCEItems.essenceMagic});
 		
-		GameRegistry.addShapedRecipe(new ItemStack(TCEBlocks.altar_advanced), new Object[]{
-			"XYX",
-			"YZY",
-			"XYX",
-			'Y', Blocks.glass,
-			'Z', TCEItems.essenceMagic,
-			'X', ConfigBlocks.blockCosmeticSolid});
+//		GameRegistry.addShapedRecipe(new ItemStack(TCEBlocks.altar_advanced), new Object[]{
+//			"XYX",
+//			"YZY",
+//			"XYX",
+//			'Y', Blocks.glass,
+//			'Z', TCEItems.essenceMagic,
+//			'X', ConfigBlocks.blockCosmeticSolid});
 		
 		for(int i = 0; i < 15; i++)
 			GameRegistry.addShapedRecipe(new ItemStack(TCEItems.pouch_color, 1, i), new Object[]{
