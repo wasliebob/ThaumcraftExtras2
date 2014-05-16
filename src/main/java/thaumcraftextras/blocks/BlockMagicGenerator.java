@@ -21,7 +21,8 @@ public class BlockMagicGenerator extends BlockContainer{
 
 	public BlockMagicGenerator(Material material, String blockName) {
 		super(material);
-		
+		setHardness(1.0F);
+
 		setCreativeTab(TCETabs.tabMain);
 		setBlockName(ThaumcraftExtras.modName.toLowerCase() + "." + "block" + "." + blockName);
 		GameRegistry.registerBlock(this, blockName);

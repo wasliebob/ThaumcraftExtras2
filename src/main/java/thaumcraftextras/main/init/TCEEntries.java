@@ -35,6 +35,11 @@ public class TCEEntries {
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeMagicEssence), new ResearchPage(TCERecipes.recipeBlockLight));
 		aspect = new AspectList();
 		
+		text = new String[]{"1"};
+		research = new ResearchHelper(amulet_ghost, TCEEntries.TCE, aspect, 1, 2, 2, new ItemStack(TCEItems.amulet_ghost)).setParents(tce).setSecondary().registerResearchItem();
+		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeAmuletGhost));
+		aspect = new AspectList();
+		
 		aspect.add(Aspect.ENTROPY, 2);
 		aspect.add(Aspect.METAL, 2);
 		text = new String[]{"1"};
@@ -157,7 +162,8 @@ public class TCEEntries {
 	public static String shocker = "Shocker";
 	public static String essentia_barrel = "Essentia_Barrels";
 	public static String altar_advanced = "Altar_Advanced";
-	
+	public static String amulet_ghost = "Amulet_Ghost";
+
 	public static void initWandEntries()
 	{
 		ResearchItem research;
@@ -235,7 +241,7 @@ public class TCEEntries {
 	public static String rod_darkSilverwood = "ROD_DARKSILVERWOOD";
 	
 	public static String cap_darkThaumium = "CAP_DARKTHAUMIUM";
-	
+
 	public static void initBookTab()
 	{
 		 ResourceLocation background = new ResourceLocation("thaumcraft", "textures/gui/gui_researchback.png");

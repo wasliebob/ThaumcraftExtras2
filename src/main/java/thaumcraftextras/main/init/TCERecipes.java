@@ -301,6 +301,19 @@ public class TCERecipes {
 			'Z', TCEItems.essenceMagic,
 			'X', Blocks.obsidian});
 		aspect = new AspectList();	
+		
+		aspect.add(Aspect.ENTROPY, 15);
+		aspect.add(Aspect.ELDRITCH, 5);
+		aspect.add(Aspect.MAGIC, 5);
+		aspect.add(Aspect.MOTION, 15);
+		recipeAmuletGhost = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.amulet_ghost, new ItemStack(TCEItems.amulet_ghost), aspect, new Object[]{
+			"XYX",
+			"YZY",
+			"XYX",
+			'Y', Blocks.glass_pane,
+			'X', TCEItems.essenceDark,
+			'Z', Items.nether_star});
+		aspect = new AspectList();	
 		}
 	public static ShapedArcaneRecipe recipeMagicEssence;
 	public static ShapedArcaneRecipe recipeDarkThaumium;
@@ -326,6 +339,8 @@ public class TCERecipes {
 	public static ShapedArcaneRecipe recipeScanner;	
 	public static InfusionRecipe recipeFireChestplate;
 	public static InfusionRecipe recipeEnergyHelmet;
+
+	public static ShapedArcaneRecipe recipeAmuletGhost;	
 
 	public static void initCrystalRecipes()
 	{

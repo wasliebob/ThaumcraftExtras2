@@ -17,7 +17,8 @@ public class BlockMagicVoid extends BlockContainer{
 
 	public BlockMagicVoid(Material material, String blockName) {
 		super(material);
-		
+		setHardness(1.0F);
+
 		setCreativeTab(TCETabs.tabMain);
 		setBlockName(ThaumcraftExtras.modName.toLowerCase() + "." + "block" + "." + blockName);
 		GameRegistry.registerBlock(this, blockName);

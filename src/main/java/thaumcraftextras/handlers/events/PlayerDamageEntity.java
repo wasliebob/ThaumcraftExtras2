@@ -1,5 +1,6 @@
 package thaumcraftextras.handlers.events;
 
+import baubles.api.BaublesApi;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.entity.living.LivingAttackEvent;
@@ -20,6 +21,9 @@ public class PlayerDamageEntity {
 				if(armor == TCEItems.fireChestplate){
 					e.entity.setFire(5);
 				}
+			}
+			if(BaublesApi.getBaubles(player).getStackInSlot(0) != null && BaublesApi.getBaubles(player).getStackInSlot(0).getItem() == TCEItems.amulet_ghost){
+				e.setCanceled(true);
 			}
 		}
     }

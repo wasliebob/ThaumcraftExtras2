@@ -12,6 +12,8 @@ import thaumcraftextras.items.ItemXPExtractor;
 import thaumcraftextras.items.ItemXPShard;
 import thaumcraftextras.items.TCEItem;
 import thaumcraftextras.items.TCEItemShard;
+import thaumcraftextras.items.baubles.AmuletAngel;
+import thaumcraftextras.items.baubles.AmuletGhost;
 import thaumcraftextras.items.foci.beam.FocusClean;
 import thaumcraftextras.items.foci.beam.FocusTessela;
 import thaumcraftextras.items.foci.beam.FocusTrampoline;
@@ -32,6 +34,7 @@ public class TCEItems {
 		initScepters();
 		initArmor();
 		initCrystals();
+		initBaubles();
 	}
 	
 	public static void initItems()
@@ -135,6 +138,15 @@ public class TCEItems {
 		scepter = new TCEItemScepter(100, ColorHelper.getColorCodeFromRGB(0, 0, 200), "base");		
 	}
 	public static TCEItemScepter scepter;
-
+	
 	public static String use = "USE";
+	
+	public static void initBaubles()
+	{
+		amulet_angel = new AmuletAngel("Amulet of The Angelic", "amulet_angel");
+		amulet_ghost = new AmuletGhost("Amulet of The Invisible", "amulet_ghost");
+	}
+	public static AmuletAngel amulet_angel;
+	public static AmuletGhost amulet_ghost;
+
 }
