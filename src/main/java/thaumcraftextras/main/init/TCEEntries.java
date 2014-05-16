@@ -35,6 +35,10 @@ public class TCEEntries {
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeMagicEssence), new ResearchPage(TCERecipes.recipeBlockLight));
 		aspect = new AspectList();
 		
+		aspect.add(Aspect.ENTROPY, 15);
+		aspect.add(Aspect.ELDRITCH, 5);
+		aspect.add(Aspect.MAGIC, 5);
+		aspect.add(Aspect.MOTION, 15);
 		text = new String[]{"1"};
 		research = new ResearchHelper(amulet_ghost, TCEEntries.TCE, aspect, 1, 2, 2, new ItemStack(TCEItems.amulet_ghost)).setParents(tce).setSecondary().registerResearchItem();
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeAmuletGhost));

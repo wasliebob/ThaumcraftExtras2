@@ -302,10 +302,7 @@ public class TCERecipes {
 			'X', Blocks.obsidian});
 		aspect = new AspectList();	
 		
-		aspect.add(Aspect.ENTROPY, 15);
-		aspect.add(Aspect.ELDRITCH, 5);
-		aspect.add(Aspect.MAGIC, 5);
-		aspect.add(Aspect.MOTION, 15);
+		aspect.add(Aspect.ENTROPY, 50);
 		recipeAmuletGhost = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.amulet_ghost, new ItemStack(TCEItems.amulet_ghost), aspect, new Object[]{
 			"XYX",
 			"YZY",
