@@ -8,7 +8,7 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityWardedSpecial extends TileEntity{
 	private String username = "name";
-	private static String NAME = "name";
+	private static String NAME = "NAME";
 	
 	public void setName(String value)
 	{

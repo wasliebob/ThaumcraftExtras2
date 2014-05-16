@@ -429,17 +429,23 @@ public class TCERecipes {
 	public static void initAdvancedAltarRecipes()
 	{
 		AdvancedAltarRecipe recipe;
-		recipe = new AdvancedAltarRecipe(new ItemStack(Blocks.obsidian), Aspect.ENTROPY, 5);
-		TCEApi.addAdvancedAltarRecipe(Item.getItemFromBlock(Blocks.cobblestone), recipe); 
-				
-		recipe = new AdvancedAltarRecipe(new ItemStack(TCEItems.essenceLight), Aspect.LIGHT, 5);
+		Item input;
+		
+		input = Item.getItemFromBlock(Blocks.cobblestone);
+		recipe = new AdvancedAltarRecipe(new ItemStack(input), new ItemStack(Blocks.obsidian), Aspect.ENTROPY, 5);
+		TCEApi.addAdvancedAltarRecipe(input, recipe); 
+		
+		input = TCEItems.essenceMagic;
+		recipe = new AdvancedAltarRecipe(new ItemStack(TCEItems.essenceMagic), new ItemStack(TCEItems.essenceLight), Aspect.LIGHT, 5);
 		TCEApi.addAdvancedAltarRecipe(TCEItems.essenceMagic, recipe); 
 		
-		recipe = new AdvancedAltarRecipe(new ItemStack(TCEItems.ignisFuel), Aspect.FIRE, 2);
-		TCEApi.addAdvancedAltarRecipe(Items.coal, recipe); 
+		input = Items.coal;
+		recipe = new AdvancedAltarRecipe(new ItemStack(input), new ItemStack(TCEItems.ignisFuel), Aspect.FIRE, 2);
+		TCEApi.addAdvancedAltarRecipe(input, recipe); 
 
-		recipe = new AdvancedAltarRecipe(new ItemStack(TCEBlocks.blockIgnis), Aspect.FIRE, 5);
-		TCEApi.addAdvancedAltarRecipe(Item.getItemFromBlock(Blocks.coal_block), recipe);
+		input = Item.getItemFromBlock(Blocks.coal_block);
+		recipe = new AdvancedAltarRecipe(new ItemStack(input), new ItemStack(TCEBlocks.blockIgnis), Aspect.FIRE, 5);
+		TCEApi.addAdvancedAltarRecipe(input, recipe);
 	}
 	
 	public static ShapedArcaneRecipe getCrystalRecipe(String entry, ItemStack result, ItemStack core, ItemStack inside, ItemStack outside, int tier)

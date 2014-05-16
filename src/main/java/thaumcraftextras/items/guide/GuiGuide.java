@@ -1,11 +1,15 @@
 package thaumcraftextras.items.guide;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.input.Keyboard;
 
 import thaumcraftextras.api.core.TCEGuide;
+import thaumcraftextras.api.core.pages.TCEPage;
+import thaumcraftextras.helpers.IconHelper;
 
 public class GuiGuide extends GuiScreen{
 	public static GuiGuide index = new GuiGuide();
@@ -23,7 +27,6 @@ public class GuiGuide extends GuiScreen{
 		curPage = 1;
 		left = (this.width/2) - (gwidth/2);
 		top = (this.height/2) - (gheight/2);
-		
 		this.buttonList.clear();
 	}
 	
@@ -31,24 +34,51 @@ public class GuiGuide extends GuiScreen{
 	public void drawScreen(int i0, int i1, float f1){
 		this.mc.renderEngine.bindTexture(background);
 		drawTexturedModalRect(left, top, 0, 0, gwidth, gheight);
-
+		TCEPage page = TCEGuide.page.get(curPage);
+		
 		/** Title */
-		String str = TCEGuide.page.get(curPage).title;
+		String str = page.title;
 		this.drawCenteredString(fontRendererObj, str, this.left + gwidth / 2, top - 15, 0x336666);
-		String[] sa = TCEGuide.page.get(curPage).text;
+		String[] sa = page.text;
 
-		/** Page View */
-		this.drawCenteredString(fontRendererObj, curPage + "/" + TCEGuide.page.size(), this.left + gwidth / 2, top + 160, TCEGuide.page.get(curPage).color);
+		/** Current Page */
+		this.drawCenteredString(fontRendererObj, curPage + "/" + TCEGuide.page.size(), this.left + gwidth / 2, top + 160, page.color);
 
 		/** Text */ 
-		if(sa != null && sa.length > 0)
-		for(int j = 0; j < sa.length; j++){
-			String s = sa[j];
-			this.drawString(fontRendererObj, s, this.left + gwidth / 2 - 50, (top + 15) + (9*j), 0x00FF33);
+		if(sa != null && sa.length > 0)    {
+			for(int j = 0; j < sa.length; j++){
+				String s = sa[j];
+				this.drawString(fontRendererObj, s, this.left + gwidth / 2 - 50, (top + 15) + (9*j), 0x00FF33);
+			}
+		}else if(sa == null && page.image != null){
+			Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(page.image));
+			IconHelper.drawIcon(this.left + gwidth / 2 - 50, (top + 15) + 9, page.width, page.height, 0);
+		}else if(sa == null && page.recipe != null){
+			int x, y;
+			ItemStack item;
+			for(int j = 0; j < page.recipe.length; j++){
+				x = this.left + gwidth / 2 - 50;
+				y = (top + 15) + (16*j);
+				item = page.recipe[j].input;
+				GuiScreen.itemRender.renderItemIntoGUI(fontRendererObj, Minecraft.getMinecraft().getTextureManager(), item, x, y);
+			
+				x = this.left + gwidth / 2 + 50;
+				y = (top + 15) + (16*j);
+				item = page.recipe[j].output;
+				GuiScreen.itemRender.renderItemIntoGUI(fontRendererObj, Minecraft.getMinecraft().getTextureManager(), item, x, y);
+				
+				x = this.left + gwidth / 2 - 25;
+				y = (top + 20) + (16*j);
+				this.drawString(fontRendererObj, Integer.toString(page.recipe[j].amount), x, y, page.color);
+
+				x = this.left + gwidth / 2;
+				y = (top + 15) + (16*j);
+				Minecraft.getMinecraft().getTextureManager().bindTexture(page.recipe[j].aspect.getImage());
+				IconHelper.drawAspect(x, y, 16, 16, j, page.recipe[j].aspect);
+			}
 		}
 		super.drawScreen(i0, i1, f1);
 	}
-	
 	
 	@Override
     public boolean doesGuiPauseGame()

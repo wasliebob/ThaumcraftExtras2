@@ -45,7 +45,6 @@ public class ThaumcraftExtras {
 		
     	TCEItems.init();
     	TCEBlocks.init();
-    	TCEGuideEntries.init();
     	if(Config.addon_wands){TCEWands.init();};
     	
     	IntergrationLoader.init(event);
@@ -88,6 +87,7 @@ public class ThaumcraftExtras {
     	TCEMisc.postInit();
     	TCERecipes.init();
     	TCEEntries.init();
+    	TCEGuideEntries.init();
     	GameRegistry.registerFuelHandler(new FuelHandler());
     }
 }

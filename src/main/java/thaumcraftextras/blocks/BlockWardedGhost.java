@@ -164,7 +164,7 @@ public class BlockWardedGhost extends BlockContainer {
     public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB axis, List list, Entity entity)
     {
             TileEntityWardedSpecial tile = (TileEntityWardedSpecial) world.getTileEntity(x, y, z);
-        	if(!(entity instanceof EntityPlayer && ((EntityPlayer) entity).getDisplayName().equals(tile.getName())))
+        	if(!(entity instanceof EntityPlayer && !((EntityPlayer)entity).isSneaking() && ((EntityPlayer) entity).getDisplayName().equals(tile.getName())))
 	                super.addCollisionBoxesToList(world, x , y, z, axis, list, entity);
     }
     

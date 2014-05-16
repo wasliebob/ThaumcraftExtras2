@@ -97,5 +97,6 @@ public class TCEBlocks {
 		TCEApi.addExchangeMeta(Blocks.red_flower, 8);
 		TCEApi.addExchangeMeta(TCEBlocks.blockLight, 15);
 		TCEApi.addExchangeMeta(TCEBlocks.specialWardedGhost, 15);
+		TCEApi.addExchangeMeta(Blocks.leaves, 3);
 	}
 }

@@ -15,5 +15,5 @@ public class CommonProxy {
 	public void spawnBurst(World worldObj, double xCoord, double yCoord, double zCoord){}
 	public void spawnTrail(World worldObj, double xCoord, double yCoord, double zCoord, float mX, float mY, float mZ, int color){}
 	public void spawnSound(World worldObj, int xCoord, int yCoord, int zCoord, String id){}
-	public void spawnSprinkle(double posX, double posY, double posZ){}
+	public void spawnSprinkle(double posX, double posY, double posZ, int color){}
 }
