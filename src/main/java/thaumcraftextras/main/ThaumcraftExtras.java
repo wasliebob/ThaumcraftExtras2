@@ -79,6 +79,7 @@ public class ThaumcraftExtras {
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityLavaGen.class, "Magic_Lava_Gen");
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityEssentiaBarrelWindow.class, "Essentia_Barrel_Window");
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityAdvancedAltar.class, "Advanced_Altar");
+        GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityClasher.class, "Clasher");
     }
     
     @EventHandler

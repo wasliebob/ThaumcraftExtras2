@@ -5,6 +5,7 @@ import net.minecraft.world.World;
 import thaumcraft.common.Thaumcraft;
 import thaumcraftextras.api.misc.classes.TileEntityMagicBattery;
 import thaumcraftextras.blocks.tiles.TileEntityAdvancedAltar;
+import thaumcraftextras.blocks.tiles.TileEntityClasher;
 import thaumcraftextras.blocks.tiles.TileEntityEssentiaBarrel;
 import thaumcraftextras.blocks.tiles.TileEntityEssentiaBarrelWindow;
 import thaumcraftextras.blocks.tiles.TileEntityMagicCrystalCharger;
@@ -16,6 +17,7 @@ import thaumcraftextras.proxies.client.renders.RenderNoMove;
 import thaumcraftextras.proxies.client.renders.RenderTesserract;
 import thaumcraftextras.proxies.client.renders.TileEntityAdvancedAltarRenderer;
 import thaumcraftextras.proxies.client.renders.TileEntityBatteryRenderer;
+import thaumcraftextras.proxies.client.renders.TileEntityClasherRenderer;
 import thaumcraftextras.proxies.client.renders.TileEntityCrystalChargerRenderer;
 import thaumcraftextras.proxies.client.renders.TileEntityEssentiaBarrelRenderer;
 import thaumcraftextras.proxies.client.renders.TileEntityEssentiaBarrelWindowRenderer;
@@ -39,6 +41,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityNoMove.class, new TileEntityNoMoveRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMagicCrystalCharger.class, new TileEntityCrystalChargerRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAdvancedAltar.class, new TileEntityAdvancedAltarRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityClasher.class, new TileEntityClasherRenderer());
     }
 	
 	@Override

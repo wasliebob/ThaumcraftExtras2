@@ -188,7 +188,7 @@ public class TileEntityAdvancedAltar extends TileEntity implements ISidedInvento
 
 	@Override
 	public String getInventoryName() {
-		return "dm.infuser";
+		return "tce.altar_advanced";
 	}
 
 	@Override

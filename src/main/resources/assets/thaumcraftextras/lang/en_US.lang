@@ -21,6 +21,9 @@ tile.thaumcraftextras.block.Essentia Barrel.name=Essentia Barrel
 tile.thaumcraftextras.block.Essentia Barrel Window.name=Essentia Barrel Window
 tile.thaumcraftextras.block.light block.name=Lightning Block
 tile.thaumcraftextras.block.advanced altar.name=Advanced Altar
+tile.thaumcraftextras.block.clasher.name=Elemental Clasher
+tile.thaumcraftextras.block.darkwood log.name=Magic Darkwood Log
+tile.thaumcraftextras.block.darkwood plank.name=Magic Darkwood Plank
 ==Items==
 item.thaumcraftextras.crystal.1.name=Tiny Thaumic Energy Crystal
 item.thaumcraftextras.crystal.2.name=Small Thaumic Energy Crystal

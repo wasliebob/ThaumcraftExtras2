@@ -7,6 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import thaumcraftextras.api.core.recipes.AdvancedAltarRecipe;
 import thaumcraftextras.api.core.recipes.AdvancedAltarRecipeManager;
+import thaumcraftextras.api.core.recipes.ClasherRecipeManager;
 import thaumcraftextras.api.core.recipes.DarkInfuserRecipeManager;
 public class TCEApi {
 	/**
@@ -24,6 +25,15 @@ public class TCEApi {
 		}
 	}
 	public static DarkInfuserRecipeManager darkInfuser;
+
+	public static void addClasherRecipe(Item input1, Item input2, ItemStack output) {
+		if(input1 == null || input2 == null || output == null){
+			System.out.println("[TCE2] " +  " A mod is trying to register an invalid recipe, ignoring");
+		}else{
+			ClasherRecipeManager.addClasherRecipe(input1, input2, output);
+		}
+	}
+	public static ClasherRecipeManager clasher;
 
 	public static void addAdvancedAltarRecipe(Item input, AdvancedAltarRecipe recipe)
 	{

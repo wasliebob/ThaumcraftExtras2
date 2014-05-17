@@ -145,7 +145,7 @@ public class TCEEntries {
 		aspect.add(Aspect.ENTROPY, 10);
 		text = new String[]{"1"};
 		research = new ResearchHelper(altar_advanced, TCEEntries.TCE, aspect, 5, -2, 2, new ItemStack(TCEBlocks.altar_advanced)).setParents(TCEEntries.tce).setSecondary().registerResearchItem();
-		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeAdvancedAltar));
+		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipeAdvancedAltar), new ResearchPage(TCERecipes.recipeClasher));
 		aspect = new AspectList();
 	}
 	public static String tce = "Thaumcraft_Extras"; 

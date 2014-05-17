@@ -22,7 +22,7 @@ public class TCEGuideEntries {
 		page = new TCEPage("Control", new String[]{
 			"Next Page: D",
 			"Previous Page: S",},
-			0x0033FF, null, null, 0, 0);
+			0x0033FF, null, null, null, 0, 0);
 		TCEGuide.addPage(n, page);
 		n++;
 		
@@ -33,7 +33,7 @@ public class TCEGuideEntries {
 				"features, ", 
 				"But also returns ",
 				"previous once."},
-				0x0033FF, null, null, 0, 0);
+				0x0033FF, null, null, null, 0, 0);
 		TCEGuide.addPage(n, page);
 		n++;
 		
@@ -41,7 +41,7 @@ public class TCEGuideEntries {
 				"TCE2 adds a whole ",
 				"new energy system",
 				"called Thaumic Energy."},
-				0x0033FF, null, null, 0, 0);
+				0x0033FF, null, null, null, 0, 0);
 		TCEGuide.addPage(n, page);
 		n++;
 		
@@ -53,7 +53,7 @@ public class TCEGuideEntries {
 				"The battery allows you ",
 				"to store energy and ",
 				"take it with you."},
-				0x0033FF, null, null, 0, 0);
+				0x0033FF, null, null, null, 0, 0);
 		TCEGuide.addPage(n, page);
 		n++;
 		
@@ -66,9 +66,21 @@ public class TCEGuideEntries {
 		};
 		page = new TCEPage("Advanced Altar Recipes",
 				null,
-				0x0033FF, null, recipe, 16, 16);
+				0x0033FF, null, recipe, null, 16, 16);
 		TCEGuide.addPage(n, page);
 		n++;
+		
+		Item[] rec;
+		rec = new Item[]{
+				Items.lava_bucket,
+				TCEItems.essenceDark
+		};
+		page = new TCEPage("Clasher Recipes", 
+				null,
+				0x0033FF, null, null, rec, 16, 16);
+		TCEGuide.addPage(n, page);
+		n++;
+		
 	}
 	
 	public static AdvancedAltarRecipe getRecipe(Item input){

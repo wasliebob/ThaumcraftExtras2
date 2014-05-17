@@ -64,8 +64,7 @@ public class FocusClean extends TCEItemFocus {
         			x = mop.blockX;
         			y = mop.blockY;
         			z = mop.blockZ;
-        			
-        			if(canBeCleaned.contains(player.worldObj.getBlock(x, y, z))){
+        			if(player.worldObj.canMineBlock(player, x, y, z) && player.worldObj.getBlock(x, y, z).canEntityDestroy(player.worldObj, x, y, z, player) && canBeCleaned.contains(player.worldObj.getBlock(x, y, z))){
         				if (wand.consumeAllVis(itemstack, player, getVisCost(), !player.worldObj.isRemote, false)){
             				if(!player.worldObj.isRemote){            
             		            player.worldObj.playAuxSFX(2001, mop.blockX, mop.blockY, mop.blockZ, Block.getIdFromBlock(player.worldObj.getBlock(x, y, z)) + (player.worldObj.getBlockMetadata(x, y, z) << 12));

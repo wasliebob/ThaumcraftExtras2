@@ -6,6 +6,8 @@ import net.minecraft.item.ItemStack;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraftextras.api.core.TCEApi;
 import thaumcraftextras.blocks.BlockAdvancedAltar;
+import thaumcraftextras.blocks.BlockClasher;
+import thaumcraftextras.blocks.BlockDarkMagicLog;
 import thaumcraftextras.blocks.BlockDarkendAltar;
 import thaumcraftextras.blocks.BlockDarkendCore;
 import thaumcraftextras.blocks.BlockEssentiaBarrel;
@@ -49,6 +51,9 @@ public class TCEBlocks {
 		lavaGen = new BlockMagicLavaGenerator(Material.iron, "Magical Lava Generator");
 		blockLight = new BlockLight("Light Block");
 		altar_advanced = new BlockAdvancedAltar();
+		clasher = new BlockClasher();
+		log_darkmagic = new BlockDarkMagicLog();
+		plank_darkmagic = new TCEBlock(Material.wood, "darkwood plank", "plank_darkwood", false, null);
 	}
 	public static TCEBlock blockIgnis;
 	public static BlockWardedGhost specialWardedGhost;
@@ -65,6 +70,9 @@ public class TCEBlocks {
 	public static BlockMagicLavaGenerator lavaGen;
 	public static BlockLight blockLight;
 	public static BlockAdvancedAltar altar_advanced;
+	public static BlockClasher clasher;
+	public static BlockDarkMagicLog log_darkmagic;
+	public static TCEBlock plank_darkmagic;
 
 	public static void initBarrels()
 	{

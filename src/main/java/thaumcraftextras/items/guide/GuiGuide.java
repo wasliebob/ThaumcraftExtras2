@@ -9,6 +9,7 @@ import org.lwjgl.input.Keyboard;
 
 import thaumcraftextras.api.core.TCEGuide;
 import thaumcraftextras.api.core.pages.TCEPage;
+import thaumcraftextras.api.core.recipes.ClasherRecipeManager;
 import thaumcraftextras.helpers.IconHelper;
 
 public class GuiGuide extends GuiScreen{
@@ -75,6 +76,42 @@ public class GuiGuide extends GuiScreen{
 				y = (top + 15) + (16*j);
 				Minecraft.getMinecraft().getTextureManager().bindTexture(page.recipe[j].aspect.getImage());
 				IconHelper.drawAspect(x, y, 16, 16, j, page.recipe[j].aspect);
+				
+				x = this.left + gwidth / 2 + 25;
+				y = (top + 15) + (16*j);
+				Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("thaumcraftextras:textures/gui/arrow.png"));
+				IconHelper.drawIcon(x, y, page.width, page.height, 0);
+			}
+		}else if(sa == null && page.recipe == null && page.input != null){
+			int x, y;
+			ItemStack item;
+			for(int j = 0; j < page.input.length; j++){
+				if(ClasherRecipeManager.clasher.containsKey(page.input[j])){
+					x = this.left + gwidth / 2 - 50;
+					y = (top + 15) + (16*j);
+					item = new ItemStack(page.input[j]);
+					GuiScreen.itemRender.renderItemIntoGUI(fontRendererObj, Minecraft.getMinecraft().getTextureManager(), item, x, y);
+				
+					x = this.left + gwidth / 2 - 25;
+					y = (top + 15) + (16*j);
+					Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("thaumcraftextras:textures/gui/plus.png"));
+					IconHelper.drawIcon(x, y, page.width, page.height, 0);
+				
+					x = this.left + gwidth / 2;
+					y = (top + 15) + (16*j);
+					item = new ItemStack(ClasherRecipeManager.clasher.get(page.input[j]));
+					GuiScreen.itemRender.renderItemIntoGUI(fontRendererObj, Minecraft.getMinecraft().getTextureManager(), item, x, y);
+					
+					x = this.left + gwidth / 2 + 50;
+					y = (top + 15) + (16*j);
+					item = ClasherRecipeManager.clasherOut.get(page.input[j]);
+					GuiScreen.itemRender.renderItemIntoGUI(fontRendererObj, Minecraft.getMinecraft().getTextureManager(), item, x, y);
+				
+					x = this.left + gwidth / 2 + 25;
+					y = (top + 15) + (16*j);
+					Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("thaumcraftextras:textures/gui/arrow.png"));
+					IconHelper.drawIcon(x, y, page.width, page.height, 0);
+				}
 			}
 		}
 		super.drawScreen(i0, i1, f1);
