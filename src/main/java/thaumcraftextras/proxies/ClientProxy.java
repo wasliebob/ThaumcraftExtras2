@@ -60,9 +60,16 @@ public class ClientProxy extends CommonProxy {
 	}
 	
 	@Override
-	public void spawnSprinkle(double x, double y, double z, int color){
+	public void spawnSprinkle(float x, float y, float z, int color){
 		if(Minecraft.getMinecraft().renderViewEntity != null)
-			Thaumcraft.proxy.sparkle((float) x, (float) y, (float) z, 1.0F, color, 1.0F);
+			Thaumcraft.proxy.sparkle(x, y, z, 1.0F, color, 1.0F);
+	}
+	
+	@Override
+	public void spawnWisp(World worldObj, double x, double y, double z, int size, int type, boolean shrink, int gravity)
+	{
+		if(Minecraft.getMinecraft().renderViewEntity != null)
+			Thaumcraft.proxy.wispFX2(worldObj, x, y, z, size, type, shrink, gravity);
 	}
 	
 	@Override

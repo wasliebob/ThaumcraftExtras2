@@ -11,29 +11,34 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants;
+import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.tiles.TilePedestal;
 import thaumcraftextras.api.core.recipes.ClasherRecipeManager;
 import thaumcraftextras.main.ThaumcraftExtras;
 
 public class TileEntityClasher extends TileEntity implements ISidedInventory{
     public TileEntityClasher(){
-    	time = 40;
+    	time = 120;
     }
 	ItemStack[] stacks = new ItemStack[1];
     public int time;
-    int base = 40;
-    
+    int base = 120;
+    float i = 2.0F;
+    float maxt = 2.0F;
 	@Override
 	public void updateEntity()
 	{		
 		if(!worldObj.isRemote){
-			if(hasTile()){
+			if(hasTile() && getStackInSlot(0) == null){
 				if(getMatrix() == "m1"){
 					TilePedestal back = (TilePedestal)worldObj.getTileEntity(xCoord, yCoord, zCoord -2);
 					TilePedestal front = (TilePedestal)worldObj.getTileEntity(xCoord, yCoord, zCoord +2);
 					if(isValidRecipe(back.getStackInSlot(0), front.getStackInSlot(0))){
-						if(time != 0)
-							time--;
+						if(time != 0){
+							i = i-0.1F;
+							time--;}
+						if(i <= 0)
+							i = maxt;
 						
 							doFancyStuff(back.getStackInSlot(0).getItem(), front.getStackInSlot(0).getItem(), back, front);
 						
@@ -51,8 +56,11 @@ public class TileEntityClasher extends TileEntity implements ISidedInventory{
 					TilePedestal left = (TilePedestal)worldObj.getTileEntity(xCoord -2, yCoord, zCoord);
 					TilePedestal right = (TilePedestal)worldObj.getTileEntity(xCoord +2, yCoord, zCoord);
 					if(isValidRecipe(left.getStackInSlot(0), right.getStackInSlot(0))){
-						if(time != 0)
-							time--;
+						if(time != 0){
+							i = i-0.1F;
+							time--;}
+						if(i <= 0)
+							i = maxt;
 						
 							doFancyStuff(left.getStackInSlot(0).getItem(), right.getStackInSlot(0).getItem(), left, right);
 						
@@ -73,10 +81,32 @@ public class TileEntityClasher extends TileEntity implements ISidedInventory{
 	
 	public void doFancyStuff(Item item1, Item item2, TilePedestal t1, TilePedestal t2)
 	{
-		ThaumcraftExtras.proxy.spawnTrail(worldObj, t1.xCoord + 0.5F, t1.yCoord + 0.7F, t1.zCoord + 0.5F, xCoord + 0.5F, yCoord + 0.5F, zCoord + 0.5F, 0);
-		ThaumcraftExtras.proxy.spawnTrail(worldObj, t2.xCoord + 0.5F, t2.yCoord + 0.7F, t2.zCoord + 0.5F, xCoord + 0.5F, yCoord + 0.5F, zCoord + 0.5F, 0);
+//		ThaumcraftExtras.proxy.spawnTrail(worldObj, t1.xCoord + 0.5F, t1.yCoord + 0.7F, t1.zCoord + 0.5F, xCoord + 0.5F, yCoord + 0.5F, zCoord + 0.5F, 0);
+//		ThaumcraftExtras.proxy.spawnTrail(worldObj, t2.xCoord + 0.5F, t2.yCoord + 0.7F, t2.zCoord + 0.5F, xCoord + 0.5F, yCoord + 0.5F, zCoord + 0.5F, 0);
+		/**
+		 * -p1-
+		 * p2_BLOCK_p3
+		 * -p4-
+		 */
+//		int[] p1 = new int[]{xCoord, yCoord, zCoord -1};
+//		int[] p2 = new int[]{xCoord -1, yCoord, zCoord};
+//		int[] p3 = new int[]{xCoord +1, yCoord, zCoord};
+//		int[] p4 = new int[]{xCoord, yCoord, zCoord +1};
+		
+//		for(float i = 0; i < 2.5F; i = i+0.1F){
+		
+			float j = i;
+			Thaumcraft.proxy.sparkle((float)xCoord +j, (float)yCoord + 1, (float)zCoord + 0.5F, 1, 0, 0);
+			Thaumcraft.proxy.sparkle((float)xCoord -j, (float)yCoord + 1, (float)zCoord + 0.5F, 1, 0, 0);
+			Thaumcraft.proxy.sparkle((float)xCoord + 0.5F, (float)yCoord + 1, (float)zCoord +j, 1, 0, 0);
+			Thaumcraft.proxy.sparkle((float)xCoord + 0.5F, (float)yCoord + 1, (float)zCoord -j, 1, 0, 0);
 
-		//		Thaumcraft.packetPipeline.sendToAllAround(new PacketFXInfusionSource(this.xCoord, this.yCoord, this.zCoord, (byte)(this.xCoord - t1.xCoord), (byte)(this.yCoord - t1.yCoord), (byte)(this.zCoord - t1.zCoord), 0), new NetworkRegistry.TargetPoint(getWorldObj().provider.dimensionId, this.xCoord, this.yCoord, this.zCoord, 32.0D));
+			if(time == 0)
+				ThaumcraftExtras.proxy.spawnBurst(worldObj, xCoord + 0.5D, yCoord + 1.0D, zCoord + 0.5D);
+//			ThaumcraftExtras.proxy.spawnSprinkle((float)xCoord +i, (float)yCoord + 1, (float)zCoord + 0.5F, 0);
+//			ThaumcraftExtras.proxy.spawnSprinkle((float)xCoord -i, (float)yCoord + 1, (float)zCoord + 0.5F, 0);
+//			ThaumcraftExtras.proxy.spawnSprinkle((float)xCoord + 0.5F, (float)yCoord + 1, (float)zCoord +i, 0);
+//			ThaumcraftExtras.proxy.spawnSprinkle((float)xCoord + 0.5F, (float)yCoord + 1, (float)zCoord -i, 0);
 	}
 	
 	public boolean isValidRecipe(ItemStack stack1, ItemStack stack2){

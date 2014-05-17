@@ -60,7 +60,7 @@ public class TileEntityDarkendCore extends TileEntity{
 			time--;
 		
 		if(item != null){
-			ThaumcraftExtras.proxy.spawnSprinkle(item.posX, item.posY, item.posZ, 0);
+			ThaumcraftExtras.proxy.spawnSprinkle((float)item.posX, (float)item.posY, (float)item.posZ, 0);
 		}
 		
 		if(time == 0){
