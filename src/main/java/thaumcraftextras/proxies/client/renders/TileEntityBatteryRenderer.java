@@ -76,7 +76,7 @@ public class TileEntityBatteryRenderer extends TileEntitySpecialRenderer{
 		t.draw();
 		GL11.glPopMatrix();
 	}
-	
+	           
 	public void vertex(TileEntityMagicBattery te, Tessellator t, double d1)
 	{
 //		Color color = new Color(barrel.getAspect().getColor());

@@ -1,5 +1,7 @@
 package thaumcraftextras.blocks.tiles;
 
+import java.awt.Color;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
@@ -25,10 +27,15 @@ public class TileEntityClasher extends TileEntity implements ISidedInventory{
     int base = 120;
     float i = 2.0F;
     float maxt = 2.0F;
+    public float yRotation = 0.1F;
+    public float speed = 1.0F;
+    
 	@Override
 	public void updateEntity()
 	{		
 		if(!worldObj.isRemote){
+			ThaumcraftExtras.proxy.spawnSprinkle((float)xCoord, (float)yRotation, (float)zCoord, Color.cyan.getRGB());
+
 			if(hasTile() && getStackInSlot(0) == null){
 				if(getMatrix() == "m1"){
 					TilePedestal back = (TilePedestal)worldObj.getTileEntity(xCoord, yCoord, zCoord -2);
@@ -44,6 +51,7 @@ public class TileEntityClasher extends TileEntity implements ISidedInventory{
 						
 						ItemStack stack1 = back.getStackInSlot(0);
 						ItemStack stack2 = front.getStackInSlot(0);
+						
 						if(time == 0){
 							setInventorySlotContents(0, getOutput(stack1, stack2));
 							front.setInventorySlotContents(0, null);

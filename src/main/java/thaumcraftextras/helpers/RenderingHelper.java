@@ -5,4 +5,5 @@ public class RenderingHelper {
 	public static int render_noMove = 1002;
 	public static int render_magicBatteryCharger = 1003;
 	public static int render_altar = 10004;
+	public static int render_clasher = 10005;
 }

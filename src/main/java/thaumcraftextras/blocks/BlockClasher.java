@@ -14,6 +14,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import thaumcraftextras.api.core.recipes.AdvancedAltarRecipeManager;
 import thaumcraftextras.blocks.tiles.TileEntityClasher;
+import thaumcraftextras.helpers.RenderingHelper;
 import thaumcraftextras.main.ThaumcraftExtras;
 import thaumcraftextras.main.init.TCETabs;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -31,23 +32,23 @@ public class BlockClasher extends BlockContainer{
 		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}
 	
-//	@Override
-//    public int getRenderType()
-//    {
-//        return RenderingHelper.render_altar;
-//    }
-//	
-//	@Override
-//    public boolean renderAsNormalBlock()
-//    {
-//        return false;
-//    }
-//	
-//	@Override
-//    public boolean isOpaqueCube()
-//    {
-//        return false;
-//    }
+	@Override
+    public int getRenderType()
+    {
+        return RenderingHelper.render_clasher;
+    }
+	
+	@Override
+    public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
+	
+	@Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
 	
 	@SideOnly(Side.CLIENT)
 	@Override

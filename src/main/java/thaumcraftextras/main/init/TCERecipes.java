@@ -66,22 +66,14 @@ public class TCERecipes {
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(TCEBlocks.plank_darkmagic, 4, 0), new ItemStack(TCEBlocks.log_darkmagic));
 		GameRegistry.addShapelessRecipe(new ItemStack(TCEItems.guide), new ItemStack(Items.book), new ItemStack(ConfigItems.itemShard));
-
-//		GameRegistry.addShapedRecipe(new ItemStack(TCEBlocks.altar_advanced), new Object[]{
-//			"XYX",
-//			"YZY",
-//			"XYX",
-//			'Y', Blocks.glass,
-//			'Z', TCEItems.essenceMagic,
-//			'X', ConfigBlocks.blockCosmeticSolid});
 		
-		for(int i = 0; i < 15; i++)
+		for(int i = 0; i < 16; i++)
 			GameRegistry.addShapedRecipe(new ItemStack(TCEItems.pouch_color, 1, i), new Object[]{
 			"XY",
 			'X', new ItemStack(ConfigItems.itemFocusPouch),
 			'Y', new ItemStack(Items.dye, 1, i)});
 		
-		for(int i = 0; i < 15; i++)
+		for(int i = 0; i < 16; i++)
 			GameRegistry.addShapedRecipe(new ItemStack(TCEBlocks.blockLight, 1, i), new Object[]{
 			"XY",
 			'X', new ItemStack(TCEBlocks.blockLight),

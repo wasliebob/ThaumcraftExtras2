@@ -12,6 +12,7 @@ import thaumcraftextras.blocks.tiles.TileEntityMagicCrystalCharger;
 import thaumcraftextras.blocks.tiles.TileEntityNoMove;
 import thaumcraftextras.blocks.tiles.TileEntityShocker;
 import thaumcraftextras.proxies.client.renders.RenderAdvancedAltar;
+import thaumcraftextras.proxies.client.renders.RenderClasher;
 import thaumcraftextras.proxies.client.renders.RenderCrystalCharger;
 import thaumcraftextras.proxies.client.renders.RenderNoMove;
 import thaumcraftextras.proxies.client.renders.RenderTesserract;
@@ -34,6 +35,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerBlockHandler(new RenderNoMove());
 		RenderingRegistry.registerBlockHandler(new RenderCrystalCharger());
 		RenderingRegistry.registerBlockHandler(new RenderAdvancedAltar());
+		RenderingRegistry.registerBlockHandler(new RenderClasher());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityShocker.class, new TileEntityTesserractRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEssentiaBarrel.class, new TileEntityEssentiaBarrelRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEssentiaBarrelWindow.class, new TileEntityEssentiaBarrelWindowRenderer());
