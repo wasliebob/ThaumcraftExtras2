@@ -65,7 +65,8 @@ public class TCERecipes {
 			'Y', TCEItems.essenceMagic});
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(TCEBlocks.plank_darkmagic, 4, 0), new ItemStack(TCEBlocks.log_darkmagic));
-		
+		GameRegistry.addShapelessRecipe(new ItemStack(TCEItems.guide), new ItemStack(Items.book), new ItemStack(ConfigItems.itemShard));
+
 //		GameRegistry.addShapedRecipe(new ItemStack(TCEBlocks.altar_advanced), new Object[]{
 //			"XYX",
 //			"YZY",

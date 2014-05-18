@@ -1,19 +1,18 @@
 package thaumcraftextras.api.core;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
-import thaumcraftextras.api.core.pages.TCEPage;
+import thaumcraftextras.api.core.pages.TCEPageText;
 
 public class TCEGuide {
-	/**
-	 * @param entry
-	 * Which page to use (overriding is possible but not recommended)
-	 * @param text
-	 * New Entry Page (see TCEPage.class for more info)
-	 */
-	public static void addPage(Integer entry, TCEPage text)
-	{
-		page.put(entry, text);
+	public static void addCategory(String title){
+		index.add(title);
 	}
-	public static HashMap<Integer, TCEPage> page = new HashMap<Integer, TCEPage>();
+	public static ArrayList<String> index = new ArrayList<String>();
+
+	public static void addTextEntry(String title, TCEPageText base){
+		entry_text.put(title, base);
+	}
+	public static HashMap<String, TCEPageText> entry_text = new HashMap<String, TCEPageText>();
 }

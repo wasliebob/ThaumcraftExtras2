@@ -1,16 +1,17 @@
 package thaumcraftextras.items.guide;
 
-import net.minecraft.client.Minecraft;
+import java.util.ArrayList;
+
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
 
 import thaumcraftextras.api.core.TCEGuide;
-import thaumcraftextras.api.core.pages.TCEPage;
-import thaumcraftextras.api.core.recipes.ClasherRecipeManager;
-import thaumcraftextras.helpers.IconHelper;
+import thaumcraftextras.items.guide.button.ButtonPage;
+import thaumcraftextras.items.guide.pages.GuiText;
 
 public class GuiGuide extends GuiScreen{
 	public static GuiGuide index = new GuiGuide();
@@ -20,7 +21,8 @@ public class GuiGuide extends GuiScreen{
 	int gheight = 180;
 	int left, top;
 	int curPage;
-	
+
+	@SuppressWarnings("unchecked")
 	@Override
 	public void initGui(){
 		super.initGui();
@@ -29,89 +31,32 @@ public class GuiGuide extends GuiScreen{
 		left = (this.width/2) - (gwidth/2);
 		top = (this.height/2) - (gheight/2);
 		this.buttonList.clear();
+		int x, y;
+		for(int j = 0; j < TCEGuide.index.size(); j++) {
+			x = this.left + gwidth / 2 - 75;
+			y = (top + 15) + (10*j);
+			buttonList.add(new ButtonPage(j, x, y, 110, 10, ""));
+		}
 	}
 	
 	@Override
 	public void drawScreen(int i0, int i1, float f1){
+		GL11.glColor4f(1F, 1F, 1F, 1F);
 		this.mc.renderEngine.bindTexture(background);
 		drawTexturedModalRect(left, top, 0, 0, gwidth, gheight);
-		TCEPage page = TCEGuide.page.get(curPage);
+		ArrayList<String> page = TCEGuide.index;
 		
 		/** Title */
-		String str = page.title;
+		String str = "Guide of The Thaumaturge";
 		this.drawCenteredString(fontRendererObj, str, this.left + gwidth / 2, top - 15, 0x336666);
-		String[] sa = page.text;
-
-		/** Current Page */
-		this.drawCenteredString(fontRendererObj, curPage + "/" + TCEGuide.page.size(), this.left + gwidth / 2, top + 160, page.color);
-
-		/** Text */ 
-		if(sa != null && sa.length > 0)    {
-			for(int j = 0; j < sa.length; j++){
-				String s = sa[j];
-				this.drawString(fontRendererObj, s, this.left + gwidth / 2 - 50, (top + 15) + (9*j), 0x00FF33);
-			}
-		}else if(sa == null && page.image != null){
-			Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(page.image));
-			IconHelper.drawIcon(this.left + gwidth / 2 - 50, (top + 15) + 9, page.width, page.height, 0);
-		}else if(sa == null && page.recipe != null){
-			int x, y;
-			ItemStack item;
-			for(int j = 0; j < page.recipe.length; j++){
-				x = this.left + gwidth / 2 - 50;
-				y = (top + 15) + (16*j);
-				item = page.recipe[j].input;
-				GuiScreen.itemRender.renderItemIntoGUI(fontRendererObj, Minecraft.getMinecraft().getTextureManager(), item, x, y);
-			
-				x = this.left + gwidth / 2 + 50;
-				y = (top + 15) + (16*j);
-				item = page.recipe[j].output;
-				GuiScreen.itemRender.renderItemIntoGUI(fontRendererObj, Minecraft.getMinecraft().getTextureManager(), item, x, y);
-				
-				x = this.left + gwidth / 2 - 25;
-				y = (top + 20) + (16*j);
-				this.drawString(fontRendererObj, Integer.toString(page.recipe[j].amount), x, y, page.color);
-
-				x = this.left + gwidth / 2;
-				y = (top + 15) + (16*j);
-				Minecraft.getMinecraft().getTextureManager().bindTexture(page.recipe[j].aspect.getImage());
-				IconHelper.drawAspect(x, y, 16, 16, j, page.recipe[j].aspect);
-				
-				x = this.left + gwidth / 2 + 25;
-				y = (top + 15) + (16*j);
-				Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("thaumcraftextras:textures/gui/arrow.png"));
-				IconHelper.drawIcon(x, y, page.width, page.height, 0);
-			}
-		}else if(sa == null && page.recipe == null && page.input != null){
-			int x, y;
-			ItemStack item;
-			for(int j = 0; j < page.input.length; j++){
-				if(ClasherRecipeManager.clasher.containsKey(page.input[j])){
-					x = this.left + gwidth / 2 - 50;
-					y = (top + 15) + (16*j);
-					item = new ItemStack(page.input[j]);
-					GuiScreen.itemRender.renderItemIntoGUI(fontRendererObj, Minecraft.getMinecraft().getTextureManager(), item, x, y);
-				
-					x = this.left + gwidth / 2 - 25;
-					y = (top + 15) + (16*j);
-					Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("thaumcraftextras:textures/gui/plus.png"));
-					IconHelper.drawIcon(x, y, page.width, page.height, 0);
-				
-					x = this.left + gwidth / 2;
-					y = (top + 15) + (16*j);
-					item = new ItemStack(ClasherRecipeManager.clasher.get(page.input[j]));
-					GuiScreen.itemRender.renderItemIntoGUI(fontRendererObj, Minecraft.getMinecraft().getTextureManager(), item, x, y);
-					
-					x = this.left + gwidth / 2 + 50;
-					y = (top + 15) + (16*j);
-					item = ClasherRecipeManager.clasherOut.get(page.input[j]);
-					GuiScreen.itemRender.renderItemIntoGUI(fontRendererObj, Minecraft.getMinecraft().getTextureManager(), item, x, y);
-				
-					x = this.left + gwidth / 2 + 25;
-					y = (top + 15) + (16*j);
-					Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation("thaumcraftextras:textures/gui/arrow.png"));
-					IconHelper.drawIcon(x, y, page.width, page.height, 0);
-				}
+		ArrayList<String> sa = page;		
+		
+		if(sa != null && sa.size() > 0)    {
+			for(int j = 0; j < sa.size(); j++){
+				String s = sa.get(j);
+				ButtonPage button = (ButtonPage) buttonList.get(j);
+				if(button.displayString != null)
+					button.displayString = s;
 			}
 		}
 		super.drawScreen(i0, i1, f1);
@@ -144,17 +89,16 @@ public class GuiGuide extends GuiScreen{
             	
             	return;
             }
-            
-            if(i == 32){
-            	if(curPage == TCEGuide.page.size())
-            		return;
-            	else
-            		curPage++;
-            	
-            	return;
-            }
 
             this.keyTyped(c0, i);
         }
     }
+	
+	@Override
+	protected void actionPerformed(GuiButton button) {
+		switch(button.id) {
+			default:
+				mc.displayGuiScreen(new GuiText(button.displayString));
+		}
+	}
 }
