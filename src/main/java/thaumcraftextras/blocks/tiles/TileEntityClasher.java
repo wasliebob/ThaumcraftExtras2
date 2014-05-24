@@ -1,7 +1,5 @@
 package thaumcraftextras.blocks.tiles;
 
-import java.awt.Color;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
@@ -21,25 +19,30 @@ import thaumcraftextras.main.ThaumcraftExtras;
 public class TileEntityClasher extends TileEntity implements ISidedInventory{
     public TileEntityClasher(){
     	time = 120;
+    	yRotation = 0.1F;
+    	speed = 1.0F;
+    	yRotationCube = 0.1F;
+    	speedCube = 5.0F;
     }
 	ItemStack[] stacks = new ItemStack[1];
     public int time;
     int base = 120;
     float i = 2.0F;
     float maxt = 2.0F;
-    public float yRotation = 0.1F;
-    public float speed = 1.0F;
+    public float yRotation;
+    public float speed;
+    public float yRotationCube;
+    public float speedCube;
     
 	@Override
 	public void updateEntity()
 	{		
 		if(!worldObj.isRemote){
-			ThaumcraftExtras.proxy.spawnSprinkle((float)xCoord, (float)yRotation, (float)zCoord, Color.cyan.getRGB());
-
 			if(hasTile() && getStackInSlot(0) == null){
 				if(getMatrix() == "m1"){
 					TilePedestal back = (TilePedestal)worldObj.getTileEntity(xCoord, yCoord, zCoord -2);
 					TilePedestal front = (TilePedestal)worldObj.getTileEntity(xCoord, yCoord, zCoord +2);
+										
 					if(isValidRecipe(back.getStackInSlot(0), front.getStackInSlot(0))){
 						if(time != 0){
 							i = i-0.1F;
@@ -63,6 +66,7 @@ public class TileEntityClasher extends TileEntity implements ISidedInventory{
 				}else if(getMatrix() == "m2"){
 					TilePedestal left = (TilePedestal)worldObj.getTileEntity(xCoord -2, yCoord, zCoord);
 					TilePedestal right = (TilePedestal)worldObj.getTileEntity(xCoord +2, yCoord, zCoord);
+										
 					if(isValidRecipe(left.getStackInSlot(0), right.getStackInSlot(0))){
 						if(time != 0){
 							i = i-0.1F;
@@ -220,7 +224,7 @@ public class TileEntityClasher extends TileEntity implements ISidedInventory{
 	public ItemStack getStackInSlot(int i) {
 		return stacks[i];
 	}
-
+	
 	@Override
 	public ItemStack decrStackSize(int i, int j) {
 		if (stacks[i] != null)

@@ -21,6 +21,7 @@ public class ClasherRecipeManager {
 		}else{
 			clasher.put(input1, input2);
 			clasherOut.put(input1, output);
+			ingredients.put(output.getItem(), new Item[]{input1, input2});
 		}
 	}
 	
@@ -38,4 +39,6 @@ public class ClasherRecipeManager {
 	}
 	public static HashMap<Item, Item> clasher = new HashMap<Item, Item>();
 	public static HashMap<Item, ItemStack> clasherOut = new HashMap<Item, ItemStack>();
+	public static HashMap<Item, Item[]> ingredients = new HashMap<Item, Item[]>();
+
 }
