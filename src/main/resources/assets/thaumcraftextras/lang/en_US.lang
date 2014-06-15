@@ -51,7 +51,7 @@ item.thaumcraftextras.focus.wand focus: potion.name=Wand Focus: Potion
 item.thaumcraftextras.focus.wand focus: exchange.name=Wand Focus: Exchange
 item.thaumcraftextras.armor.flaming chestplate.name=Chestplate of Vulcan
 item.thaumcraftextras.armor.energetic helmet.name=Energetic Helmet
-item.thaumcraftextras.scepter.base.name=Creative Scepter
+item.thaumcraftextras.scepter.base.name=Scepter
 item.thaumcraftextras.item.pouch_focus.name=Focus Pouch
 item.thaumcraftextras.item.thaumic energy guide.name=Thaumic Energy Guide
 ==Rods==

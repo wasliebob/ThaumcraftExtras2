@@ -1,5 +1,6 @@
 package thaumcraftextras.main;
 
+import thaumcraftextras.api.core.TCEApi;
 import thaumcraftextras.handlers.FuelHandler;
 import thaumcraftextras.handlers.GuiHandler;
 import thaumcraftextras.main.init.TCEBlocks;
@@ -44,6 +45,7 @@ public class ThaumcraftExtras {
 		Config.loadConfig(event);
 		FileHelper.createModFolder(modName);
 		
+		TCEApi.addAllAspects();
     	TCEItems.init();
     	TCEBlocks.init();
     	if(Config.addon_wands){TCEWands.init();};

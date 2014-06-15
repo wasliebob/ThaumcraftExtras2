@@ -2,8 +2,6 @@ package thaumcraftextras.blocks;
 
 import java.util.Random;
 
-import org.lwjgl.input.Keyboard;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -69,12 +67,7 @@ public class BlockEssentiaBarrel extends BlockContainer{
                 		else if(stack.stackSize == 1)
                 			player.setCurrentItemOrArmor(0, null);
                 	}
-            	}else if(stack != null && stack.getItem() == TCEItems.scepter && barrel.getAspect() != null){
-            		if(Keyboard.isKeyDown(Keyboard.KEY_LCONTROL)){
-            			barrel.setMod(barrel.getMod()*100);
-            		}
-            		barrel.amount = 64*barrel.getMod();
-            	}
+                }
         	}
         }
         return true;

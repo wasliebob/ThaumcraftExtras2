@@ -1,6 +1,6 @@
 package thaumcraftextras.main.init;
 
-import thaumcraftextras.items.foci.normal.projectile.ProjectilePechTrade;
+import thaumcraftextras.items.foci.projectile.ProjectilePechTrade;
 import thaumcraftextras.main.ThaumcraftExtras;
 import cpw.mods.fml.common.registry.EntityRegistry;
 

@@ -1,4 +1,4 @@
-package thaumcraftextras.items.foci.normal.projectile;
+package thaumcraftextras.items.foci.projectile;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.MovingObjectPosition;

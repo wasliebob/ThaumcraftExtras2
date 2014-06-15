@@ -1,14 +1,17 @@
 package thaumcraftextras.api.core;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import thaumcraft.api.aspects.Aspect;
 import thaumcraftextras.api.core.recipes.AdvancedAltarRecipe;
 import thaumcraftextras.api.core.recipes.AdvancedAltarRecipeManager;
 import thaumcraftextras.api.core.recipes.ClasherRecipeManager;
 import thaumcraftextras.api.core.recipes.DarkInfuserRecipeManager;
+import thaumcraftextras.api.interfaces.IScepterAction;
 public class TCEApi {
 	/**
 	 * Entries using null will not be registered!
@@ -64,4 +67,16 @@ public class TCEApi {
 	}
 	public static HashMap<Block, Integer> exchangeMeta = new HashMap<Block, Integer>();
 	
+	
+	public static void addAllAspects(){
+		for(Aspect asp : Aspect.getPrimalAspects())
+			fullAspectList.add(asp);
+		
+		for(Aspect asp : Aspect.getCompoundAspects())
+			fullAspectList.add(asp);
+	}
+	public static ArrayList<Aspect> fullAspectList = new ArrayList<Aspect>();
+	
+	public static HashMap<Aspect, IScepterAction> scepterAction = new HashMap<Aspect, IScepterAction>();
+
 }

@@ -2,8 +2,7 @@ package thaumcraftextras.main.init;
 
 
 public class TCEMisc {
-	public static void preInit()
-	{
+	public static void preInit(){
 		
 	}
 	

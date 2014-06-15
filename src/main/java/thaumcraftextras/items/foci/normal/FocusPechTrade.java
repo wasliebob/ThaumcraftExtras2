@@ -8,7 +8,7 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumcraftextras.items.foci.TCEItemFocus;
-import thaumcraftextras.items.foci.normal.projectile.ProjectilePechTrade;
+import thaumcraftextras.items.foci.projectile.ProjectilePechTrade;
 import thaumcraftextras.main.ThaumcraftExtras;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;

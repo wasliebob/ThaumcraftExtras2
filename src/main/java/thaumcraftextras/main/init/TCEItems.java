@@ -3,6 +3,8 @@ package thaumcraftextras.main.init;
 import java.awt.Color;
 
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraftextras.api.core.TCEApi;
 import thaumcraftextras.items.ItemFlamingChestplate;
 import thaumcraftextras.items.ItemPouchColored;
 import thaumcraftextras.items.ItemXPExtractor;
@@ -20,6 +22,8 @@ import thaumcraftextras.items.foci.normal.FocusPotionEffect;
 import thaumcraftextras.items.foci.normal.FocusReturn;
 import thaumcraftextras.items.guide.ItemGuide;
 import thaumcraftextras.items.scepters.TCEItemScepter;
+import thaumcraftextras.items.scepters.actions.ActionFire;
+import thaumcraftextras.items.scepters.actions.ActionOrder;
 import wasliecore.helpers.ColorHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -92,13 +96,18 @@ public class TCEItems {
 	public static int fireChestplateDamage = 300;
 
 	
-	public static void initScepters()
-	{
-		scepter = new TCEItemScepter(100, ColorHelper.getColorCodeFromRGB(0, 0, 200), "base");		
+	public static void initScepters(){
+		initScepterAbilities();
+		scepter = new TCEItemScepter("base");		
 	}
 	public static TCEItemScepter scepter;
 	
 	public static String use = "USE";
+	
+	public static void initScepterAbilities(){
+		TCEApi.scepterAction.put(Aspect.ORDER, new ActionOrder());
+		TCEApi.scepterAction.put(Aspect.FIRE, new ActionFire());
+	}
 	
 	public static void initBaubles()
 	{
