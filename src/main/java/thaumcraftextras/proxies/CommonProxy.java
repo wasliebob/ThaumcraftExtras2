@@ -2,7 +2,6 @@ package thaumcraftextras.proxies;
 
 import net.minecraft.world.World;
 
-
 public class CommonProxy {
 	
 	public void load()

@@ -100,7 +100,6 @@ public class PacketPipeline extends MessageToMessageCodec<FMLProxyPacket, Abstra
 
     public void initialise() {
         this.channels = NetworkRegistry.INSTANCE.newChannel("TCE", new ChannelHandler[]{this});
-    
     }
 
     public void postInitialise() {

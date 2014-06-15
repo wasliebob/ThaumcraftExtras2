@@ -3,6 +3,7 @@ package thaumcraftextras.main;
 import thaumcraftextras.handlers.FuelHandler;
 import thaumcraftextras.handlers.GuiHandler;
 import thaumcraftextras.main.init.TCEBlocks;
+import thaumcraftextras.main.init.TCEEntities;
 import thaumcraftextras.main.init.TCEEntries;
 import thaumcraftextras.main.init.TCEEvents;
 import thaumcraftextras.main.init.TCEGuideEntries;
@@ -56,6 +57,7 @@ public class ThaumcraftExtras {
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     	initTiles();
     	TCEEvents.init(event);
+    	TCEEntities.init();
     }
     
     public void initTiles()

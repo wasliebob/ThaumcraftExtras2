@@ -1,15 +1,14 @@
 package thaumcraftextras.items.foci.normal;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.common.entities.monster.EntityPech;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumcraftextras.items.foci.TCEItemFocus;
+import thaumcraftextras.items.foci.normal.projectile.ProjectilePechTrade;
 import thaumcraftextras.main.ThaumcraftExtras;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -32,14 +31,10 @@ public class FocusPechTrade extends TCEItemFocus {
         @Override
         public ItemStack onFocusRightClick(ItemStack itemstack, World world, EntityPlayer player, MovingObjectPosition mop) {
         	ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
-        		if (mop != null && mop.typeOfHit == MovingObjectPosition.MovingObjectType.ENTITY && mop.entityHit instanceof EntityPech && wand.consumeAllVis(itemstack, player, getVisCost(), true, true)) {
-        			EntityPech pech = (EntityPech)mop.entityHit;
-        			pech.setAnger(0);
-        			pech.setTamed(true);
-        			pech.isValued(new ItemStack(Items.emerald));
-//        			pech.trading = true;
-        		}
-        		return itemstack;
+        	ProjectilePechTrade pechTrade = new ProjectilePechTrade(world, player);
+        	if(!world.isRemote && wand.consumeAllVis(itemstack, player, getVisCost(), true, true))
+        		world.spawnEntityInWorld(pechTrade);
+        	return itemstack;
         }
         
         @Override
