@@ -5,7 +5,6 @@ import net.minecraft.util.ResourceLocation;
 import thaumcraft.api.wands.WandRod;
 import thaumcraftextras.helpers.LocalizationHelper;
 import thaumcraftextras.main.init.addons.wands.BlockWand;
-import thaumcraftextras.main.init.addons.wands.DarkSilverwoodRodOnUpdate;
 import thaumcraftextras.main.init.addons.wands.TCEItemCap;
 import thaumcraftextras.main.init.addons.wands.TCEItemRod;
 import thaumcraftextras.main.init.addons.wands.TCEWandCap;
@@ -62,7 +61,7 @@ public class TCEWands {
         rod_devil = new WandRod("DEVIL", 250, new ItemStack(item_rod_devil), 20, new ResourceLocation("thaumcraftextras","textures/models/wand_rod_devil.png"));
         rod_god = new WandRod("GOD", 500, new ItemStack(item_rod_god), 27, new ResourceLocation("thaumcraftextras","textures/models/wand_rod_god.png"));
 
-        rod_darkSilverwood = new WandRod("DARKSILVERWOOD", 1000, new ItemStack(item_rod_darkSilverwood), 50, new DarkSilverwoodRodOnUpdate(), new ResourceLocation("thaumcraftextras","textures/models/wand_rod_darksilverwood.png"));
+        rod_darkSilverwood = new WandRod("DARKSILVERWOOD", 1000, new ItemStack(item_rod_darkSilverwood), 50, new ResourceLocation("thaumcraftextras","textures/models/wand_rod_darksilverwood.png"));
 	}
 	public static WandRod rod_ultimate;
 	public static WandRod rod_iron;

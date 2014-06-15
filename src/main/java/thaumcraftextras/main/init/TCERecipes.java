@@ -29,7 +29,6 @@ public class TCERecipes {
 		initThaumcraftRecipes();
 		initInfuse();
 		initBarrelRecipes();
-		initCrystalRecipes();
 		initDarkInfusionRecipes();
 		initAdvancedAltarRecipes();
 		initClasherRecipes();
@@ -165,58 +164,6 @@ public class TCERecipes {
 			'I', new ItemStack(Items.golden_apple)});
 		aspect = new AspectList();
 		
-		aspect.add(check(Aspect.ORDER), 10);
-		recipeScanner = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.magic_energy, new ItemStack(TCEItems.reader, 1, 0), aspect, new Object[]{
-			"XIX",
-			"IYI",
-			"XIX",
-			'X', new ItemStack(ConfigItems.itemResource, 1, 2),
-			'I', new ItemStack(Items.iron_ingot),
-			'Y', new ItemStack(Blocks.glass_pane)});
-		aspect = new AspectList();
-		
-		
-		aspect.add(check(Aspect.ORDER), 10);
-		recipeMagicBattery = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.magic_energy, new ItemStack(TCEBlocks.battery, 1, 0), aspect, new Object[]{
-			"XIX",
-			"IYI",
-			"XIX",
-			'X', new ItemStack(TCEItems.essenceMagic),
-			'I', new ItemStack(ConfigItems.itemResource, 1, 2),
-			'Y', new ItemStack(Blocks.iron_block)});
-		aspect = new AspectList();
-
-		aspect.add(check(Aspect.ORDER), 10);
-		recipeMagicGenerator = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.magic_energy, new ItemStack(TCEBlocks.generator, 1, 0), aspect, new Object[]{
-			"XIX",
-			"IYI",
-			"XIX",
-			'X', new ItemStack(TCEItems.essenceMagic),
-			'I', new ItemStack(ConfigItems.itemResource, 1, 2),
-			'Y', new ItemStack(TCEBlocks.battery)});
-		aspect = new AspectList();
-		
-		aspect.add(check(Aspect.ORDER), 10);
-		recipeMagicCrystalCharger = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.magic_energy, new ItemStack(TCEBlocks.crystalCharger, 1, 0), aspect, new Object[]{
-			"XIX",
-			"IYI",
-			"XIX",
-			'X', new ItemStack(TCEItems.essenceDark),
-			'I', new ItemStack(ConfigItems.itemResource, 1, 2),
-			'Y', new ItemStack(TCEItems.crystal_1, 1, TCEItems.crystal_1.getMaxDamage())});
-		aspect = new AspectList();
-		
-		aspect.add(check(Aspect.ORDER), 100);
-		aspect.add(check(Aspect.ENTROPY), 100);
-		recipeMagicWandCharger = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.magic_energy, new ItemStack(TCEBlocks.wandCharger, 1, 0), aspect, new Object[]{
-			"XIX",
-			"IYI",
-			"XIX",
-			'X', new ItemStack(TCEItems.essenceDark),
-			'I', new ItemStack(ConfigItems.itemResource, 1, 2),
-			'Y', new ItemStack(TCEItems.crystal_6)});
-		aspect = new AspectList();
-		
 		aspect.add(check(Aspect.ENTROPY), 25);
 		aspect.add(check(Aspect.AIR), 25);
 		recipeFocusShocker = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.focus_shocker, new ItemStack(TCEItems.focusTessela, 1, 0), aspect, new Object[]{
@@ -347,31 +294,9 @@ public class TCERecipes {
 		recipeFireChestplate = ThaumcraftApi.addInfusionCraftingRecipe(TCEEntries.chestplate_fire, new ItemStack(TCEItems.fireChestplate), 2, aspect, new ItemStack(ConfigItems.itemChestThaumium), new ItemStack[]{
 			new ItemStack(ConfigItems.itemSwordThaumium), new ItemStack(ConfigItems.itemShard, 2), new ItemStack(Items.flint_and_steel)});
 		aspect = new AspectList();
-		
-		aspect.add(Aspect.ORDER, 10);
-		recipeEnergyHelmet = ThaumcraftApi.addInfusionCraftingRecipe(TCEEntries.magic_energy, new ItemStack(TCEItems.energyHelmet), 2, aspect, new ItemStack(ConfigItems.itemGoggles), new ItemStack[]{
-			new ItemStack(TCEItems.crystal_1), new ItemStack(ConfigItems.itemShard, 2), new ItemStack(TCEItems.reader)});
-		aspect = new AspectList();
-	}
-	public static InfusionRecipe recipeFireChestplate;
-	public static InfusionRecipe recipeEnergyHelmet; 
-	
-	public static void initCrystalRecipes()
-	{
-		recipeMagicCrystalT1 = getCrystalRecipe(TCEEntries.magic_energy, new ItemStack(TCEItems.crystal_1), new ItemStack(Blocks.redstone_block), new ItemStack(Items.iron_ingot), new ItemStack(Items.gold_ingot), 1);
-		recipeMagicCrystalT2 = getCrystalRecipe(TCEEntries.magic_energy, new ItemStack(TCEItems.crystal_2), new ItemStack(TCEItems.crystal_1), new ItemStack(Items.iron_ingot), new ItemStack(Items.gold_ingot), 2);
-		recipeMagicCrystalT3 = getCrystalRecipe(TCEEntries.magic_energy, new ItemStack(TCEItems.crystal_3), new ItemStack(TCEItems.crystal_2), new ItemStack(Items.iron_ingot), new ItemStack(Items.gold_ingot), 3);
-		recipeMagicCrystalT4 = getCrystalRecipe(TCEEntries.magic_energy, new ItemStack(TCEItems.crystal_4), new ItemStack(TCEItems.crystal_3), new ItemStack(Items.iron_ingot), new ItemStack(Items.gold_ingot), 4);
-		recipeMagicCrystalT5 = getCrystalRecipe(TCEEntries.magic_energy, new ItemStack(TCEItems.crystal_5), new ItemStack(TCEItems.crystal_4), new ItemStack(Items.iron_ingot), new ItemStack(Items.gold_ingot), 5);
-		recipeMagicCrystalT6 = getCrystalRecipe(TCEEntries.magic_energy, new ItemStack(TCEItems.crystal_6), new ItemStack(TCEItems.crystal_5), new ItemStack(Items.iron_ingot), new ItemStack(Items.gold_ingot), 6);
 
 	}
-	public static ShapedArcaneRecipe recipeMagicCrystalT1;
-	public static ShapedArcaneRecipe recipeMagicCrystalT2;
-	public static ShapedArcaneRecipe recipeMagicCrystalT3;
-	public static ShapedArcaneRecipe recipeMagicCrystalT4;
-	public static ShapedArcaneRecipe recipeMagicCrystalT5;
-	public static ShapedArcaneRecipe recipeMagicCrystalT6;
+	public static InfusionRecipe recipeFireChestplate;
 
 	public static void initWandRecipes()
 	{

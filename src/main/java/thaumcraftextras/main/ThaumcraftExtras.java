@@ -66,15 +66,6 @@ public class ThaumcraftExtras {
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityDarkendCore.class, "Darkend_Core");
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityDarkendAltarSpecial.class, "Darkend_Altar_Special");
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityNoMove.class, "No_Move");
-        GameRegistry.registerTileEntity(thaumcraftextras.api.misc.classes.TileEntityMagicBattery.class, "Magic_Battery");
-        GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityMagicGenerator.class, "Magic_Generator");
-        GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityMagicWandCharger.class, "Magic_Wand_Charger");
-        GameRegistry.registerTileEntity(thaumcraftextras.api.misc.tiles.MagicEnergyBase.class, "Magic_Tile");
-        GameRegistry.registerTileEntity(thaumcraftextras.api.misc.tiles.MagicEnergyReceiver.class, "Magic_Tile_Receiver");
-        GameRegistry.registerTileEntity(thaumcraftextras.api.misc.tiles.MagicEnergySender.class, "Magic_Tile_Sender");
-        GameRegistry.registerTileEntity(thaumcraftextras.api.misc.tiles.MagicEnergyUniversal.class, "Magic_Tile_Universal");
-        GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityMagicCrystalCharger.class, "Magic_Crystal_Charger");
-        GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityMagicVoid.class, "Magic_Energy_Void");
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityEssentiaBarrel.class, "Essentia_Barrel");
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityLavaGen.class, "Magic_Lava_Gen");
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityEssentiaBarrelWindow.class, "Essentia_Barrel_Window");

@@ -53,14 +53,6 @@ public class TCEEntries {
 		
 		aspect.add(Aspect.ORDER, 5);
 		aspect.add(Aspect.ENTROPY, 5);
-		aspect.add(Aspect.ENERGY, 5);
-		text = new String[]{"1", "2", "3" , "4"};
-		research = new ResearchHelper(magic_energy, TCEEntries.TCE, aspect, 1, -4, 2, new ItemStack(TCEBlocks.battery)).setParents(ingot_darkthaumium).registerResearchItem();
-		research.setPages(new ResearchPage(text[0]), new ResearchPage(text[1]), new ResearchPage(text[2]), new ResearchPage(text[3]), new ResearchPage(TCERecipes.recipeMagicBattery),  new ResearchPage(TCERecipes.recipeMagicGenerator),  new ResearchPage(TCERecipes.recipeMagicCrystalCharger), new ResearchPage(TCERecipes.recipeMagicWandCharger), new ResearchPage(TCERecipes.recipeMagicCrystalT1), new ResearchPage(TCERecipes.recipeMagicCrystalT2), new ResearchPage(TCERecipes.recipeMagicCrystalT3), new ResearchPage(TCERecipes.recipeMagicCrystalT4), new ResearchPage(TCERecipes.recipeMagicCrystalT5), new ResearchPage(TCERecipes.recipeMagicCrystalT6), new ResearchPage(TCERecipes.recipeScanner), new ResearchPage(TCERecipes.recipeEnergyHelmet));
-		aspect = new AspectList();
-		
-		aspect.add(Aspect.ORDER, 5);
-		aspect.add(Aspect.ENTROPY, 5);
 		aspect.add(Aspect.FIRE, 5);
 		text = new String[]{"1"};
 		research = new ResearchHelper(chestplate_fire, TCEEntries.TCE, aspect, -1, 2, 2, new ItemStack(TCEItems.fireChestplate)).registerResearchItem();

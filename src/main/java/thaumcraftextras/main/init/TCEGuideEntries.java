@@ -18,8 +18,6 @@ public class TCEGuideEntries {
 	public static void initIndex()
 	{
 		TCEGuide.addCategory(tce);
-		TCEGuide.addCategory(tcenergy);
-		TCEGuide.addCategory(battery);
 		TCEGuide.addCategory(aarecipes);
 		TCEGuide.addCategory(crecipes);
 	}
@@ -41,26 +39,6 @@ public class TCEGuideEntries {
 		page = new TCEPageText(title, s, null, null, null, 1);
 		TCEGuide.addTextEntry(title, page);
 
-		title = tcenergy;
-		s = new String[]{
-				"TCE2 adds a whole ",
-				"new energy system",
-				"called Thaumic Energy."};
-		page = new TCEPageText(title, s, null, null, null, 1);
-		TCEGuide.addTextEntry(title, page);
-
-		title = battery;
-		s = new String[]{
-				"The Thaumic Energy ",
-				"Battery is one of the ",
-				"core blocks of TCE2's ",
-				"energy system.",
-				"The battery allows you ",
-				"to store energy and ",
-				"take it with you."};
-		page = new TCEPageText(title, s, TCERecipes.recipeMagicBattery, null, null, 2);
-		TCEGuide.addTextEntry(title, page);
-		
 		AdvancedAltarRecipe[] aaRecipe;
 		title = aarecipes;
 		aaRecipe = new AdvancedAltarRecipe[]{
@@ -82,8 +60,6 @@ public class TCEGuideEntries {
 		TCEGuide.addTextEntry(title, page);
 	}
 	public static String tce = "Thaumcraft Extras";
-	public static String tcenergy = "Thaumic Energy";
-	public static String battery = "Thaumic Energy Battery";
 	public static String aarecipes = "Advanced Altar Recipes";
 	public static String crecipes = "Elemental Clasher";
 
