@@ -28,7 +28,7 @@ minecraft {
 
 dependencies{
 	compile files(
-	'deps/TC.jar',
+	'deps/TC4.jar',
 	'deps/WaslieCore.jar',
 	'deps/CCC.jar',
 	'deps/NEI.jar',
