@@ -25,6 +25,7 @@ public class BlockWand extends Block{
 	public BlockWand() {
 		super(Material.iron);
 		setHardness(1.0F);
+		this.setCreativeTab(TCETools.tabTools);
 		setBlockName("DUMMY BLOCK");
 		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}
@@ -34,11 +35,15 @@ public class BlockWand extends Block{
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Item item, CreativeTabs tab, List list) {
             super.getSubBlocks(item, tab, list);
-         
+            
             list.add(getWand(30, TCETools.rod_iron, TCETools.cap_darkThaumium));
             list.add(getWand(40, TCETools.rod_gold, TCETools.cap_darkThaumium));
             list.add(getWand(65, TCETools.rod_diamond, TCETools.cap_darkThaumium));
             list.add(getWand(75, TCETools.rod_emerald, TCETools.cap_darkThaumium));
+    		
+            list.add(getWand(250, TCETools.rod_devil, TCETools.cap_darkThaumium));
+            list.add(getWand(500, TCETools.rod_god, TCETools.cap_darkThaumium));
+
             list.add(getWand(1000, TCETools.rod_darkSilverwood, TCETools.cap_darkThaumium));
             list.add(getWand(9999999, TCETools.rod_ultimate, TCETools.cap_darkThaumium));
 
@@ -57,14 +62,17 @@ public class BlockWand extends Block{
             list.add(getWand(0, TCETools.rod_gold, TCETools.cap_darkThaumium));
             list.add(getWand(0, TCETools.rod_diamond, TCETools.cap_darkThaumium));
             list.add(getWand(0, TCETools.rod_emerald, TCETools.cap_darkThaumium));
+            
+            list.add(getWand(0, TCETools.rod_devil, TCETools.cap_darkThaumium));
+            list.add(getWand(0, TCETools.rod_god, TCETools.cap_darkThaumium));
+
             list.add(getWand(0, TCETools.rod_darkSilverwood, TCETools.cap_darkThaumium));
             list.add(getWand(0, TCETools.rod_ultimate, TCETools.cap_darkThaumium));
             
 
     }
     
-    public ItemStack getWand(int amount, WandRod rod, WandCap cap)
-    {
+    public ItemStack getWand(int amount, WandRod rod, WandCap cap){
         ItemStack wand;
         wand = new ItemStack(ConfigItems.itemWandCasting);
         
@@ -77,22 +85,20 @@ public class BlockWand extends Block{
     }
     
 	@Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_)
-	{
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_){
 		if(!player.isSneaking()){
 			if(!world.isRemote){
 				if(player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() instanceof ItemWandCasting){
 					ItemWandCasting wand = (ItemWandCasting)player.getCurrentEquippedItem().getItem();
 					ItemStack stack = player.getCurrentEquippedItem();
-					for(Aspect asp : Aspect.getCompoundAspects())
+					for(Aspect asp : Aspect.getCompoundAspects()){
 						if(wand.getVis(stack, asp) < wand.getMaxVis(stack)){
 							wand.addVis(stack, asp, (wand.getMaxVis(stack) - wand.getVis(stack, asp)), true);
 						}
+					}
 				}
 			}
-		}else{
-			return false;
 		}
-		return true;
+		return false;
 	}
 }

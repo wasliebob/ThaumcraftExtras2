@@ -74,7 +74,7 @@ public class TCETools {
         rod_darkSilverwood = new WandRod("DARKSILVERWOOD", 1000, new ItemStack(item_rod_darkSilverwood), 50, new ResourceLocation("thaumcraftextras","textures/models/wand_rod_darksilverwood.png"));
 	
 		/**  Creative Only */
-        rod_ultimate = new WandRod("ULTIMATE", 9999999, new ItemStack(item_rod_ultimate), 999, new UltimateRodOnUpdate(), new ResourceLocation("thaumcraftextras","textures/models/wand_rod_ultimate.png"));
+        rod_ultimate = new WandRod("ULTIMATE", 9999999, new ItemStack(item_rod_ultimate), 999, new ResourceLocation("thaumcraftextras","textures/models/wand_rod_ultimate.png"));
 	}
 	public static WandRod rod_iron;
 	public static WandRod rod_gold;

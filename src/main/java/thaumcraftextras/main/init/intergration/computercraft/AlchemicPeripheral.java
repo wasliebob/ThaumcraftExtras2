@@ -29,7 +29,7 @@ public class AlchemicPeripheral implements IPeripheral {
 		TileThaumatorium tes = (TileThaumatorium)te;
 		switch(method){
 		case 0: return new Object[]{tes.inputStack.getDisplayName()};
-		case 1: return new Object[]{tes.outputStack.get(Integer.parseInt(arg[0].toString())).getDisplayName()};
+		case 1: return new Object[]{tes.getCurrentOutputRecipe().getDisplayName()};
 		case 2: return new Object[]{"getInput", "getOutput", "getEssentia", "help"};
 		}
 		return null;

@@ -36,46 +36,42 @@ public class FocusTrampoline extends TCEItemFocus {
         
         @SuppressWarnings("unchecked")
 		@Override
-        public void onUsingFocusTick(ItemStack itemstack, EntityPlayer player, int time)
-        {
-        	Minecraft mc = Minecraft.getMinecraft();
+        public void onUsingFocusTick(ItemStack itemstack, EntityPlayer player, int time){
             ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
-            	if (wand.consumeAllVis(itemstack, player, getVisCost(), !player.worldObj.isRemote, false))
-            	{
-            		if(mc.renderViewEntity != null){
+            if (wand.consumeAllVis(itemstack, player, getVisCost(), !player.worldObj.isRemote, false)){
+            	if(ThaumcraftExtras.proxy.renderView()){
             		double range = 8.0D*calcDistanceMod(wand, itemstack);
 
-            			AxisAlignedBB bb = AxisAlignedBB.getBoundingBox(player.posX - range, player.posY - range, player.posZ - range, player.posX + range, player.posY + range, player.posZ + range);
-            			List<Entity> entities = player.worldObj.selectEntitiesWithinAABB(Entity.class, bb, getSelector());
+            		AxisAlignedBB bb = AxisAlignedBB.getBoundingBox(player.posX - range, player.posY - range, player.posZ - range, player.posX + range, player.posY + range, player.posZ + range);
+            		List<Entity> entities = player.worldObj.selectEntitiesWithinAABB(Entity.class, bb, getSelector());
             			
-            			for(Entity entity : entities){
-            				double xPos = entity.posX;
-            				double yPos = entity.posY;
-            				double zPos = entity.posZ;
+            		for(Entity entity : entities){
+            			double xPos = entity.posX;
+            			double yPos = entity.posY;
+            			double zPos = entity.posZ;
             			
-            				float distance = (float) ((player.posX - xPos) * (player.posX - xPos) + (player.posY - yPos) * (player.posY - yPos) + (player.posZ - zPos) * (player.posZ - zPos));
+            			float distance = (float) ((player.posX - xPos) * (player.posX - xPos) + (player.posY - yPos) * (player.posY - yPos) + (player.posZ - zPos) * (player.posZ - zPos));
             		
-                			if(distance < 8*calcDistanceMod(wand, itemstack) && entity instanceof EntityLiving && !(entity instanceof EntityPlayer)){
-            					EntityLiving living = (EntityLiving)entity;
+            			if(distance < 8*calcDistanceMod(wand, itemstack) && entity instanceof EntityLiving && !(entity instanceof EntityPlayer)){
+            				EntityLiving living = (EntityLiving)entity;
             					
-                				living.performHurtAnimation();
+            				if(ThaumcraftExtras.proxy.renderView())
+            					living.performHurtAnimation();
             					
-        						living.motionY = 2.0F*calcDistanceMod(wand, itemstack);
-        						living.hurtResistantTime = MathHelper.secondToTick(10);
+            				living.motionY = 2.0F*calcDistanceMod(wand, itemstack);
+            				living.hurtResistantTime = MathHelper.secondToTick(10);
         						
-        						for (int a = 0; a < 5; a++) {
-        							Thaumcraft.proxy.sparkle((float)xPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, (float)yPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, (float)zPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, 2.0F + player.worldObj.rand.nextFloat(), 2, 0.05F + player.worldObj.rand.nextFloat() * 0.05F);
-        						}
+            				for (int a = 0; a < 5; a++) {
+            					Thaumcraft.proxy.sparkle((float)xPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, (float)yPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, (float)zPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, 2.0F + player.worldObj.rand.nextFloat(), 2, 0.05F + player.worldObj.rand.nextFloat() * 0.05F);
             				}
             			}
             		}
             	}
+            }
         }
         
-        public int calcDistanceMod(ItemWandCasting wand, ItemStack stack)
-        {
-        	switch(EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack)))
-        	{
+        public int calcDistanceMod(ItemWandCasting wand, ItemStack stack){
+        	switch(EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack))){
         	case 0: return 1;
         	case 1: return 2;
         	case 2: return 3;

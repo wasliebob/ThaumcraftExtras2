@@ -22,16 +22,16 @@ group= "ThaumcraftExtras" // http://maven.apache.org/guides/mini/guide-naming-co
 archivesBaseName = "ThaumcraftExtras"
 
 minecraft {
-    version = "1.7.10-10.13.0.1187"
+    version = "1.7.10-10.13.0.1199"
     assetDir = "eclipse/assets"
 }
 
 dependencies{
 	compile files(
-	'build/deps/TC.jar',
-	'build/deps/WaslieCore.jar',
-	'build/deps/CCC.jar',
-	'build/deps/NEI.jar',
+	'deps/TC.jar',
+	'deps/WaslieCore.jar',
+	'deps/CCC.jar',
+	'deps/NEI.jar',
 	)
 }
 
@@ -50,3 +50,19 @@ processResources
         exclude 'mcmod.info'
     }
 }
+
+task deps{
+	project.mkdir("deps")
+	def wsc = new File('deps/WaslieCore.jar')
+	new URL('https://dl.dropboxusercontent.com/u/46500170/Thaumcraft%20Extras%202/deps/WaslieCore.jar').withInputStream{ i -> wsc.withOutputStream{ it << i }}
+	
+	def ccc = new File('deps/CCC.jar')
+	new URL('https://dl.dropboxusercontent.com/u/46500170/Thaumcraft%20Extras%202/deps/CCC.jar').withInputStream{ i -> ccc.withOutputStream{ it << i }}
+
+	def nei = new File('deps/NEI.jar')
+	new URL('https://dl.dropboxusercontent.com/u/46500170/Thaumcraft%20Extras%202/deps/NEI.jar').withInputStream{ i -> nei.withOutputStream{ it << i }}
+
+	def tc = new File('deps/TC4.jar')
+	new URL('https://dl.dropboxusercontent.com/u/46500170/Thaumcraft%20Extras%202/deps/TC4.jar').withInputStream{ i -> tc.withOutputStream{ it << i }}
+}
+build.dependsOn deps

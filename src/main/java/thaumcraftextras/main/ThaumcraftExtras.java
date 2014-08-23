@@ -36,11 +36,8 @@ public class ThaumcraftExtras {
     public static String alias = "TCE";
     
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
+    public void preInit(FMLPreInitializationEvent event){
 		proxy.load();
-		@SuppressWarnings("unused")
-		Config config = new Config();
 		Config.loadConfig(event);
 		FileHelper.createModFolder(modName);
 		
@@ -53,16 +50,14 @@ public class ThaumcraftExtras {
     }
     
     @EventHandler
-    public void init(FMLInitializationEvent event)
-    {
+    public void init(FMLInitializationEvent event){
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
     	initTiles();
     	TCEEvents.init(event);
     	TCEEntities.init();
     }
     
-    public void initTiles()
-    {
+    public void initTiles(){
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityWardedSpecial.class, "Warded_Ghost");
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityShocker.class, "Magic_Shocker");
         GameRegistry.registerTileEntity(thaumcraftextras.blocks.tiles.TileEntityDarkendAltar.class, "Darkend_Altar");
@@ -77,8 +72,7 @@ public class ThaumcraftExtras {
     }
     
     @EventHandler
-    public void postInit(FMLPostInitializationEvent evt)
-    {
+    public void postInit(FMLPostInitializationEvent evt){
     	TCEMisc.postInit();
     	TCERecipes.init();
     	TCEEntries.init();

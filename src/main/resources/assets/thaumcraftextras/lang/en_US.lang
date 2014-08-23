@@ -2,7 +2,7 @@
 tc.research_category.TCE=Thaumcraft Extras 2
 tc.research_category.TCE_WANDS=Thaumcraft Extras 2: Wands
 itemGroup.tabThaumcraftExtras2=Thaumcraft Extras 2
-itemGroup.tabThaumcraftExtras2Wands=Thaumcraft Extras 2: Wands
+itemGroup.tabThaumcraftExtras2Tools=Thaumcraft Extras 2: Tools
 ==Blocks==
 tile.thaumcraftextras.block.Ignis Block.name=Ignis Fuel Block
 tile.thaumcraftextras.block.warded block: ghost.name=Warded Block: Ghost

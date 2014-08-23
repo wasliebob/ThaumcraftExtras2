@@ -36,52 +36,45 @@ public class FocusTessela extends TCEItemFocus {
         int color;
         double base = 8.0D;
         
-        @SuppressWarnings("unchecked")
 		@Override
-        public void onUsingFocusTick(ItemStack itemstack, EntityPlayer player, int time)
-        {
-        	Minecraft mc = Minecraft.getMinecraft();
+        public void onUsingFocusTick(ItemStack itemstack, EntityPlayer player, int time){
             ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
-            	if (!player.worldObj.isRemote && wand.consumeAllVis(itemstack, player, getVisCost(), !player.worldObj.isRemote, false))
-            	{
-            		if(mc.renderViewEntity != null){
-            		double range = 10.0D * calcDistanceMod(wand, itemstack);
+            if(!player.worldObj.isRemote && wand.consumeAllVis(itemstack, player, getVisCost(), !player.worldObj.isRemote, false)){
+            	double range = 10.0D * calcDistanceMod(wand, itemstack);
 
-            			AxisAlignedBB bb = AxisAlignedBB.getBoundingBox(player.posX - range, player.posY - range, player.posZ - range, player.posX + range, player.posY + range, player.posZ + range);
-            			List<Entity> entities = player.worldObj.selectEntitiesWithinAABB(Entity.class, bb, getSelector());
+            	AxisAlignedBB bb = AxisAlignedBB.getBoundingBox(player.posX - range, player.posY - range, player.posZ - range, player.posX + range, player.posY + range, player.posZ + range);
+            	List<Entity> entities = player.worldObj.selectEntitiesWithinAABB(Entity.class, bb, getSelector());
             			
-            			for(Entity entity : entities){
-            				double xPos = entity.posX;
-            				double yPos = entity.posY;
-            				double zPos = entity.posZ;
-            			
-            				float distance = (float) ((player.posX - xPos) * (player.posX - xPos) + (player.posY - yPos) * (player.posY - yPos) + (player.posZ - zPos) * (player.posZ - zPos));
+            	for(Entity entity : entities){
+            		double xPos = entity.posX;
+            		double yPos = entity.posY;
+            		double zPos = entity.posZ;
+            		float distance = (float) ((player.posX - xPos) * (player.posX - xPos) + (player.posY - yPos) * (player.posY - yPos) + (player.posZ - zPos) * (player.posZ - zPos));
+
+            		if(distance < 10 * calcDistanceMod(wand, itemstack) && entity instanceof EntityLiving && !(entity instanceof EntityPlayer)){
+            			EntityLiving living = (EntityLiving)entity;
+            			living.setHealth(living.getHealth() - 1.0F);
+            			if(ThaumcraftExtras.proxy.renderView())
+            				living.performHurtAnimation();
+
+            			if(living.getHealth() - 1.0F == 0)
+            				living.onDeath(DamageSource.generic);
             		
-                			if(distance < 10 * calcDistanceMod(wand, itemstack) && entity instanceof EntityLiving && !(entity instanceof EntityPlayer)){
-            					EntityLiving living = (EntityLiving)entity;
-            					living.setHealth(living.getHealth() - 1.0F);
-            					living.performHurtAnimation();
-
-            					if(living.getHealth() - 1.0F == 0)
-            						living.onDeath(DamageSource.generic);
-
-            					FXLightningBoltCommon light = new FXLightningBoltCommon(player.worldObj, player.posX, player.posY + 1.5F, player.posZ, xPos, yPos + 0.5F, zPos, player.worldObj.rand.nextLong(), 6, 0.5F, 5);
-            					light.defaultFractal();
-            					light.type = 2;
-            					light.finalizeBolt();
+            			FXLightningBoltCommon light = ThaumcraftExtras.proxy.createLightning(player.worldObj, player.posX, player.posY + 1.5F, player.posZ, xPos, yPos + 0.5F, zPos, player.worldObj.rand.nextLong(), 6, 0.5F, 5);
+            			light.defaultFractal();
+            			light.type = 2;
+            			light.finalizeBolt();
             					
-            					for (int a = 0; a < 5; a++) {
-            						Thaumcraft.proxy.sparkle((float)xPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, (float)yPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, (float)zPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, 2.0F + player.worldObj.rand.nextFloat(), 2, 0.05F + player.worldObj.rand.nextFloat() * 0.05F);
-            	    		        player.worldObj.playSoundEffect(xPos + 0.5D, yPos + 0.5D, zPos + 0.5D, "thaumcraft:jacobs", 0.25F, 1.0F);
-            					}
-            				}
+            			for (int a = 0; a < 5; a++) {
+            				ThaumcraftExtras.proxy.spawnSprinkle((float)xPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, (float)yPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, (float)zPos + (player.worldObj.rand.nextFloat() - player.worldObj.rand.nextFloat()) * 0.6F, 2);
+            				player.worldObj.playSoundEffect(xPos + 0.5D, yPos + 0.5D, zPos + 0.5D, "thaumcraft:jacobs", 0.25F, 1.0F);
             			}
             		}
             	}
+            }
         }
         
-        public int calcDistanceMod(ItemWandCasting wand, ItemStack stack)
-        {
+        public int calcDistanceMod(ItemWandCasting wand, ItemStack stack){
         	switch(EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack)))
         	{
         	case 0: return 1;

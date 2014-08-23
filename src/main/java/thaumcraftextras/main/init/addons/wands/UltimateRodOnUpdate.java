@@ -9,14 +9,11 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class UltimateRodOnUpdate implements IWandRodOnUpdate {
-
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void onUpdate(ItemStack stack, EntityPlayer player) {
-		if(stack != null && player != null)
-		{
-			if(stack.getItem() instanceof ItemWandCasting)
-			{
+		if(stack != null && player != null){
+			if(stack.getItem() instanceof ItemWandCasting){
 				ItemWandCasting wand = (ItemWandCasting)stack.getItem();
 				for(Aspect asp : Aspect.getPrimalAspects()){
 					if(wand.getVis(stack, asp) < wand.getMaxVis(stack)){

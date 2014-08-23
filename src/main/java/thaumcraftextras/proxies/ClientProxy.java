@@ -2,6 +2,7 @@ package thaumcraftextras.proxies;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.World;
+import thaumcraft.client.fx.bolt.FXLightningBoltCommon;
 import thaumcraft.common.Thaumcraft;
 import thaumcraftextras.blocks.tiles.TileEntityAdvancedAltar;
 import thaumcraftextras.blocks.tiles.TileEntityClasher;
@@ -67,11 +68,16 @@ public class ClientProxy extends CommonProxy {
 	public void spawnWisp(World worldObj, double x, double y, double z, int size, int type, boolean shrink, int gravity)
 	{
 		if(Minecraft.getMinecraft().renderViewEntity != null)
-			Thaumcraft.proxy.wispFX2(worldObj, x, y, z, size, type, shrink, gravity);
+			Thaumcraft.proxy.wispFX2(worldObj, x, y, z, size, type, shrink, false, gravity);
 	}
 	
 	@Override
 	public void spawnSound(World worldObj, int xCoord, int yCoord, int zCoord, String id){
 		worldObj.playSoundEffect(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D, "thaumcraft:craftstart", 0.25F, 1.0F);
+	}
+	
+	@Override
+	public FXLightningBoltCommon createLightning(World world, double x1, double y1, double z1, double x2, double y2, double z2, long seed, int duration, float multi, int speed){
+		return new FXLightningBoltCommon(world, x1, y1, z1, x2, y2, z2, seed, duration, multi, speed);
 	}
 }
