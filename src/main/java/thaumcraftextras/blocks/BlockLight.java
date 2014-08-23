@@ -26,11 +26,10 @@ public class BlockLight extends Block {
 		setLightLevel(1F);
 		setBlockName(ThaumcraftExtras.modName.toLowerCase() + "." + "block" + "." + blockName.toLowerCase());
 		
-		
 		GameRegistry.registerBlock(this, ItemBlockLightning.class, this.getUnlocalizedName());
 	}
 	int metaId;
-    
+	
 	@Override
 	public boolean renderAsNormalBlock()
 	{
@@ -66,14 +65,12 @@ public class BlockLight extends Block {
     }
 
     @SideOnly(Side.CLIENT)
-    public int getRenderColor(int meta)
-    {
+    public int getRenderColor(int meta){
         return DyeHelper.getColorCode(meta);
     }
 
     @SideOnly(Side.CLIENT)
-    public int colorMultiplier(IBlockAccess acces, int x, int y, int z)
-    {
+    public int colorMultiplier(IBlockAccess acces, int x, int y, int z){
     	return DyeHelper.getColorCode(acces.getBlockMetadata(x, y, z));
     }
 }

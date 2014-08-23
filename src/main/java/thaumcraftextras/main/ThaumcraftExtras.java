@@ -7,11 +7,10 @@ import thaumcraftextras.main.init.TCEBlocks;
 import thaumcraftextras.main.init.TCEEntities;
 import thaumcraftextras.main.init.TCEEntries;
 import thaumcraftextras.main.init.TCEEvents;
-import thaumcraftextras.main.init.TCEGuideEntries;
 import thaumcraftextras.main.init.TCEItems;
 import thaumcraftextras.main.init.TCEMisc;
 import thaumcraftextras.main.init.TCERecipes;
-import thaumcraftextras.main.init.addons.TCEWands;
+import thaumcraftextras.main.init.addons.TCETools;
 import thaumcraftextras.main.init.intergration.IntergrationLoader;
 import thaumcraftextras.proxies.CommonProxy;
 import wasliecore.helpers.FileHelper;
@@ -48,7 +47,7 @@ public class ThaumcraftExtras {
 		TCEApi.addAllAspects();
     	TCEItems.init();
     	TCEBlocks.init();
-    	if(Config.addon_wands){TCEWands.init();};
+    	if(Config.addon_tools){TCETools.init();};
     	
     	IntergrationLoader.init(event);
     }
@@ -83,7 +82,6 @@ public class ThaumcraftExtras {
     	TCEMisc.postInit();
     	TCERecipes.init();
     	TCEEntries.init();
-    	TCEGuideEntries.init();
     	GameRegistry.registerFuelHandler(new FuelHandler());
     }
 }

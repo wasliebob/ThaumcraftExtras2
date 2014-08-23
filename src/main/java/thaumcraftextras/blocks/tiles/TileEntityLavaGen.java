@@ -31,22 +31,19 @@ public class TileEntityLavaGen extends TileEntity implements IAspectContainer, I
 	public FluidTank tank = new FluidTank(FluidRegistry.LAVA, 0, FluidContainerRegistry.BUCKET_VOLUME*16);
 	
 	@Override
-	public void updateEntity()
-	{
+	public void updateEntity(){
 		if(list.getAmount(fire) >= am){
 			generateLava();
 		}
 	}
 	
-	public void generateLava()
-	{
+	public void generateLava(){
 //		takeEssentia(fire, am, ForgeDirection.UNKNOWN);
 		if(FluidRegistry.LAVA != null)
 			this.fill(ForgeDirection.UNKNOWN, new FluidStack(FluidRegistry.LAVA, drawFromTube()), canDrain(ForgeDirection.UP, FluidRegistry.LAVA));
 	}
 	
-	public int drawFromTube()
-    {
+	public int drawFromTube(){
     	 ForgeDirection orientation = getOrientation();
          TileEntity tile = ThaumcraftApiHelper.getConnectableTile(worldObj, xCoord, yCoord, zCoord, orientation);
 
@@ -163,119 +160,6 @@ public class TileEntityLavaGen extends TileEntity implements IAspectContainer, I
 	@Override
 	public void setSuction(Aspect arg0, int arg1) {		
 	}
-
-	
-//	@Override
-//	public int addEssentia(Aspect asp, int amount, ForgeDirection arg2) {
-//		if(asp == Aspect.FIRE){
-//			list.add(asp, amount);
-//			return list.getAmount(asp);
-//		}
-//		return list.getAmount(asp);
-//	}
-//
-//	@Override
-//	public boolean canInputFrom(ForgeDirection dir) {
-//		return true;
-//	}
-//
-//	@Override
-//	public boolean canOutputTo(ForgeDirection arg0) {
-//		return false;
-//	}
-//
-//	@Override
-//	public int getEssentiaAmount(ForgeDirection arg0) {
-//		return list.getAmount(list.getAspects()[0]);
-//	}
-//
-//	@Override
-//	public Aspect getEssentiaType(ForgeDirection arg0) {
-//		return list.getAspects()[0];
-//	}
-//
-//	@Override
-//	public int getMinimumSuction() {
-//		return 0;
-//	}
-//
-//	@Override
-//	public int getSuctionAmount(ForgeDirection arg0) {
-//		return arg0 == getOrientation() ? 128 : 0;
-//	}
-//
-//	@Override
-//	public Aspect getSuctionType(ForgeDirection arg0) {
-//		return arg0 == getOrientation() ? fire : null;
-//	}
-//
-//	@Override
-//	public boolean isConnectable(ForgeDirection arg0) {
-//		return true;
-//	}
-//
-//	@Override
-//	public boolean renderExtendedTube() {
-//		return false;
-//	}
-//
-//	@Override
-//	public void setSuction(Aspect arg0, int arg1) {
-//		
-//	}
-//
-//	@Override
-//	public int takeEssentia(Aspect asp, int amount, ForgeDirection arg2) {
-//		list.reduce(asp, amount);
-//		return list.getAmount(list.getAspects()[0]);
-//	}
-//
-//	@Override
-//	public int addToContainer(Aspect asp, int amount) {
-//		list.add(asp, amount);
-//		return list.getAmount(list.getAspects()[0]);
-//	}
-//
-//	@Override
-//	public int containerContains(Aspect arg0) {
-//		return 0;
-//	}
-//
-//	@Override
-//	public boolean doesContainerAccept(Aspect asp) {
-//		return asp == fire;
-//	}
-//
-//	@Override
-//	@Deprecated
-//	public boolean doesContainerContain(AspectList arg0) {
-//		return false;
-//	}
-//
-//	@Override
-//	public boolean doesContainerContainAmount(Aspect asp, int amount) {
-//		return list.getAmount(list.getAspects()[0]) >= amount;
-//	}
-//
-//	@Override
-//	public AspectList getAspects() {
-//		return list;
-//	}
-//
-//	@Override
-//	public void setAspects(AspectList arg0) {	
-//	}
-//
-//	@Override
-//	@Deprecated
-//	public boolean takeFromContainer(AspectList arg0) {
-//		return false;
-//	}
-//
-//	@Override
-//	public boolean takeFromContainer(Aspect arg0, int arg1) {
-//		return false;
-//	}
 
 	@Override
 	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {

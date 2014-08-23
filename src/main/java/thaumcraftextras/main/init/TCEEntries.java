@@ -10,7 +10,7 @@ import thaumcraft.api.research.ResearchPage;
 import thaumcraftextras.helpers.ResearchHelper;
 import thaumcraftextras.main.Config;
 import thaumcraftextras.main.ThaumcraftExtras;
-import thaumcraftextras.main.init.addons.TCEWands;
+import thaumcraftextras.main.init.addons.TCETools;
 
 public class TCEEntries {
 
@@ -19,8 +19,8 @@ public class TCEEntries {
 		initBookTab();
 		initBookEntries();
 		
-		if(Config.addon_wands)
-			initWandEntries();
+		if(Config.addon_tools)
+			initToolsEntries();
 	}
 	
 	public static void initBookEntries()
@@ -160,7 +160,7 @@ public class TCEEntries {
 	public static String altar_advanced = "Altar_Advanced";
 	public static String amulet_ghost = "Amulet_Ghost";
 
-	public static void initWandEntries()
+	public static void initToolsEntries()
 	{
 		ResearchItem research;
 		String[] text;
@@ -170,28 +170,28 @@ public class TCEEntries {
 		aspect.add(Aspect.ORDER, 5);
 		aspect.add(Aspect.ENTROPY, 5);
 		text = new String[]{"1"};
-		research = new ResearchHelper(TCEEntries.rod_iron, TCEEntries.TCEWANDS, aspect, 0, 0, 2, new ItemStack(TCEWands.item_rod_iron)).setSecondary().registerResearchItem();
+		research = new ResearchHelper(TCEEntries.rod_iron, TCEEntries.TCETOOLS, aspect, 0, 0, 2, new ItemStack(TCETools.item_rod_iron)).setSecondary().registerResearchItem();
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipe_rod_iron));
 		aspect = new AspectList();
 		
 		aspect.add(Aspect.ORDER, 5);
 		aspect.add(Aspect.ENTROPY, 5);
 		text = new String[]{"1"};
-		research = new ResearchHelper(TCEEntries.rod_gold, TCEEntries.TCEWANDS, aspect, 1, 1, 2, new ItemStack(TCEWands.item_rod_gold)).setParents(TCEEntries.rod_iron).setSecondary().registerResearchItem();
+		research = new ResearchHelper(TCEEntries.rod_gold, TCEEntries.TCETOOLS, aspect, 1, 1, 2, new ItemStack(TCETools.item_rod_gold)).setParents(TCEEntries.rod_iron).setSecondary().registerResearchItem();
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipe_rod_gold));
 		aspect = new AspectList();
 		
 		aspect.add(Aspect.ORDER, 5);
 		aspect.add(Aspect.ENTROPY, 5);
 		text = new String[]{"1"};
-		research = new ResearchHelper(TCEEntries.rod_diamond, TCEEntries.TCEWANDS, aspect, 2, 2, 2, new ItemStack(TCEWands.item_rod_diamond)).setParents(TCEEntries.rod_gold).setSecondary().registerResearchItem();
+		research = new ResearchHelper(TCEEntries.rod_diamond, TCEEntries.TCETOOLS, aspect, 2, 2, 2, new ItemStack(TCETools.item_rod_diamond)).setParents(TCEEntries.rod_gold).setSecondary().registerResearchItem();
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipe_rod_diamond));
 		aspect = new AspectList();
 		
 		aspect.add(Aspect.ORDER, 5);
 		aspect.add(Aspect.ENTROPY, 5);
 		text = new String[]{"1"};
-		research = new ResearchHelper(TCEEntries.rod_emerald, TCEEntries.TCEWANDS, aspect, 3, 3, 2, new ItemStack(TCEWands.item_rod_emerald)).setParents(TCEEntries.rod_diamond).setSecondary().registerResearchItem();
+		research = new ResearchHelper(TCEEntries.rod_emerald, TCEEntries.TCETOOLS, aspect, 3, 3, 2, new ItemStack(TCETools.item_rod_emerald)).setParents(TCEEntries.rod_diamond).setSecondary().registerResearchItem();
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipe_rod_emerald));
 		aspect = new AspectList();
 		
@@ -199,7 +199,7 @@ public class TCEEntries {
 		aspect.add(Aspect.ENTROPY, 10);
 		aspect.add(Aspect.FIRE, 10);
 		text = new String[]{"1"};
-		research = new ResearchHelper(TCEEntries.rod_devil, TCEEntries.TCEWANDS, aspect, 1, 3, 2, new ItemStack(TCEWands.item_rod_devil)).setParents(TCEEntries.rod_diamond).setSecondary().registerResearchItem();
+		research = new ResearchHelper(TCEEntries.rod_devil, TCEEntries.TCETOOLS, aspect, 1, 3, 2, new ItemStack(TCETools.item_rod_devil)).setParents(TCEEntries.rod_diamond).setSecondary().registerResearchItem();
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipe_rod_devil));
 		aspect = new AspectList();
 		
@@ -207,7 +207,7 @@ public class TCEEntries {
 		aspect.add(Aspect.ENTROPY, 15);
 		aspect.add(Aspect.AIR, 15);
 		text = new String[]{"1"};
-		research = new ResearchHelper(TCEEntries.rod_god, TCEEntries.TCEWANDS, aspect, 1, 4, 2, new ItemStack(TCEWands.item_rod_god)).setParents(TCEEntries.rod_devil).setSecondary().registerResearchItem();
+		research = new ResearchHelper(TCEEntries.rod_god, TCEEntries.TCETOOLS, aspect, 1, 4, 2, new ItemStack(TCETools.item_rod_god)).setParents(TCEEntries.rod_devil).setSecondary().registerResearchItem();
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipe_rod_god));
 		aspect = new AspectList();
 		
@@ -215,13 +215,13 @@ public class TCEEntries {
 		aspect.add(Aspect.ENTROPY, 25);
 		aspect.add(Aspect.AIR, 25);
 		text = new String[]{"1"};
-		research = new ResearchHelper(TCEEntries.rod_darkSilverwood, TCEEntries.TCEWANDS, aspect, 1, 5, 2, new ItemStack(TCEWands.item_rod_darkSilverwood)).setParents(TCEEntries.rod_god).setSecondary().registerResearchItem();
+		research = new ResearchHelper(TCEEntries.rod_darkSilverwood, TCEEntries.TCETOOLS, aspect, 1, 5, 2, new ItemStack(TCETools.item_rod_darkSilverwood)).setParents(TCEEntries.rod_god).setSecondary().registerResearchItem();
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipe_rod_darkSilverwood));
 		aspect = new AspectList();
 		
 		aspect.add(Aspect.ENTROPY, 5);
 		text = new String[]{"1"};
-		research = new ResearchHelper(TCEEntries.cap_darkThaumium, TCEEntries.TCEWANDS, aspect, -1, -1, 2, new ItemStack(TCEWands.item_cap_darkThaumium)).setParents(TCEEntries.rod_iron).setSecondary().registerResearchItem();
+		research = new ResearchHelper(TCEEntries.cap_darkThaumium, TCEEntries.TCETOOLS, aspect, -1, -1, 2, new ItemStack(TCETools.item_cap_darkThaumium)).setParents(TCEEntries.rod_iron).setSecondary().registerResearchItem();
 		research.setPages(new ResearchPage(text[0]), new ResearchPage(TCERecipes.recipe_cap_darkThaumium));
 		aspect = new AspectList();
 		
@@ -243,9 +243,9 @@ public class TCEEntries {
 		 ResourceLocation background = new ResourceLocation("thaumcraft", "textures/gui/gui_researchback.png");
          ResearchCategories.registerCategory("TCE", new ResourceLocation(ThaumcraftExtras.modName.toLowerCase() + ":" + "textures/items/essence_magic.png"), background);
        
-         if(Config.addon_wands)
-        	 ResearchCategories.registerCategory("TCE_WANDS", new ResourceLocation(ThaumcraftExtras.modName.toLowerCase() + ":" + "textures/items/rod_darksilverwood.png"), background);
+         if(Config.addon_tools)
+        	 ResearchCategories.registerCategory("TCE_TOOLS", new ResourceLocation(ThaumcraftExtras.modName.toLowerCase() + ":" + "textures/items/rod_darksilverwood.png"), background);
 	}
 	public static String TCE = "TCE";
-	public static String TCEWANDS = "TCE_WANDS";
+	public static String TCETOOLS = "TCE_TOOLS";
 }

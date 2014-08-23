@@ -77,6 +77,7 @@ public class TCEApi {
 	}
 	public static ArrayList<Aspect> fullAspectList = new ArrayList<Aspect>();
 	
+	/** Requires Thaumcraft Extras 2: Tools to be enabled */
 	public static HashMap<Aspect, IScepterAction> scepterAction = new HashMap<Aspect, IScepterAction>();
 
 }

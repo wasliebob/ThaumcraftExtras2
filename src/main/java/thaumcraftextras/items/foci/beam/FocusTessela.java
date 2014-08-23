@@ -13,7 +13,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.client.fx.FXLightningBolt;
+import thaumcraft.client.fx.bolt.FXLightningBoltCommon;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
@@ -65,10 +65,9 @@ public class FocusTessela extends TCEItemFocus {
             					if(living.getHealth() - 1.0F == 0)
             						living.onDeath(DamageSource.generic);
 
-            					FXLightningBolt light = new FXLightningBolt(player.worldObj, player.posX, player.posY + 1.5F, player.posZ, xPos, yPos + 0.5F, zPos, player.worldObj.rand.nextLong(), 6, 0.5F, 5);
+            					FXLightningBoltCommon light = new FXLightningBoltCommon(player.worldObj, player.posX, player.posY + 1.5F, player.posZ, xPos, yPos + 0.5F, zPos, player.worldObj.rand.nextLong(), 6, 0.5F, 5);
             					light.defaultFractal();
-            					light.setType(2);
-            					light.setWidth(0.125F);
+            					light.type = 2;
             					light.finalizeBolt();
             					
             					for (int a = 0; a < 5; a++) {

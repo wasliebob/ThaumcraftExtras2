@@ -21,7 +21,6 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import thaumcraft.client.renderers.tile.ModelCube;
 import thaumcraftextras.api.core.recipes.ClasherRecipeManager;
 import thaumcraftextras.blocks.tiles.TileEntityClasher;
 import thaumcraftextras.proxies.client.models.ModelClasher;
@@ -33,7 +32,6 @@ public class TileEntityClasherRenderer extends TileEntitySpecialRenderer{
 
 	int col;
 	ModelClasher model = new ModelClasher();
-	ModelCube cube = new ModelCube();
 
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double x, double y,

@@ -9,7 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
-import thaumcraft.client.fx.FXLightningBolt;
+import thaumcraft.client.fx.bolt.FXLightningBoltCommon;
 import wasliecore.helpers.MathHelper;
 
 public class TileEntityShocker extends TileEntity{
@@ -50,10 +50,9 @@ public class TileEntityShocker extends TileEntity{
 			if(living.getHealth() - 0.2F == 0)
 				living.onDeath(DamageSource.generic);
 			
-			FXLightningBolt light = new FXLightningBolt(worldObj, xCoord + 0.5, yCoord + 1.6, zCoord + 0.5, xPos, yPos + 0.5, zPos, worldObj.getSeed(), 1);
+			FXLightningBoltCommon light = new FXLightningBoltCommon(worldObj, xCoord + 0.5, yCoord + 1.6, zCoord + 0.5, xPos, yPos + 0.5, zPos, worldObj.getSeed(), 1, 1);
 			light.defaultFractal();
-			light.setType(2);
-			light.setWidth(0.125F);
+			light.type = 2;
 			light.finalizeBolt();
 //	        for (int a = 0; a < 5; a++) {
 //	        	ThaumcraftExtras.proxy.spawnSprinkle((float)xPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, (float)yPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, (float)zPos + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.6F, 2.0F + this.worldObj.rand.nextFloat(), 2, 0.05F + this.worldObj.rand.nextFloat() * 0.05F);
@@ -65,10 +64,9 @@ public class TileEntityShocker extends TileEntity{
 			
 				living.setFire(2);
 				
-				FXLightningBolt light = new FXLightningBolt(worldObj, xCoord + 0.5, yCoord + 1.6, zCoord + 0.5, xPos, yPos + 0.5, zPos, worldObj.getSeed(), 2);
+				FXLightningBoltCommon light = new FXLightningBoltCommon(worldObj, xCoord + 0.5, yCoord + 1.6, zCoord + 0.5, xPos, yPos + 0.5, zPos, worldObj.getSeed(), 1, 2);
 				light.defaultFractal();
-				light.setType(3);
-				light.setWidth(0.125F);
+				light.type = 3;
 				light.finalizeBolt();
 //				living.onDeath(DamageSource.inFire)
 //		        for (int a = 0; a < 5; a++) {

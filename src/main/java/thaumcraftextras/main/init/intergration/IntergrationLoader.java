@@ -7,10 +7,6 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 public class IntergrationLoader {
 	public static void init(FMLPreInitializationEvent event)
 	{
-		if(Loader.isModLoaded("NotEnoughItems")){
-			NotEnoughItems.init(event);
-				printMessage("Not Enough Items");}
-		
 		if(Loader.isModLoaded("ComputerCraft")){
 			ComputerCraft.init();
 			printMessage("ComputerCraft");}

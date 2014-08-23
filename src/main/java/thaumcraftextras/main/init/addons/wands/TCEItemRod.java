@@ -11,14 +11,14 @@ import net.minecraft.util.EnumChatFormatting;
 import org.lwjgl.input.Keyboard;
 
 import thaumcraftextras.main.ThaumcraftExtras;
-import thaumcraftextras.main.init.TCETabs;
+import thaumcraftextras.main.init.addons.TCETools;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class TCEItemRod extends Item{
 
 	public TCEItemRod(String itemName, int visStorage, String[] description) {
 		setUnlocalizedName(ThaumcraftExtras.modName.toLowerCase() + "." + "rod" + "." + itemName.toLowerCase());
-		setCreativeTab(TCETabs.tabWands);
+		setCreativeTab(TCETools.tabTools);
 		name = itemName;
 		des = description;
 		storage = visStorage;

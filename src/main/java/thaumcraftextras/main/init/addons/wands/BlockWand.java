@@ -15,20 +15,17 @@ import thaumcraft.api.wands.WandCap;
 import thaumcraft.api.wands.WandRod;
 import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.wands.ItemWandCasting;
-import thaumcraftextras.main.init.TCETabs;
-import thaumcraftextras.main.init.addons.TCEWands;
+import thaumcraftextras.main.init.addons.TCETools;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockWand extends Block{
 
-	public BlockWand(String blockName) {
+	public BlockWand() {
 		super(Material.iron);
 		setHardness(1.0F);
-//		setCreativeTab(TCETabs.tabMain);
 		setBlockName("DUMMY BLOCK");
-		setCreativeTab(TCETabs.tabWands);
 		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}
 	
@@ -38,30 +35,30 @@ public class BlockWand extends Block{
     public void getSubBlocks(Item item, CreativeTabs tab, List list) {
             super.getSubBlocks(item, tab, list);
          
-            list.add(getWand(30, TCEWands.rod_iron, TCEWands.cap_darkThaumium));
-            list.add(getWand(40, TCEWands.rod_gold, TCEWands.cap_darkThaumium));
-            list.add(getWand(65, TCEWands.rod_diamond, TCEWands.cap_darkThaumium));
-            list.add(getWand(75, TCEWands.rod_emerald, TCEWands.cap_darkThaumium));
-            list.add(getWand(1000, TCEWands.rod_darkSilverwood, TCEWands.cap_darkThaumium));
-            list.add(getWand(9999999, TCEWands.rod_ultimate, TCEWands.cap_darkThaumium));
+            list.add(getWand(30, TCETools.rod_iron, TCETools.cap_darkThaumium));
+            list.add(getWand(40, TCETools.rod_gold, TCETools.cap_darkThaumium));
+            list.add(getWand(65, TCETools.rod_diamond, TCETools.cap_darkThaumium));
+            list.add(getWand(75, TCETools.rod_emerald, TCETools.cap_darkThaumium));
+            list.add(getWand(1000, TCETools.rod_darkSilverwood, TCETools.cap_darkThaumium));
+            list.add(getWand(9999999, TCETools.rod_ultimate, TCETools.cap_darkThaumium));
 
-            list.add(getWand(ConfigItems.STAFF_ROD_BLAZE.getCapacity(), ConfigItems.STAFF_ROD_BLAZE, TCEWands.cap_darkThaumium));
-            list.add(getWand(ConfigItems.STAFF_ROD_BONE.getCapacity(), ConfigItems.STAFF_ROD_BONE, TCEWands.cap_darkThaumium));
-            list.add(getWand(ConfigItems.STAFF_ROD_GREATWOOD.getCapacity(), ConfigItems.STAFF_ROD_GREATWOOD, TCEWands.cap_darkThaumium));
-            list.add(getWand(ConfigItems.STAFF_ROD_ICE.getCapacity(), ConfigItems.STAFF_ROD_ICE, TCEWands.cap_darkThaumium));
-            list.add(getWand(ConfigItems.STAFF_ROD_OBSIDIAN.getCapacity(), ConfigItems.STAFF_ROD_OBSIDIAN, TCEWands.cap_darkThaumium));
-            list.add(getWand(ConfigItems.STAFF_ROD_PRIMAL.getCapacity(), ConfigItems.STAFF_ROD_PRIMAL, TCEWands.cap_darkThaumium));
-            list.add(getWand(ConfigItems.STAFF_ROD_QUARTZ.getCapacity(), ConfigItems.STAFF_ROD_QUARTZ, TCEWands.cap_darkThaumium));
-            list.add(getWand(ConfigItems.STAFF_ROD_REED.getCapacity(), ConfigItems.STAFF_ROD_REED, TCEWands.cap_darkThaumium));
-            list.add(getWand(ConfigItems.STAFF_ROD_SILVERWOOD.getCapacity(), ConfigItems.STAFF_ROD_SILVERWOOD, TCEWands.cap_darkThaumium));
+            list.add(getWand(ConfigItems.STAFF_ROD_BLAZE.getCapacity(), ConfigItems.STAFF_ROD_BLAZE, TCETools.cap_darkThaumium));
+            list.add(getWand(ConfigItems.STAFF_ROD_BONE.getCapacity(), ConfigItems.STAFF_ROD_BONE, TCETools.cap_darkThaumium));
+            list.add(getWand(ConfigItems.STAFF_ROD_GREATWOOD.getCapacity(), ConfigItems.STAFF_ROD_GREATWOOD, TCETools.cap_darkThaumium));
+            list.add(getWand(ConfigItems.STAFF_ROD_ICE.getCapacity(), ConfigItems.STAFF_ROD_ICE, TCETools.cap_darkThaumium));
+            list.add(getWand(ConfigItems.STAFF_ROD_OBSIDIAN.getCapacity(), ConfigItems.STAFF_ROD_OBSIDIAN, TCETools.cap_darkThaumium));
+            list.add(getWand(ConfigItems.STAFF_ROD_PRIMAL.getCapacity(), ConfigItems.STAFF_ROD_PRIMAL, TCETools.cap_darkThaumium));
+            list.add(getWand(ConfigItems.STAFF_ROD_QUARTZ.getCapacity(), ConfigItems.STAFF_ROD_QUARTZ, TCETools.cap_darkThaumium));
+            list.add(getWand(ConfigItems.STAFF_ROD_REED.getCapacity(), ConfigItems.STAFF_ROD_REED, TCETools.cap_darkThaumium));
+            list.add(getWand(ConfigItems.STAFF_ROD_SILVERWOOD.getCapacity(), ConfigItems.STAFF_ROD_SILVERWOOD, TCETools.cap_darkThaumium));
 
             /** Empty */
-            list.add(getWand(0, TCEWands.rod_iron, TCEWands.cap_darkThaumium));
-            list.add(getWand(0, TCEWands.rod_gold, TCEWands.cap_darkThaumium));
-            list.add(getWand(0, TCEWands.rod_diamond, TCEWands.cap_darkThaumium));
-            list.add(getWand(0, TCEWands.rod_emerald, TCEWands.cap_darkThaumium));
-            list.add(getWand(0, TCEWands.rod_darkSilverwood, TCEWands.cap_darkThaumium));
-            list.add(getWand(0, TCEWands.rod_ultimate, TCEWands.cap_darkThaumium));
+            list.add(getWand(0, TCETools.rod_iron, TCETools.cap_darkThaumium));
+            list.add(getWand(0, TCETools.rod_gold, TCETools.cap_darkThaumium));
+            list.add(getWand(0, TCETools.rod_diamond, TCETools.cap_darkThaumium));
+            list.add(getWand(0, TCETools.rod_emerald, TCETools.cap_darkThaumium));
+            list.add(getWand(0, TCETools.rod_darkSilverwood, TCETools.cap_darkThaumium));
+            list.add(getWand(0, TCETools.rod_ultimate, TCETools.cap_darkThaumium));
             
 
     }

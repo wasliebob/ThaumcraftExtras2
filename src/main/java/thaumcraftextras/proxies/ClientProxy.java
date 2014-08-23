@@ -41,6 +41,11 @@ public class ClientProxy extends CommonProxy {
     public void registerParticles(){}
 	
 	@Override
+	public boolean renderView(){
+		return Minecraft.getMinecraft().renderViewEntity != null;
+	}
+	
+	@Override
 	public void spawnBurst(World worldObj, double xCoord, double yCoord, double zCoord){
 		if(Minecraft.getMinecraft().renderViewEntity != null)
 			Thaumcraft.proxy.burst(worldObj, xCoord, yCoord, zCoord, 2);

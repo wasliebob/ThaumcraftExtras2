@@ -7,13 +7,10 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.items.wands.ItemWandCasting;
-import thaumcraft.common.lib.network.fx.PacketFXBlockSparkle;
 import thaumcraftextras.api.core.TCEApi;
 import thaumcraftextras.items.foci.TCEItemFocus;
 import thaumcraftextras.main.ThaumcraftExtras;
-import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -43,12 +40,13 @@ public class FocusExchange extends TCEItemFocus {
     			if(block != null && TCEApi.exchange.containsKey(block) && wand.consumeAllVis(itemstack, player, getVisCost(), true, true)){
     				world.setBlock(x, y, z, TCEApi.exchange.get(block));
     		        world.playSoundEffect(mop.blockX + 0.5D, mop.blockY + 0.5D, mop.blockZ + 0.5D, "thaumcraft:craftstart", 0.25F, 1.0F);
-    		        Thaumcraft.packetPipeline.sendToAllAround(new PacketFXBlockSparkle(mop.blockX, mop.blockY, mop.blockZ, (byte)1), new NetworkRegistry.TargetPoint(world.provider.dimensionId, mop.blockX, mop.blockY, mop.blockZ, 32.0D));
+//    		        Thaumcraft.packetPipeline.sendToAllAround(new PacketFXBlockSparkle(mop.blockX, mop.blockY, mop.blockZ, (byte)1), new NetworkRegistry.TargetPoint(world.provider.dimensionId, mop.blockX, mop.blockY, mop.blockZ, 32.0D));
     		        world.markBlockForUpdate(x, y, z);
     			}else if(isMeta(block, world, x, y, z) && wand.consumeAllVis(itemstack, player, getVisCost(), true, true)){
     				exchangeBlockWithMeta(player, block, world, x, y, z);
     		        world.playSoundEffect(mop.blockX + 0.5D, mop.blockY + 0.5D, mop.blockZ + 0.5D, "thaumcraft:craftstart", 0.25F, 1.0F);
-    		        Thaumcraft.packetPipeline.sendToAllAround(new PacketFXBlockSparkle(mop.blockX, mop.blockY, mop.blockZ, (byte)1), new NetworkRegistry.TargetPoint(world.provider.dimensionId, mop.blockX, mop.blockY, mop.blockZ, 32.0D));
+    		        
+//    		        Thaumcraft.packetPipeline.sendToAllAround(new PacketFXBlockSparkle(mop.blockX, mop.blockY, mop.blockZ, (byte)1), new NetworkRegistry.TargetPoint(world.provider.dimensionId, mop.blockX, mop.blockY, mop.blockZ, 32.0D));
     		        world.markBlockForUpdate(x, y, z);
     			}
     		}

@@ -14,7 +14,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraftextras.api.core.TCEApi;
-import thaumcraftextras.main.init.TCETabs;
+import thaumcraftextras.main.init.addons.TCETools;
 import wasliecore.helpers.ColorHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -28,7 +28,7 @@ public class TCEItemScepter extends Item{
 
 		itemName = name;
 		
-		setCreativeTab(TCETabs.tabMain);
+		setCreativeTab(TCETools.tabTools);
 
 		setUnlocalizedName("thaumcraftextras" + "." + "scepter" + "." + name);
 				

@@ -17,7 +17,7 @@ import thaumcraft.common.config.ConfigItems;
 import thaumcraftextras.api.core.TCEApi;
 import thaumcraftextras.api.core.recipes.AdvancedAltarRecipe;
 import thaumcraftextras.main.Config;
-import thaumcraftextras.main.init.addons.TCEWands;
+import thaumcraftextras.main.init.addons.TCETools;
 import thaumcraftextras.main.init.addons.wands.helpers.WandCreationHelper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -32,8 +32,8 @@ public class TCERecipes {
 		initDarkInfusionRecipes();
 		initAdvancedAltarRecipes();
 		initClasherRecipes();
-		if(Config.addon_wands)
-			initWandRecipes();
+		if(Config.addon_tools)
+			initToolsRecipes();
 	}
 	
 	public static void initVanillaRecipes()
@@ -64,7 +64,6 @@ public class TCERecipes {
 			'Y', TCEItems.essenceMagic});
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(TCEBlocks.plank_darkmagic, 4, 0), new ItemStack(TCEBlocks.log_darkmagic));
-		GameRegistry.addShapelessRecipe(new ItemStack(TCEItems.guide), new ItemStack(Items.book), new ItemStack(ConfigItems.itemShard));
 		
 		for(int i = 0; i < 16; i++)
 			GameRegistry.addShapedRecipe(new ItemStack(TCEItems.pouch_color, 1, i), new Object[]{
@@ -298,26 +297,26 @@ public class TCERecipes {
 	}
 	public static InfusionRecipe recipeFireChestplate;
 
-	public static void initWandRecipes()
+	public static void initToolsRecipes()
 	{
-		recipe_rod_iron = WandCreationHelper.registerRecipe(TCEEntries.rod_iron, new ItemStack(TCEWands.item_rod_iron), new ItemStack(Items.iron_ingot), new ItemStack(Items.stick), 1);
-		recipe_rod_gold = WandCreationHelper.registerRecipe(TCEEntries.rod_gold, new ItemStack(TCEWands.item_rod_gold), new ItemStack(Items.gold_ingot), new ItemStack(TCEWands.item_rod_iron), 2);
-		recipe_rod_diamond = WandCreationHelper.registerRecipe(TCEEntries.rod_diamond, new ItemStack(TCEWands.item_rod_diamond), new ItemStack(Items.diamond), new ItemStack(TCEWands.item_rod_gold), 3);
-		recipe_rod_emerald = WandCreationHelper.registerRecipe(TCEEntries.rod_emerald, new ItemStack(TCEWands.item_rod_emerald), new ItemStack(Items.emerald), new ItemStack(TCEWands.item_rod_diamond), 4);
+		recipe_rod_iron = WandCreationHelper.registerRecipe(TCEEntries.rod_iron, new ItemStack(TCETools.item_rod_iron), new ItemStack(Items.iron_ingot), new ItemStack(Items.stick), 1);
+		recipe_rod_gold = WandCreationHelper.registerRecipe(TCEEntries.rod_gold, new ItemStack(TCETools.item_rod_gold), new ItemStack(Items.gold_ingot), new ItemStack(TCETools.item_rod_iron), 2);
+		recipe_rod_diamond = WandCreationHelper.registerRecipe(TCEEntries.rod_diamond, new ItemStack(TCETools.item_rod_diamond), new ItemStack(Items.diamond), new ItemStack(TCETools.item_rod_gold), 3);
+		recipe_rod_emerald = WandCreationHelper.registerRecipe(TCEEntries.rod_emerald, new ItemStack(TCETools.item_rod_emerald), new ItemStack(Items.emerald), new ItemStack(TCETools.item_rod_diamond), 4);
 		
-		recipe_rod_devil = WandCreationHelper.registerRecipe(TCEEntries.rod_devil, new ItemStack(TCEWands.item_rod_devil), new ItemStack(TCEItems.ignisFuel), new ItemStack(TCEWands.item_rod_diamond), 20);
-		recipe_rod_god = WandCreationHelper.registerRecipe(TCEEntries.rod_god, new ItemStack(TCEWands.item_rod_god), new ItemStack(TCEItems.essenceLight), new ItemStack(TCEWands.item_rod_devil), 30);
+		recipe_rod_devil = WandCreationHelper.registerRecipe(TCEEntries.rod_devil, new ItemStack(TCETools.item_rod_devil), new ItemStack(TCEItems.ignisFuel), new ItemStack(TCETools.item_rod_diamond), 20);
+		recipe_rod_god = WandCreationHelper.registerRecipe(TCEEntries.rod_god, new ItemStack(TCETools.item_rod_god), new ItemStack(TCEItems.essenceLight), new ItemStack(TCETools.item_rod_devil), 30);
 
-		recipe_cap_darkThaumium = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.cap_darkThaumium, new ItemStack(TCEWands.item_cap_darkThaumium), new AspectList().add(Aspect.ENTROPY, 10).add(Aspect.ORDER, 10), new Object[]{
+		recipe_cap_darkThaumium = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.cap_darkThaumium, new ItemStack(TCETools.item_cap_darkThaumium), new AspectList().add(Aspect.ENTROPY, 10).add(Aspect.ORDER, 10), new Object[]{
 			"XXX",
 			"X X",
 			'X', TCEItems.darkThaumiumNugget});
 		
-		recipe_rod_darkSilverwood = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.rod_darkSilverwood, new ItemStack(TCEWands.item_rod_darkSilverwood), new AspectList().add(Aspect.ENTROPY, 500).add(Aspect.ORDER, 500), new Object[]{
+		recipe_rod_darkSilverwood = ThaumcraftApi.addArcaneCraftingRecipe(TCEEntries.rod_darkSilverwood, new ItemStack(TCETools.item_rod_darkSilverwood), new AspectList().add(Aspect.ENTROPY, 500).add(Aspect.ORDER, 500), new Object[]{
 			" YX",
 			"YIY",
 			"XY ",
-			'I', TCEWands.item_rod_god,
+			'I', TCETools.item_rod_god,
 			'X', Items.nether_star,
 			'Y', TCEItems.essenceDark});
 	}
@@ -332,8 +331,7 @@ public class TCERecipes {
 
 	public static ShapedArcaneRecipe recipe_cap_darkThaumium;
 	
-	public static void initDarkInfusionRecipes()
-	{
+	public static void initDarkInfusionRecipes(){
 		TCEApi.addDarkInfusionRecipe(TCEItems.essenceMagic, new ItemStack(TCEItems.essenceDark));
 		TCEApi.addDarkInfusionRecipe(ConfigItems.itemShard, new ItemStack(TCEItems.darkShard));
 		TCEApi.addDarkInfusionRecipe(Item.getItemFromBlock(ConfigBlocks.blockMagicalLog), new ItemStack(TCEBlocks.log_darkmagic));

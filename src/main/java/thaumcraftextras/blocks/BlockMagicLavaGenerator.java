@@ -31,9 +31,8 @@ public class BlockMagicLavaGenerator extends BlockContainer{
 	IIcon bottom;
 	
 	@Override
-    public void registerBlockIcons(IIconRegister ir) 
-	{
-		top = ir.registerIcon(ThaumcraftExtras.modName.toLowerCase() + ":" + "block_charger");
+    public void registerBlockIcons(IIconRegister ir) {
+		top = ir.registerIcon("thaumcraft:arcaneearbottom");
 		side = ir.registerIcon("thaumcraft:arcaneearbottom");
 	}	
 	

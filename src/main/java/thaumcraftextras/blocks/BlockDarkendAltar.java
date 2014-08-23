@@ -55,19 +55,9 @@ public class BlockDarkendAltar extends BlockContainer {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister ir)
-    {
-    	blockIcon = ir.registerIcon(ThaumcraftExtras.modName.toLowerCase() + ":" + "block_altar");
+    public void registerBlockIcons(IIconRegister ir){
+		blockIcon = ir.registerIcon("thaumcraft:arcaneearbottom");
     }
-    
-//    @Override
-//    @SideOnly(Side.CLIENT)
-//    public IIcon getBlockTextureFromSide(int side)
-//    {
-//        return this.getIcon(side, acces.getBlockMetadata(x, y, z));
-//    }
-    
-	
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
