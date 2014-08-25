@@ -1,8 +1,8 @@
 ==Names==
 tc.research_category.TCE=神秘扩展2
-tc.research_category.TCE_WANDS=神秘扩展2: 法杖
+tc.research_category.TCE_WANDS=神秘扩展2:法杖
 itemGroup.tabThaumcraftExtras2=神秘扩展2
-itemGroup.tabThaumcraftExtras2Wands=神秘扩展2: 法杖
+itemGroup.tabThaumcraftExtras2Tools=神秘扩展2:工具
 ==Blocks==
 tile.thaumcraftextras.block.Ignis Block.name=火要素燃料块
 tile.thaumcraftextras.block.warded block: ghost.name=守卫方块: 幽灵
@@ -51,7 +51,7 @@ item.thaumcraftextras.focus.wand focus: potion.name=法杖核心: 魔药
 item.thaumcraftextras.focus.wand focus: exchange.name=法杖核心: 变幻
 item.thaumcraftextras.armor.flaming chestplate.name=火神胸甲
 item.thaumcraftextras.armor.energetic helmet.name=充能头盔
-item.thaumcraftextras.scepter.base.name=创造模式权杖
+item.thaumcraftextras.scepter.base.name=权杖
 item.thaumcraftextras.item.pouch_focus.name=法杖核心手袋
 item.thaumcraftextras.item.thaumic energy guide.name=神秘能源指南
 ==Rods==
@@ -87,10 +87,6 @@ tce.text.Wand_Focus:_Return.1=你试图制造一种可以让自己传送回特�
 tce.text.Wand_Focus:_Shock.1=用法杖核心的结合技术:你试图制作一种具有范围性闪电攻击的法杖核心. 你可以通过潜能附魔增加其攻击生物的范围.
 tce.text.Wand_Focus:_Trampoline.1=你试图制作一种能将一定区域内所有生物弹射起来的法杖核心. 你可以通过潜能附魔增加其弹射生物的范围及其弹射高度.
 tce.text.Dark_Thaumium.1=你试图通过将神秘锭与黑暗结合制造出黑暗神秘锭. 黑暗神秘锭是神秘扩展2的核心材料之一.
-tce.text.Magic_Energy.1=NYI
-tce.text.Magic_Energy.2=NYI
-tce.text.Magic_Energy.3=NYI
-tce.text.Magic_Energy.4=NYI
 tce.text.Essentia_Barrels.1=你找到了一种制造可升级要素桶的方法. 你可以用魔力天域之华升级它们的容量.
 tce.text.Shocker.1=你试图制造一种能电击区域内所有生物的方块. 这看上去很简单, 但它隐藏着一些小秘密.
 tce.text.Containment.1=你试图制造一种能控制区域内所有实体的方块, 让它们动弹不得.
@@ -102,7 +98,7 @@ tce.text.ROD_EMERALD.1=中等杖芯.
 tce.text.ROD_DEVIL.1=高级的杖芯.
 tce.text.ROD_GOD.1=高级的杖芯.
 tce.text.ROD_DARKSILVERWOOD.1=终极杖芯, 由这支杖芯制成的法杖可以使用神秘能量水晶充能或将能量倾注其中.
-tce.text.Wand_Focus:_Pech_Trade.1=BUGGED DO NOT USE
+tce.text.Wand_Focus:_Pech_Trade.1=你做出了一个核心,它能射出可驯服岩精的抛射物.
 tce.text.Wand_Focus:_Potion.1=你试图制造出了一种能帮助你更好运用药水的法杖核心. 使用此法杖核心会检测你物品栏中放置的第一个药水并激活它, 如此一来将会消耗魔力代替消耗药水.
 tce.text.Wand_Focus:_Exchange.1=你试图制造出了一种可以替换不同样式方块的法杖核心. 使用此法杖核心将会对建筑或变换方块颜色起到极大的帮助.
 tce.text.Altar_Advanced.1=你试图制造出了一种可以制造神秘扩展中高级物品的方块. 使用此方块需要用到天域之华, 更多的信息详见神秘能源指南.
