@@ -244,7 +244,7 @@ public class TCEEntries {
          ResearchCategories.registerCategory("TCE", new ResourceLocation(ThaumcraftExtras.modName.toLowerCase() + ":" + "textures/items/essence_magic.png"), background);
        
          if(Config.addon_tools)
-        	 ResearchCategories.registerCategory("TCE_TOOLS", new ResourceLocation(ThaumcraftExtras.modName.toLowerCase() + ":" + "textures/items/rod_darksilverwood.png"), background);
+        	 ResearchCategories.registerCategory("TCE_TOOLS", new ResourceLocation(ThaumcraftExtras.modName.toLowerCase() + ":" + "textures/items/extractor_xp.png"), background);
 	}
 	public static String TCE = "TCE";
 	public static String TCETOOLS = "TCE_TOOLS";

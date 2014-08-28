@@ -12,6 +12,6 @@ public class TCETabs {
 		@SideOnly(Side.CLIENT)
 		public Item getTabIconItem(){
 			return TCEItems.essenceMagic;
-			}
-		}; 
+		}
+    }; 
 }
