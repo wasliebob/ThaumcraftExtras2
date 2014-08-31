@@ -91,7 +91,7 @@ public class TCERecipes {
 			'Y', Blocks.log,
 			'X', new ItemStack(ConfigBlocks.blockJar)});
 		
-		GameRegistry.addShapelessRecipe(new ItemStack(TCEItems.darkThaumiumNugget, 9, 1), new ItemStack(TCEItems.darkThaumium));
+		GameRegistry.addShapelessRecipe(new ItemStack(TCEItems.darkThaumiumNugget, 9, 0), new ItemStack(TCEItems.darkThaumium));
 	}
 	public static ShapedArcaneRecipe barrel_essentia;
 	
