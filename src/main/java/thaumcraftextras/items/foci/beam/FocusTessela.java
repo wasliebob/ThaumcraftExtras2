@@ -13,6 +13,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.client.fx.bolt.FXLightningBoltCommon;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.config.Config;
@@ -39,7 +40,7 @@ public class FocusTessela extends TCEItemFocus {
 		@Override
         public void onUsingFocusTick(ItemStack itemstack, EntityPlayer player, int time){
             ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
-            if(!player.worldObj.isRemote && wand.consumeAllVis(itemstack, player, getVisCost(), !player.worldObj.isRemote, false)){
+            if(!player.worldObj.isRemote && wand.consumeAllVis(itemstack, player, getVisCost(itemstack), !player.worldObj.isRemote, false)){
             	double range = 10.0D * calcDistanceMod(wand, itemstack);
 
             	AxisAlignedBB bb = AxisAlignedBB.getBoundingBox(player.posX - range, player.posY - range, player.posZ - range, player.posX + range, player.posY + range, player.posZ + range);
@@ -75,16 +76,7 @@ public class FocusTessela extends TCEItemFocus {
         }
         
         public int calcDistanceMod(ItemWandCasting wand, ItemStack stack){
-        	switch(EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack)))
-        	{
-        	case 0: return 1;
-        	case 1: return 2;
-        	case 2: return 3;
-        	case 3: return 4;
-        	case 4: return 5;
-        	case 5: return 6;
-        	default: return 1;
-        	}
+        	return 2;
         }
         
         public IEntitySelector getSelector(){
@@ -99,22 +91,13 @@ public class FocusTessela extends TCEItemFocus {
         }
 
         @Override
-        public int getFocusColor() {
+        public int getFocusColor(ItemStack arg0) {
                 return color;
         }
 
-
         @Override
-        public AspectList getVisCost() {
+        public AspectList getVisCost(ItemStack arg0) {
                 return aspectNeed;
-        }
-        
-        @Override
-        public boolean acceptsEnchant(int id) {
-        	if(id == Config.enchPotency.effectId)
-        		return true;
-        	
-        	return false;
         }
         
         @Override
@@ -125,7 +108,14 @@ public class FocusTessela extends TCEItemFocus {
     	}
         
         @Override
-        public boolean isUseItem() {
+        public boolean isUseItem(ItemStack stack) {
                 return true;
         }
+
+		@Override
+		public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack arg0,
+				int arg1) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

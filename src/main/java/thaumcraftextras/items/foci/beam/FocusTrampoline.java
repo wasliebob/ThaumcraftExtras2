@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.config.Config;
 import thaumcraft.common.items.wands.ItemWandCasting;
@@ -38,7 +39,7 @@ public class FocusTrampoline extends TCEItemFocus {
 		@Override
         public void onUsingFocusTick(ItemStack itemstack, EntityPlayer player, int time){
             ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
-            if (wand.consumeAllVis(itemstack, player, getVisCost(), !player.worldObj.isRemote, false)){
+            if (wand.consumeAllVis(itemstack, player, getVisCost(itemstack), !player.worldObj.isRemote, false)){
             	if(ThaumcraftExtras.proxy.renderView()){
             		double range = 8.0D*calcDistanceMod(wand, itemstack);
 
@@ -71,23 +72,7 @@ public class FocusTrampoline extends TCEItemFocus {
         }
         
         public int calcDistanceMod(ItemWandCasting wand, ItemStack stack){
-        	switch(EnchantmentHelper.getEnchantmentLevel(Config.enchPotency.effectId, wand.getFocusItem(stack))){
-        	case 0: return 1;
-        	case 1: return 2;
-        	case 2: return 3;
-        	case 3: return 4;
-        	case 4: return 5;
-        	case 5: return 6;
-        	default: return 1;
-        	}
-        }
-        
-        @Override
-        public boolean acceptsEnchant(int id) {
-        	if(id == Config.enchPotency.effectId)
-        		return true;
-        	
-        	return false;
+        	return 2;
         }
         
         public IEntitySelector getSelector(){
@@ -103,13 +88,13 @@ public class FocusTrampoline extends TCEItemFocus {
         }
 
         @Override
-        public int getFocusColor() {
+        public int getFocusColor(ItemStack arg0) {
                 return color;
         }
 
 
         @Override
-        public AspectList getVisCost() {
+        public AspectList getVisCost(ItemStack arg0) {
                 return aspectNeed;
         }
         
@@ -121,7 +106,14 @@ public class FocusTrampoline extends TCEItemFocus {
     	}
         
         @Override
-        public boolean isUseItem() {
+        public boolean isUseItem(ItemStack arg0) {
                 return true;
         }
+
+		@Override
+		public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack arg0,
+				int arg1) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

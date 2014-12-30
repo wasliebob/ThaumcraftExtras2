@@ -10,6 +10,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumcraftextras.items.foci.TCEItemFocus;
 import thaumcraftextras.main.ThaumcraftExtras;
@@ -49,7 +50,7 @@ public class FocusReturn extends TCEItemFocus {
         			player.addChatComponentMessage(new ChatComponentText("Bound return focus to a new location"));
 		        world.playSoundEffect(player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, "thaumcraft:wand", 0.25F, 1.0F);
         	}else{
-        		if (!world.isRemote && wand.consumeAllVis(itemstack, player, getVisCost(), true, true)) {
+        		if (!world.isRemote && wand.consumeAllVis(itemstack, player, getVisCost(itemstack), true, true)) {
         			String name = player.getDisplayName();
         			if(xPos.containsKey(name) && yPos.containsKey(name) && zPos.containsKey(name)){
         				player.setPosition(xPos.get(name), yPos.get(name), zPos.get(name));
@@ -66,18 +67,13 @@ public class FocusReturn extends TCEItemFocus {
         }
 
         @Override
-        public int getFocusColor() {
+        public int getFocusColor(ItemStack stack) {
                 return color;
         }
 
         @Override
-        public AspectList getVisCost() {
+        public AspectList getVisCost(ItemStack stack) {
                 return aspectNeed;
-        }
-        
-        @Override
-        public boolean acceptsEnchant(int id) {
-        	return false;
         }
         
         @Override
@@ -86,4 +82,11 @@ public class FocusReturn extends TCEItemFocus {
     	{
     		return color;
     	}
+
+		@Override
+		public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack arg0,
+				int arg1) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

@@ -11,6 +11,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumcraftextras.items.foci.TCEItemFocus;
 import thaumcraftextras.main.ThaumcraftExtras;
@@ -35,7 +36,7 @@ public class FocusPotionEffect extends TCEItemFocus {
         @Override
         public ItemStack onFocusRightClick(ItemStack itemstack, World world, EntityPlayer player, MovingObjectPosition mop) {
         	ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
-        		if (wand.consumeAllVis(itemstack, player, getVisCost(), true, true)) {
+        		if (wand.consumeAllVis(itemstack, player, getVisCost(itemstack), true, true)) {
         			getEffect(player, world);
         		}
         		return itemstack;
@@ -47,18 +48,13 @@ public class FocusPotionEffect extends TCEItemFocus {
         }
 
         @Override
-        public int getFocusColor() {
+        public int getFocusColor(ItemStack stack) {
                 return color;
         }
 
         @Override
-        public AspectList getVisCost() {
+        public AspectList getVisCost(ItemStack stack) {
                 return aspectNeed;
-        }
-        
-        @Override
-        public boolean acceptsEnchant(int id) {
-        	return false;
         }
         
         @Override
@@ -93,4 +89,11 @@ public class FocusPotionEffect extends TCEItemFocus {
         	}
         	return b;
         }
+
+		@Override
+		public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack arg0,
+				int arg1) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

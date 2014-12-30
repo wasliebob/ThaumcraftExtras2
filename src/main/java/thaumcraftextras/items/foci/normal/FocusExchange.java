@@ -7,6 +7,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumcraftextras.api.core.TCEApi;
 import thaumcraftextras.items.foci.TCEItemFocus;
@@ -37,16 +38,13 @@ public class FocusExchange extends TCEItemFocus {
     			int y = mop.blockY;
     			int z = mop.blockZ;
     			Block block = world.getBlock(x, y, z);
-    			if(block != null && TCEApi.exchange.containsKey(block) && wand.consumeAllVis(itemstack, player, getVisCost(), true, true)){
+    			if(block != null && TCEApi.exchange.containsKey(block) && wand.consumeAllVis(itemstack, player, getVisCost(itemstack), true, true)){
     				world.setBlock(x, y, z, TCEApi.exchange.get(block));
     		        world.playSoundEffect(mop.blockX + 0.5D, mop.blockY + 0.5D, mop.blockZ + 0.5D, "thaumcraft:craftstart", 0.25F, 1.0F);
-//    		        Thaumcraft.packetPipeline.sendToAllAround(new PacketFXBlockSparkle(mop.blockX, mop.blockY, mop.blockZ, (byte)1), new NetworkRegistry.TargetPoint(world.provider.dimensionId, mop.blockX, mop.blockY, mop.blockZ, 32.0D));
     		        world.markBlockForUpdate(x, y, z);
-    			}else if(isMeta(block, world, x, y, z) && wand.consumeAllVis(itemstack, player, getVisCost(), true, true)){
+    			}else if(isMeta(block, world, x, y, z) && wand.consumeAllVis(itemstack, player, getVisCost(itemstack), true, true)){
     				exchangeBlockWithMeta(player, block, world, x, y, z);
     		        world.playSoundEffect(mop.blockX + 0.5D, mop.blockY + 0.5D, mop.blockZ + 0.5D, "thaumcraft:craftstart", 0.25F, 1.0F);
-    		        
-//    		        Thaumcraft.packetPipeline.sendToAllAround(new PacketFXBlockSparkle(mop.blockX, mop.blockY, mop.blockZ, (byte)1), new NetworkRegistry.TargetPoint(world.provider.dimensionId, mop.blockX, mop.blockY, mop.blockZ, 32.0D));
     		        world.markBlockForUpdate(x, y, z);
     			}
     		}
@@ -86,18 +84,13 @@ public class FocusExchange extends TCEItemFocus {
         }
 
         @Override
-        public int getFocusColor() {
+        public int getFocusColor(ItemStack arg0) {
                 return color;
         }
 
         @Override
-        public AspectList getVisCost() {
+        public AspectList getVisCost(ItemStack arg0) {
                 return aspectNeed;
-        }
-        
-        @Override
-        public boolean acceptsEnchant(int id) {
-        	return false;
         }
         
         @Override
@@ -106,4 +99,11 @@ public class FocusExchange extends TCEItemFocus {
     	{
     		return color;
     	}
+
+		@Override
+		public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack arg0,
+				int arg1) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

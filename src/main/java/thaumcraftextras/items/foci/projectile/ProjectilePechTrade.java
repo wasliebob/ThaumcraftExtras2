@@ -14,7 +14,7 @@ public class ProjectilePechTrade extends EntityPrimalOrb{
 	}
 	
 	public ProjectilePechTrade(World world, EntityLivingBase living) {
-		super(world, living);
+		super(world, living, false);
 	}
 	
 	@Override

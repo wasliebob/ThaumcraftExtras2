@@ -6,6 +6,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumcraftextras.items.foci.TCEItemFocus;
 import thaumcraftextras.items.foci.projectile.ProjectilePechTrade;
@@ -32,7 +33,7 @@ public class FocusPechTrade extends TCEItemFocus {
         public ItemStack onFocusRightClick(ItemStack itemstack, World world, EntityPlayer player, MovingObjectPosition mop) {
         	ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
         	ProjectilePechTrade pechTrade = new ProjectilePechTrade(world, player);
-        	if(!world.isRemote && wand.consumeAllVis(itemstack, player, getVisCost(), true, true))
+        	if(!world.isRemote && wand.consumeAllVis(itemstack, player, getVisCost(itemstack), true, true))
         		world.spawnEntityInWorld(pechTrade);
         	return itemstack;
         }
@@ -43,18 +44,13 @@ public class FocusPechTrade extends TCEItemFocus {
         }
 
         @Override
-        public int getFocusColor() {
+        public int getFocusColor(ItemStack stack) {
                 return color;
         }
 
         @Override
-        public AspectList getVisCost() {
+        public AspectList getVisCost(ItemStack stack) {
                 return aspectNeed;
-        }
-        
-        @Override
-        public boolean acceptsEnchant(int id) {
-        	return false;
         }
         
         @Override
@@ -63,4 +59,11 @@ public class FocusPechTrade extends TCEItemFocus {
     	{
     		return color;
     	}
+
+		@Override
+		public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack arg0,
+				int arg1) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 }

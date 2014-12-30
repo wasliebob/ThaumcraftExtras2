@@ -9,10 +9,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import thaumcraft.api.wands.FocusUpgradeType;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.config.ConfigBlocks;
 import thaumcraft.common.items.wands.ItemWandCasting;
-import thaumcraft.common.lib.Utils;
+import thaumcraft.common.lib.utils.BlockUtils;
 import thaumcraftextras.items.foci.TCEItemFocus;
 import thaumcraftextras.main.ThaumcraftExtras;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -56,7 +57,7 @@ public class FocusClean extends TCEItemFocus {
         public void onUsingFocusTick(ItemStack itemstack, EntityPlayer player, int time)
         {
             ItemWandCasting wand = (ItemWandCasting)itemstack.getItem();
-            MovingObjectPosition mop = Utils.getTargetBlock(player.worldObj, player, false);
+            MovingObjectPosition mop = BlockUtils.getTargetBlock(player.worldObj, player, false);
             
             	if(mop != null)
             	{
@@ -65,7 +66,7 @@ public class FocusClean extends TCEItemFocus {
         			y = mop.blockY;
         			z = mop.blockZ;
         			if(player.worldObj.canMineBlock(player, x, y, z) && player.worldObj.getBlock(x, y, z).canEntityDestroy(player.worldObj, x, y, z, player) && canBeCleaned.contains(player.worldObj.getBlock(x, y, z))){
-        				if (wand.consumeAllVis(itemstack, player, getVisCost(), !player.worldObj.isRemote, false)){
+        				if (wand.consumeAllVis(itemstack, player, getVisCost(itemstack), !player.worldObj.isRemote, false)){
             				if(!player.worldObj.isRemote){            
             		            player.worldObj.playAuxSFX(2001, mop.blockX, mop.blockY, mop.blockZ, Block.getIdFromBlock(player.worldObj.getBlock(x, y, z)) + (player.worldObj.getBlockMetadata(x, y, z) << 12));
                 	            player.worldObj.setBlock(x, y, z, Blocks.air);
@@ -84,19 +85,14 @@ public class FocusClean extends TCEItemFocus {
         }
 
         @Override
-        public int getFocusColor() {
+        public int getFocusColor(ItemStack stack) {
                 return color;
         }
 
 
         @Override
-        public AspectList getVisCost() {
+        public AspectList getVisCost(ItemStack stack) {
                 return aspectNeed;
-        }
-        
-        @Override
-        public boolean acceptsEnchant(int id) {
-        	return false;
         }
         
         @Override
@@ -107,7 +103,13 @@ public class FocusClean extends TCEItemFocus {
     	}
         
         @Override
-        public boolean isUseItem() {
+        public boolean isUseItem(ItemStack stack) {
                 return true;
         }
+
+		@Override
+		public FocusUpgradeType[] getPossibleUpgradesByRank(ItemStack arg0,
+				int arg1) {
+			return null;
+		}
 }

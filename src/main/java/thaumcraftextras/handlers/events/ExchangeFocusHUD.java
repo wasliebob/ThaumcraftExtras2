@@ -12,7 +12,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
-import thaumcraft.api.wands.IWandFocus;
+import thaumcraft.api.wands.ItemFocusBasic;
 import thaumcraft.common.items.wands.ItemWandCasting;
 import thaumcraftextras.api.core.TCEApi;
 import thaumcraftextras.helpers.IconHelper;
@@ -30,7 +30,7 @@ public class ExchangeFocusHUD extends Gui{
 			Minecraft mc = Minecraft.getMinecraft();
 			EntityPlayer player = Minecraft.getMinecraft().thePlayer ;
 			ItemStack held = player.getHeldItem();
-			if(held != null && held.getItem() instanceof ItemWandCasting && (IWandFocus)((ItemWandCasting)held.getItem()).getFocus(held) != null && (IWandFocus)((ItemWandCasting)held.getItem()).getFocus(held) instanceof FocusExchange && (FocusExchange)((ItemWandCasting)held.getItem()).getFocus(held) instanceof FocusExchange){
+			if(held != null && held.getItem() instanceof ItemWandCasting && (ItemFocusBasic)((ItemWandCasting)held.getItem()).getFocus(held) != null && (ItemFocusBasic)((ItemWandCasting)held.getItem()).getFocus(held) instanceof FocusExchange && (FocusExchange)((ItemWandCasting)held.getItem()).getFocus(held) instanceof FocusExchange){
 				renderExchangeBlock(event, player, mc);
 			}
 		}

@@ -5,7 +5,6 @@ import java.util.List;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
@@ -13,11 +12,11 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
-import thaumcraft.api.wands.IWandFocus;
+import thaumcraft.api.wands.ItemFocusBasic;
 import thaumcraftextras.main.ThaumcraftExtras;
 import thaumcraftextras.main.init.TCETabs;
 
-public abstract class TCEItemFocus extends Item implements IWandFocus {
+public abstract class TCEItemFocus extends ItemFocusBasic {
 
         private IIcon ornament, depth;
 
@@ -49,9 +48,9 @@ public abstract class TCEItemFocus extends Item implements IWandFocus {
         @SuppressWarnings({ "unchecked", "rawtypes" })
 		@Override
         public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
-                AspectList cost = getVisCost();
+                AspectList cost = getVisCost(stack);
                 if (cost != null && cost.size() > 0) {
-                        list.add(StatCollector.translateToLocal(isVisCostPerTick() ? "item.Focus.cost2" : "item.Focus.cost1"));
+                        list.add(StatCollector.translateToLocal(isVisCostPerTick(stack) ? "item.Focus.cost2" : "item.Focus.cost1"));
                         for (Aspect aspect : cost.getAspectsSorted()) {
                                 float amount = cost.getAmount(aspect) / 100.0F;
                                 list.add(" " + '\u00a7' + aspect.getChatcolor() + aspect.getName() + '\u00a7' + "r x " + amount);
@@ -70,35 +69,35 @@ public abstract class TCEItemFocus extends Item implements IWandFocus {
         }
 
         @Override
-        public IIcon getOrnament() {
+        public IIcon getOrnament(ItemStack stack) {
                 return ornament;
         }
         
         @Override
-        public IIcon getFocusDepthLayerIcon() {
+        public IIcon getFocusDepthLayerIcon(ItemStack stack) {
                 return depth;
         }
 
         @Override
-        public WandFocusAnimation getAnimation() {
+        public WandFocusAnimation getAnimation(ItemStack stack) {
                 return WandFocusAnimation.WAVE;
         }
 
         @Override
-        public boolean isVisCostPerTick() {
+        public boolean isVisCostPerTick(ItemStack stack) {
                 return false;
         }
 
-        public boolean isUseItem() {
-                return isVisCostPerTick();
+        public boolean isUseItem(ItemStack stack) {
+                return isVisCostPerTick(stack);
         }
         
         @Override
-        public ItemStack onFocusRightClick(ItemStack paramItemStack, World paramWorld, EntityPlayer paramEntityPlayer, MovingObjectPosition paramMovingObjectPosition) {
-                if(isUseItem())
-                        paramEntityPlayer.setItemInUse(paramItemStack, Integer.MAX_VALUE);
+        public ItemStack onFocusRightClick(ItemStack stack, World world, EntityPlayer player, MovingObjectPosition mop) {
+                if(isUseItem(stack))
+                        player.setItemInUse(stack, Integer.MAX_VALUE);
 
-                return paramItemStack;
+                return stack;
         }
 
         @Override
@@ -121,7 +120,7 @@ public abstract class TCEItemFocus extends Item implements IWandFocus {
         }
         
         @Override
-    	public AspectList getVisCost()
+    	public AspectList getVisCost(ItemStack stack)
         {
 			return new AspectList().add(Aspect.AIR, 100);
         }
